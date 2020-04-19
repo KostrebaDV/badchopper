@@ -1,22 +1,21 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-
+const cors = require('cors');
 const app = express();
+const corsConfig = require('./config/cors');
 
-const urlencodedParser = bodyParser.urlencoded({extended: false});
+const jsonParser = express.json();
 
-app.get("/register", urlencodedParser, function (request, response) {
-    response.sendFile(__dirname + "/static/register.html");
-});
-app.post("/register", urlencodedParser, function (request, response) {
-    if(!request.body) return response.sendStatus(400);
+app.use(cors(corsConfig));
 
-    console.log(request.body);
-    response.send(`${request.body.userName} - ${request.body.userAge}`);
-});
+app.post("/call", jsonParser, function (request, response) {
+	if(!request.body) return response.sendStatus(400);
 
-app.get("/", function(request, response){
-    response.send("Главная страница");
+	response.json(request.body);
 });
 
-app.listen(3000);
+// app.get("/", function(request, response){
+//
+// 	response.sendFile(__dirname + "/index.html");
+// });
+
+app.listen(4040);

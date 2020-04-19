@@ -1,5 +1,6 @@
 /node_modules
 *.xml
 *.imi
+.env
 package-lock.json
 .idea/
