@@ -1,4 +1,5 @@
 type departmentDTOType = {
+    id: string;
     name: string;
     description: string;
     address: {
@@ -7,11 +8,31 @@ type departmentDTOType = {
     }
 }
 
-type deleteDepartmentDTOType = {
+type requestParamsType = {
+    params: {
+        id: string
+    }
+}
+
+type departmentIdDTOType = {
     id: string;
 }
 
+type deleteDocumentResponseStatusType = {
+    deletedCount: number
+}
+
+type updateDocumentResponseStatusType = {
+    ok: number
+}
+
+type getDocumentResponseStatusType = object[]
+
 export {
+    requestParamsType,
     departmentDTOType,
-    deleteDepartmentDTOType
+    departmentIdDTOType,
+    getDocumentResponseStatusType,
+    deleteDocumentResponseStatusType,
+    updateDocumentResponseStatusType
 };

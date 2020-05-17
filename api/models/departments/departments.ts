@@ -2,7 +2,7 @@ import { ObjectID } from 'mongodb';
 import CONSTS from './consts'
 import {
     departmentDTOType,
-    deleteDepartmentDTOType
+    departmentIdDTOType
 } from "../../types/departmentsTypes";
 
 const addDepartmentModel = (departmentDTO: departmentDTOType, client) => {
@@ -15,7 +15,38 @@ const addDepartmentModel = (departmentDTO: departmentDTOType, client) => {
     });
 };
 
-const deleteDepartmentModel = (deleteDepartmentDTO: deleteDepartmentDTOType, client) => {
+const updateDepartmentModel = (updateDepartmentDTO: departmentDTOType, client) => {
+    const {
+        id,
+        name,
+        description,
+        address
+    } = updateDepartmentDTO;
+
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONSTS.BASE_COLLECTION)
+            .findOneAndUpdate(
+                {
+                    _id: new ObjectID(id)
+                },
+                {
+                    $set: {
+                        name,
+                        description,
+                        address : {
+                            city: address.city,
+                            street: address.street
+                        }
+                    }
+                }
+            )
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
+const deleteDepartmentModel = (deleteDepartmentDTO: departmentIdDTOType, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
@@ -25,7 +56,32 @@ const deleteDepartmentModel = (deleteDepartmentDTO: deleteDepartmentDTOType, cli
     });
 };
 
+const getAllDepartmentsModel = (client) => {
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONSTS.BASE_COLLECTION)
+            .find()
+            .toArray()
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
+const getDepartmentModel = (getDepartmentDTO: departmentIdDTOType, client) => {
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONSTS.BASE_COLLECTION)
+            .find({_id: new ObjectID(getDepartmentDTO.id)})
+            .toArray()
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
 export {
     addDepartmentModel,
-    deleteDepartmentModel
+    getDepartmentModel,
+    updateDepartmentModel,
+    deleteDepartmentModel,
+    getAllDepartmentsModel
 }

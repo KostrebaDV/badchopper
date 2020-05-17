@@ -1,28 +1,68 @@
 import {
     addDepartmentModel,
-    deleteDepartmentModel
+    getDepartmentModel,
+    updateDepartmentModel,
+    deleteDepartmentModel,
+    getAllDepartmentsModel
 } from '../../models/departments/departments'
 import {
     departmentDTOType,
-    deleteDepartmentDTOType
+    departmentIdDTOType,
+    getDocumentResponseStatusType,
+    updateDocumentResponseStatusType,
+    deleteDocumentResponseStatusType
 } from "../../types/departmentsTypes";
 
-type dCount = {
-    deletedCount: number
-}
-
 const addDepartmentService = (departmentDTO: departmentDTOType, client) => {
-    // validation level
     if (departmentDTO.name.length !== 0) {
         return addDepartmentModel(departmentDTO, client)
     }
 };
 
-const deleteDepartmentService = (deleteDepartmentDTO: deleteDepartmentDTOType, client) => {
-    // validation level
+const getAllDepartmentsService = (client) => {
+    return getAllDepartmentsModel(client)
+};
+
+const updateDepartmentService = (updateDepartmentDTO, client) => {
+    if (updateDepartmentDTO.id.length !== 0) {
+        return updateDepartmentModel(updateDepartmentDTO, client)
+            .then((status: updateDocumentResponseStatusType) => {
+                if (status.ok === 1) {
+                    return 'Department was updated successfully'
+                }
+
+                throw Error('Department was not updated')
+            })
+            .catch(error => {
+                throw Error(error)
+            });
+    } else {
+        throw new Error('Department id is required')
+    }
+};
+
+const getDepartmentService = (getDepartmentDTO: departmentIdDTOType, client) => {
+    if (getDepartmentDTO.id.length !== 0) {
+        return getDepartmentModel(getDepartmentDTO, client)
+            .then((status: getDocumentResponseStatusType) => {
+                if (status.length !== 0) {
+                    return status;
+                }
+
+                throw Error('Department was not selected')
+            })
+            .catch(error => {
+                throw Error(error)
+            });
+    } else {
+        throw new Error('Department id is required')
+    }
+};
+
+const deleteDepartmentService = (deleteDepartmentDTO: departmentIdDTOType, client) => {
     if (deleteDepartmentDTO.id.length !== 0) {
         return deleteDepartmentModel(deleteDepartmentDTO, client)
-            .then((status: dCount) => {
+            .then((status: deleteDocumentResponseStatusType) => {
                 if (status.deletedCount !== 0) {
                     return 'Department was deleted successfully'
                 }
@@ -39,5 +79,8 @@ const deleteDepartmentService = (deleteDepartmentDTO: deleteDepartmentDTOType, c
 
 export {
     addDepartmentService,
-    deleteDepartmentService
+    getDepartmentService,
+    updateDepartmentService,
+    deleteDepartmentService,
+    getAllDepartmentsService
 }
