@@ -1,9 +1,12 @@
 import { ObjectID } from 'mongodb';
 import CONSTS from './consts'
 import {
-    departmentDTOType,
-    departmentIdDTOType
+    departmentDTOType
 } from "../../types/departmentsTypes";
+
+import {
+    documentIdType
+} from "../../types/general";
 
 const addDepartmentModel = (departmentDTO: departmentDTOType, client) => {
     return new Promise((resolve, reject) => {
@@ -46,11 +49,11 @@ const updateDepartmentModel = (updateDepartmentDTO: departmentDTOType, client) =
     });
 };
 
-const deleteDepartmentModel = (deleteDepartmentDTO: departmentIdDTOType, client) => {
+const deleteDepartmentModel = (deleteDepartmentDTO: documentIdType, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
-            .deleteOne({_id: new ObjectID(deleteDepartmentDTO.id)})
+            .findOneAndDelete({_id: new ObjectID(deleteDepartmentDTO.id)})
                 .then(res => resolve(res))
                 .catch(err => reject(err));
     });
@@ -67,7 +70,7 @@ const getAllDepartmentsModel = (client) => {
     });
 };
 
-const getDepartmentModel = (getDepartmentDTO: departmentIdDTOType, client) => {
+const getDepartmentModel = (getDepartmentDTO: documentIdType, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)

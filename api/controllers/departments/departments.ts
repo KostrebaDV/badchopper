@@ -8,7 +8,7 @@ import {
     getAllDepartmentsService
 } from "../../services/departments/departments";
 import CONSTS from "./consts"
-import {requestParamsType} from "../../types/departmentsTypes";
+import { requestDocumetnParamsType } from "../../types/general";
 
 const departmentsRouter = Router();
 
@@ -18,12 +18,12 @@ export default (app: Application, client) => {
             .then(status => {
                 return res
                     .status(200)
-                    .send("department added");
+                    .send("images uploaded");
             })
             .catch(() => {
                 return res
                     .status(500)
-                    .send("department not added");
+                    .send("images not uploaded");
             });
     });
 
@@ -69,7 +69,7 @@ export default (app: Application, client) => {
             });
     });
 
-    departmentsRouter.get(CONSTS.GET_DEPARTMENT, (req: requestParamsType, res: Response) => {
+    departmentsRouter.get(CONSTS.GET_DEPARTMENT, (req: requestDocumetnParamsType, res: Response) => {
         getDepartmentService(req.params, client)
             .then((status) => {
                 return res
@@ -83,5 +83,5 @@ export default (app: Application, client) => {
             });
     });
 
-    app.use(CONSTS.BASE_DEPARTMENT_ROUTE, departmentsRouter);
+    app.use(CONSTS.BASE_ROUTE, departmentsRouter);
 };

@@ -1,14 +1,16 @@
 import * as bodyParser from "body-parser";
 const cors = require('cors');
-import {Request, Response, Application} from 'express';
+import { Request, Response } from 'express';
 import corsConfig from '../config/cors';
 import departmentsController from '../controllers/departments/departments';
+import mediaController from '../controllers/media/media';
 
-const express = (app: Application, client) => {
+export const expressClient = (app, client) => {
     app.use(cors(corsConfig));
     app.use(bodyParser.json());
 
     departmentsController(app, client);
+    mediaController(app, client);
 
     /// catch 404 and forward to error handler
     app.use((req: Request, res: Response, next) => {
@@ -18,5 +20,4 @@ const express = (app: Application, client) => {
     });
 };
 
-export {express};
 

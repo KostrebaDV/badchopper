@@ -7,11 +7,14 @@ import {
 } from '../../models/departments/departments'
 import {
     departmentDTOType,
-    departmentIdDTOType,
-    getDocumentResponseStatusType,
-    updateDocumentResponseStatusType,
-    deleteDocumentResponseStatusType
 } from "../../types/departmentsTypes";
+
+import {
+    documentIdType,
+    getDocumentResponseStatusType,
+    deleteDocumentResponseStatusType,
+    updateDocumentResponseStatusType,
+} from "../../types/general";
 
 const addDepartmentService = (departmentDTO: departmentDTOType, client) => {
     if (departmentDTO.name.length !== 0) {
@@ -41,7 +44,7 @@ const updateDepartmentService = (updateDepartmentDTO, client) => {
     }
 };
 
-const getDepartmentService = (getDepartmentDTO: departmentIdDTOType, client) => {
+const getDepartmentService = (getDepartmentDTO: documentIdType, client) => {
     if (getDepartmentDTO.id.length !== 0) {
         return getDepartmentModel(getDepartmentDTO, client)
             .then((status: getDocumentResponseStatusType) => {
@@ -59,7 +62,7 @@ const getDepartmentService = (getDepartmentDTO: departmentIdDTOType, client) => 
     }
 };
 
-const deleteDepartmentService = (deleteDepartmentDTO: departmentIdDTOType, client) => {
+const deleteDepartmentService = (deleteDepartmentDTO: documentIdType, client) => {
     if (deleteDepartmentDTO.id.length !== 0) {
         return deleteDepartmentModel(deleteDepartmentDTO, client)
             .then((status: deleteDocumentResponseStatusType) => {
