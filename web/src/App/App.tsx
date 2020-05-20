@@ -1,10 +1,28 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
 
-import { MainPage } from "../components/MainPage/MainPage";
+import { AdminApp } from '../adminComponents/AdminApp'
+import {ClientApp} from '../clientComponents/ClientApp';
+import { ROUTES } from '../contst';
+
+import '../styles/base.css'
 
 function App() {
   return (
-    <MainPage />
+      <Router>
+          <Switch>
+              <Route exact path={ROUTES.ADMIN_PANEL}>
+                  <AdminApp />
+              </Route>
+              <Route path={ROUTES.CLIENT}>
+                  <ClientApp />
+              </Route>
+          </Switch>
+      </Router>
   );
 }
 

@@ -3,4 +3,5 @@
 *.imi
 .env
 package-lock.json
-.idea/
+.DS_Store
+.idea

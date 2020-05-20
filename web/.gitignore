@@ -4,6 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+.DS_Store
+.idea
+
+/package-lock.json
+*.lock
 
 # testing
 /coverage
