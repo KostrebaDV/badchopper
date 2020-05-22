@@ -1,0 +1,12 @@
+.gridListSwitcher {
+	display: flex;
+}
+
+.gridListSwitcher_grid {
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.gridListSwitcher_list {
+	flex-direction: column;
+}

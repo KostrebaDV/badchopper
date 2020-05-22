@@ -1,0 +1,21 @@
+@import "../../../styles/colors.module";
+
+.dropdownItem {
+	padding: 8px .5em 8px 1em;
+	word-spacing: normal;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.dropdownItem:hover {
+	background-color: $light;
+	cursor: pointer;
+}
+
+.dropdownItem_placeholder {
+	word-spacing: normal;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}

@@ -1,0 +1,15 @@
+.generalUploader {
+  display: grid;
+}
+
+.generalUploader_input {
+	display: none;
+}
+
+.generalUploader_buttons {
+	padding: 5px 8px;
+}
+
+.generalUploader_itemDeleteButton {
+	cursor: pointer;
+}

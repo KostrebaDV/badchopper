@@ -1,0 +1,10 @@
+@import "../../../styles/colors.module";
+
+.tooltipActionListSection {
+	padding: 8px;
+	border-bottom: 1px solid $secondary;
+}
+
+.tooltipActionListSection:last-child {
+	border-bottom: none;
+}

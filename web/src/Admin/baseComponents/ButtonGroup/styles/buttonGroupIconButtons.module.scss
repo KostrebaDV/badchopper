@@ -1,0 +1,15 @@
+.buttonGroupIconButtons {
+	display: flex;
+}
+
+.buttonGroupIconButtons_center {
+	align-items: center;
+}
+
+.buttonGroupIconButtons div:first-child {
+	margin-left: 0;
+}
+
+.buttonGroupIconButtons div {
+	margin-left: 4px;
+}

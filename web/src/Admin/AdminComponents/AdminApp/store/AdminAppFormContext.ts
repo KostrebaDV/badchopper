@@ -1,0 +1,3 @@
+const AdminAppFormContext = () => {};
+
+export { AdminAppFormContext };

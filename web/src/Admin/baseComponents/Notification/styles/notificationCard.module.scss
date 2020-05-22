@@ -1,0 +1,51 @@
+@import "../../../styles/colors.module";
+@import "../../../mixins/hover_focus.module";
+
+.notificationCard {
+	@include box-shadow(0 4px 7px rgba(0, 0, 0, 0.3));
+	border-radius: 3px;
+	background-color: $default;
+	width: 250px;
+	position: relative;
+	margin-bottom: 8px;
+}
+
+.notificationCard-enter {
+	opacity: 0;
+	transform: scale(0.9);
+}
+.notificationCard-enter-active {
+	opacity: 1;
+	transform: translateX(0);
+	transition: opacity 250ms, transform 250ms;
+}
+.notificationCard-exit {
+	opacity: 1;
+}
+.notificationCard-exit-active {
+	opacity: 0;
+	transform: scale(0.9);
+	transition: opacity 250ms, transform 250ms;
+}
+
+.notificationCard__warning {
+	border-left: 3px solid $warning;
+}
+
+.notificationCard__danger {
+	border-left: 3px solid $danger;
+}
+
+.notificationCard__info {
+	border-left: 3px solid $info;
+}
+
+.notificationCard__success {
+	border-left: 3px solid $primary;
+}
+
+.notificationCard_closeButton {
+	position: absolute;
+	right: 2px;
+	top: 2px;
+}

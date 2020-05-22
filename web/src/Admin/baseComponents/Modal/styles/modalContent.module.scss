@@ -1,0 +1,14 @@
+.modalContent {
+	flex: 1 1 auto;
+	height: 350px;
+	padding: 16px;
+}
+
+.modalContent_autoHeight {
+	max-height: 350px;
+	height: inherit;
+
+	div {
+		overflow-y: inherit;
+	}
+}

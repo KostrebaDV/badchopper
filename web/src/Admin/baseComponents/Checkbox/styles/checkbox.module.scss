@@ -1,0 +1,29 @@
+@import "../../../styles/colors.module";
+@import "../../../mixins/_transition.module";
+
+.checkbox {
+	width: 24px;
+	height: 24px;
+	border: 1px solid $secondary;
+	border-radius: 2px;
+	position: relative;
+	overflow: hidden;
+}
+
+.checkbox:hover {
+	cursor: pointer;
+}
+
+.checkbox_icon {
+	color: $primary;
+	top: 4px;
+	position: absolute;
+	right: -20px;
+	font-weight: bold;
+
+	@include transition(right .2s)
+}
+
+.checkbox__checked {
+	right: 4px;
+}

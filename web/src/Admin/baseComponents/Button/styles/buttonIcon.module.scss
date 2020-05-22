@@ -1,0 +1,38 @@
+.button_label {
+	margin-left: 8px;
+}
+
+.button_hasIcon {
+	padding-left: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.button_onlyIcon {
+	border-radius: 50px;
+	line-height: inherit;
+	justify-content: center;
+
+	.button_icon {
+		top: initial;
+		position: inherit;
+	}
+
+	.button_hasIcon {
+		padding: 0;
+	}
+}
+
+.button_onlyIcon.button_hasIcon {
+	padding: 8.5px;
+}
+
+.button_onlyIcon.button_hasIcon.button_size__tiny {
+	padding: 4px;
+	font-size: 12px;
+}
+
+.button_onlyIcon.button_hasIcon.button_size__small {
+	padding: 5px;
+}
+

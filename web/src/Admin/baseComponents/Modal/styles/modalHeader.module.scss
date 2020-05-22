@@ -1,0 +1,18 @@
+.modalHeader {
+	padding: 16px;
+	background-color: $layout_section_bg;
+	border-bottom: 1px solid $secondary;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modalHeader_closeButton {
+	padding: 5px;
+	border-radius: 50%;
+	cursor: pointer;
+
+	@include hover-focus {
+		background-color: $secondary;
+	}
+}

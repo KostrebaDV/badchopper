@@ -1,0 +1,25 @@
+@import "../../../styles/colors.module";
+
+.message_success {
+	text-align: center;
+	border-radius: 2px;
+	background-color: lighten($success, 15%);
+}
+
+.message_info {
+	text-align: center;
+	border-radius: 2px;
+	background-color: lighten($info, 15%);
+}
+
+.message_warning {
+	text-align: center;
+	border-radius: 2px;
+	background-color: lighten($warning, 15%);
+}
+
+.message_danger {
+	text-align: center;
+	border-radius: 2px;
+	background-color: lighten($danger, 15%);
+}

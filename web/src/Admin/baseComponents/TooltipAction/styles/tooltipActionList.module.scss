@@ -1,0 +1,10 @@
+@import "../../../styles/colors.module";
+
+.tooltipActionList {
+	border-radius: 2px;
+	background-color: $gray;
+	box-sizing: border-box;
+	font-weight: 400;
+	box-shadow: $all_shadow_tooltip;
+	position: relative;
+}

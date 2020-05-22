@@ -1,0 +1,13 @@
+@mixin bg-color ($color,  $lighten: 0%, $hover: false) {
+	background-color: $color;
+
+	@if $lighten {
+		background-color: lighten($color, $lighten) !important;
+	}
+
+	@if $hover {
+		@include hover-focus {
+			background-color: lighten($color, 10%) !important;
+		}
+	}
+}

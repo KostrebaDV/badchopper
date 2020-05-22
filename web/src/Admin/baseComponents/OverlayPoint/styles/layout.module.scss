@@ -1,0 +1,13 @@
+.layout {
+	position: fixed;
+	z-index: 5;
+}
+
+.substrate {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	z-index: 4;
+}
