@@ -7,14 +7,16 @@ import classes from './styles/index.module.scss';
 const ButtonGroupIconButtons = (
 	{
 		children,
-		alignCenter
+		alignCenter,
+        className
 	}
 ) => {
 	const componentClassName = ClassNames(
 		classes.buttonGroupIconButtons,
 		{
 			[classes.buttonGroupIconButtons_center]: alignCenter
-		}
+		},
+        className
 	);
 
 	return (
@@ -23,12 +25,14 @@ const ButtonGroupIconButtons = (
 };
 
 ButtonGroupIconButtons.defaultProps = {
-	alignCenter: false
+	alignCenter: false,
+    className: ''
 };
 
 ButtonGroupIconButtons.propTypes = {
 	children: PropTypes.array,
-	alignCenter: PropTypes.bool
+	alignCenter: PropTypes.bool,
+    className: PropTypes.string
 };
 
 export { ButtonGroupIconButtons };

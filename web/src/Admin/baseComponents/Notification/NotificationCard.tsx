@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useContext, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import { PaddingBox } from '../PaddingBox/PaddingBox';
@@ -8,16 +8,18 @@ import { isUndefined } from '../../../utils';
 import ClassNames from 'classnames';
 import classes from './styles/index.module.scss';
 import closeIcon from '@iconify/icons-mdi/close';
+import {AdminAppContext} from '../../App/store/AdminAppContext/const';
 
 const NotificationCard = (
 	{
 		id,
 		type,
 		message,
-		duration,
-		removeNotification
+		duration
 	}
 ) => {
+    const { removeNotification } = useContext(AdminAppContext);
+
 	useEffect(() => {
 		let timer;
 
@@ -26,10 +28,13 @@ const NotificationCard = (
 		}
 
 		return () => clearTimeout(timer);
+        // eslint-disable-next-line
 	}, []);
 
 	const handleRemoveNotification = () => {
-		removeNotification(id);
+	    if (typeof removeNotification !== 'undefined') {
+            removeNotification(id);
+        }
 	};
 
 	const componentClassName = ClassNames(
@@ -43,7 +48,6 @@ const NotificationCard = (
 	);
 
 	return (
-        //@ts-ignore
 		<PaddingBox
 			rTiny
 			vrSmall
@@ -64,12 +68,16 @@ const NotificationCard = (
 	);
 };
 
+NotificationCard.defaultProps = {
+    duration: 3000,
+    type: 'success'
+};
+
 NotificationCard.propTypes = {
 	id: PropTypes.string.isRequired,
 	type: PropTypes.string.isRequired,
 	message: PropTypes.string.isRequired,
-	duration: PropTypes.number.isRequired,
-	removeNotification: PropTypes.func.isRequired
+	duration: PropTypes.number.isRequired
 };
 
 export default NotificationCard;

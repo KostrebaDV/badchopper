@@ -1,3 +1,6 @@
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_box-shadow.module";
+
 .modal {
 	position: absolute;
 	top: 15%;
@@ -16,6 +19,10 @@
 	z-index: 2;
 
 	@include box-shadow(0 0 25px rgba(0,0,0,0.07));
+}
+
+.modal_extraHeight {
+	max-height: 600px;
 }
 
 .modal-enter {
@@ -50,4 +57,17 @@
 
 .modal_large {
 	width: 550px;
+}
+
+.modal_ultraLarge {
+	width: 700px;
+}
+
+.backGround {
+	position: absolute;
+	top: 0;
+	left: -230px;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0, .3);
 }

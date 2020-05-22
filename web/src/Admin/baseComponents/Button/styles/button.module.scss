@@ -1,8 +1,8 @@
-@import "../../../styles/colors.module";
-@import "../../../mixins/_bg-color.module";
-@import "../../../mixins/_transition.module";
-@import "../../../mixins/_hover_focus.module";
-@import "../../../mixins/_border.module";
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_bg-color.module";
+@import "../../../styles/mixins/_transition.module";
+@import "../../../styles/mixins/_hover.module";
+@import "../../../styles/mixins/_border.module";
 
 .button {
 	padding: 12px 16px;
@@ -26,7 +26,7 @@
 	color: $primary;
 	@include border ($primary);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($primary);
 	};
@@ -34,21 +34,21 @@
 
 .button_secondary {
 	color: $dark;
-	@include bg-color($secondary);
+	@include bg-color($secondary_button);
 
-	@include hover_focus {
+	@include hover {
 		color: $dark;
-		@include bg-color(darken($secondary, 10%));
+		@include bg-color(darken($secondary_button, 10%));
 	};
 }
 
 .button_secondary__transparent {
 	color: $dark;
-	@include border ($secondary);
+	@include border ($secondary_button);
 
-	@include hover_focus {
+	@include hover {
 		color: $dark;
-		@include bg-color($secondary);
+		@include bg-color($secondary_button);
 	};
 }
 
@@ -60,7 +60,7 @@
 	color: $success;
 	@include border ($success);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($success);
 	};
@@ -74,7 +74,7 @@
 	color: $danger;
 	@include border ($danger);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($danger);
 	};
@@ -89,7 +89,7 @@
 	color: $warning;
 	@include border ($warning);
 
-	@include hover_focus {
+	@include hover {
 		color: $dark;
 		@include bg-color($warning);
 	};
@@ -103,7 +103,7 @@
 	color: $info;
 	@include border ($info);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($info);
 	};
@@ -118,7 +118,7 @@
 	color: $dark;
 	@include border ($light);
 
-	@include hover_focus {
+	@include hover {
 		color: $dark;
 		@include bg-color($light);
 	};
@@ -132,7 +132,7 @@
 	color: $gray;
 	@include border ($gray);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($gray);
 	};
@@ -146,7 +146,7 @@
 	color: $dark;
 	@include border ($dark);
 
-	@include hover_focus {
+	@include hover {
 		color: $light;
 		@include bg-color($dark);
 	};
@@ -154,4 +154,8 @@
 
 .button_noBorder {
 	border: none;
+}
+
+.button_floatRight {
+	float: right;
 }

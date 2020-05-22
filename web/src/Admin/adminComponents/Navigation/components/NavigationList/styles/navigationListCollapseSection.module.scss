@@ -1,0 +1,44 @@
+@import "../../../../../styles/colors/colors.module";
+
+.navigationListCollapseSection {
+	background-color: $navHoverBackGround;
+	padding: 8px 0;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 4px;
+	margin-top: -4px;
+
+	::before {
+		content: '';
+		position: absolute;
+		width: 3px;
+		height: 100vh;
+		background-color: $primary;
+		left: 0;
+		top: -8px;
+	}
+}
+
+.navigationListCollapseSection__item {
+	padding-left: 36px;
+	position: relative;
+
+	@include hover {
+		background-color: $navBackGround;
+	};
+}
+
+.navigationListCollapseSection__activeItem {
+	color: $primary;
+
+	::before {
+		content: '';
+		position: absolute;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background-color: $primary;
+		left: 20px;
+		top: 20px;
+	}
+}

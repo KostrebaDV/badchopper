@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
+import { PaddingBoxType } from './types';
 import classNames from 'classnames';
 import classes from './styles/index.module.scss';
 
-const PaddingBox = ({ children,
+const PaddingBox: FC<PaddingBoxType> = ({ children,
                         tiny, small, normal, large,
 						vrUltraTiny, hrUltraTiny, tUltraTiny, rUltraTiny, bUltraTiny, lUltraTiny,
                         vrTiny, hrTiny, tTiny, rTiny, bTiny, lTiny,
@@ -61,29 +61,6 @@ const PaddingBox = ({ children,
     return (
         <div className={componentClassName}>{ children }</div>
     );
-};
-
-PaddingBox.propTypes = {
-    tiny: PropTypes.bool,
-    small: PropTypes.bool,
-    normal: PropTypes.bool,
-    large: PropTypes.bool,
-
-	vrUltraTiny: PropTypes.bool,
-	hrUltraTiny: PropTypes.bool,
-	tUltraTiny: PropTypes.bool,
-	rUltraTiny: PropTypes.bool,
-	bUltraTiny: PropTypes.bool,
-	lUltraTiny: PropTypes.bool,
-
-	vrTiny: PropTypes.bool,
-    hrTiny: PropTypes.bool,
-    tTiny: PropTypes.bool,
-    rTiny: PropTypes.bool,
-    bTiny: PropTypes.bool,
-    lTiny: PropTypes.bool,
-
-	className: PropTypes.string
 };
 
 export { PaddingBox };

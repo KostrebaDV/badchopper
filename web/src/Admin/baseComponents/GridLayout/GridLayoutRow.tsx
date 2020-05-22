@@ -13,7 +13,8 @@ const GridLayoutRow = (
 		gapColumn,
 		className,
 		alignItems,
-		gridColumn
+		gridColumn,
+        onClick
 	}
 	) => {
 	const componentClassName = classNames(
@@ -27,7 +28,11 @@ const GridLayoutRow = (
 		const gridItemsStyles = getGridItemsStyles(gridItems);
 
 		return (
-			<div className={componentClassName} style={getBaseGridStyles(gapColumn, gridColumn, alignItems)}>
+			<div
+                onClick={onClick}
+                className={componentClassName}
+                style={getBaseGridStyles(gapColumn, gridColumn, alignItems)}
+            >
 				{children.map((child, index) => {
 					const key = getUniqueKey('griditem', index);
 
@@ -42,7 +47,10 @@ const GridLayoutRow = (
 	}
 
 	return (
-		<div style={getBaseGridStyles(gapColumn, gridColumn, alignItems)}>
+		<div
+            onClick={onClick}
+            style={getBaseGridStyles(gapColumn, gridColumn, alignItems)}
+        >
 			{children.map(child => child)}
 		</div>
 	);
@@ -52,6 +60,7 @@ GridLayoutRow.defaultProps = {
 	gapColumn: 0,
 	gridColumn: 12,
 	grid: '',
+    onClick: () => {},
 	alignItems: 'start',
 };
 
@@ -60,7 +69,8 @@ GridLayoutRow.propTypes = {
 	gapColumn: PropTypes.number,
 	gridColumn: PropTypes.number,
 	className: PropTypes.string,
-	alignItems: PropTypes.string
+	alignItems: PropTypes.string,
+    onClick: PropTypes.func
 };
 
 export { GridLayoutRow };

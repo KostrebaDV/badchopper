@@ -1,3 +1,5 @@
+@import "../../../styles/colors/colors.module";
+
 .typography_32 {
 	font-size: 2em;
 }
@@ -6,8 +8,28 @@
 	font-size: 1.5em;
 }
 
+.typography_26 {
+	font-size: 1.625em
+}
+
+.typography_28 {
+	font-size: 1.750em
+}
+
 .typography_16 {
 	font-size: 1em;
+}
+
+.typography_18 {
+	font-size: 1.125em;
+}
+
+.typography_20 {
+	font-size: 1.250em;
+}
+
+.typography_22 {
+	font-size: 1.375em;
 }
 
 .typography_14 {
@@ -21,11 +43,6 @@
 .typography_8 {
 	font-size: .5em;
 }
-
-.typography_displayBlock {
-	display: block;
-}
-
 .typography_bold200 {
 	font-weight: 200;
 }
@@ -52,4 +69,12 @@
 
 .typography_bold800 {
 	font-weight: 800;
+}
+
+.typography_displayBlock {
+	display: block;
+}
+
+.typography_light {
+	color: $light;
 }

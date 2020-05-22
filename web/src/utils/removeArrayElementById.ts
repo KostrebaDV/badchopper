@@ -1,9 +1,9 @@
-export const removeArrayElementById = (array, id) => {
+export const removeArrayElementById = (array, id, idKey = 'id') => {
 	const index = array.findIndex(item => {
-		return item.id === id;
+		return item[idKey] === id;
 	});
 
-	array.splice(index, 1);
+    if (index !== -1) array.splice(index, 1);
 
 	return array;
 };

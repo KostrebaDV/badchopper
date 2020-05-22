@@ -5,7 +5,7 @@ import classes from './styles/index.module.scss';
 
 type BadgeProps = {
     message: string | [] | object | number;
-    type: string;
+    type?: string;
 };
 
 const Badge = forwardRef<{}, BadgeProps>((
@@ -36,5 +36,9 @@ const Badge = forwardRef<{}, BadgeProps>((
 		</div>
 	);
 });
+
+Badge.defaultProps = {
+    type: 'info'
+};
 
 export { Badge };

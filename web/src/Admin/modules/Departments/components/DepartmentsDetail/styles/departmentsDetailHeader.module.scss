@@ -1,0 +1,26 @@
+@import "../../../../../styles/colors/colors.module";
+
+.departmentsDetailHeader {
+	height: 220px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+
+.departmentsDetailHeader:before {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #191919;
+	opacity: .3;
+}
+
+.departmentsDetailHeader__label {
+	position: absolute;
+	left: 24px;
+	top: 30px;
+}

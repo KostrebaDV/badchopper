@@ -33,6 +33,7 @@ const Field = (props) => {
 		return () => {
 			isRegistered.current = false;
 		};
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const validateField = useCallback((value) => {
@@ -50,6 +51,7 @@ const Field = (props) => {
 		setFieldValue({
 			[name]: value
 		});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [name, setFieldValue, validate, validateField]);
 
 	const handleFieldFocus = (hasFocus) => {

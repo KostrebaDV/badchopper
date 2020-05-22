@@ -1,0 +1,49 @@
+@import "../../../../../styles/colors/colors.module";
+@import "../../../../../styles/mixins/_hover.module";
+@import "../../../../../styles/mixins/_transition.module";
+
+.navigationListItemWithItems {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 16px 16px 24px;
+	line-height: 1;
+	cursor: pointer;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 4px;
+
+	@include hover {
+		background-color: $navHoverBackGround;
+	};
+}
+
+.navigationListItemWithItems_open {
+	background-color: $navActiveBackGround;
+
+	::before {
+		content: '';
+		position: absolute;
+		width: 3px;
+		height: 100vh;
+		background-color: $primary;
+		left: 0;
+		top: -8px;
+	}
+}
+
+.navigationListItemWithItems__leftSection {
+	display: flex;
+	align-items: center;
+}
+
+.navigationListItemWithItems__iconCollapse {
+	font-size: 20px;
+	border-radius: 50%;
+
+	@include transition(background-color .2s);
+
+	@include hover {
+		background-color: lighten($navHoverBackGround, 10%);
+	};
+}

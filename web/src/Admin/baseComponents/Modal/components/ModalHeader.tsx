@@ -34,7 +34,10 @@ const ModalHeader = (
             <HeaderText bold>
                 { label }
             </HeaderText>
-            <div onClick={handleClose}>
+            <div
+                className={classes.modalHeader_closeButton_wrapper}
+                onClick={handleClose}
+            >
                 <Icon
                     icon={closeIcon}
                     className={classes.modalHeader_closeButton}

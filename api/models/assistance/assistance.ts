@@ -1,9 +1,9 @@
-import { assistanceDTOType } from "../../types/assistanceTypes";
+import { AssistanceDTOType } from "../../types/assistanceTypes";
 import CONSTS from "./consts";
 import { documentIdType } from "../../types/general";
 import { ObjectID } from "bson";
 
-const addAssistanceModel = (departmentDTO: assistanceDTOType, client) => {
+const addAssistanceModel = (departmentDTO: AssistanceDTOType, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
@@ -24,7 +24,7 @@ const getAllAssistanceModel = (client) => {
     });
 };
 
-const updateAssistanceModel = (updateAssistanceDTO: assistanceDTOType, client) => {
+const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) => {
     const {
         id,
         name,
@@ -45,7 +45,8 @@ const updateAssistanceModel = (updateAssistanceDTO: assistanceDTOType, client) =
                         description,
                         price
                     }
-                }
+                },
+                {returnOriginal: false}
             )
             .then(res => resolve(res))
             .catch(err => reject(err));

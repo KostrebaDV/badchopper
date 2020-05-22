@@ -13,6 +13,27 @@ const addImageModel = (mediaImageDTO: mediaImageDTOType, client) => {
     });
 };
 
+const getAllImagesModel = (client) => {
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONSTS.BASE_COLLECTION)
+            .find()
+            .toArray()
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
+const getImageModel = (id, client) => {
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONSTS.BASE_COLLECTION)
+            .findOne({_id: new ObjectID(id)}, {})
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
 const deleteImageModel = (deleteImageDTO: documentIdType, client) => {
     return new Promise((resolve, reject) => {
         client
@@ -25,5 +46,7 @@ const deleteImageModel = (deleteImageDTO: documentIdType, client) => {
 
 export {
     addImageModel,
-    deleteImageModel
+    deleteImageModel,
+    getAllImagesModel,
+    getImageModel
 };

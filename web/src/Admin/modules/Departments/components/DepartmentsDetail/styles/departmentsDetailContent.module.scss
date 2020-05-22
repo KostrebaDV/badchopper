@@ -1,0 +1,17 @@
+@import "../../../../../styles/colors/colors.module";
+
+.departmentsDetailContent {
+	margin-top: -100px;
+	position: relative;
+}
+
+.departmentsDetailContent__editButtonWrapper {
+	position: absolute;
+	z-index: 1;
+	top: 24px;
+	right: 24px;
+}
+
+.departmentsDetailContent__deleteButton {
+	//color: $danger;
+}

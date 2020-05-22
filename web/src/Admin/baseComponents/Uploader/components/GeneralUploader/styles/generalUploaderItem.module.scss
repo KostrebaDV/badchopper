@@ -1,7 +1,7 @@
-@import "../../../../../styles/colors.module";
-@import "../../../../../mixins/_hover_focus.module";
-@import "../../../../../mixins/_bg-color.module";
-@import "../../../../../mixins/_transition.module";
+@import "../../../../../styles/colors/colors.module";
+@import "../../../../../styles/mixins/_hover.module";
+@import "../../../../../styles/mixins/_bg-color.module";
+@import "../../../../../styles/mixins/_transition.module";
 
 .generalUploaderItem {
 	display: flex;
@@ -10,8 +10,8 @@
 	cursor: pointer;
 
 	@include transition(background-color .3s);
-	@include hover_focus {
-		background-color: lighten($secondary, 5%);
+	@include hover {
+		background-color: lighten($secondary, 50%);
 	};
 }
 

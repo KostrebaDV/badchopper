@@ -1,0 +1,14 @@
+@import "../../../../../styles/colors/colors.module";
+
+.adminNavigationList {
+	color: $disabled;
+}
+
+.adminNavigationList__icon {
+	font-size: 20px;
+	margin-right: 8px;
+}
+
+.adminNavigationList__label {
+	line-height: 1;
+}

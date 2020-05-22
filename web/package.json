@@ -20,7 +20,7 @@
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "3.4.1",
 		"typescript": "~3.7.2",
-		"react-transition-group": "^4.3.0"
+		"react-transition-group": "^4.4.0"
 	},
 	"scripts": {
 		"build:css": "node-sass src/ -o src/ ",

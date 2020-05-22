@@ -123,7 +123,6 @@ class GeneralUploaderDragDrop extends Component<GeneralUploaderDragDropProps, Ge
 						className={componentIconClassName}
 					/>
 					<div>!!перетащите</div>
-                    //@ts-ignore
 					<PaddingBox vrSmall>!!или</PaddingBox>
 					{this.props.children}
 				</div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AjaxDropdown as AjaxDropdownComponent } from '../../AjaxDropdown/AjaxDropdown';
 
 import { FormFieldBox as FieldBox } from '../../FormFieldBox/FormFieldBox';
+import {PreviewFiled} from '../../PreviewFiled/PreviewFiled';
 
 type AjaxDropdownProps = {
     label: string;
@@ -13,9 +14,13 @@ type AjaxDropdownProps = {
     errorMessages: string;
     toolTipMessage: string;
     displayInline: boolean;
+    previewMode: boolean;
+    value: string | number;
 }
 
 class AjaxDropdown extends Component<AjaxDropdownProps, {}> {
+    static defaultProps: any;
+
 	render () {
 		const {
 			label,
@@ -26,11 +31,14 @@ class AjaxDropdown extends Component<AjaxDropdownProps, {}> {
 			toolTipIcon,
 			errorMessages,
 			toolTipMessage,
-			displayInline
+			displayInline,
+            previewMode,
+            value
 		} = this.props;
 
 		return (
 			<FieldBox
+                previewMode={previewMode}
 				label={label}
 				required={required}
 				hasErrors={!isValid}
@@ -41,13 +49,30 @@ class AjaxDropdown extends Component<AjaxDropdownProps, {}> {
 				displayInline={displayInline}
 				hasFocus={hasFocus}
 			>
-                //@ts-ignore
-				<AjaxDropdownComponent
-					{...this.props}
-				/>
+                <>
+                    {
+                        !previewMode && (
+                            //@ts-ignore
+                            <AjaxDropdownComponent
+                                {...this.props}
+                            />
+                        )
+                    }
+                    {
+                        previewMode && (
+                            <PreviewFiled
+                                value={value}
+                            />
+                        )
+                    }
+                </>
 			</FieldBox>
 		);
 	}
 }
+
+AjaxDropdown.defaultProps = {
+    previewMode: false
+};
 
 export { AjaxDropdown };

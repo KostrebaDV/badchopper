@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { PaddingBox } from '../PaddingBox/PaddingBox';
-import classes from './style/index.module.scss';
+import classes from './styles/index.module.scss';
 
 const FormLayoutHeader = ({ title, padding }) => {
 	return (

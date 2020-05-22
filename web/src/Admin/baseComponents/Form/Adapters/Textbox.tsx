@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Textbox as TexboxComponent } from '../../Textbox/Textbox';
 
 import { FormFieldBox as FieldBox } from '../../FormFieldBox/FormFieldBox';
+import {PreviewFiled} from '../../PreviewFiled/PreviewFiled';
 
 type TextboxType = {
     label: string;
@@ -13,9 +14,13 @@ type TextboxType = {
     toolTipIcon: string;
     displayInline: boolean;
     hasFocus: boolean;
+    value: string | number;
+    previewMode: boolean;
 }
 
 class Textbox extends Component<TextboxType, {}> {
+    static defaultProps: any;
+
 	render () {
 		const {
 			label,
@@ -26,7 +31,9 @@ class Textbox extends Component<TextboxType, {}> {
 			toolTipMessage,
 			toolTipIcon,
 			displayInline,
-			hasFocus
+			hasFocus,
+            previewMode,
+            value
 		} = this.props;
 
 		return (
@@ -40,13 +47,31 @@ class Textbox extends Component<TextboxType, {}> {
 				toolTipIcon={toolTipIcon}
 				toolTipMessage={toolTipMessage}
 				hasFocus={hasFocus}
+                previewMode={previewMode}
 			>
-				<TexboxComponent
-					{...this.props}
-				/>
+                <>
+                    {
+                        !previewMode && (
+                            <TexboxComponent
+                                {...this.props}
+                            />
+                        )
+                    }
+                    {
+                        previewMode && (
+                            <PreviewFiled
+                                value={value}
+                            />
+                        )
+                    }
+                </>
 			</FieldBox>
 		);
 	}
 }
+
+Textbox.defaultProps = {
+    previewMode: false
+};
 
 export { Textbox };

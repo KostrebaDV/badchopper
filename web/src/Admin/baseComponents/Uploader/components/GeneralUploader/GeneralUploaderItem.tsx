@@ -12,7 +12,6 @@ import closeIcon from '@iconify/icons-mdi/close';
 import pencilIcon from '@iconify/icons-mdi/pencil';
 import checkIcon from '@iconify/icons-mdi/check';
 
-
 const GeneralUploaderItem = (
 	{
 		name,
@@ -87,7 +86,7 @@ const GeneralUploaderItem = (
 						<ButtonGroupIconButtons alignCenter>
 							<Button
 								size="tiny"
-								icon={close}
+								icon={closeIcon}
 								type="secondary"
 								transparent
 								actionHandler={() => setIsEdit(!isEdit)}

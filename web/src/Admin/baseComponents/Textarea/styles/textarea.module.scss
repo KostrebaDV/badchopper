@@ -1,4 +1,4 @@
-@import "../../../styles/colors.module";
+@import "../../../styles/colors/colors.module";
 
 .textarea {
 	padding: .4rem;
@@ -12,6 +12,10 @@
 	height: 80px;
 	resize: none;
 	outline: none !important;
+
+	::placeholder {
+		font-style: italic;
+	}
 }
 
 input.textarea:focus {

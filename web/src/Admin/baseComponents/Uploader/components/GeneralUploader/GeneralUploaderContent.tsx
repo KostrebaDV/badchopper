@@ -43,7 +43,7 @@ const GeneralUploaderContent = (
 						<GridLayoutRow gridColumn={32} grid={buttonGridLayout}>
 							<Button
 								className={classes.generalUploader_buttons}
-								label="!!загрузите файлы"
+								label="!!добавить файлы"
 								actionHandler={() => inputRef.current.click()}
 							/>
 							{
@@ -60,7 +60,6 @@ const GeneralUploaderContent = (
 					</GridLayout>
 				</>
 			</GeneralUploaderDragDrop>
-            //@ts-ignore
 			<PaddingBox hrSmall>
 				<GeneralUploaderList
 					files={files}

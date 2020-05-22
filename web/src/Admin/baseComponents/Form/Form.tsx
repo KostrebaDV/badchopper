@@ -1,14 +1,14 @@
 import React, { useEffect, useContext, useRef, memo, useCallback } from 'react';
 
 import { ContextForm } from './store/FormContext';
-import { AdminAppFormContext } from '../../AdminComponents/AdminApp/store/AdminAppFormContext';
+import { AdminAppFormContext } from '../../App/store/AdminAppFormContext/consts';
 
 import { isNull, actionLoggerWarning, actionLogger } from '../../../utils';
 
 type FormType = {
     name: string;
     children: object | [];
-    onSubmit: () => void;
+    onSubmit: (object, resetFormValues) => void;
     initialValues: object;
     restFormValues: boolean;
 }
@@ -26,7 +26,6 @@ const Form = memo<FormType>((
 	const {
 		addFormToGlobalContext,
 		removeFormFromGlobalContext
-        //@ts-ignore
 	} = useContext(AdminAppFormContext);
 
 	const {
@@ -50,14 +49,11 @@ const Form = memo<FormType>((
 	}, []);
 
 	const handleSuccess = useCallback((values) => {
-        //@ts-ignore
-		onSubmit(values);
-		 //@ts-ignore
+		onSubmit(values, resetFormValues);
 		actionLogger(`SUBMIT FROM: "${name}"`);
 
 		if (restFormValues) {
 			resetFormValues();
-			 //@ts-ignore
 			actionLogger(`RESET FROM: "${name}"`);
 		}
 	}, [name, onSubmit, restFormValues, resetFormValues]);
@@ -91,12 +87,14 @@ const Form = memo<FormType>((
 			setFormValues({});
 			initForm({});
 		};
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		if (!isNull(initialValues)) {
 			setFormValues(initialValues);
 		}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [initialValues]);
 
 	useEffect(() => {
@@ -106,11 +104,12 @@ const Form = memo<FormType>((
 
 	//set submit function to global context on init
 	useEffect(() => {
-		addFormToGlobalContext({ [name]: { submitForm } });
+		addFormToGlobalContext({ [name]: { submitForm,  resetFormValues } });
 
 		return () => {
 			removeFormFromGlobalContext(name);
 		};
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	//submit for button type=submit
@@ -118,8 +117,7 @@ const Form = memo<FormType>((
 		e.preventDefault();
 
 		validateForm(fieldsRef.current, valuesRef.current)
-        //@ts-ignore
-			.then((values) => onSubmit(values))
+			.then((values) => onSubmit(values, resetFormValues))
 			.catch(e => console.log(e));
 	};
 

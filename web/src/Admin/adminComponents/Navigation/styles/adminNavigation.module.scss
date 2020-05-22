@@ -1,0 +1,8 @@
+@import "../../../styles/colors/colors.module";
+
+.adminNavigation {
+	position: fixed;
+	width: 230px;
+	background-color: $navBackGround;
+	height: 100%;
+}

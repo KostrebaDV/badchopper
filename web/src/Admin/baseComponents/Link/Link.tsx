@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
 import { Link as RouteLink, NavLink } from 'react-router-dom';
 
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
+import { LinkType } from './types';
 
-const Link = (
+const Link: FC<LinkType> = (
 	{
 		link,
-		content,
+		children,
 		hasRoute,
 		className,
 		activeLinkClass
@@ -23,7 +23,7 @@ const Link = (
 					className={className}
 					activeClassName={activeLinkClass}
 				>
-					{content}
+					{children}
 				</NavLink>
 			)
 			: (
@@ -31,7 +31,7 @@ const Link = (
 					to={link}
 					className={className}
 				>
-					{content}
+					{children}
 				</RouteLink>
 			);
 	};
@@ -44,25 +44,15 @@ const Link = (
 	const getLink = () => {
 		return hasRoute
 			? getRouteLink()
-			: <a className={linkClassName} href={link}>{content}</a>;
+			: <a className={linkClassName} href={link}>{children}</a>;
 	};
 
-	return getLink();
+	return <>{getLink()}</>;
 };
 
 Link.defaultProps = {
 	hasRoute: true
 };
 
-Link.propTypes = {
-	content: PropTypes.oneOfType([
-		PropTypes.string.isRequired,
-		PropTypes.object.isRequired,
-	]),
-	link: PropTypes.string.isRequired,
-	hasRoute: PropTypes.bool.isRequired,
-	className: PropTypes.string,
-	activeLinkClass: PropTypes.string
-};
 
 export { Link };

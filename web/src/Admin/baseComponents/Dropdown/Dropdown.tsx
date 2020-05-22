@@ -11,7 +11,7 @@ import chevronDown from "@iconify/icons-mdi/chevron-down";
 import chevronUp from "@iconify/icons-mdi/chevron-up";
 
 import classes from './styles/index.module.scss';
-import { COLORS } from '../../styles/baseColors';
+import { COLORS } from '../../styles/colors/baseColors';
 import { isNullOrUndefined } from '../../../utils';
 
 const Dropdown = (
@@ -55,6 +55,7 @@ const Dropdown = (
 		setDisplayValue(selectedItem.name);
 
 		onFieldChange(id);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [items]);
 
 	const handleItemClick = useCallback((id) => {
@@ -69,6 +70,7 @@ const Dropdown = (
 		if (isNullOrUndefined(value)) {
 			setDisplayValue(placeholder);
 		}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
 
 	const getDropdownItems = useMemo(() => {
@@ -89,6 +91,7 @@ const Dropdown = (
 				/>
 			);
 		});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [items]);
 
 	const dropdownItems = useMemo(() => {

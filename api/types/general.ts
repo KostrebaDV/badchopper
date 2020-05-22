@@ -14,10 +14,14 @@ type deleteDocumentResponseStatusType = {
 }
 
 type updateDocumentResponseStatusType = {
-    ok: number
+    ok: number;
+    value: object;
 }
 
-type getDocumentResponseStatusType = object[]
+type getDocumentResponseStatusType = {
+    _id: string;
+    imageId: string;
+}
 
 export {
     documentIdType,

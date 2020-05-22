@@ -1,20 +1,27 @@
-export const saveFiles = (pathToUpload, files) => {
+import {uuidv4} from '../helpers/uuidv4';
+
+export const saveFiles = (pathToSave, pathToFile, files) => {
+    const filesToUpload = files.length !== undefined ? files : [files];
+
     return new Promise((resolve, reject) => {
-        if (files.length !== 0) {
+        if (filesToUpload.length !== 0) {
             const filesDTO = [];
 
-            files.forEach(file => {
-                file.mv(`${pathToUpload}/${file.name}`, (err) => {
+            filesToUpload.forEach(file => {
+                const name = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+
+                const hashName = `${name}___${uuidv4()}`;
+
+                file.mv(`${pathToSave}/${hashName}`, (err) => {
                     if (err) {
                         throw new Error('No files were uploaded')
                     }
                 });
 
-                const name = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
 
                 filesDTO.push({
-                    name,
-                    path: `${pathToUpload}/${file.name}`,
+                    name: hashName,
+                    path: `${pathToFile}/${hashName}`,
                     extension: file.name.split('.').pop()
                 })
             });

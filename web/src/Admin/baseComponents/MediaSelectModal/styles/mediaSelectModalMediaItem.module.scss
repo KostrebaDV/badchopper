@@ -1,0 +1,36 @@
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_box-shadow.module";
+
+.mediaSelectModalMediaItem {
+	padding: 4px;
+	margin: 4px;
+	width: 150px;
+	position: relative;
+
+	@include box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.mediaSelectModalMediaItem img	{
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+}
+
+.mediaSelectModalMediaItem__checkboxWrapper {
+	background-color: rgba(0,0,0, .6);
+	width: 142px;
+	padding: 4px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute !important;
+}
+
+.mediaSelectModalMediaItem__name {
+	color: $light;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 10px;
+	width: 110px;
+}

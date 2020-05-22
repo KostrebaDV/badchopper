@@ -19,7 +19,8 @@ const FormFieldBox = (
 		toolTipIcon,
 		toolTipMessage,
 		hasFocus,
-		displayInline
+		displayInline,
+        previewMode
 	}
 ) => {
 	const componentClassName = classNames(
@@ -31,7 +32,7 @@ const FormFieldBox = (
 	const fieldWrapperClassName = classNames(
 		{
 			[classes.formFieldBox_fieldWrapper__hasError]: hasErrors,
-			[classes.formFieldBox_fieldWrapper]: hasBorder,
+			[classes.formFieldBox_fieldWrapper]: hasBorder && !previewMode,
 			[classes.formFieldBox_fieldWrapper__hasFocus]: hasFocus,
 			[classes.formFieldBox_fieldWrapper__displayInline]: displayInline
 		}
@@ -51,7 +52,7 @@ const FormFieldBox = (
 				label && (
 					<div className={classes.formFieldBox_labelWrapper}>
 						<div>
-							<Typography variant="14">{label}</Typography>
+							<Typography variant="16">{label}</Typography>
 							{
 								required && (
 									<span className={classes.formFieldBox_required}>*</span>
@@ -100,7 +101,10 @@ FormFieldBox.defaultProps = {
 
 FormFieldBox.propTypes = {
 	label: PropTypes.string,
-	children: PropTypes.object.isRequired,
+	children: PropTypes.oneOfType([
+        PropTypes.object.isRequired,
+        PropTypes.array.isRequired,
+    ]),
 	required: PropTypes.bool,
 	hasErrors: PropTypes.bool,
 	hasBorder: PropTypes.bool,

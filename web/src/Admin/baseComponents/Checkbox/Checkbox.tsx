@@ -27,11 +27,12 @@ const Checkbox = (
 			onFieldChange(value);
 			setCheckboxValue(value);
 		}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
 
 	const ToggleCheckbox = () => {
 		setCheckboxValue(!checkboxValue);
-		onFieldChange(!checkboxValue);
+		onFieldChange(!checkboxValue, setCheckboxValue);
 	};
 
 	const componentClassName = ClassNames(

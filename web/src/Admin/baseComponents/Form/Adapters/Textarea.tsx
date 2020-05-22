@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Textarea as TextareaComponent } from '../../Textarea/Textarea';
 
 import { FormFieldBox as FieldBox } from '../../FormFieldBox/FormFieldBox';
+import {PreviewFiled} from '../../PreviewFiled/PreviewFiled';
 
 type TextareaType = {
     label: string;
@@ -13,9 +14,13 @@ type TextareaType = {
     toolTipIcon: string;
     displayInline: boolean;
     hasFocus: boolean;
+    value: string | number;
+    previewMode: boolean;
 }
 
 class Textarea extends Component<TextareaType, {}> {
+    static defaultProps: any;
+
 	render () {
 		const {
 			label,
@@ -26,7 +31,9 @@ class Textarea extends Component<TextareaType, {}> {
 			toolTipMessage,
 			toolTipIcon,
 			displayInline,
-			hasFocus
+			hasFocus,
+            previewMode,
+            value
 		} = this.props;
 
 		return (
@@ -40,14 +47,32 @@ class Textarea extends Component<TextareaType, {}> {
 				toolTipIcon={toolTipIcon}
 				toolTipMessage={toolTipMessage}
 				hasFocus={hasFocus}
+                previewMode={previewMode}
 			>
-                //@ts-ignore
-				<TextareaComponent
-					{...this.props}
-				/>
+                <>
+                    {
+                        !previewMode && (
+                            //@ts-ignore
+                            <TextareaComponent
+                                {...this.props}
+                            />
+                        )
+                    }
+                    {
+                        previewMode && (
+                            <PreviewFiled
+                                value={value}
+                            />
+                        )
+                    }
+                </>
 			</FieldBox>
 		);
 	}
 }
+
+Textarea.defaultProps = {
+    previewMode: false
+};
 
 export { Textarea };

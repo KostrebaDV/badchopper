@@ -7,16 +7,17 @@ import {
     updateAssistanceService
 } from "../../services/assistance/assistance";
 import CONSTS from "./consts"
+import {AssistanceResponseType} from '../../types/assistanceTypes';
 
 const serviceRouter = Router();
 
 export default (app: Application, client) => {
     serviceRouter.post(CONSTS.ADD_ASSISTANCE, (req: Request, res: Response) => {
         addAssistanceService(req.body, client)
-            .then(status => {
+            .then((status: AssistanceResponseType) => {
                 return res
                     .status(200)
-                    .send("assistance was added");
+                    .send(status.ops);
             })
             .catch(() => {
                 return res

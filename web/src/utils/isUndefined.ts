@@ -1,3 +1,3 @@
-export const isUndefined = (val) => {
+export const isUndefined: (val) => boolean = (val) => {
 	return val === undefined;
 };

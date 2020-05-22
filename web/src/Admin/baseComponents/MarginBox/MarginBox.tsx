@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 import classes from './styles/index.module.scss';
+import {MarginBoxType} from './types';
 
-const MarginBox = ({ children,
+const MarginBox: FC<MarginBoxType> = ({ children,
                         tiny, small, normal, large,
 						vrUltraTiny, hrUltraTiny, tUltraTiny, rUltraTiny, bUltraTiny, lUltraTiny,
                         vrTiny, hrTiny, tTiny, rTiny, bTiny, lTiny,

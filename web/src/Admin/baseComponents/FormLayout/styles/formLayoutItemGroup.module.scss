@@ -1,0 +1,19 @@
+.formLayoutItemGroup {
+	padding: 16px;
+}
+
+.formLayoutItemGroup_inline {
+	padding: 0;
+}
+
+.formLayoutItemGroup_inline > div {
+	margin-bottom: 0 !important;
+}
+
+.formLayoutItemGroup > div{
+	margin-bottom: 16px;
+}
+
+.formLayoutItemGroup:last-child {
+	margin-bottom: 0;
+}

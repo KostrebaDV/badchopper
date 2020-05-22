@@ -1,3 +1,0 @@
-const AdminAppContext = () => {};
-
-export { AdminAppContext };

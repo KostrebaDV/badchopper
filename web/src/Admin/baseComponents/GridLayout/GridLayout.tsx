@@ -20,7 +20,10 @@ const GridLayout = (
 
 GridLayout.propTypes = {
 	isPending: PropTypes.bool,
-	children: PropTypes.object
+	children: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array
+    ])
 };
 
 export { GridLayout };

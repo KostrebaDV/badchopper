@@ -3,14 +3,9 @@ import React, { PureComponent } from 'react';
 import ClassNames from 'classnames';
 import classes from './styles/index.module.scss';
 import { getBooleanCookie, noScroll } from '../../../utils';
+import {OverlayCloakTypes} from './types';
 
-type OverlayCloakProps = {
-    show: boolean;
-    handleOverlayClose: () => void;
-    isCollapsed: boolean;
-}
-
-class OverlayCloak extends PureComponent<OverlayCloakProps> {
+class OverlayCloak extends PureComponent<OverlayCloakTypes> {
 	state = {
 		isReady: false,
 		show: false

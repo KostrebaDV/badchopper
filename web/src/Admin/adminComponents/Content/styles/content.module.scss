@@ -1,0 +1,9 @@
+@import "../../../styles/colors/colors.module";
+
+.content {
+	margin-left: 230px;
+	width: 100%;
+	background-color: $contentBackGround;
+	height: 100vh;
+	position: relative;
+}

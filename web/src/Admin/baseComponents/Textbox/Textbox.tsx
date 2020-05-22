@@ -12,6 +12,7 @@ const Textbox = (
 		className,
 		onFieldFocus,
 		onFieldChange,
+        placeholder,
 	}
 ) => {
 	const handleInputChange = (value) => {
@@ -33,12 +34,14 @@ const Textbox = (
 			onFocus={() => onFieldFocus(true)}
 			onBlur={() => onFieldFocus(false)}
 			onChange={e => handleInputChange(e.target.value)}
+            placeholder={placeholder}
 		/>
 	);
 };
 
 Textbox.defaultProps = {
 	value: '',
+    placeholder: '',
 	onChange: () => {},
 	onFieldFocus: () => {}
 };
@@ -49,6 +52,7 @@ Textbox.propTypes = {
 		PropTypes.number,
 	]),
 	name: PropTypes.string,
+    placeholder: PropTypes.string,
 	onChange: PropTypes.func,
 	className: PropTypes.string,
 	onFieldFocus: PropTypes.func,

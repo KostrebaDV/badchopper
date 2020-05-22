@@ -1,0 +1,11 @@
+@import "../../../styles/colors/colors.module";
+
+.emptyContent {
+	width: 100%;
+	margin: auto;
+	height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	border: 1px dotted $disabled;
+}

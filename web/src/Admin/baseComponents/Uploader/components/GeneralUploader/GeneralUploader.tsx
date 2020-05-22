@@ -9,6 +9,7 @@ const GeneralUploader = (
 		id,
 		url,
 		name,
+        unMount,
 		multiple
 	}
 ) => {
@@ -17,6 +18,7 @@ const GeneralUploader = (
 			id={id}
 			url={url}
 			name={name}
+            unMount={unMount}
 			multiple={multiple}
 			render={renderData => (
 					<GeneralUploaderContent
@@ -35,6 +37,7 @@ GeneralUploader.defaultProps = {
 
 GeneralUploader.propTypes = {
 	id: PropTypes.number,
+    unMount: PropTypes.bool,
 	url: PropTypes.string,
 	multiple: PropTypes.number,
 	name: PropTypes.string.isRequired,

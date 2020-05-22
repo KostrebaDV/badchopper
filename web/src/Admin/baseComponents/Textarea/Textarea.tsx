@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {FC} from 'react';
 
 import classes from './styles/index.module.scss';
+import {TextareaType} from './types';
 
-const Textarea = (
+const Textarea: FC<TextareaType> = (
 	{
 		name,
 		value,
@@ -14,7 +14,11 @@ const Textarea = (
 	}
 ) => {
 	const handleInputChange = (value) => {
+
+        // @ts-ignore
 		onFieldChange(value);
+
+        // @ts-ignore
 		onChange(value);
 	};
 
@@ -25,7 +29,11 @@ const Textarea = (
 			className={classes.textarea}
 			placeholder={placeholder}
 			onChange={e => handleInputChange(e.target.value)}
+
+            // @ts-ignore
 			onFocus={() => onFieldFocus(true)}
+
+            // @ts-ignore
 			onBlur={() => onFieldFocus(false)}
 		/>
 	);
@@ -35,14 +43,6 @@ Textarea.defaultProps = {
 	value: '',
 	onChange: () => {},
 	onFieldFocus: () => {},
-};
-
-Textarea.propTypes = {
-	onChange: PropTypes.func,
-	onFieldFocus: PropTypes.func,
-	name: PropTypes.string,
-	placeholder: PropTypes.string,
-	value: PropTypes.string
 };
 
 export { Textarea };

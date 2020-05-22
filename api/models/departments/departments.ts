@@ -1,14 +1,14 @@
 import { ObjectID } from 'mongodb';
 import CONSTS from './consts'
 import {
-    departmentDTOType
+    DepartmentDTOType
 } from "../../types/departmentsTypes";
 
 import {
     documentIdType
 } from "../../types/general";
 
-const addDepartmentModel = (departmentDTO: departmentDTOType, client) => {
+const addDepartmentModel = (departmentDTO: DepartmentDTOType, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
@@ -18,12 +18,15 @@ const addDepartmentModel = (departmentDTO: departmentDTOType, client) => {
     });
 };
 
-const updateDepartmentModel = (updateDepartmentDTO: departmentDTOType, client) => {
+const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) => {
     const {
         id,
         name,
         description,
-        address
+        address,
+        phone,
+        location,
+        imageId
     } = updateDepartmentDTO;
 
     return new Promise((resolve, reject) => {
@@ -39,8 +42,15 @@ const updateDepartmentModel = (updateDepartmentDTO: departmentDTOType, client) =
                         description,
                         address : {
                             city: address.city,
-                            street: address.street
-                        }
+                            street: address.street,
+                            number: address.number,
+                        },
+                        phone,
+                        location: {
+                            latitude: location.latitude,
+                            longitude: location.longitude
+                        },
+                        imageId
                     }
                 }
             )
@@ -74,8 +84,7 @@ const getDepartmentModel = (getDepartmentDTO: documentIdType, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
-            .find({_id: new ObjectID(getDepartmentDTO.id)})
-            .toArray()
+            .findOne({_id: new ObjectID(getDepartmentDTO.id)}, {})
             .then(res => resolve(res))
             .catch(err => reject(err));
     });

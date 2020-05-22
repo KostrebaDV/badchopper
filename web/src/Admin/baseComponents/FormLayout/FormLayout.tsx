@@ -1,7 +1,12 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const FormLayout = ({ children }) => {
-	return children;
+	return (
+	    <>
+            {children}
+        </>
+    );
 };
 
 FormLayout.propTypes = {

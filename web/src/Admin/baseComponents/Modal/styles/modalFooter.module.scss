@@ -1,5 +1,7 @@
+@import "../../../styles/colors/colors.module";
+
 .modalFooter {
 	padding: 8px 16px;
-	background-color: $layout_section_bg;
-	border-top: 1px solid $secondary;
+	background-color: $light;
+	border-top: 1px solid $contentHeaderBorder;
 }

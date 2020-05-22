@@ -1,0 +1,6 @@
+@import "../../../styles/colors/colors.module";
+
+.formLayoutHeader {
+	background-color: $layout_section_bg;
+	border-bottom: 1px solid $secondary;
+}

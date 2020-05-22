@@ -1,0 +1,8 @@
+@import "../../../styles/colors/colors.module";
+
+.contentLayout {
+	border: 1px solid $contentHeaderBorder;
+	background-color: $white;
+	padding: 16px;
+	position: relative;
+}

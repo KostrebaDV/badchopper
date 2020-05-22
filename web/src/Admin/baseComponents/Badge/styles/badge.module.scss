@@ -1,5 +1,5 @@
-@import "../../../styles/colors.module";
-@import "../../../mixins/_bg-color.module";
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_bg-color.module";
 
 .badge {
 	@include bg-color($secondary, 5%);

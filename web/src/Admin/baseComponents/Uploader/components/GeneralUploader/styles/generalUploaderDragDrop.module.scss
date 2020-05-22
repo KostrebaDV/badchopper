@@ -1,4 +1,4 @@
-@import "../../../../../styles/colors.module";
+@import "../../../../../styles/colors/colors.module";
 
 .generalUploaderDragDrop {
 	min-height: 190px;
@@ -22,10 +22,10 @@
 
 .generalUploaderDragDrop_uploadIcon {
 	font-size: 100px;
-	margin-bottom: 24px;
 	display: block;
 	transition: transform .4s;
 	transform: rotate(0deg);
+	margin: 24px auto 0;
 }
 
 .generalUploaderDragDrop_uploadIcon__onDragIn {

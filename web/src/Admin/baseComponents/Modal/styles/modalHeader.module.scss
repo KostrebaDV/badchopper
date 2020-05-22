@@ -1,7 +1,10 @@
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_hover.module";
+
 .modalHeader {
-	padding: 16px;
-	background-color: $layout_section_bg;
-	border-bottom: 1px solid $secondary;
+	padding: 8px 16px;
+	background-color: $light;
+	border-bottom: 1px solid $contentHeaderBorder;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -12,7 +15,12 @@
 	border-radius: 50%;
 	cursor: pointer;
 
-	@include hover-focus {
-		background-color: $secondary;
+	@include hover {
+		background-color: $disabled;
 	}
 }
+
+.modalHeader_closeButton_wrapper {
+	display: flex;
+}
+

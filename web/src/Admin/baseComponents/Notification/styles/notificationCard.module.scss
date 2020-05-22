@@ -1,10 +1,11 @@
-@import "../../../styles/colors.module";
-@import "../../../mixins/hover_focus.module";
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/hover.module";
+@import "../../../styles/mixins/box-shadow.module";
 
 .notificationCard {
 	@include box-shadow(0 4px 7px rgba(0, 0, 0, 0.3));
 	border-radius: 3px;
-	background-color: $default;
+	background-color: $light;
 	width: 250px;
 	position: relative;
 	margin-bottom: 8px;

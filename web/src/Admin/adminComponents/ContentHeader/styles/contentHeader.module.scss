@@ -1,0 +1,11 @@
+@import "../../../styles/colors/colors.module";
+
+.contentHeader {
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	height: 70px;
+	border-bottom: 1px solid $contentHeaderBorder;
+	background-color: $white;
+	align-items: center;
+}

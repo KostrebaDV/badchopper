@@ -1,0 +1,10 @@
+@import "../../../../../styles/colors/colors.module";
+
+.adminNavigationUserInfo {
+	border-bottom: 1px solid $gray;
+	color: $light;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	height: 70px;
+}
