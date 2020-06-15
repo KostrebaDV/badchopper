@@ -8,6 +8,8 @@ import {AssistanceListItem} from './AssistanceListItem';
 import {getUniqueId, getUniqueKey} from '../../../../../utils';
 import {AssistanceModalsContext, MODALS} from '../AssistanceModalsProvider/const';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
+import {GridLayoutRow} from '../../../../baseComponents/GridLayout';
+import classes from './styles/index.module.scss';
 
 const AssistanceList = () => {
     const {assistance, setAssistance, removeOneAssistance} = useContext(AssistanceContext);
@@ -80,6 +82,20 @@ const AssistanceList = () => {
     return (
         <ContentLayout>
             <GridLayout>
+                {
+                    hasAssistance && (
+                        <GridLayoutRow
+                            alignItems="center"
+                            gridColumn={24}
+                            grid="8-9-7"
+                            className={classes.assistanceList__header}
+                        >
+                            <div>!!название</div>
+                            <div>!!описание</div>
+                            <div>!!цена</div>
+                        </GridLayoutRow>
+                    )
+                }
                 {
                     hasAssistance && assistance.map(item => {
                         return (

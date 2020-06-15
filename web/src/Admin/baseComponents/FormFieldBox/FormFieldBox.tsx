@@ -95,6 +95,7 @@ const FormFieldBox = (
 FormFieldBox.defaultProps = {
 	hasBorder: true,
 	hasFocus: false,
+    hasErrors: false,
 	hasTooltip: false,
 	displayInline: false,
 };

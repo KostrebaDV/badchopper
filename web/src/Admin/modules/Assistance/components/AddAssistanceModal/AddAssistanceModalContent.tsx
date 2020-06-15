@@ -91,6 +91,7 @@ const AddAssistanceModalContent = (
                             </FormLayoutItem>
                             <FormLayoutItemGroup
                                 inline
+                                noPadding
                                 grid="4-8"
                                 singleItem
                             >

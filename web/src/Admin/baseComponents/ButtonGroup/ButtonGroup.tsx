@@ -10,10 +10,11 @@ const ButtonGroup = ({
 	singleButton,
 	leftButtons,
 	rightButtons,
+    showRightButtons
 }) => {
 	const hasSingleButton = !isUndefined(singleButton);
 	const hasLeftButtons = !isUndefined(leftButtons);
-	const hasRightButtons = !isUndefined(rightButtons);
+	const hasRightButtons = !isUndefined(rightButtons) && showRightButtons;
 
 	const buttonGroupRowClassName = classNames(
 		classes.buttonGroupRow,
@@ -48,11 +49,13 @@ const ButtonGroup = ({
 };
 
 ButtonGroup.defaultProps = {
-	className: ''
+	className: '',
+    showRightButtons: true
 };
 
 ButtonGroup.propTypes = {
 	singleButton: PropTypes.object,
+    showRightButtons: PropTypes.bool,
 	leftButtons: PropTypes.oneOfType([
 		PropTypes.object,
 		PropTypes.array

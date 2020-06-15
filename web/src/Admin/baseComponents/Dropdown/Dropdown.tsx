@@ -10,6 +10,7 @@ import { Icon } from "@iconify/react";
 import chevronDown from "@iconify/icons-mdi/chevron-down";
 import chevronUp from "@iconify/icons-mdi/chevron-up";
 
+import ClasseNames from 'classnames';
 import classes from './styles/index.module.scss';
 import { COLORS } from '../../styles/colors/baseColors';
 import { isNullOrUndefined } from '../../../utils';
@@ -26,7 +27,8 @@ const Dropdown = (
 		onFieldChange,
 		isItemPending,
 		onDropdownClick,
-		hasDefaultValue
+		hasDefaultValue,
+        disabled
 	}
 ) => {
 	const dropdownRef = useRef(null);
@@ -43,11 +45,13 @@ const Dropdown = (
 	}, [isOpen, displayValueFromProp]);
 
 	const toggleDropdown = useCallback(() => {
+	    if (disabled) return;
+
 		if (!open) onDropdownClick();
 
 		onFieldFocus(!open);
 		setOpen(!open);
-	}, [open, onDropdownClick, onFieldFocus]);
+	}, [open, onDropdownClick, onFieldFocus, disabled]);
 
 	const onItemSelect = useCallback((id) => {
 		const selectedItem = items.find(i => i.id === id);
@@ -55,21 +59,26 @@ const Dropdown = (
 		setDisplayValue(selectedItem.name);
 
 		onFieldChange(id);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [items]);
+	}, [items, onFieldChange]);
 
 	const handleItemClick = useCallback((id) => {
 		onItemSelect(id);
 
 		if (!multiSelect) {
-			toggleDropdown();
+            onDropdownClick();
+            onFieldFocus(false);
+            setOpen(false);
 		}
-	}, [multiSelect, onItemSelect, toggleDropdown]);
+	}, [multiSelect, onItemSelect, onFieldFocus, onDropdownClick]);
 
 	useEffect(() => {
 		if (isNullOrUndefined(value)) {
-			setDisplayValue(placeholder);
+			return setDisplayValue(placeholder);
 		}
+
+		if (value) {
+            onItemSelect(value)
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);
 
@@ -121,14 +130,27 @@ const Dropdown = (
 			);
 	};
 
+    const componentClassName = ClasseNames(
+        {
+            [classes.dropdown__disabled]: disabled
+        },
+        classes.dropdown
+    );
+
+	const placeholderClassName = ClasseNames(
+        {
+            [classes.dropdownItem_placeholder]: placeholder && !value
+        }
+    );
+
 	return (
-		<div className={classes.dropdown}>
+		<div className={componentClassName}>
 			<div
 				ref={dropdownRef}
 				className={classes.dropdown_selectArea}
 				onClick={toggleDropdown}
 			>
-				<div className={classes.dropdownItem_placeholder}>{displayValue}</div>
+				<div className={placeholderClassName}>{displayValue}</div>
 				{getIcon()}
 
 			</div>
@@ -160,6 +182,7 @@ const Dropdown = (
 
 Dropdown.defaultProps = {
 	isOpen: false,
+    disabled: false,
 	multiSelect: false,
 	hasDefaultValue: false,
 	items: [],

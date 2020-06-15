@@ -2,6 +2,7 @@ import React from 'react';
 
 import classes from './styles/index.module.scss';
 import {Checkbox} from '../Checkbox/Checkbox';
+import { HOST } from '../../../contst';
 
 const MediaSelectModalMediaItem = (
     {
@@ -19,7 +20,7 @@ const MediaSelectModalMediaItem = (
                     {item.name}
                 </div>
             </div>
-            <img src={`http://localhost:4040/${item.path}`} alt={item.name}/>
+            <img src={`${HOST}${item.path}`} alt={item.name}/>
         </div>
     );
 };

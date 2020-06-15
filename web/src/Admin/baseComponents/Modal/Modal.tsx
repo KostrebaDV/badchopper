@@ -12,7 +12,8 @@ const Modal = (
 		render,
 		isOpen,
         extraHeight,
-		handleClose
+		handleClose: handleCloseFromProps,
+        modalInModal
 	}
 ) => {
     // const { handleShowOverlayCloak, setHandleOverlayClose } = useContext(AdminAppContext);
@@ -35,9 +36,14 @@ const Modal = (
             [classes.modal_medium]: size === 'medium',
             [classes.modal_large]: size === 'large',
             [classes.modal_ultraLarge]: size === 'ultraLarge',
+            [classes.modal_modalInModal]: modalInModal,
             [classes.modal_extraHeight]: extraHeight
         }
     );
+
+	const handleClose = () => {
+        handleCloseFromProps();
+    };
 
 	return (
 	    <>
@@ -76,12 +82,14 @@ const Modal = (
 Modal.defaultProps = {
 	isOpen: false,
     extraHeight: false,
+    modalInModal: false,
 	size: 'medium',
 };
 
 Modal.propTypes = {
 	isOpen: PropTypes.bool,
     extraHeight: PropTypes.bool,
+    modalInModal: PropTypes.bool,
 	render: PropTypes.func,
 	size: PropTypes.string,
 	handleClose: PropTypes.func,

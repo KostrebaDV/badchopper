@@ -36,7 +36,6 @@ const updateAssistanceService = (updateAssistanceDTO, client) => {
         return updateAssistanceModel(normalizeAssistanceDTO, client)
             .then((status: updateDocumentResponseStatusType) => {
                 if (status.ok === 1) {
-                    console.log(status);
                     return status.value
                 }
 

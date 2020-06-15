@@ -15,7 +15,9 @@ type deleteDocumentResponseStatusType = {
 
 type updateDocumentResponseStatusType = {
     ok: number;
-    value: object;
+    value: {
+        imageId: string;
+    };
 }
 
 type getDocumentResponseStatusType = {

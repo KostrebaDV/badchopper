@@ -1,0 +1,17 @@
+@import "../../../styles/colors/colors.module";
+
+.image {
+	object-fit: cover;
+}
+
+.image__noImage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: lighten($disabled, 15);
+	border-radius: 2px;
+}
+
+.image__noImageIcon {
+	color: $disabled;
+}

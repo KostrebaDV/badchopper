@@ -1,3 +1,6 @@
-.assistanceList {
+@import "../../../../../styles/colors/colors.module";
 
+.assistanceList__header {
+	border-bottom: 2px solid $disabled;
+	padding-bottom: 8px;
 }

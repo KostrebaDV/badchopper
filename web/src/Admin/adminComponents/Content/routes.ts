@@ -6,5 +6,8 @@ export const ROUTES = {
     DEPARTMENTS_LIST: '/adminPanel/departments/list',
     DEPARTMENTS_DETAIL: '/adminPanel/departments/department/:id',
     DEPARTMENTS_DETAIL_LINK: '/adminPanel/departments/department/',
-    ADD_DEPARTMENT: '/adminPanel/newDepartment'
+    ADD_DEPARTMENT: '/adminPanel/newDepartment',
+    STAFF: '/adminPanel/staff',
+    STAFF_BARBERS: '/adminPanel/staff/barbers',
+    STAFF_MANAGERS: '/adminPanel/staff/managers'
 };

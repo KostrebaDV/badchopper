@@ -2,7 +2,11 @@
 	padding: 16px;
 }
 
-.formLayoutItemGroup_inline {
+.formLayoutItemGroup > div:last-child {
+	margin-bottom: 0;
+}
+
+.formLayoutItemGroup_noPadding {
 	padding: 0;
 }
 

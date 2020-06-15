@@ -18,13 +18,15 @@ const AssistanceListItem = (
     return (
             <GridLayoutRow
                 alignItems="center"
-                grid="4-5-2-1"
+                gridColumn={24}
+                grid="8-9-2-2-3"
                 onClick={() => handleItemClick(item._id)}
                 className={classes.assistanceListItem}
             >
                 <div>{item.name}</div>
                 <div className={classes.assistanceListItem__description}>{item.description}</div>
                 <div>{item.price}</div>
+                <div>грн.</div>
                     <ButtonGroupIconButtons>
                         <Button
                             type="danger"

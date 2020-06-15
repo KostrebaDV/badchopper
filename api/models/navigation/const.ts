@@ -8,20 +8,20 @@ export default [
     },
     {
         label: 'Сотрудники',
-        route: '/adminPanel/employee/',
+        route: '/adminPanel/staff/',
         icon: 'employee',
         hasRoute: false,
         items: [
             {
                 label: 'Мастера',
-                route: '/adminPanel/employee/barbers/',
+                route: '/adminPanel/staff/barbers/',
                 id: 1,
                 hasRoute: true,
                 items: []
             },
             {
                 label: 'Менеджеры',
-                route: '/adminPanel/employee/stuff/',
+                route: '/adminPanel/staff/managers/',
                 id: 2,
                 hasRoute: true,
                 items: []

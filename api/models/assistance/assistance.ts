@@ -3,11 +3,11 @@ import CONSTS from "./consts";
 import { documentIdType } from "../../types/general";
 import { ObjectID } from "bson";
 
-const addAssistanceModel = (departmentDTO: AssistanceDTOType, client) => {
+const addAssistanceModel = (assistanceDTO: AssistanceDTOType, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
-            .insertOne(departmentDTO)
+            .insertOne(assistanceDTO)
             .then(res => resolve(res))
             .catch(err => reject(err));
     });

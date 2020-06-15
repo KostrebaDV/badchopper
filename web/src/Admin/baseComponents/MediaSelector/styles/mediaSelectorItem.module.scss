@@ -1,0 +1,31 @@
+@import "../../../styles/mixins/_box-shadow.module";
+@import "../../../styles/colors/colors.module";
+
+.mediaSelectorItem {
+	padding: 4px;
+	margin: 4px;
+	width: 150px;
+	position: relative;
+
+	@include box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.mediaSelectorItem img	{
+	width: 150px;
+	height: 200px;
+	object-fit: cover;
+}
+
+.mediaSelectorItem__deleteIcon {
+	color: lighten($danger, 15%);
+	font-size: 26px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	cursor: pointer;
+	transition: color .3s;
+
+	:hover {
+		color: $danger;
+	}
+}

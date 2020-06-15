@@ -3,6 +3,7 @@ import React from 'react';
 import classes from './styles/index.module.scss';
 import {Icon} from '@iconify/react';
 import deleteCircleOutline from '@iconify/icons-mdi/delete-circle-outline';
+import {Image} from '../../../../baseComponents/Image/Image';
 
 const DepartmentAddSelectedMedia = (
     {
@@ -23,7 +24,14 @@ const DepartmentAddSelectedMedia = (
                     </div>
                 )
             }
-            <img src={`http://localhost:4040/${media.path}`} alt={media.name}/>
+            <Image
+                width={200}
+                height={200}
+                src={media.path}
+                alt={media.name}
+                padding={4}
+                boxShadow='0 0 10px rgba(0, 0, 0, 0.2)'
+            />
         </div>
     );
 };

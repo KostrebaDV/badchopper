@@ -46,3 +46,8 @@
 .dropdown_containerOpen {
 	display: block;
 }
+
+.dropdown__disabled .dropdown_selectArea {
+	background-color: $disabled_field;
+	cursor: not-allowed;
+}

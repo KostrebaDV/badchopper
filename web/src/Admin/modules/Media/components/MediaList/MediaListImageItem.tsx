@@ -5,6 +5,7 @@ import {Typography} from '../../../../baseComponents/Typography/Typography';
 import {Icon} from '@iconify/react';
 import deleteCircleOutline from '@iconify/icons-mdi/delete-circle-outline';
 import {getFileName} from '../../../../../utils';
+import { HOST } from '../../../../../contst';
 
 
 const MediaListImageItem = (
@@ -21,7 +22,7 @@ const MediaListImageItem = (
                     className={classes.mediaListImageItem__deleteIcon}
                 />
             </div>
-            <img src={`http://localhost:4040/${image.path}`} alt={image.name}/>
+            <img src={`${HOST}${image.path}`} alt={image.name}/>
             <Typography variant='14'>
                 {getFileName(image.name, '___')}
             </Typography>

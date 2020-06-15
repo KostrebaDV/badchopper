@@ -37,7 +37,7 @@ export default {
                 },
                 {
                     label: 'Менеджеры',
-                    route: '/adminPanel/employee/stuff/',
+                    route: '/adminPanel/employee/staff/',
                     items: []
                 }
             ]

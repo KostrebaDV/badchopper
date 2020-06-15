@@ -6,6 +6,7 @@ import departmentsController from '../controllers/departments/departments';
 import mediaController from '../controllers/media/media';
 import assistanceController from '../controllers/assistance/assistance';
 import navigationListController from '../controllers/navigation/navigationList';
+import staffController from '../controllers/staff/staff';
 import commentsController from '../controllers/comments/comments';
 
 export const expressClient = (expressApp, client) => {
@@ -17,6 +18,7 @@ export const expressClient = (expressApp, client) => {
     mediaController(expressApp, client);
     assistanceController(expressApp, client);
     navigationListController(expressApp, client);
+    staffController(expressApp, client);
     commentsController(expressApp, client);
 
     /// catch 404 and forward to error handler

@@ -1,7 +1,9 @@
+import {HOST} from '../contst';
+
 const axios = require('axios');
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:4040/',
+    baseURL: HOST,
 });
 
 const GET = (url: string) => {

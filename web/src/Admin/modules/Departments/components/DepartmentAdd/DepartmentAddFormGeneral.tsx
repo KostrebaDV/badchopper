@@ -60,6 +60,7 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                     </FormLayoutItem>
                     <FormLayoutItemGroup
                         inline
+                        noPadding
                         grid="8-_1-4"
                         gridColumn={13}
                     >
@@ -105,6 +106,7 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                     </FormLayoutItem>
                     <FormLayoutItemGroup
                         inline
+                        noPadding
                         gridColumn={13}
                         grid="6-_1-6"
                         label="!!Координаты на карте"

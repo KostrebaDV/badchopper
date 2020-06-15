@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { MODALS, DepartmentsModalsContext } from './const';
-import {MediaSelectModal} from '../../../../baseComponents/MediaSelectModal/MediaSelectModal';
+import {MediaSelectModal} from '../../../../baseComponents/MediaSelector/MediaSelectModal';
 import {NotificationModal} from '../../../../baseComponents/NotificationModal/NotificationModal';
 
 export const DepartmentsModalsProvider = ({ children }) => {

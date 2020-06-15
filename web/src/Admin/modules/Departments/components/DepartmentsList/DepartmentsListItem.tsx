@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './styles/index.module.scss';
+import {Image} from '../../../../baseComponents/Image/Image';
 
 const DepartmentsListItem = (
     {
@@ -9,7 +10,12 @@ const DepartmentsListItem = (
 ) => {
     return (
         <div className={classes.departmentsListItem__inner}>
-            <img src={`http://localhost:4040/${departmentItem.image.path}`} alt={departmentItem.name}/>
+            <Image
+                src={departmentItem.image.path}
+                alt={departmentItem.name}
+                height={150}
+                width="100%"
+            />
             {departmentItem.name}
         </div>
     );

@@ -14,6 +14,7 @@ const MediaSelectModal: FC<ModalComponentType> = (
     return (
         <Modal
             extraHeight
+            modalInModal
             size="ultraLarge"
             isOpen={isOpen}
             handleClose={handleClose}

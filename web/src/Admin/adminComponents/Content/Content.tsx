@@ -11,6 +11,7 @@ import {Departments} from '../../modules/Departments/Departments';
 import {Media} from '../../modules/Media/Media';
 import classes from './styles/index.module.scss'
 import {DepartmentAdd} from '../../modules/Departments/components/DepartmentAdd/DepartmentAdd';
+import {Staff} from '../../modules/Staff/Staff';
 
 const Content = () => {
     return (
@@ -30,6 +31,9 @@ const Content = () => {
                 </Route>
                 <Route path={ROUTES.ADD_DEPARTMENT}>
                     <DepartmentAdd/>
+                </Route>
+                <Route path={ROUTES.STAFF}>
+                    <Staff/>
                 </Route>
 			</Switch>
         </div>

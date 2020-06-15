@@ -9,6 +9,7 @@ export type ModalComponentType = {
 export type ModelContentType = {
     children: React.ReactNode;
     isPending?: boolean;
+    modalInModal?: boolean;
     className?: string;
     autoHeight?: boolean;
     extraHeight?: boolean;
