@@ -6,7 +6,7 @@ type AssistanceItemType = {
 
 export type AssistanceType = AssistanceItemType[]
 
-export type MediaContextType = {
+export type AssistanceContextType = {
     assistance: AssistanceType,
     setAssistance: ([]: AssistanceType) => void;
     updateAssistance: ([]: AssistanceType) => void;
