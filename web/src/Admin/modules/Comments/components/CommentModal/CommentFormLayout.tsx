@@ -3,16 +3,14 @@ import {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseComponents/Fo
 import {GridLayout} from '../../../../baseComponents/GridLayout/GridLayout';
 import {GridLayoutRow} from '../../../../baseComponents/GridLayout';
 import {Field} from '../../../../baseComponents/Form';
-import {Dropdown, MediaSelector, Textarea, Textbox} from '../../../../baseComponents/Form/Adapters';
-import {positionDropDownItems} from '../../const';
+import { MediaSelector, Textarea, Textbox} from '../../../../baseComponents/Form/Adapters';
 import FormLayout from '../../../../baseComponents/FormLayout';
 
-const StaffModalFormLayout = (
+const CommentFormLayout = (
     {
         mediaId,
         isPreviewMode,
         mediaModalData,
-        positionDropDownValue
     }
 ) => {
     return (
@@ -56,22 +54,6 @@ const StaffModalFormLayout = (
                                     placeholder="Фамилия"
                                 />
                             </FormLayoutItem>
-                            <FormLayoutItem>
-                                <Field
-                                    previewMode={isPreviewMode}
-                                    component={Textbox}
-                                    name="patronymic"
-                                    label="!!!Отчество"
-                                    required
-                                    validate={{
-                                        required: true,
-                                        length: {
-                                            max: 20
-                                        }
-                                    }}
-                                    placeholder="Отчество"
-                                />
-                            </FormLayoutItem>
                         </FormLayoutItemGroup>
                         <FormLayoutItem>
                             <Field
@@ -94,7 +76,7 @@ const StaffModalFormLayout = (
                         previewMode={isPreviewMode}
                         component={Textarea}
                         name="description"
-                        label="!!!Описание"
+                        label="!!!Отзыв"
                         required
                         validate={{
                             required: true,
@@ -105,48 +87,14 @@ const StaffModalFormLayout = (
                         placeholder="Описание"
                     />
                 </FormLayoutItem>
-                <FormLayoutItem>
-                    <Field
-                        previewMode={isPreviewMode}
-                        component={Dropdown}
-                        name="position"
-                        items={positionDropDownItems}
-                        label="!!!должность"
-                        required
-                        disabled
-                        value={positionDropDownValue}
-                        validate={{
-                            required: true
-                        }}
-                        placeholder="должность"
-                    />
-                </FormLayoutItem>
-                <FormLayoutItem>
-                    <Field
-                        previewMode={isPreviewMode}
-                        component={Textbox}
-                        name="instagramUrl"
-                        label="!!!Instagram"
-                        placeholder="Instagram url"
-                    />
-                </FormLayoutItem>
-                <FormLayoutItem>
-                    <Field
-                        previewMode={isPreviewMode}
-                        component={Textbox}
-                        name="facebookUrl"
-                        label="!!!Facebook"
-                        placeholder="Facebook url"
-                    />
-                </FormLayoutItem>
             </FormLayoutItemGroup>
         </FormLayout>
     );
 };
 
-StaffModalFormLayout.defaultProps = {
+CommentFormLayout.defaultProps = {
     mediaId: [],
     isPreviewMode: false
 };
 
-export {StaffModalFormLayout};
+export {CommentFormLayout};

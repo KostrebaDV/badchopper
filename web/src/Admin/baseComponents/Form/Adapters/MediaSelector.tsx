@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {MediaSelector as MediaSelectorComponent} from '../../MediaSelector/MediaSelector';
-import {PreviewFiled} from '../../PreviewFiled/PreviewFiled';
 
 type MediaSelectorType = {
     label: string;

@@ -19,14 +19,14 @@ const CommentsHeader = () => {
                 <Typography
                     variant="24"
                 >
-                    !!Услуги
+                    !!Отзывы
                 </Typography>
             </ContentHeaderLeft>
             <ContentHeaderRight>
                 <Button
                     type="primary"
                     transparent
-                    label="!!Добавить комментрий"
+                    label="!!Добавить отзыв"
                     floatRight
                     actionHandler={actionButtonHandler}
                 />

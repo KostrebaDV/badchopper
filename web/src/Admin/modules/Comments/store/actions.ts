@@ -1,10 +1,17 @@
-import {SET_COMMENTS, DELETE_COMMENT, UPDATE_COMMENT} from './const';
+import {SET_COMMENTS, DELETE_COMMENT, UPDATE_COMMENT, SET_COMMENT} from './const';
 
 export default (dispatch) => {
     const setComments = (comments) => {
         dispatch({
             type: SET_COMMENTS,
             comments
+        });
+    };
+
+    const setComment = (comment) => {
+        dispatch({
+            type: SET_COMMENT,
+            comment
         });
     };
 
@@ -16,15 +23,21 @@ export default (dispatch) => {
     };
 
     const updateComment = (comment) => {
+        const payload = {
+            comment:comment,
+            commentId: comment[0]._id
+        }
+
         dispatch({
             type: UPDATE_COMMENT,
-            commentId: comment[0]._id
+            ...payload
         });
     };
 
     return {
         setComments,
         updateComment,
-        removeComment
+        removeComment,
+        setComment
     };
 };

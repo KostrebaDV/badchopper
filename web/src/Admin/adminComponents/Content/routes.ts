@@ -1,6 +1,5 @@
 export const ROUTES = {
     ASSISTANCE: '/adminPanel/assistance',
-    FEEDBACKS: '/adminPanel/feedbacks',
     DEPARTMENTS: '/adminPanel/departments',
     MEDIA: '/adminPanel/media',
     DEPARTMENTS_LIST: '/adminPanel/departments/list',
@@ -9,5 +8,6 @@ export const ROUTES = {
     ADD_DEPARTMENT: '/adminPanel/newDepartment',
     STAFF: '/adminPanel/staff',
     STAFF_BARBERS: '/adminPanel/staff/barbers',
-    STAFF_MANAGERS: '/adminPanel/staff/managers'
+    STAFF_MANAGERS: '/adminPanel/staff/managers',
+    COMMENTS: '/adminPanel/comments'
 };

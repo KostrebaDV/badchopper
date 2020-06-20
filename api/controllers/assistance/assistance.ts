@@ -17,7 +17,7 @@ export default (app: Application, client) => {
             .then((status: AssistanceResponseType) => {
                 return res
                     .status(200)
-                    .send(status.ops);
+                    .send(status);
             })
             .catch(() => {
                 return res

@@ -17,7 +17,7 @@ const StaffModalModalContent = (
         modalData
     }
 ) => {
-    const {isBarberLayout, selectedItem, isEditMode, iPreviewMode} = modalData;
+    const {isBarberLayout, selectedItem, isEditMode, isPreviewMode} = modalData;
     const {forms} = useContext(AdminAppFormContext);
     const {setStaff, updateStaff} = useContext(StaffContext);
     const {showNotification} = useContext(AdminAppContext);
@@ -66,7 +66,7 @@ const StaffModalModalContent = (
     };
 
     const getModalLabel = () => {
-        if (isEditMode || iPreviewMode) {
+        if (isEditMode || isPreviewMode) {
             return `${selectedItem.name} ${selectedItem.surname}`
         }
 
@@ -112,18 +112,18 @@ const StaffModalModalContent = (
             />
             <ModalContent>
                 {
-                    (isEditMode || iPreviewMode) && (
+                    (isEditMode || isPreviewMode) && (
                         <EditStaffModalForm
                             handleEditStaff={handleEditStaff}
                             mediaModalData={mediaModalData}
                             positionDropDownValue={positionDropDownValue}
                             initialValues={selectedItem}
-                            iPreviewMode={iPreviewMode}
+                            isPreviewMode={isPreviewMode}
                         />
                     )
                 }
                 {
-                    !isEditMode && !iPreviewMode && (
+                    !isEditMode && !isPreviewMode && (
                         <AddStaffModalForm
                             handleAddStaff={handleAddStaff}
                             mediaModalData={mediaModalData}
@@ -136,7 +136,7 @@ const StaffModalModalContent = (
                 <ButtonGroup
                     leftButtons={leftButtons}
                     rightButtons={rightButtons}
-                    showRightButtons={!iPreviewMode}
+                    showRightButtons={!isPreviewMode}
                 />
             </ModalFooter>
         </>

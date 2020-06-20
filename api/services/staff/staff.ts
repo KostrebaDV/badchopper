@@ -23,8 +23,6 @@ export const addStaffService = (assistanceDTO: StaffItemDTOType, client) => {
                         }
                     });
             });
-
-
     }
 };
 

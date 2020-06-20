@@ -8,7 +8,14 @@ const addAssistanceModel = (assistanceDTO: AssistanceDTOType, client) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
             .insertOne(assistanceDTO)
-            .then(res => resolve(res))
+            .then(res => {
+                resolve([
+                    {
+                        creationDate: new ObjectID(res._id).getTimestamp(),
+                        ...res.ops[0]
+                    }
+                ])
+            })
             .catch(err => reject(err));
     });
 };
@@ -39,7 +46,12 @@ const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) =
                 {
                     _id: new ObjectID(id)
                 },
+
                 {
+                    $currentDate: {
+                        lastModified: true,
+                        "cancellation.date": { $type: "timestamp" }
+                    },
                     $set: {
                         name,
                         description,

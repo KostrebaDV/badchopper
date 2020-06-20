@@ -7,17 +7,17 @@ import {
     deleteCommentService
 } from "../../services/comments/comments";
 import CONSTS from "./consts"
-import {CommentsResponseType} from '../../types/commentsTypes';
+import {CommentDTOItemType} from '../../types/commentsTypes';
 
 const commentsRouter = Router();
 
 export default (app: Application, client) => {
     commentsRouter.post(CONSTS.ADD_COMMENT, (req: Request, res: Response) => {
         addCommentService(req.body, client)
-            .then((status: CommentsResponseType) => {
+            .then((status: CommentDTOItemType) => {
                 return res
                     .status(200)
-                    .send(status.ops);
+                    .send(status);
             })
             .catch(() => {
                 return res

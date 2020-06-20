@@ -1,13 +1,12 @@
 import React from 'react';
 import Form from '../../../../baseComponents/Form';
 import {FORMS} from '../../const';
-import {StaffModalFormLayout} from './StaffModalFormLayout';
+import {CommentFormLayout} from './CommentFormLayout';
 
-const EditStaffModalForm = (
+const CommentModalEditForm = (
     {
-        handleEditStaff,
+        handleEditSComment,
         mediaModalData,
-        positionDropDownValue,
         initialValues,
         isPreviewMode
     }
@@ -15,17 +14,16 @@ const EditStaffModalForm = (
     return (
         <Form
             initialValues={initialValues}
-            onSubmit={handleEditStaff}
-            name={FORMS.EDIT_STAFF_FORM}
+            onSubmit={handleEditSComment}
+            name={FORMS.EDIT_COMMENT_FORM}
         >
-            <StaffModalFormLayout
+            <CommentFormLayout
                 isPreviewMode={isPreviewMode}
                 mediaModalData={mediaModalData}
-                positionDropDownValue={positionDropDownValue}
                 mediaId={[initialValues.image._id]}
             />
         </Form>
     );
 };
 
-export {EditStaffModalForm};
+export {CommentModalEditForm};

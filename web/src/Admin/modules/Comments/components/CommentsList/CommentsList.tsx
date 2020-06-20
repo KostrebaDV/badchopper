@@ -3,43 +3,33 @@ import {ContentLayout} from '../../../../adminComponents/ContentLayout/ContentLa
 import {GridLayout} from '../../../../baseComponents/GridLayout/GridLayout';
 import {GridLayoutRow} from '../../../../baseComponents/GridLayout';
 import {EmptyContent} from '../../../../baseComponents/EmptyContent/EmptyContent';
-import {StaffContext} from '../../store';
-import {deleteStaff, getAllBarberStaff, getAllMangerStaff} from '../../api';
-import {StaffListItem} from './StaffListItem';
+import {CommentsContext} from '../../store';
+import {deleteComment, getAllComments} from '../../api';
+import {CommentsListItem} from './CommentsListItem';
 import {getUniqueId, getUniqueKey} from '../../../../../utils';
 import classes from './styles/index.module.scss';
-import {MODALS} from '../StaffModalsProvider/const';
-import {StaffModalsContext} from '../StaffModalsProvider/const';
+import {MODALS} from '../CommentsModalsProvider/const';
+import {CommentsModalsContext} from '../CommentsModalsProvider/const';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 
-const StaffList = (
-    {
-        isBarberLayout
-    }
-) => {
-    const {staffList, setAllStaff, removeStaff} = useContext(StaffContext);
-    const {openModal} = useContext(StaffModalsContext);
+const CommentsList = () => {
+    const {comments, setComments, removeComment} = useContext(CommentsContext);
+    const {openModal} = useContext(CommentsModalsContext);
     const {showNotification} = useContext(AdminAppContext);
 
     useEffect(() => {
-        if (isBarberLayout) {
-            getAllBarberStaff()
-                .then(({data}) => setAllStaff(data))
-        } else {
-            getAllMangerStaff()
-                .then(({data}) => setAllStaff(data))
-        }
+        getAllComments()
+            .then(({data}) => setComments(data))
     // eslint-disable-next-line
     }, []);
 
     const handleItemClick = (id) => {
-        const selectedItem = staffList.find((item) => id === item._id);
+        const selectedItem = comments.find((item) => id === item._id);
 
         if (!!openModal) {
             openModal(
-                MODALS.STAFF_MODAL,
+                MODALS.COMMENT_MODAL,
                 {
-                    isBarberLayout,
                     isEditMode: false,
                     isPreviewMode: true,
                     selectedItem
@@ -48,15 +38,15 @@ const StaffList = (
         }
     };
 
-    const handleItemDelete = (id, itemName) => {
-        return deleteStaff(id)
+    const handleItemDelete = (id) => {
+        return deleteComment(id)
             .then(() => {
-                removeStaff(id);
+                removeComment(id);
 
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `!!Сотрудник "${itemName}" удален`
+                        message: `!!Отзыв удален`
                     })
                 }
             })
@@ -65,16 +55,16 @@ const StaffList = (
     const handleOpenItemDeleteModal = (e, id) => {
         e.stopPropagation();
 
-        const selectedItem = staffList.find((item) => id === item._id);
+        const selectedItem = comments.find((item) => id === item._id);
 
         if (!!openModal && typeof selectedItem !== 'undefined') {
             openModal(
-                MODALS.DELETE_STAFF_MODAL,
+                MODALS.DELETE_COMMENT_MODAL,
                 {
-                    modalTitle: '!!Удалить сотрудника',
+                    modalTitle: '!!Удалить отзыв',
                     rightButtonLabel: '!!Удалить',
-                    handleSubmit: () => handleItemDelete(id, selectedItem.name),
-                    content: `!!Вы уверены, что хотите удалить "${selectedItem.name}"?`
+                    handleSubmit: () => handleItemDelete(id),
+                    content: `!!Вы уверены, что хотите удалить отзыв?`
                 }
             );
         }
@@ -83,13 +73,12 @@ const StaffList = (
     const handleOpenItemEditModal = (e, id) => {
         e.stopPropagation();
 
-        const selectedItem = staffList.find(item => id === item._id);
+        const selectedItem = comments.find(item => id === item._id);
 
         if (!!openModal) {
             openModal(
-                MODALS.STAFF_MODAL,
+                MODALS.COMMENT_MODAL,
                 {
-                    isBarberLayout,
                     isEditMode: true,
                     selectedItem,
                     isPreviewMode: false,
@@ -98,8 +87,7 @@ const StaffList = (
         }
     };
 
-    const hasStaff = staffList.length !== 0;
-    const staffLabel = isBarberLayout ? '!!мастеров' : '!!менеджеров';
+    const hasStaff = comments.length !== 0;
 
     return (
         <ContentLayout>
@@ -115,14 +103,14 @@ const StaffList = (
                             <div></div>
                             <div>!!имя</div>
                             <div>!!описание</div>
-                            <div>!!соц. сети</div>
+                            <div>!!дата</div>
                         </GridLayoutRow>
                     )
                 }
                 {
-                    hasStaff && staffList.map(item => {
+                    hasStaff && comments.map(item => {
                         return (
-                            <StaffListItem
+                            <CommentsListItem
                                 key={getUniqueKey()}
                                 item={item}
                                 handleItemClick={handleItemClick}
@@ -135,7 +123,7 @@ const StaffList = (
                 {
                     !hasStaff && (
                         <EmptyContent>
-                            !!Добавьте {staffLabel}
+                            !!Добавьте отзыв
                         </EmptyContent>
                     )
                 }
@@ -144,8 +132,4 @@ const StaffList = (
     );
 };
 
-StaffList.defaultProps = {
-    isBarberLayout: false
-};
-
-export {StaffList};
+export {CommentsList};

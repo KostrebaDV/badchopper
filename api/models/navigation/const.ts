@@ -37,7 +37,7 @@ export default [
     },
     {
         label: 'Отзывы',
-        route: '/adminPanel/feedbacks',
+        route: '/adminPanel/comments',
         icon: 'feedbacks',
         hasRoute: true,
         items: []

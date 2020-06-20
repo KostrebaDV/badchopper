@@ -4,40 +4,59 @@ import {
     getAllCommentsModel,
     updateCommentModel
 } from '../../models/comments/comments'
-
-import {
-    AssistanceDTOType,
-} from "../../types/assistanceTypes";
-
 import {
     documentIdType,
     deleteDocumentResponseStatusType,
     updateDocumentResponseStatusType
 } from "../../types/general";
+import {getDate} from '../../utils/helpers/getDate';
+import {CommentsResponseDTOType, CommentsDTOType} from '../../types/commentsTypes';
+import {getImageService} from '../media/media';
+import {normalizeImage} from '../../utils/staff/normalizeImage';
 
-import { normalizeAssistanceData } from "../../utils/assistance/normalizeAssistanceData"
+const addCommentService = (commentDTO, client) => {
+    if (commentDTO.name.length !== 0) {
 
-const addCommentService = (assistanceDTO, client) => {
-    if (assistanceDTO.name.length !== 0) {
-        const normalizeAssistanceDTO: AssistanceDTOType = normalizeAssistanceData(assistanceDTO);
-
-        return addCommentModel(normalizeAssistanceDTO, client)
+        return addCommentModel({...commentDTO, creationDate: getDate(),}, client)
+            .then((data: CommentsResponseDTOType) => {
+                return getImageService(data.ops[0].imageId, client)
+                    .then(image => {
+                        return {
+                            image: normalizeImage(image),
+                            ...data.ops[0]
+                        }
+                    });
+            });
     }
 };
 
-const getAllCommentsService = (client) => {
-    return getAllCommentsModel(client)
+const getAllCommentsService = async  (client) => {
+    const comments = await getAllCommentsModel(client)
+        .then((data: CommentsDTOType) => data);
+
+    return Promise.all(comments.map(async (item) => {
+        const image = await getImageService(item.imageId, client).then(image => image);
+
+        return {
+            image: normalizeImage(image),
+            ...item
+        }
+    }));
 };
 
-const updateCommentService = (updateAssistanceDTO, client) => {
-    if (updateAssistanceDTO.id.length !== 0) {
-        const normalizeAssistanceDTO: AssistanceDTOType = normalizeAssistanceData(updateAssistanceDTO);
+const updateCommentService = (updateCommentDTO, client) => {
+    if (updateCommentDTO.id.length !== 0) {
 
-        return updateCommentModel(normalizeAssistanceDTO, client)
+        return updateCommentModel(updateCommentDTO, client)
             .then((status: updateDocumentResponseStatusType) => {
                 if (status.ok === 1) {
-                    console.log(status);
-                    return status.value
+                    return getImageService(status.value.imageId, client)
+                        .then(image => {
+                            return {
+                                image: normalizeImage(image),
+                                ...status.value
+                            }
+                        });
                 }
 
                 throw Error('Comments was not updated')
@@ -50,9 +69,9 @@ const updateCommentService = (updateAssistanceDTO, client) => {
     }
 };
 
-const deleteCommentService = (deleteAssistanceDTO: documentIdType, client) => {
-    if (deleteAssistanceDTO.id.length !== 0) {
-        return deleteCommentModel(deleteAssistanceDTO, client)
+const deleteCommentService = (deleteCommentDTO: documentIdType, client) => {
+    if (deleteCommentDTO.id.length !== 0) {
+        return deleteCommentModel(deleteCommentDTO, client)
             .then((status: deleteDocumentResponseStatusType) => {
                 if (status.deletedCount !== 0) {
                     return 'Comments was deleted successfully'

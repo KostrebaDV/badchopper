@@ -1,21 +1,21 @@
-type CommentDTOType = {
+type CommentDTOItemType = {
     id?: string;
     name: string;
+    surname: string;
     description: string;
     imageId: string;
+    creationDate: string;
+    image?: object;
 }
 
-type CommentsResponseType = {
-    ops: {
-        name: string;
-        _id: string;
-        description: string;
-        imageId: string;
-        image: object;
-    }[]
+type CommentsDTOType = CommentDTOItemType[]
+
+type CommentsResponseDTOType = {
+    ops: CommentDTOItemType[]
 }
 
 export {
-    CommentDTOType,
-    CommentsResponseType
+    CommentDTOItemType,
+    CommentsDTOType,
+    CommentsResponseDTOType
 }

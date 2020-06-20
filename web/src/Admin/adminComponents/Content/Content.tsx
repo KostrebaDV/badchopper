@@ -6,12 +6,12 @@ import {
 
 import {ROUTES} from './routes';
 import {Assistance} from '../../modules/Assistance/Assistance';
-import {Feedbacks} from '../../modules/Feedbacks/Feedbacks';
 import {Departments} from '../../modules/Departments/Departments';
 import {Media} from '../../modules/Media/Media';
 import classes from './styles/index.module.scss'
 import {DepartmentAdd} from '../../modules/Departments/components/DepartmentAdd/DepartmentAdd';
 import {Staff} from '../../modules/Staff/Staff';
+import {Comments} from '../../modules/Comments/Comments';
 
 const Content = () => {
     return (
@@ -19,9 +19,6 @@ const Content = () => {
 			<Switch>
 				<Route path={ROUTES.ASSISTANCE}>
 					<Assistance/>
-				</Route>
-				<Route path={ROUTES.FEEDBACKS}>
-					<Feedbacks/>
 				</Route>
                 <Route path={ROUTES.DEPARTMENTS}>
                     <Departments/>
@@ -34,6 +31,9 @@ const Content = () => {
                 </Route>
                 <Route path={ROUTES.STAFF}>
                     <Staff/>
+                </Route>
+                <Route path={ROUTES.COMMENTS}>
+                    <Comments/>
                 </Route>
 			</Switch>
         </div>

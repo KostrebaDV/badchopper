@@ -3,7 +3,8 @@ import {actionLogger, removeArrayElementById} from '../../../../utils';
 import {
     SET_COMMENTS,
     DELETE_COMMENT,
-    UPDATE_COMMENT
+    UPDATE_COMMENT,
+    SET_COMMENT
 } from './const';
 
 export const reducer = (state, payload) => {
@@ -14,6 +15,11 @@ export const reducer = (state, payload) => {
             return {
                 ...state,
                 comments: [...state.comments, ...payload.comments]
+            };
+        case SET_COMMENT:
+            return {
+                ...state,
+                comments: [payload.comment, ...state.comments]
             };
         case DELETE_COMMENT:
             return {

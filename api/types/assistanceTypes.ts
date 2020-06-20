@@ -6,13 +6,12 @@ type AssistanceDTOType = {
 }
 
 type AssistanceResponseType = {
-    ops: {
-        name: string;
-        _id: string;
-        description: string;
-        price: string;
-    }[]
-}
+    name: string;
+    _id: string;
+    description: string;
+    price: string;
+    creationDate: string;
+}[]
 
 export {
     AssistanceDTOType,

@@ -19,7 +19,7 @@ const StaffListHeader = (
                 {
                     isBarberLayout,
                     isEditMode: false,
-                    iPreviewMode: false,
+                    isPreviewMode: false,
                 }
             );
         }
