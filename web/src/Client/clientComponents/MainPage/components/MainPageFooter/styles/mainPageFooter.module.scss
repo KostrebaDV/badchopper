@@ -1,0 +1,26 @@
+.mainPageFooter {
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+}
+
+.mainPageFooter__leftSide {
+	display: flex;
+	width: 350px;
+	margin: 80px 60px;
+}
+
+.mainPageFooter__rightSide {
+	position: absolute;
+	right: 60px;
+}
+
+.mainPageFooter__instagramLink {
+	margin-left: 32px;
+}
+
+.mainPageFooter__bookingText {
+	letter-spacing: -1px;
+}

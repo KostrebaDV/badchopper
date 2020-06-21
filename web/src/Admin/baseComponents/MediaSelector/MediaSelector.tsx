@@ -56,6 +56,8 @@ const MediaSelector = (
 
     const showButton = singleSelect && selectedMediaId.length !== 0;
 
+    const showDeleteButton = !previewMode && selectedMediaId
+
     return mediaModalData.mediaData.length !== 0 && (
                 <>
                     {
@@ -89,7 +91,7 @@ const MediaSelector = (
                                 <MediaSelectorItem
                                     key={getUniqueKey()}
                                     item={currentItem}
-                                    showDeleteButton={!previewMode}
+                                    showDeleteButton={showDeleteButton}
                                     handleDeleteProcessedImage={handleDeleteProcessedImage}
                                 />
                             )

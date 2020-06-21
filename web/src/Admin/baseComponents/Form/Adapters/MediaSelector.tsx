@@ -11,7 +11,7 @@ type MediaSelectorType = {
     toolTipIcon: string;
     displayInline: boolean;
     hasFocus: boolean;
-    value: string | number;
+    value: string | [];
     previewMode: boolean;
 }
 
@@ -29,7 +29,8 @@ class MediaSelector extends Component<MediaSelectorType, {}> {
 }
 
 MediaSelector.defaultProps = {
-    previewMode: false
+    previewMode: false,
+    value: []
 };
 
 export {MediaSelector};

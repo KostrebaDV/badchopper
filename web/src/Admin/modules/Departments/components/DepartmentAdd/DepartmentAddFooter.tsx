@@ -1,14 +1,14 @@
 import React, {useContext} from 'react';
 import {ContentFooter} from '../../../../adminComponents/ContentFooter/ContentFooter';
 import {Button} from '../../../../baseComponents/Button/Button';
-import {AdminAppFormContext} from '../../../../App/store/AdminAppFormContext/consts';
+import {FormContext} from '../../../../../store/FormContext';
 
 const DepartmentAddFooter = (
     {
         isDepartmentDetail
     }
 ) => {
-    const { forms } = useContext(AdminAppFormContext);
+    const { forms } = useContext(FormContext);
 
     return (
         <ContentFooter>

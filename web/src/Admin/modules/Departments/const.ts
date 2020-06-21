@@ -3,7 +3,8 @@ export const ENDPOINTS = {
     EDIT_DEPARTMENT: '/departments/updateDepartment',
     DELETE_DEPARTMENT: 'departments/deleteDepartment',
     GET_ALL_DEPARTMENTS: '/departments/getAllDepartments',
-    GET_DEPARTMENT_DETAIL: '/departments/getDepartment'
+    GET_DEPARTMENT_DETAIL: '/departments/getDepartment',
+    GET_ADD_DEPARTMENT_DATA: '/departments/getAddDepartmentData'
 };
 
 export const FORMS = {

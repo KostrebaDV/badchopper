@@ -1,0 +1,23 @@
+@import "../../../../../styles/colors/colors.module";
+
+.mainPageContentItem {
+	flex-direction: column;
+	margin: 0 auto;
+	display: flex;
+	position: relative;
+	cursor: pointer;
+}
+
+.mainPageContentItem_image {
+	display: none;
+}
+
+.mainPageContentItem__label {
+	color: $gold;
+	z-index: 1;
+}
+
+.mainPageContentItem__address {
+	margin-top: -12px;
+	z-index: 1;
+}

@@ -1,6 +1,7 @@
 type DepartmentDTOType = {
     id?: string;
     name: string;
+    publicId: string;
     description: string;
     address: {
         city: string;
@@ -12,7 +13,9 @@ type DepartmentDTOType = {
         latitude: string;
         longitude: string;
     },
-    imageId: string
+    imageId: string;
+    staff?: [];
+    assistance?: [];
 }
 
 type DepartmentsDTOType = DepartmentDTOType[]

@@ -5,7 +5,6 @@ import {getAllImages} from '../../../Media/api';
 import {ModalContent, ModalFooter, ModalHeader} from '../../../../baseComponents/Modal';
 import {ButtonGroup} from '../../../../baseComponents/ButtonGroup/ButtonGroup';
 import {Button} from '../../../../baseComponents/Button/Button';
-import {AdminAppFormContext} from '../../../../App/store/AdminAppFormContext/consts';
 import {
     addComment,
     updateComment as updateCommentAPI
@@ -13,6 +12,7 @@ import {
 import {getUniqueId} from '../../../../../utils';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 import {CommentsContext} from '../../store';
+import {FormContext} from '../../../../../store/FormContext';
 
 const CommentModalContent = (
     {
@@ -22,7 +22,7 @@ const CommentModalContent = (
 ) => {
     const {isEditMode, selectedItem, isPreviewMode} = modalData;
     const [mediaData,  setMediaData] = useState([]);
-    const {forms} = useContext(AdminAppFormContext);
+    const {forms} = useContext(FormContext);
     const {showNotification} = useContext(AdminAppContext);
     const {setComment, updateComment} = useContext(CommentsContext);
 

@@ -1,0 +1,10 @@
+@mixin transparent {
+	background-color: transparent;
+
+	&:hover {
+		background-color: transparent;;
+	}
+	&:focus {
+		background-color: transparent;;
+	}
+}

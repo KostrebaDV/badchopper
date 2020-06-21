@@ -1,5 +1,4 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {AdminAppFormContext} from '../../../../App/store/AdminAppFormContext/consts';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 import {getUniqueId} from '../../../../../utils';
 import {Button} from '../../../../baseComponents/Button/Button';
@@ -10,6 +9,7 @@ import {addStaff, editStaff} from '../../api';
 import {StaffContext} from '../../store';
 import {AddStaffModalForm} from './AddStaffModalForm';
 import {EditStaffModalForm} from './EditStaffModalForm';
+import {FormContext} from '../../../../../store/FormContext';
 
 const StaffModalModalContent = (
     {
@@ -18,7 +18,7 @@ const StaffModalModalContent = (
     }
 ) => {
     const {isBarberLayout, selectedItem, isEditMode, isPreviewMode} = modalData;
-    const {forms} = useContext(AdminAppFormContext);
+    const {forms} = useContext(FormContext);
     const {setStaff, updateStaff} = useContext(StaffContext);
     const {showNotification} = useContext(AdminAppContext);
     const [mediaData, setMediaData] = useState([]);

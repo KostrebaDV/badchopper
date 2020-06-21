@@ -9,6 +9,7 @@ import {
 } from "../../types/general";
 
 const addDepartmentModel = (departmentDTO: DepartmentDTOType, client) => {
+    console.log(departmentDTO);
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)
@@ -26,7 +27,10 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
         address,
         phone,
         location,
-        imageId
+        imageId,
+        assistance,
+        staff,
+        publicId
     } = updateDepartmentDTO;
 
     return new Promise((resolve, reject) => {
@@ -50,7 +54,10 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
                             latitude: location.latitude,
                             longitude: location.longitude
                         },
-                        imageId
+                        imageId,
+                        assistance,
+                        staff,
+                        publicId
                     }
                 }
             )

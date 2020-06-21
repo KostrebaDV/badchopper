@@ -5,7 +5,7 @@ import {Typography} from '../../../../baseComponents/Typography/Typography';
 import {Icon} from '@iconify/react';
 import deleteCircleOutline from '@iconify/icons-mdi/delete-circle-outline';
 import {getFileName} from '../../../../../utils';
-import { HOST } from '../../../../../contst';
+import { HOST } from '../../../../../const';
 
 
 const MediaListImageItem = (

@@ -4,3 +4,4 @@ export { Textarea } from './Textarea';
 export { Textbox } from './Textbox';
 export { AjaxDropdown } from './AjaxDropdown';
 export { MediaSelector } from './MediaSelector';
+export { CheckboxGroup } from './CheckboxGroup';

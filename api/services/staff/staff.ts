@@ -26,8 +26,18 @@ export const addStaffService = (assistanceDTO: StaffItemDTOType, client) => {
     }
 };
 
-export const getAllStaffService = (client) => {
-    return getAllStaffModel(client)
+export const getAllStaffService = async (client) => {
+    const staff = await getAllStaffModel(client)
+        .then((data: StaffDTOType) => data);
+
+    return Promise.all(staff.map(async (item) => {
+        const image = await getImageService(item.imageId, client).then(image => image);
+
+        return {
+            image: normalizeImage(image),
+            ...item
+        }
+    }));
 };
 
 export const getAllManagerStaffService = async (client) => {

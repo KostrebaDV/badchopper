@@ -38,11 +38,15 @@ const DepartmentsDetailContent = (
 
     const onEditDepartmentSuccess = () => {
         setEditMode(false);
-        getDepartmentDetail();
-        getNavigationList()
-            .then(({ data }) => {
-                setNavigationList(data);
-            });
+        getDepartmentDetail()
+            .then(departmentName => {
+                if (departmentData.name !== departmentName) {
+                    getNavigationList()
+                        .then(({ data }) => {
+                            setNavigationList(data);
+                        });
+                }
+            })
     };
 
     const onDeleteDepartmentSuccess = () => {

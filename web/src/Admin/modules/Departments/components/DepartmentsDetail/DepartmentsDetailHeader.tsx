@@ -2,7 +2,7 @@ import React from 'react';
 import {Typography} from '../../../../baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
 import {isNullOrUndefined} from '../../../../../utils';
-import {HOST} from '../../../../../contst';
+import {HOST} from '../../../../../const';
 
 const DepartmentsDetailHeader = (
     {

@@ -1,0 +1,14 @@
+@import "../../../styles/colors/colors.module";
+
+.checkboxGroup__item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+	border: 1px solid $disabled_field;
+	border-radius: 3px;
+	padding: 8px;
+}
+
+.checkboxGroup__content {
+
+}

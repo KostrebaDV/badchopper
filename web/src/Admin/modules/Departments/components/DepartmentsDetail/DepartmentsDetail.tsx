@@ -17,10 +17,12 @@ const DepartmentsDetail = () => {
 
     const getDepartmentDetail = useCallback(() => {
         setPending(true);
-        getDepartmentDetailAPI(id)
+        return getDepartmentDetailAPI(id)
             .then(({ data }) => {
                 setDepartmentData(data);
                 setPending(false);
+
+                return data.name;
             })
             .catch(error => console.log(error))
     }, [id]);

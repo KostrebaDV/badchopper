@@ -1,0 +1,17 @@
+@import "../../../styles/colors/colors.module";
+
+.textbox {
+	padding: .4rem;
+	font-size: .95rem;
+	background-color: transparent;
+	box-sizing: border-box;
+	position: relative;
+	border: none;
+	width: 100%;
+	color: $light;
+	height: 22px;
+}
+
+input.textbox:focus {
+	outline: none !important;
+}

@@ -10,11 +10,27 @@ const Link: FC<LinkType> = (
 	{
 		link,
 		children,
+        underline,
 		hasRoute,
 		className,
 		activeLinkClass
 	}
 ) => {
+    const nativeLinkClassName = ClassNames(
+        {
+            [classes.link__underline]: underline
+        },
+        classes.link,
+        className
+    );
+
+    const routeLinkClassName = ClassNames(
+        {
+            [classes.link__underline]: underline
+        },
+        className
+    );
+
 	const getRouteLink = () => {
 		return activeLinkClass
 			? (
@@ -29,29 +45,25 @@ const Link: FC<LinkType> = (
 			: (
 				<RouteLink
 					to={link}
-					className={className}
+					className={routeLinkClassName}
 				>
 					{children}
 				</RouteLink>
 			);
 	};
 
-	const linkClassName = ClassNames(
-		classes.link,
-		className
-	);
-
 	const getLink = () => {
 		return hasRoute
 			? getRouteLink()
-			: <a className={linkClassName} href={link}>{children}</a>;
+			: <a className={nativeLinkClassName} href={link}>{children}</a>;
 	};
 
 	return <>{getLink()}</>;
 };
 
 Link.defaultProps = {
-	hasRoute: true
+	hasRoute: true,
+    underline: false
 };
 
 

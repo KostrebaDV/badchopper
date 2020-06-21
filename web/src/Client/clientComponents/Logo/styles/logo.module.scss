@@ -1,0 +1,15 @@
+.logo {
+	display: flex;
+}
+
+.logo__column {
+	flex-direction: column;
+}
+
+.logo__text {
+	margin-left: 12px;
+
+	p {
+		margin: 0;
+	}
+}

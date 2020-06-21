@@ -1,9 +1,10 @@
 import React from 'react';
-import {HOST} from '../../../contst';
+import {HOST} from '../../../const';
 import { Icon } from '@iconify/react';
 import fileImageOutline from '@iconify/icons-mdi/file-image-outline';
 import classes from './styles/index.module.scss';
 import {isNull} from '../../../utils';
+import ClassNames from 'classnames';
 
 const Image = (
     {
@@ -12,15 +13,21 @@ const Image = (
         width,
         height,
         padding,
-        boxShadow
+        boxShadow,
+        className
     }
 ) => {
+    const componentClassName = ClassNames(
+        classes.image,
+        className
+    )
+
     return (
         <>
             {
                 !isNull(src) && (
                     <img
-                        className={classes.image}
+                        className={componentClassName}
                         src={`${HOST}${src}`}
                         alt={alt}
                         style={{
@@ -59,7 +66,8 @@ Image.defaultProps = {
     width: 200,
     height: 200,
     padding: 0,
-    boxShadow: ''
+    boxShadow: '',
+    className: ''
 };
 
 export {Image};

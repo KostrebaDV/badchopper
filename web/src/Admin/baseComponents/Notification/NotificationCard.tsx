@@ -69,7 +69,7 @@ const NotificationCard = (
 };
 
 NotificationCard.defaultProps = {
-    duration: 3000,
+    duration: 2000,
     type: 'success'
 };
 

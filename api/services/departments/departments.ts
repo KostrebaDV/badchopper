@@ -16,11 +16,20 @@ import {
     deleteDocumentResponseStatusType,
     updateDocumentResponseStatusType,
 } from "../../types/general";
-import {getImageService} from '../media/media';
+import {getImageService, getAllImagesService} from '../media/media';
+import {getAllStaffService} from '../staff/staff';
+import {getAllAssistanceService} from '../assistance/assistance';
+import {getPublicDepartmentId} from '../../utils/departments/getPublicDepartmentId';
 
 const addDepartmentService = (departmentDTO: DepartmentDTOType, client) => {
     if (departmentDTO.name.length !== 0) {
-        return addDepartmentModel(departmentDTO, client)
+        return addDepartmentModel(
+            {
+                ...departmentDTO,
+                publicId: getPublicDepartmentId(departmentDTO.name)
+            },
+            client
+        )
     }
 };
 
@@ -40,7 +49,12 @@ const getAllDepartmentsService = async (client) => {
 
 const updateDepartmentService = (updateDepartmentDTO, client) => {
     if (updateDepartmentDTO.id.length !== 0) {
-        return updateDepartmentModel(updateDepartmentDTO, client)
+        return updateDepartmentModel(
+            {
+                ...updateDepartmentDTO,
+                publicId: getPublicDepartmentId(updateDepartmentDTO.name)
+            },
+                client)
             .then((status: updateDocumentResponseStatusType) => {
                 if (status.ok === 1) {
                     return 'Department was updated successfully'
@@ -79,6 +93,19 @@ const getDepartmentService = (getDepartmentDTO: documentIdType, client) => {
     }
 };
 
+const getAddDepartmentDataService = async (client) => {
+    const media = await getAllImagesService(client)
+    const staff = await getAllStaffService(client)
+    const assistance = await getAllAssistanceService(client)
+
+    return {
+        media,
+        staff,
+        assistance
+    }
+};
+
+
 const deleteDepartmentService = (deleteDepartmentDTO: documentIdType, client) => {
     if (deleteDepartmentDTO.id.length !== 0) {
         return deleteDepartmentModel(deleteDepartmentDTO, client)
@@ -102,5 +129,6 @@ export {
     getDepartmentService,
     updateDepartmentService,
     deleteDepartmentService,
-    getAllDepartmentsService
+    getAllDepartmentsService,
+    getAddDepartmentDataService
 }

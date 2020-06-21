@@ -1,12 +1,12 @@
-import React, {useContext, useState, useRef, FC, useEffect} from 'react';
+import React, {useContext, useState, FC, useEffect, useRef} from 'react';
 import {ContentLayout} from '../../../../adminComponents/ContentLayout/ContentLayout';
 import {DepartmentAddForm} from './DepartmentAddForm';
 import {addDepartmentHook, editDepartmentHook} from './api';
 import {NavigationContext} from '../../../../adminComponents/Navigation/store';
 import {getNavigationList} from '../../../../adminComponents/Navigation/api';
-import {isNull, isNullOrUndefined} from '../../../../../utils';
 import {DepartmentAddContentType} from '../../types';
 import {DepartmentEditForm} from './DepartmentEditForm';
+import {getAddDepartmentData} from '../../api';
 
 const DepartmentAddContent: FC<DepartmentAddContentType> = (
     {
@@ -18,59 +18,50 @@ const DepartmentAddContent: FC<DepartmentAddContentType> = (
     }
 ) => {
     const {setNavigationList} = useContext(NavigationContext);
-    const mediaIdRef = useRef(null);
-    const [selectedMediaId, setSelectedMediaId] = useState(null);
-    const [hasSelectedMedia, setHasSelectedMedia] = useState(true);
+    const [addData, setAddData] = useState({
+        mediaData: [],
+        staff: [],
+        assistance: []
+    });
+    const [pending, setPending] = useState(false)
+    const isAddDataFetched = useRef(false);
 
     useEffect(() => {
-        if (!isNullOrUndefined(initialValues)) {
-            handleSelectMedia([initialValues?.imageId])
-        }
-    }, [initialValues]);
+        if (typeof getAddDepartmentData === 'undefined' || isAddDataFetched.current) return;
+
+        setPending(true)
+
+        getAddDepartmentData()
+            .then(({data}) => {
+                setAddData({
+                    mediaData: data.media,
+                    staff: data.staff,
+                    assistance: data.assistance,
+                })
+
+                isAddDataFetched.current = true;
+                setPending(false)
+            })
+    }, []);
 
     const onAddDepartmentSuccess = () => {
         getNavigationList()
             .then(({ data }) => {
                 setNavigationList(data);
-                handleDeleteProcessedImage();
             });
     };
 
-    const handleSelectMedia = (id) => {
-        mediaIdRef.current = id[0];
-        setSelectedMediaId(id[0]);
-        setHasSelectedMedia(true);
-    };
-
-    const handleDeleteProcessedImage = () => {
-        mediaIdRef.current = null;
-        setSelectedMediaId(null);
-        setHasSelectedMedia(true);
-    };
 
     const handleAddDepartment = (values, resetFormValues) => {
-        if (isNull(mediaIdRef.current)) {
-            setHasSelectedMedia(false);
-
-            return;
-        }
-
-        addDepartmentHook({...values, imageId: mediaIdRef.current }, onAddDepartmentSuccess);
+        addDepartmentHook(values, onAddDepartmentSuccess);
         resetFormValues();
     };
 
     const handleEditDepartment = (values) => {
-        if (isNull(mediaIdRef.current)) {
-            setHasSelectedMedia(false);
-
-            return;
-        }
-
         editDepartmentHook(
             {
                 ...values,
-                id: departmentId,
-                imageId: mediaIdRef.current
+                id: departmentId
             },
             onEditDepartmentSuccess
         );
@@ -79,27 +70,25 @@ const DepartmentAddContent: FC<DepartmentAddContentType> = (
     return (
         <ContentLayout hasMargin={!isDepartmentDetail}>
             {
-                !isDepartmentDetail && (
+                !isDepartmentDetail && !pending && (
                     <DepartmentAddForm
-                        selectedMediaId={selectedMediaId}
-                        hasSelectedMedia={hasSelectedMedia}
-                        handleSelectMedia={handleSelectMedia}
+                        staffData={addData.staff}
+                        assistanceData={addData.assistance}
                         handleAddDepartment={handleAddDepartment}
-                        handleDeleteProcessedImage={handleDeleteProcessedImage}
+                        mediaModalData={{mediaData: addData.mediaData, singleSelect: true, rightButtonLabel: '!Выбрать'}}
                     />
                 )
             }
             {
-                isDepartmentDetail && (
+                isDepartmentDetail && !pending && (
                     <DepartmentEditForm
                         editMode={editMode}
+                        staffData={addData.staff}
+                        assistanceData={addData.assistance}
                         initialValues={initialValues}
-                        selectedMediaId={selectedMediaId}
-                        hasSelectedMedia={hasSelectedMedia}
-                        handleSelectMedia={handleSelectMedia}
                         isDepartmentDetail={isDepartmentDetail}
                         handleEditDepartment={handleEditDepartment}
-                        handleDeleteProcessedImage={handleDeleteProcessedImage}
+                        mediaModalData={{mediaData: addData.mediaData, singleSelect: true, rightButtonLabel: '!Выбрать'}}
                     />
                 )
             }

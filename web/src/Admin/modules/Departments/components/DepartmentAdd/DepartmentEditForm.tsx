@@ -5,17 +5,20 @@ import {GridLayout} from '../../../../baseComponents/GridLayout/GridLayout';
 import {GridLayoutRow} from '../../../../baseComponents/GridLayout';
 import {DepartmentAddFormGeneral} from './DepartmentAddFormGeneral';
 import {DepartmentAddFormMedia} from './DepartmentAddFormMedia';
+import Tabs, {Tab} from '../../../../baseComponents/Tabs';
+import {TABS} from './const';
+import {DepartmentAddFormStaff} from './DepartmentAddFormStaff';
+import {DepartmentAddFormAssistance} from './DepartmentAddFormAssistance';
 
 const DepartmentEditForm = (
     {
-        selectedMediaId,
-        handleSelectMedia,
-        handleEditDepartment,
-        handleDeleteProcessedImage,
-        hasSelectedMedia,
-        initialValues,
         editMode,
-        isDepartmentDetail
+        staffData,
+        initialValues,
+        mediaModalData,
+        assistanceData,
+        isDepartmentDetail,
+        handleEditDepartment
     }
 ) => {
     return (
@@ -24,20 +27,56 @@ const DepartmentEditForm = (
             onSubmit={handleEditDepartment}
             name={FORMS.EDIT_DEPARTMENT_FORM}
         >
-            <GridLayout>
-                <GridLayoutRow grid="6-6">
-                    <DepartmentAddFormGeneral
-                        editMode={editMode}
-                    />
-                    <DepartmentAddFormMedia
-                        showDeleteButton={isDepartmentDetail && editMode}
-                        hasSelectedMedia={hasSelectedMedia}
-                        selectedMediaId={selectedMediaId}
-                        handleDeleteProcessedImage={handleDeleteProcessedImage}
-                        handleSelectMedia={handleSelectMedia}
-                    />
-                </GridLayoutRow>
-            </GridLayout>
+            <Tabs
+                tabs={TABS}
+                activeTabName={TABS[0].tabName}
+                render={({activeTabName}) => {
+                    return (
+                        <div>
+                            <Tab
+                                useUnmount={false}
+                                tabName={TABS[0].tabName}
+                                activeTabName={activeTabName}
+                            >
+                                <GridLayout>
+                                    <GridLayoutRow grid="6-6">
+                                        <DepartmentAddFormGeneral
+                                            editMode={editMode}
+                                        />
+                                        <DepartmentAddFormMedia
+                                            editMode={editMode}
+                                            mediaId={[initialValues.imageId]}
+                                            isDepartmentDetail={isDepartmentDetail}
+                                            mediaModalData={mediaModalData}
+                                        />
+                                    </GridLayoutRow>
+                                </GridLayout>
+                            </Tab>
+                            <Tab
+                                useUnmount={false}
+                                tabName={TABS[1].tabName}
+                                activeTabName={activeTabName}
+                            >
+                                <DepartmentAddFormStaff
+                                    editMode={editMode}
+                                    staffData={staffData}
+                                />
+                            </Tab>
+                            <Tab
+                                useUnmount={false}
+                                tabName={TABS[2].tabName}
+                                activeTabName={activeTabName}
+                            >
+                                <DepartmentAddFormAssistance
+                                    editMode={editMode}
+                                    assistanceData={assistanceData}
+                                />
+                            </Tab>
+                        </div>
+                    )
+                }}
+            >
+            </Tabs>
         </Form>
     );
 };

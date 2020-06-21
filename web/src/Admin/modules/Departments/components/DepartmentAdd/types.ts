@@ -4,9 +4,8 @@ export type DepartmentAddFormGeneralType = {
 }
 
 export type DepartmentAddFormMediaType = {
-    selectedMediaId: string;
-    handleSelectMedia: boolean;
-    handleDeleteProcessedImage: () => void;
-    hasSelectedMedia: boolean;
-    showDeleteButton?: boolean;
+    mediaId?: string[];
+    mediaModalData: [];
+    isDepartmentDetail?: boolean;
+    editMode?: boolean;
 }

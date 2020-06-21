@@ -1,0 +1,14 @@
+@import "../../../styles/colors/colors.module";
+
+canvas {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.mainPage {
+	background-color: $metro_bg_color;
+	height: 100vh;
+}

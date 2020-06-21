@@ -5,14 +5,17 @@ import {GridLayout} from '../../../../baseComponents/GridLayout/GridLayout';
 import {GridLayoutRow} from '../../../../baseComponents/GridLayout';
 import {DepartmentAddFormGeneral} from './DepartmentAddFormGeneral';
 import {DepartmentAddFormMedia} from './DepartmentAddFormMedia';
+import Tabs, {Tab} from '../../../../baseComponents/Tabs';
+import {TABS} from './const';
+import {DepartmentAddFormStaff} from './DepartmentAddFormStaff';
+import {DepartmentAddFormAssistance} from './DepartmentAddFormAssistance';
 
 const DepartmentAddForm = (
     {
-        selectedMediaId,
-        handleSelectMedia,
         handleAddDepartment,
-        handleDeleteProcessedImage,
-        hasSelectedMedia,
+        mediaModalData,
+        staffData,
+        assistanceData,
     }
 ) => {
     return (
@@ -20,17 +23,50 @@ const DepartmentAddForm = (
             onSubmit={handleAddDepartment}
             name={FORMS.ADD_DEPARTMENT_FORM}
         >
-            <GridLayout>
-                <GridLayoutRow grid="6-6">
-                    <DepartmentAddFormGeneral/>
-                    <DepartmentAddFormMedia
-                        hasSelectedMedia={hasSelectedMedia}
-                        selectedMediaId={selectedMediaId}
-                        handleDeleteProcessedImage={handleDeleteProcessedImage}
-                        handleSelectMedia={handleSelectMedia}
-                    />
-                </GridLayoutRow>
-            </GridLayout>
+            <Tabs
+                tabs={TABS}
+                activeTabName={TABS[0].tabName}
+                render={({activeTabName}) => {
+                    return (
+                        <div>
+                            <Tab
+                                useUnmount={false}
+                                tabName={TABS[0].tabName}
+                                activeTabName={activeTabName}
+                            >
+                                <GridLayout>
+                                    <GridLayoutRow grid="6-6">
+                                        <DepartmentAddFormGeneral/>
+                                        <DepartmentAddFormMedia
+                                            editMode
+                                            mediaModalData={mediaModalData}
+                                        />
+                                    </GridLayoutRow>
+                                </GridLayout>
+                            </Tab>
+                            <Tab
+                                useUnmount={false}
+                                tabName={TABS[1].tabName}
+                                activeTabName={activeTabName}
+                            >
+                                <DepartmentAddFormStaff
+                                    staffData={staffData}
+                                />
+                            </Tab>
+                            <Tab
+                                useUnmount={false}
+                                tabName={TABS[2].tabName}
+                                activeTabName={activeTabName}
+                            >
+                                <DepartmentAddFormAssistance
+                                    assistanceData={assistanceData}
+                                />
+                            </Tab>
+                        </div>
+                    )
+                }}
+            >
+            </Tabs>
         </Form>
     );
 };

@@ -1,0 +1,38 @@
+@import "../../../../../styles/colors/colors.module";
+@import "../../../../../styles/mixins/_transition.module";
+
+.navigationMenuButtonIcon__stripWrapper {
+	position: absolute;
+	right: 60px;
+	top: 30px;
+	cursor: pointer;
+	padding: 20px 0;
+}
+
+.navigationMenuButtonIcon__topStrip {
+	width: 50px;
+	height: 2px;
+	background-color: $light;
+	margin-bottom: 10px;
+
+	@include transition(transform .2s, background-color .2s)
+}
+
+.navigationMenuButtonIcon__topStrip_open {
+	transform: rotate(45deg);
+	margin-bottom: -2px;
+	background-color: $dark !important;
+}
+
+.navigationMenuButtonIcon__downStrip {
+	width: 50px;
+	height: 2px;
+	background-color: $light;
+
+	@include transition(transform .2s, background-color .2s)
+}
+
+.navigationMenuButtonIcon__downStrip_open {
+	transform: rotate(-45deg);
+	background-color: $dark !important;
+}

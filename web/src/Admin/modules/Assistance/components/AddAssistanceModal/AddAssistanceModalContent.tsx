@@ -7,17 +7,17 @@ import {FORMS} from '../../const';
 import Form, {Field} from '../../../../baseComponents/Form';
 import FormLayout, {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseComponents/FormLayout';
 import {Textbox, Textarea} from '../../../../baseComponents/Form/Adapters';
-import {AdminAppFormContext} from '../../../../App/store/AdminAppFormContext/consts';
 import {AssistanceContext} from '../../store';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 import {getUniqueId} from '../../../../../utils';
+import {FormContext} from '../../../../../store/FormContext';
 
 const AddAssistanceModalContent = (
     {
         handleClose
     }
 ) => {
-    const {forms} = useContext(AdminAppFormContext);
+    const {forms} = useContext(FormContext);
     const {setAssistance} = useContext(AssistanceContext);
     const {showNotification} = useContext(AdminAppContext);
 

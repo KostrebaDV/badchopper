@@ -1,0 +1,24 @@
+@import "../../../../../styles/mixins/_transition.module";
+
+.navigationMenuListItem {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+	@include transition (margin-left .3s);
+}
+
+.navigationMenuListItem:hover {
+	margin-left: 55px;
+}
+
+.navigationMenuListItem__label {
+	font-size: 54px;
+	letter-spacing: -1px;
+}
+
+.navigationMenuListItem__index {
+	margin-right: 32px;
+	font-size: 14px;
+	opacity: .4;
+}

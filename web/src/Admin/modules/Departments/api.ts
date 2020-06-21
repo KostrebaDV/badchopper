@@ -21,3 +21,6 @@ export const getDepartmentDetail = (id) => {
     return GET(`${ENDPOINTS.GET_DEPARTMENT_DETAIL}/${id}`)
 };
 
+export const getAddDepartmentData = () => {
+    return GET(ENDPOINTS.GET_ADD_DEPARTMENT_DATA)
+};

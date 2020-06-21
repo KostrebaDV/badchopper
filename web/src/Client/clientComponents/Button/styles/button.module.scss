@@ -1,0 +1,9 @@
+@import "../../../styles/colors/colors.module";
+
+.button {
+	padding: 12px 32px;
+	border: 1px solid $gold;
+	border-radius: 2px;
+	cursor: pointer;
+	display: unset;
+}

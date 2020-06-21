@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './styles/index.module.scss';
 import {Checkbox} from '../Checkbox/Checkbox';
-import { HOST } from '../../../contst';
+import { HOST } from '../../../const';
 
 const MediaSelectModalMediaItem = (
     {

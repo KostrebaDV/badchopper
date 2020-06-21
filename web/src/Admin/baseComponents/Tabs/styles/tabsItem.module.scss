@@ -1,0 +1,16 @@
+@import "../../../styles/colors/colors.module";
+
+.tabsItem {
+	margin-right: 8px;
+	padding: 8px 8px 4px 8px;
+	border-radius: 2px;
+}
+
+.tabsItem:hover {
+	cursor: pointer;
+	background-color: $disabled_field;
+}
+
+.tabsItem__active {
+	border-bottom: 2px solid $primary;
+}

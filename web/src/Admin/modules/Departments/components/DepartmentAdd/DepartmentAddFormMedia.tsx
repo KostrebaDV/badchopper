@@ -1,33 +1,19 @@
-import React, {FC, useEffect, useMemo, useState} from 'react';
+import React, {FC} from 'react';
 import {PaddingBox} from '../../../../baseComponents/PaddingBox/PaddingBox';
 import {Typography} from '../../../../baseComponents/Typography/Typography';
-import {getAllImages} from '../../../Media/api';
-import {MediaImagesType} from '../../../Media/store/types';
-import {DepartmentAddMedia} from './DepartmentAddMedia';
 import {DepartmentAddFormMediaType} from './types';
+import {Field} from '../../../../baseComponents/Form';
+import {MediaSelector} from '../../../../baseComponents/Form/Adapters';
+import {FormLayoutItem} from '../../../../baseComponents/FormLayout';
 
 const DepartmentAddFormMedia: FC<DepartmentAddFormMediaType> = (
     {
-        selectedMediaId,
-        handleSelectMedia,
-        handleDeleteProcessedImage,
-        hasSelectedMedia,
-        showDeleteButton
+        mediaModalData,
+        isDepartmentDetail,
+        mediaId,
+        editMode
     }
 ) => {
-    const [mediaData, setMediaData] = useState<MediaImagesType>([]);
-
-    useEffect(() => {
-        if (typeof getAllImages === 'undefined') return;
-
-        getAllImages()
-            .then(({data}) => setMediaData(data))
-    }, []);
-
-    const selectedMedia = useMemo(() => {
-        return mediaData.find(item => item._id === selectedMediaId)
-    }, [selectedMediaId, mediaData]);
-
     return (
        <>
            <PaddingBox hrSmall>
@@ -36,18 +22,30 @@ const DepartmentAddFormMedia: FC<DepartmentAddFormMediaType> = (
                </Typography>
            </PaddingBox>
            <PaddingBox small>
-               <DepartmentAddMedia
-                   singleSelect
-                   mediaData={mediaData}
-                   showDeleteButton={showDeleteButton}
-                   hasSelectedMedia={hasSelectedMedia}
-                   selectedMedia={[selectedMedia]}
-                   handleSelectMedia={handleSelectMedia}
-                   handleDeleteProcessedImage={handleDeleteProcessedImage}
-               />
+               <FormLayoutItem>
+                   <Field
+                       component={MediaSelector}
+                       mediaModalData={mediaModalData}
+                       name="imageId"
+                       required
+                       previewMode={!editMode}
+                       value={mediaId}
+                       singleSelect
+                       validate={{
+                           required: true
+                       }}
+                   />
+               </FormLayoutItem>
            </PaddingBox>
        </>
     );
 };
+
+DepartmentAddFormMedia.defaultProps = {
+    mediaId: [],
+    mediaModalData: [],
+    isDepartmentDetail: false,
+    editMode: false,
+}
 
 export {DepartmentAddFormMedia};

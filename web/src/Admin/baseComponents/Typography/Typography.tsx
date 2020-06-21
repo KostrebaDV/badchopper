@@ -11,7 +11,9 @@ const Typography: FC<TypographyType> = (
 		children,
         className,
 		displayBlock,
-        light
+        light,
+        lineHeight,
+        upperCase
 	}
 ) => {
 	const componentClassName = ClassNames(
@@ -27,6 +29,7 @@ const Typography: FC<TypographyType> = (
 			[classes.typography_26]: variant === '26',
 			[classes.typography_28]: variant === '28',
 			[classes.typography_32]: variant === '32',
+            [classes.typography_82]: variant === '82',
 			[classes.typography_bold200]: bold === '200',
 			[classes.typography_bold300]: bold === '300',
 			[classes.typography_bold400]: bold === '400',
@@ -34,7 +37,9 @@ const Typography: FC<TypographyType> = (
 			[classes.typography_bold600]: bold === '600',
 			[classes.typography_bold700]: bold === '700',
 			[classes.typography_bold800]: bold === '800',
+			[classes.typography_lineHeight1]: lineHeight === '1',
 			[classes.typography_displayBlock]: displayBlock,
+			[classes.typography_upperCase]: upperCase,
 			[classes.typography_light]: light
 		},
         className
@@ -48,7 +53,9 @@ const Typography: FC<TypographyType> = (
 Typography.defaultProps = {
 	bold: '400',
 	variant: '16',
+    lineHeight: '',
 	displayBlock: false,
+	upperCase: false,
 	light: false,
 };
 

@@ -4,6 +4,10 @@
 	font-size: 2em;
 }
 
+.typography_82 {
+	font-size: 5.125em
+}
+
 .typography_24 {
 	font-size: 1.5em;
 }
@@ -71,10 +75,18 @@
 	font-weight: 800;
 }
 
+.typography_lineHeight1 {
+	line-height: 1;
+}
+
 .typography_displayBlock {
 	display: block;
 }
 
 .typography_light {
 	color: $light;
+}
+
+.typography_upperCase {
+	text-transform: uppercase;
 }

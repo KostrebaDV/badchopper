@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useRef, memo, useCallback } from 'react';
 
 import { ContextForm } from './store/FormContext';
-import { AdminAppFormContext } from '../../App/store/AdminAppFormContext/consts';
+import { FormContext} from '../../../store/FormContext';
 
 import { isNull, actionLoggerWarning, actionLogger } from '../../../utils';
 
@@ -26,7 +26,7 @@ const Form = memo<FormType>((
 	const {
 		addFormToGlobalContext,
 		removeFormFromGlobalContext
-	} = useContext(AdminAppFormContext);
+	} = useContext(FormContext);
 
 	const {
 		fields,

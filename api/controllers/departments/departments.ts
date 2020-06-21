@@ -4,6 +4,7 @@ import {
     getDepartmentService,
     updateDepartmentService,
     deleteDepartmentService,
+    getAddDepartmentDataService,
     getAllDepartmentsService
 } from "../../services/departments/departments";
 import CONSTS from "./consts"
@@ -71,6 +72,20 @@ export default (app: Application, client) => {
 
     departmentsRouter.get(CONSTS.GET_DEPARTMENT, (req: requestDocumetnParamsType, res: Response) => {
         getDepartmentService(req.params, client)
+            .then((status) => {
+                return res
+                    .status(200)
+                    .send(status);
+            })
+            .catch(error => {
+                return res
+                    .status(500)
+                    .send(error.message);
+            });
+    });
+
+    departmentsRouter.get(CONSTS.GET_ADD_DEPARTMENT_DATA, (req: requestDocumetnParamsType, res: Response) => {
+        getAddDepartmentDataService(client)
             .then((status) => {
                 return res
                     .status(200)

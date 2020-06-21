@@ -1,4 +1,4 @@
-import {HOST} from '../contst';
+import {HOST} from '../const';
 
 const axios = require('axios');
 

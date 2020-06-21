@@ -1,7 +1,7 @@
 import {isNullOrUndefined} from '../../../../utils';
 
 export default (departmentData) => {
-    const { address, description, location, name, phone, image } = departmentData;
+    const { address, description, location, name, phone, image, staff, assistance } = departmentData;
 
     if (isNullOrUndefined(image)) {
         return {
@@ -13,7 +13,9 @@ export default (departmentData) => {
             longitude: 'error',
             name: 'error',
             phone: 'error',
-            imageId: 'error'
+            imageId: 'error',
+            staff: [],
+            assistance: [],
         }
     }
 
@@ -26,6 +28,8 @@ export default (departmentData) => {
         longitude: location.longitude,
         name,
         phone,
-        imageId: image._id
+        imageId: image._id,
+        staff,
+        assistance,
     }
 }

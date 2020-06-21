@@ -1,0 +1,76 @@
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_border.module";
+@import "../../../styles/mixins/_transition.module";
+
+.formFieldBox {
+	border-bottom: 1px solid $light;
+	box-shadow: none;
+	position: relative;
+
+	@include transition(border-color .2s, margin .2s)
+}
+
+.formFieldBox_displayInline {
+	display: inline-flex;
+	flex-direction: row-reverse;
+	align-items: center;
+}
+
+.formFieldBox_labelWrapper {
+	margin-bottom: 4px;
+	display: flex;
+}
+
+.formFieldBox_required {
+	margin-left: 2px;
+	color: $danger;
+}
+
+.formFieldBox_tooltip {
+	margin-left: 4px;
+}
+
+//.formFieldBox_tooltipIcon {
+//	font-size: 16px;
+//	border-radius: 50%;
+//	padding: 2px;
+//	color: $info;
+//	background-color: #ffffff;
+//}
+//
+//.formFieldBox_fieldWrapper__hasError {
+//	border-color: $danger;
+//}
+//
+
+.formFieldBox_dynamicHeight {
+	margin-top: -12px;
+}
+
+.formFieldBox_fieldWrapper__hasFocus {
+	border-color: $gold;
+}
+
+.formFieldBox_dynamicHeight__filled {
+	margin-top: 0;
+	border-bottom-color: 1px solid $gold;
+}
+
+.formFieldBox_errorTooltip {
+	position: absolute;
+	right: -12px;
+	top: -12px;
+	z-index: 1;
+}
+
+.formFieldBox_fieldWrapper__displayInline {
+	margin-right: 4px;
+}
+
+//.formFieldBox_errorTooltipIcon {
+//	font-size: 18px;
+//	border-radius: 50%;
+//	padding: 2px;
+//	color: $danger;
+//	background-color: #ffffff;
+//}
