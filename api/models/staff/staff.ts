@@ -4,7 +4,6 @@ import {ObjectID} from 'bson';
 import {documentIdType} from '../../types/general';
 
 export const addStaffModel = (staffDTO: StaffItemDTOType, client) => {
-    console.log(staffDTO);
     return new Promise((resolve, reject) => {
         client
             .collection(CONST.BASE_COLLECTION)
@@ -19,6 +18,23 @@ export const getAllStaffModel = (client) => {
         client
             .collection(CONST.BASE_COLLECTION)
             .find()
+            .toArray()
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+};
+
+export const getStaffByIdModel = (client, ids) => {
+    const obj_ids = ids.map(id => new ObjectID(id));
+
+    return new Promise((resolve, reject) => {
+        client
+            .collection(CONST.BASE_COLLECTION)
+            .find({
+                _id: {
+                        $in: obj_ids
+                    }
+                })
             .toArray()
             .then(res => resolve(res))
             .catch(err => reject(err));

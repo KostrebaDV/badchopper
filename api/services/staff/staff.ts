@@ -6,6 +6,7 @@ import {
     deleteStaffModel,
     getAllManagerStaffModel,
     getAllBarberStaffModel,
+    getStaffByIdModel
 } from '../../models/staff/staff';
 import {deleteDocumentResponseStatusType, documentIdType, updateDocumentResponseStatusType} from '../../types/general';
 import {getImageService} from '../media/media';
@@ -28,6 +29,20 @@ export const addStaffService = (assistanceDTO: StaffItemDTOType, client) => {
 
 export const getAllStaffService = async (client) => {
     const staff = await getAllStaffModel(client)
+        .then((data: StaffDTOType) => data);
+
+    return Promise.all(staff.map(async (item) => {
+        const image = await getImageService(item.imageId, client).then(image => image);
+
+        return {
+            image: normalizeImage(image),
+            ...item
+        }
+    }));
+};
+
+export const getStaffByIdService = async (client, ids) => {
+    const staff = await getStaffByIdModel(client, ids)
         .then((data: StaffDTOType) => data);
 
     return Promise.all(staff.map(async (item) => {

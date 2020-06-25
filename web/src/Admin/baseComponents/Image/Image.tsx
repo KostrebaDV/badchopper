@@ -20,7 +20,7 @@ const Image = (
     const componentClassName = ClassNames(
         classes.image,
         className
-    )
+    );
 
     return (
         <>

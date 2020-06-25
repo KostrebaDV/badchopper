@@ -1,5 +1,5 @@
 export const ENDPOINTS = {
-    GET_ALL_DEPARTMENTS: '/departments/getAllDepartments',
+    GET_ALL_DEPARTMENTS: '/departments/getAllDepartmentsClient',
     GET_DEPARTMENT_DETAIL: '/departments/getDepartment'
 };
 

@@ -48,23 +48,31 @@ export const getGridItemsStyles = gridItems => {
     return gridStyles;
 };
 
-export const getBaseGridStyles = (gapColumn, gridColumn, alignItems) => {
+export const getBaseGridStyles = (
+    {
+        gapColumn,
+        gridColumn,
+        alignItems,
+        gridGap
+    }
+) => {
 	const baseGridModel = getBaseGridModel(gridColumn);
 
     return {
         gridColumnGap: `${gapColumn}em`,
         gridTemplateColumns: baseGridModel,
-		alignItems
+		alignItems,
+        gridGap
     };
 };
 
-export const isValidGrid = (gridItems, gridColumn) => {
-    if (gridItems.length > 0) {
-        return (
-            gridItems.reduce((counter, gridItem) => {
-                return counter + Number(Object.values(gridItem));
-            }, 0) <= gridColumn
-        );
-    }
-    return false;
-};
+// export const isValidGrid = (gridItems, gridColumn) => {
+//     if (gridItems.length > 0) {
+//         return (
+//             gridItems.reduce((counter, gridItem) => {
+//                 return counter + Number(Object.values(gridItem));
+//             }, 0) <= gridColumn
+//         );
+//     }
+//     return false;
+// };

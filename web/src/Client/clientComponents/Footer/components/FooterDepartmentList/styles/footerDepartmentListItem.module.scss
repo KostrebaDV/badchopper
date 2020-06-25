@@ -1,0 +1,20 @@
+@import "../../../../../styles/colors/colors.module";
+
+.footerDepartmentListItem {
+	margin-right: 120px;
+}
+
+.footerDepartmentListItem__label:hover {
+	color: $gold;
+	cursor: pointer;
+}
+
+.footerDepartmentListItem__geoPosition {
+	display: flex;
+	margin-top: 5px;
+}
+
+.footerDepartmentListItem__geoPositionLabel {
+	color: $gold;
+	margin-right: 7px;
+}

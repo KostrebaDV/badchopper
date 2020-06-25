@@ -18,25 +18,22 @@ const NavigationMenuForm = (
             <FormFieldGroup>
                 <Field
                     required
-                    label="!Ваше имя"
+                    placeholder="!Ваше имя *"
                     name="name"
                     component={Textbox}
-                    dynamicHeight
                     validate={{required: true}}
                 />
                 <Field
                     required
-                    label="e-mail"
+                    placeholder="e-mail *"
                     name="email"
                     component={Textbox}
-                    dynamicHeight
                     validate={{required: true}}
                 />
                 <Field
-                    label="!Комментарий"
+                    placeholder="!Комментарий *"
                     name="feedback"
                     component={Textarea}
-                    dynamicHeight
                     required
                     validate={{required: true}}
                 />

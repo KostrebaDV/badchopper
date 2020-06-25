@@ -28,24 +28,24 @@ const CommentModalContent = (
 
     useEffect(() => {
         getAllImages()
-            .then(({data}) => setMediaData(data))
+            .then(({data}) => setMediaData(data));
         // eslint-disable-next-line
     }, []);
 
     const handleAddSComment = (value) => {
         addComment(value)
             .then(({data}) => {
-                handleClose()
-                setComment(data)
+                handleClose();
+                setComment(data);
 
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
                         message: 'Отзыв добавлен'
-                    })
+                    });
                 }
-            })
-    }
+            });
+    };
 
     const handleEditSComment = values => {
         const {image, ...rest} = values;
@@ -59,10 +59,10 @@ const CommentModalContent = (
                     showNotification({
                         id: getUniqueId(),
                         message: `!! Карточка обновлена`
-                    })
+                    });
                 }
-            })
-    }
+            });
+    };
 
     const mediaModalData = {
         modalTitle: "!!Медиа файлы",
@@ -74,7 +74,7 @@ const CommentModalContent = (
     const submitHandler = () => {
         return isEditMode
             ? () => forms.EDIT_COMMENT_FORM.submitForm()
-            : () => forms.ADD_COMMENT_FORM.submitForm()
+            : () => forms.ADD_COMMENT_FORM.submitForm();
     };
 
     const leftButtons = (
@@ -95,7 +95,7 @@ const CommentModalContent = (
 
     const getModalLabel = () => {
         if (isEditMode || isPreviewMode) {
-            return `${selectedItem.name} ${selectedItem.surname}`
+            return `${selectedItem.name} ${selectedItem.surname}`;
         }
 
         return "!!Добавить отзыв";

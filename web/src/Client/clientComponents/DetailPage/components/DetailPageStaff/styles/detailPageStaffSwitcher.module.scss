@@ -1,0 +1,13 @@
+@import "../../../../../styles/colors/colors.module";
+
+.detailPageStaffSwitcher {
+	margin: 0 12%;
+	display: flex;
+}
+
+.detailPageStaffSwitcher__separator {
+	width: 160px;
+	height: 2px;
+	background-color: $light;
+	margin: 26px 32px 0;
+}

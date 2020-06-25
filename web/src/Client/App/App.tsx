@@ -1,15 +1,39 @@
 import React from 'react';
 import {MainPage} from '../clientComponents/MainPage/MainPage';
 import classes from './styles/index.module.scss';
+import {DetailPage} from '../clientComponents/DetailPage/DetailPage';
+import {
+    Route
+} from "react-router-dom";
+import {ROUTES} from './routes';
+import {useGetDepartmentData} from './hooks';
+import {AppContextProvider} from './store';
 
 const App = () => {
+    useGetDepartmentData();
+
     return (
-       <div className={classes.app}>
-            <MainPage/>
-       </div>
+        <div className={classes.app}>
+            <div className={classes.app__content}>
+                <Route exact path={ROUTES.CLIENT_ROOT}>
+                    <MainPage/>
+                </Route>
+                <Route path={ROUTES.DEPARTMENT_DETAIL}>
+                    <DetailPage/>
+                </Route>
+            </div>
+        </div>
     );
 };
 
-export default App;
+const AppWithContext = () => {
+    return (
+        <AppContextProvider>
+            <App/>
+        </AppContextProvider>
+    );
+};
+
+export default AppWithContext;
 
 

@@ -1,20 +1,20 @@
 .mainPageFooter {
 	position: absolute;
 	bottom: 0;
-	width: 100vw;
+	width: calc(100vw - 60px);
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .mainPageFooter__leftSide {
 	display: flex;
 	width: 350px;
-	margin: 80px 60px;
+	margin: 80px 0;
 }
 
 .mainPageFooter__rightSide {
-	position: absolute;
-	right: 60px;
+	margin: 0 60px;
 }
 
 .mainPageFooter__instagramLink {

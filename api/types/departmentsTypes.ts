@@ -16,6 +16,7 @@ type DepartmentDTOType = {
     imageId: string;
     staff?: [];
     assistance?: [];
+    _id?: string
 }
 
 type DepartmentsDTOType = DepartmentDTOType[]

@@ -9,7 +9,6 @@ import {
 } from "../../types/general";
 
 const addDepartmentModel = (departmentDTO: DepartmentDTOType, client) => {
-    console.log(departmentDTO);
     return new Promise((resolve, reject) => {
         client
             .collection(CONSTS.BASE_COLLECTION)

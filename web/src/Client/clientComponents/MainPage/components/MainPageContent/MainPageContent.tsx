@@ -1,18 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import {getAllDepartments} from '../../api';
+import React, {useContext} from 'react';
 import {MainPageContentItem} from './MainPageContentItem';
 import {getUniqueKey} from '../../../../../utils';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
+import {AppContext} from '../../../../App/store';
 
 const MainPageContent = () => {
-    const [departments, setDepartments] = useState([])
-
-    useEffect(() => {
-        getAllDepartments()
-            .then(({data}) => setDepartments(data))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const {departments} = useContext(AppContext);
 
     const componentClassName = ClassNames(
         classes.mainPageContent,
@@ -28,11 +22,11 @@ const MainPageContent = () => {
                             key={getUniqueKey()}
                             item={item}
                         />
-                    )
+                    );
                 })
             }
         </div>
-    )
+    );
 };
 
 export {MainPageContent};

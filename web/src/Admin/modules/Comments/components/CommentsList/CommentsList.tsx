@@ -19,7 +19,7 @@ const CommentsList = () => {
 
     useEffect(() => {
         getAllComments()
-            .then(({data}) => setComments(data))
+            .then(({data}) => setComments(data));
     // eslint-disable-next-line
     }, []);
 
@@ -47,9 +47,9 @@ const CommentsList = () => {
                     showNotification({
                         id: getUniqueId(),
                         message: `!!Отзыв удален`
-                    })
+                    });
                 }
-            })
+            });
     };
 
     const handleOpenItemDeleteModal = (e, id) => {
@@ -117,7 +117,7 @@ const CommentsList = () => {
                                 handleOpenItemDeleteModal={handleOpenItemDeleteModal}
                                 handleOpenItemEditModal={handleOpenItemEditModal}
                             />
-                        )
+                        );
                     })
                 }
                 {

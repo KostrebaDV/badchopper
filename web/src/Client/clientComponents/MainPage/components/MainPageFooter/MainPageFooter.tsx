@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './styles/index.module.scss';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import {Link} from '../../../../../Admin/baseComponents/Link/Link';
-import scissorsSvgUrl from "../../../../../images/scissors.svg"
+import scissorsSvgUrl from "../../../../../static/images/scissors.svg";
 
 const MainPageFooter = () => {
     return (

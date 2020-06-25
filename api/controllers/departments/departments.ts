@@ -5,7 +5,8 @@ import {
     updateDepartmentService,
     deleteDepartmentService,
     getAddDepartmentDataService,
-    getAllDepartmentsService
+    getAllDepartmentsService,
+    getAllDepartmentsClientService
 } from "../../services/departments/departments";
 import CONSTS from "./consts"
 import { requestDocumetnParamsType } from "../../types/general";
@@ -58,6 +59,20 @@ export default (app: Application, client) => {
 
     departmentsRouter.get(CONSTS.GET_ALL_DEPARTMENTS, (req: Request, res: Response) => {
         getAllDepartmentsService(client)
+            .then((status) => {
+                return res
+                    .status(200)
+                    .send(status);
+            })
+            .catch(error => {
+                return res
+                    .status(500)
+                    .send(error.message);
+            });
+    });
+
+    departmentsRouter.get(CONSTS.GET_ALL_DEPARTMENTS_CLIENT, (req: Request, res: Response) => {
+        getAllDepartmentsClientService(client)
             .then((status) => {
                 return res
                     .status(200)

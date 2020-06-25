@@ -4,7 +4,7 @@ import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
 import {Image} from '../../../../../Admin/baseComponents/Image/Image';
 import {Link} from '../../../../../Admin/baseComponents/Link/Link';
-import {ROUTE} from '../../../../const';
+import {ROUTES} from '../../../../App/routes';
 
 const MainPageContentItem = (
     {
@@ -18,7 +18,7 @@ const MainPageContentItem = (
 
     return (
             //@ts-ignore
-            <Link link={`${ROUTE.DEPARTMENT_DETAIL}${item.name}`} className={componentClassName}>
+            <Link link={`${ROUTES.DEPARTMENT_DETAIL}${item.publicId}`} className={componentClassName}>
                 <Image
                     src={item.image.path}
                     alt={item.name}

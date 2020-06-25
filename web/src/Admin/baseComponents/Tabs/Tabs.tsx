@@ -21,10 +21,10 @@ const Tabs = (
         activeTabName: activeTabNameFromProps
     }
 ) => {
-    const {activeTabName, setActiveTab} = useContext(TabsContext)
+    const {activeTabName, setActiveTab} = useContext(TabsContext);
 
     useEffect(() => {
-        setActiveTab(activeTabNameFromProps)
+        setActiveTab(activeTabNameFromProps);
         // eslint-disable-next-line
     }, [])
 
@@ -40,7 +40,7 @@ const Tabs = (
                                 tabName={tab.tabName}
                                 activeTabName={activeTabName}
                             />
-                        )
+                        );
                     })
                 }
             </TabsItemList>

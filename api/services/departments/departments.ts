@@ -17,7 +17,10 @@ import {
     updateDocumentResponseStatusType,
 } from "../../types/general";
 import {getImageService, getAllImagesService} from '../media/media';
-import {getAllStaffService} from '../staff/staff';
+import {
+    getAllStaffService,
+    getStaffByIdService
+} from '../staff/staff';
 import {getAllAssistanceService} from '../assistance/assistance';
 import {getPublicDepartmentId} from '../../utils/departments/getPublicDepartmentId';
 
@@ -43,6 +46,24 @@ const getAllDepartmentsService = async (client) => {
         return {
             image,
             ...department
+        }
+    }));
+};
+
+const getAllDepartmentsClientService = async (client) => {
+    const departments = await getAllDepartmentsModel(client)
+        .then((data: DepartmentsDTOType) => data);
+
+    return Promise.all(departments.map(async (department) => {
+        const {staff, assistance, _id, ...rest} = department;
+
+        const image = await getImageService(department.imageId, client).then(image => image);
+        const personal = await getStaffByIdService(client, department.staff)
+
+        return {
+            image,
+            staff: personal,
+            ...rest
         }
     }));
 };
@@ -105,7 +126,6 @@ const getAddDepartmentDataService = async (client) => {
     }
 };
 
-
 const deleteDepartmentService = (deleteDepartmentDTO: documentIdType, client) => {
     if (deleteDepartmentDTO.id.length !== 0) {
         return deleteDepartmentModel(deleteDepartmentDTO, client)
@@ -130,5 +150,6 @@ export {
     updateDepartmentService,
     deleteDepartmentService,
     getAllDepartmentsService,
-    getAddDepartmentDataService
+    getAddDepartmentDataService,
+    getAllDepartmentsClientService
 }

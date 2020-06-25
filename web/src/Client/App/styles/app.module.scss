@@ -1,6 +1,16 @@
 @import "../../styles/colors/colors.module";
 
 .app {
+	background-color: $metro_bg_color;
+}
+
+.app__content {
 	color: $light;
 	font-weight: normal;
+	max-width: 1440px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0 60px;
+	box-sizing: border-box;
+	overflow-x: hidden;
 }

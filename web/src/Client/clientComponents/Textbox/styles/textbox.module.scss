@@ -1,7 +1,7 @@
 @import "../../../styles/colors/colors.module";
 
 .textbox {
-	padding: .4rem;
+	padding: 16px 0;
 	font-size: .95rem;
 	background-color: transparent;
 	box-sizing: border-box;
@@ -9,7 +9,25 @@
 	border: none;
 	width: 100%;
 	color: $light;
-	height: 22px;
+	height: 55px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	font-style: normal;
+	color: $placeholder;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+	font-style: normal;
+	color: $placeholder;
+}
+:-ms-input-placeholder { /* IE 10+ */
+	font-style: normal;
+	color: $placeholder;
+}
+:-moz-placeholder { /* Firefox 18- */
+	font-style: normal;
+	color: $placeholder;
 }
 
 input.textbox:focus {

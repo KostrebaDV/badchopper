@@ -27,7 +27,6 @@ const Textarea: FC<TextareaType> = (
         }
     );
 
-
 	return (
 		<textarea
 			name={name}

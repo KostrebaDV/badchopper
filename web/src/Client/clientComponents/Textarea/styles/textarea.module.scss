@@ -1,7 +1,8 @@
 @import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_transition.module";
 
 .textarea {
-	padding: .4rem;
+	padding: 16px 0;
 	font-size: .95rem;
 	line-height: 1.5;
 	background-color: transparent;
@@ -9,21 +10,18 @@
 	position: relative;
 	border: none;
 	width: 100%;
-	height: 30px;
+	height: 55px;
 	resize: none;
 	color: $light;
 	overflow: hidden;
 	outline: none !important;
 
-	::placeholder {
-		font-style: italic;
-	}
+	@include transition(height .2s);
 }
 
 .textarea__focus {
-	height: 50px;
+	height: 70px;
 }
-
 
 input.textarea:focus {
 	outline: none !important;

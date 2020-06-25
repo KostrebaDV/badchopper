@@ -7,6 +7,7 @@ type ButtonType = {
     label: string;
     onClick: (data) => void;
     className?: string;
+    fontSize?: string;
     labelUppercase?: boolean;
 }
 
@@ -14,6 +15,7 @@ const Button: FC<ButtonType> = (
     {
         label,
         onClick,
+        fontSize,
         className,
         labelUppercase
     }
@@ -28,7 +30,10 @@ const Button: FC<ButtonType> = (
             onClick={onClick}
             className={componentClassName}
         >
-            <Typography upperCase={labelUppercase}>
+            <Typography
+                variant={fontSize}
+                upperCase={labelUppercase}
+            >
                 {label}
             </Typography>
         </div>

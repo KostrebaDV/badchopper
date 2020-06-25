@@ -3,7 +3,7 @@ import {NavigationContext} from './store';
 import {NavigationUserInfo} from './components/NavigationUserInfo/NavigationUserInfo';
 import {NavigationList} from './components/NavigationList/NavigationList';
 
-import classes from './styles/index.module.scss'
+import classes from './styles/index.module.scss';
 import {getNavigationList} from './api';
 
 const Navigation = () => {
@@ -11,7 +11,7 @@ const Navigation = () => {
 
     useEffect(() => {
         getNavigationList()
-            .then(({ data }) => setNavigationList(data))
+            .then(({ data }) => setNavigationList(data));
         // eslint-disable-next-line
     }, []);
 

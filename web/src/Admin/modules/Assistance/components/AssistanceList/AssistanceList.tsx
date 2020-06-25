@@ -18,7 +18,7 @@ const AssistanceList = () => {
 
     useEffect(() => {
         getAllAssistance()
-            .then(({data}) => setAssistance(data))
+            .then(({data}) => setAssistance(data));
         // eslint-disable-next-line
     }, []);
 
@@ -31,9 +31,9 @@ const AssistanceList = () => {
                     showNotification({
                         id: getUniqueId(),
                         message: `!! Услуга "${itemName}" удалена`
-                    })
+                    });
                 }
-            })
+            });
     };
 
     const handleItemClick = (id) => {
@@ -106,7 +106,7 @@ const AssistanceList = () => {
                                 handleOpenItemDeleteModal={handleOpenItemDeleteModal}
                                 handleOpenItemEditModal={handleOpenItemEditModal}
                             />
-                        )
+                        );
                     })
                 }
                 {

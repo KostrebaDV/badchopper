@@ -1,0 +1,19 @@
+@import "../../../styles/colors/colors.module";
+
+.header {
+	margin: 0 12% 24px;
+	display: flex;
+}
+
+.header__label {
+	color: $gold;
+	margin-right: 13%;
+	letter-spacing: -0.03em;
+}
+
+
+.header__description {
+	max-width: 540px;
+	letter-spacing: -0.005em;
+	margin-bottom: 24px;
+}
