@@ -1,10 +1,9 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 import {getUniqueId} from '../../../../../utils';
 import {Button} from '../../../../baseComponents/Button/Button';
 import {ModalContent, ModalFooter, ModalHeader} from '../../../../baseComponents/Modal';
 import {ButtonGroup} from '../../../../baseComponents/ButtonGroup/ButtonGroup';
-import {getAllImages} from '../../../Media/api';
 import {addStaff, editStaff} from '../../api';
 import {StaffContext} from '../../store';
 import {AddStaffModalForm} from './AddStaffModalForm';
@@ -21,13 +20,6 @@ const StaffModalModalContent = (
     const {forms} = useContext(FormContext);
     const {setStaff, updateStaff} = useContext(StaffContext);
     const {showNotification} = useContext(AdminAppContext);
-    const [mediaData, setMediaData] = useState([]);
-
-    useEffect(() => {
-        getAllImages()
-            .then(({data}) => setMediaData(data))
-        // eslint-disable-next-line
-    }, []);
 
     const handleAddStaff = (values) => {
         addStaff(values)
@@ -43,9 +35,9 @@ const StaffModalModalContent = (
                     showNotification({
                         id: getUniqueId(),
                         message: notificationMessage
-                    })
+                    });
                 }
-            })
+            });
     };
 
     const handleEditStaff = (values) => {
@@ -60,14 +52,14 @@ const StaffModalModalContent = (
                     showNotification({
                         id: getUniqueId(),
                         message: `!! Карточка обновлена`
-                    })
+                    });
                 }
-            })
+            });
     };
 
     const getModalLabel = () => {
         if (isEditMode || isPreviewMode) {
-            return `${selectedItem.name} ${selectedItem.surname}`
+            return `${selectedItem.name} ${selectedItem.surname}`;
         }
 
         return isBarberLayout ? "!!Добавить мастера" : "!!Добавить менеджера";
@@ -76,7 +68,7 @@ const StaffModalModalContent = (
     const submitHandler = () => {
         return isEditMode
             ? () => forms.EDIT_STAFF_FORM.submitForm()
-            : () => forms.ADD_STAFF_FORM.submitForm()
+            : () => forms.ADD_STAFF_FORM.submitForm();
     };
 
     const leftButtons = (
@@ -100,7 +92,6 @@ const StaffModalModalContent = (
     const mediaModalData = {
         modalTitle: "!!Медиа файлы",
         rightButtonLabel: "!!Выбрать",
-        mediaData,
         singleSelect: true
     };
 

@@ -51,7 +51,7 @@ const FormLayoutItemGroup = (
                     )
             }
         </div>
-    )
+    );
 };
 
 FormLayoutItemGroup.defaultProps = {

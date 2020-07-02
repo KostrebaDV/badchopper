@@ -6,7 +6,7 @@ import {updateAssistance as updateAssistanceAPI} from '../../api';
 import {FORMS} from '../../const';
 import Form, {Field} from '../../../../baseComponents/Form';
 import FormLayout, {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseComponents/FormLayout';
-import {Textbox, Textarea} from '../../../../baseComponents/Form/Adapters';
+import {Textbox, Textarea, MediaSelector} from '../../../../baseComponents/Form/Adapters';
 import {AssistanceContext} from '../../store';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 import {getUniqueId} from '../../../../../utils';
@@ -23,11 +23,11 @@ const EditAssistanceModalContent = (
     const {showNotification} = useContext(AdminAppContext);
 
     const handleUpdateAssistance = (values) => {
-        const { _id, ...rest } = values;
+        const {_id, ...rest} = values;
 
         const requestValues = {
             id: modalData._id,
-          ...rest
+            ...rest
         };
 
         updateAssistanceAPI(requestValues)
@@ -39,9 +39,9 @@ const EditAssistanceModalContent = (
                     showNotification({
                         id: getUniqueId(),
                         message: `!! Услуга "${data.name}" обновлена`
-                    })
+                    });
                 }
-            })
+            });
     };
 
     const leftButtons = (
@@ -74,18 +74,37 @@ const EditAssistanceModalContent = (
                 >
                     <FormLayout>
                         <FormLayoutItemGroup>
-                            <FormLayoutItem>
-                                <Field
-                                    component={Textbox}
-                                    name="name"
-                                    label="!!!название услуги"
-                                    required
-                                    validate={{
-                                        required: true
-                                    }}
-                                    placeholder="название услуги"
-                                />
-                            </FormLayoutItem>
+                            <FormLayoutItemGroup
+                                noPadding
+                                grid="6-_1-6"
+                                gridColumn={13}
+                                inline
+                            >
+                                <FormLayoutItem>
+                                    <Field
+                                        component={Textbox}
+                                        name="name"
+                                        label="!!!название услуги"
+                                        required
+                                        validate={{
+                                            required: true
+                                        }}
+                                        placeholder="название услуги"
+                                    />
+                                </FormLayoutItem>
+                                <FormLayoutItem>
+                                    <Field
+                                        component={MediaSelector}
+                                        name="imageId"
+                                        required
+                                        value={[modalData.imageId]}
+                                        singleSelect
+                                        validate={{
+                                            required: true
+                                        }}
+                                    />
+                                </FormLayoutItem>
+                            </FormLayoutItemGroup>
                             <FormLayoutItem>
                                 <Field
                                     component={Textarea}
@@ -111,7 +130,8 @@ const EditAssistanceModalContent = (
                                         label="!!!Стоимость"
                                         required
                                         validate={{
-                                            required: true
+                                            required: true,
+                                            number: true
                                         }}
                                         placeholder="00.00"
                                     />

@@ -7,6 +7,7 @@ import {
 
 import {
     AssistanceDTOType,
+    AssistancesDTOType
 } from "../../types/assistanceTypes";
 
 import {
@@ -16,6 +17,8 @@ import {
 } from "../../types/general";
 
 import { normalizeAssistanceData } from "../../utils/assistance/normalizeAssistanceData"
+import {getImageService} from '../media/media';
+import {getStaffByIdService} from '../staff/staff';
 
 const addAssistanceService = (assistanceDTO, client) => {
     if (assistanceDTO.name.length !== 0) {
@@ -25,8 +28,19 @@ const addAssistanceService = (assistanceDTO, client) => {
     }
 };
 
-const getAllAssistanceService = (client) => {
-    return getAllAssistanceModel(client)
+const getAllAssistanceService = async (client) => {
+    const assistance = await getAllAssistanceModel(client)
+        .then((data: AssistancesDTOType) => data);
+
+    return Promise.all(assistance.map(async (assistance) => {
+
+        const image = await getImageService(assistance.imageId, client).then(image => image);
+
+        return {
+            image,
+            ...assistance
+        }
+    }));
 };
 
 const updateAssistanceService = (updateAssistanceDTO, client) => {

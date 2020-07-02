@@ -1,7 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {CommentModalAddForm} from './CommentModalAddForm';
 import {CommentModalEditForm} from './CommentModalEditForm';
-import {getAllImages} from '../../../Media/api';
 import {ModalContent, ModalFooter, ModalHeader} from '../../../../baseComponents/Modal';
 import {ButtonGroup} from '../../../../baseComponents/ButtonGroup/ButtonGroup';
 import {Button} from '../../../../baseComponents/Button/Button';
@@ -21,16 +20,9 @@ const CommentModalContent = (
     }
 ) => {
     const {isEditMode, selectedItem, isPreviewMode} = modalData;
-    const [mediaData,  setMediaData] = useState([]);
     const {forms} = useContext(FormContext);
     const {showNotification} = useContext(AdminAppContext);
     const {setComment, updateComment} = useContext(CommentsContext);
-
-    useEffect(() => {
-        getAllImages()
-            .then(({data}) => setMediaData(data));
-        // eslint-disable-next-line
-    }, []);
 
     const handleAddSComment = (value) => {
         addComment(value)
@@ -67,7 +59,6 @@ const CommentModalContent = (
     const mediaModalData = {
         modalTitle: "!!Медиа файлы",
         rightButtonLabel: "!!Выбрать",
-        mediaData,
         singleSelect: true
     };
 

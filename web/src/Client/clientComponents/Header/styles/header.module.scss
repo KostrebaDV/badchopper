@@ -3,6 +3,7 @@
 .header {
 	margin: 0 12% 24px;
 	display: flex;
+	align-items: center;
 }
 
 .header__label {
@@ -15,5 +16,8 @@
 .header__description {
 	max-width: 540px;
 	letter-spacing: -0.005em;
-	margin-bottom: 24px;
+}
+
+.header__button {
+	margin-top: 25px;
 }

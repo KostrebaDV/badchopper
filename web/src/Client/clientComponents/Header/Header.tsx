@@ -31,6 +31,7 @@ const Header = (
                 {
                     showButton && (
                         <Button
+                            className={classes.header__button}
                             labelUppercase
                             label="!!записаться онлайн"
                             onClick={() => {}}

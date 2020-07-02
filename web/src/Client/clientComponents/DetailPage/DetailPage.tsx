@@ -1,39 +1,25 @@
 import React from 'react';
-import {useCanvas} from '../../App/hooks';
+import {Route} from "react-router-dom";
 import {NavigationMenu} from '../NavigationMenu/NavigationMenu';
-import {Header} from '../Header/Header';
-import {useGetDepartment} from './hooks';
-import {Image} from '../../../Admin/baseComponents/Image/Image';
-import classes from './styles/index.module.scss';
-import {DetailPageStaff} from './components/DetailPageStaff/DetailPageStaff';
 import {Footer} from '../Footer/Footer';
+import {DepartmentDetailPage} from '../DepartmentDetailPage/DepartmentDetailPage';
+import {AssistancePage} from '../AssistancePage/AssistancePage';
+import {ROUTES} from '../../App/routes';
 
 const DetailPage = () => {
-    useCanvas();
-
-    const {
-        name,
-        image,
-        staff,
-        description
-    } = useGetDepartment();
 
     return (
         <>
             <NavigationMenu />
-            <Header
-                showButton
-                label={name}
-                content={description}
-            />
-            <Image
-                width="100%"
-                height={418}
-                className={classes.detailPage__image}
-                alt='departmentImage'
-                src={image.path}
-            />
-            <DetailPageStaff staff={staff} />
+            <Route path={ROUTES.DEPARTMENT_DETAIL}>
+                <DepartmentDetailPage/>
+            </Route>
+            <Route path={ROUTES.ASSISTANCE_DETAIL}>
+                <AssistancePage/>
+            </Route>
+            {/*<Route exact path="*">*/}
+            {/*   !!!404!!!*/}
+            {/*</Route>*/}
             <Footer/>
         </>
     );

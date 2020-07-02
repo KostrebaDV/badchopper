@@ -5,7 +5,8 @@ export const normalizeAssistanceData = (assistanceDTO) => {
         id,
         name,
         description,
-        price
+        price,
+        imageId
     } = assistanceDTO;
 
     const normalizePrice = toNumber(price);
@@ -15,6 +16,7 @@ export const normalizeAssistanceData = (assistanceDTO) => {
             id,
             name,
             description,
+            imageId,
             price: normalizePrice
         }
     }
@@ -22,6 +24,7 @@ export const normalizeAssistanceData = (assistanceDTO) => {
     return {
         name,
         description,
+        imageId,
         price: normalizePrice
     }
 };

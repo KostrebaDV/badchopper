@@ -2,7 +2,7 @@ import {useEffect, useContext} from 'react';
 import {ROUTES} from './routes';
 import {useHistory} from "react-router-dom";
 import {AppContext} from './store';
-import {getAllDepartments} from '../clientComponents/MainPage/api';
+import {getAllDepartments} from './api';
 import {isNull} from '../../utils';
 import {initEffect} from './imageEffector/imageEffectLoader';
 

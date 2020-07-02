@@ -27,12 +27,11 @@ const DepartmentAddMedia = (
                 rightButtonLabel: '!!Выбрать',
                 handleSubmit: handleSelectMedia,
                 mediaData,
-                singleSelect: true
             }
-        )
+        );
     };
 
-    const showButton =  isNullOrUndefined(selectedMedia[0]) || !singleSelect;
+    const showButton = isNullOrUndefined(selectedMedia[0]) || !singleSelect;
 
     return (
         <>

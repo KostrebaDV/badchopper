@@ -19,34 +19,32 @@ const DepartmentAddContent: FC<DepartmentAddContentType> = (
 ) => {
     const {setNavigationList} = useContext(NavigationContext);
     const [addData, setAddData] = useState({
-        mediaData: [],
         staff: [],
         assistance: []
     });
-    const [pending, setPending] = useState(false)
+    const [pending, setPending] = useState(false);
     const isAddDataFetched = useRef(false);
 
     useEffect(() => {
         if (typeof getAddDepartmentData === 'undefined' || isAddDataFetched.current) return;
 
-        setPending(true)
+        setPending(true);
 
         getAddDepartmentData()
             .then(({data}) => {
                 setAddData({
-                    mediaData: data.media,
                     staff: data.staff,
                     assistance: data.assistance,
-                })
+                });
 
                 isAddDataFetched.current = true;
-                setPending(false)
-            })
+                setPending(false);
+            });
     }, []);
 
     const onAddDepartmentSuccess = () => {
         getNavigationList()
-            .then(({ data }) => {
+            .then(({data}) => {
                 setNavigationList(data);
             });
     };
@@ -75,7 +73,9 @@ const DepartmentAddContent: FC<DepartmentAddContentType> = (
                         staffData={addData.staff}
                         assistanceData={addData.assistance}
                         handleAddDepartment={handleAddDepartment}
-                        mediaModalData={{mediaData: addData.mediaData, singleSelect: true, rightButtonLabel: '!Выбрать'}}
+                        mediaModalData={{
+                            rightButtonLabel: '!Выбрать'
+                        }}
                     />
                 )
             }
@@ -88,7 +88,9 @@ const DepartmentAddContent: FC<DepartmentAddContentType> = (
                         initialValues={initialValues}
                         isDepartmentDetail={isDepartmentDetail}
                         handleEditDepartment={handleEditDepartment}
-                        mediaModalData={{mediaData: addData.mediaData, singleSelect: true, rightButtonLabel: '!Выбрать'}}
+                        mediaModalData={{
+                            rightButtonLabel: '!Выбрать'
+                        }}
                     />
                 )
             }

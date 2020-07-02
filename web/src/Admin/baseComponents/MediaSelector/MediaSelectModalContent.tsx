@@ -17,9 +17,8 @@ const MediaSelectModalContent = (
     const {
         modalTitle,
         handleSubmit: handleSubmitFromModalData,
-        rightButtonLabel,
-        mediaData,
-        singleSelect
+        singleSelect,
+        mediaData
     } = modalData;
 
     const [selectedItems, setSelectedItems] = useState<SelectedItemsType>([]);
@@ -56,7 +55,7 @@ const MediaSelectModalContent = (
     const rightButtons = (
         <Button
             actionHandler={handleSubmit}
-            label={rightButtonLabel}
+            label="!!Выбрать"
             type="primary"
         />
     );

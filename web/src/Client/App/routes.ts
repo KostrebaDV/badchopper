@@ -1,4 +1,6 @@
 export const ROUTES = {
     CLIENT_ROOT: '/',
-    DEPARTMENT_DETAIL: '/department/'
+    DETAIL: '/detail/',
+    DEPARTMENT_DETAIL: '/department/',
+    ASSISTANCE_DETAIL: '/services/'
 };

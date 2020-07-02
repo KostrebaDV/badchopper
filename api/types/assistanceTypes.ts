@@ -2,7 +2,9 @@ type AssistanceDTOType = {
     id?: string;
     name: string;
     description: string;
+    imageId: string;
     price: number;
+    image?: object;
 }
 
 type AssistanceResponseType = {
@@ -13,7 +15,10 @@ type AssistanceResponseType = {
     creationDate: string;
 }[]
 
+type AssistancesDTOType = AssistanceDTOType[]
+
 export {
     AssistanceDTOType,
-    AssistanceResponseType
+    AssistanceResponseType,
+    AssistancesDTOType
 }

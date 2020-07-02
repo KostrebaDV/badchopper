@@ -1,4 +1,4 @@
-import {initScript} from '../../js/initScript';
+import {initScript} from '../../../static/js/initScript';
 
 export function initEffect () {
 	//delete prev canvas

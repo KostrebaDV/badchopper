@@ -36,7 +36,8 @@ const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) =
         id,
         name,
         description,
-        price
+        price,
+        imageId
     } = updateAssistanceDTO;
 
     return new Promise((resolve, reject) => {
@@ -46,14 +47,10 @@ const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) =
                 {
                     _id: new ObjectID(id)
                 },
-
                 {
-                    $currentDate: {
-                        lastModified: true,
-                        "cancellation.date": { $type: "timestamp" }
-                    },
                     $set: {
                         name,
+                        imageId,
                         description,
                         price
                     }

@@ -6,7 +6,7 @@ import {addAssistance} from '../../api';
 import {FORMS} from '../../const';
 import Form, {Field} from '../../../../baseComponents/Form';
 import FormLayout, {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseComponents/FormLayout';
-import {Textbox, Textarea} from '../../../../baseComponents/Form/Adapters';
+import {Textbox, Textarea, MediaSelector} from '../../../../baseComponents/Form/Adapters';
 import {AssistanceContext} from '../../store';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 import {getUniqueId} from '../../../../../utils';
@@ -31,9 +31,9 @@ const AddAssistanceModalContent = (
                     showNotification({
                         id: getUniqueId(),
                         message: '!! Услуга добавлена'
-                    })
+                    });
                 }
-            })
+            });
     };
 
     const leftButtons = (
@@ -65,18 +65,36 @@ const AddAssistanceModalContent = (
                 >
                     <FormLayout>
                         <FormLayoutItemGroup>
-                            <FormLayoutItem>
-                                <Field
-                                    component={Textbox}
-                                    name="name"
-                                    label="!!!название услуги"
-                                    required
-                                    validate={{
-                                        required: true
-                                    }}
-                                    placeholder="название услуги"
-                                />
-                            </FormLayoutItem>
+                            <FormLayoutItemGroup
+                                noPadding
+                                grid="6-_1-6"
+                                gridColumn={13}
+                                inline
+                            >
+                                <FormLayoutItem>
+                                    <Field
+                                        component={Textbox}
+                                        name="name"
+                                        label="!!!название услуги"
+                                        required
+                                        validate={{
+                                            required: true
+                                        }}
+                                        placeholder="название услуги"
+                                    />
+                                </FormLayoutItem>
+                                <FormLayoutItem>
+                                    <Field
+                                        component={MediaSelector}
+                                        name="imageId"
+                                        required
+                                        singleSelect
+                                        validate={{
+                                            required: true
+                                        }}
+                                    />
+                                </FormLayoutItem>
+                            </FormLayoutItemGroup>
                             <FormLayoutItem>
                                 <Field
                                     component={Textarea}
@@ -102,7 +120,8 @@ const AddAssistanceModalContent = (
                                         label="!!!Стоимость"
                                         required
                                         validate={{
-                                            required: true
+                                            required: true,
+                                            number: true
                                         }}
                                         placeholder="00.00"
                                     />

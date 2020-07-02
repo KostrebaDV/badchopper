@@ -1,0 +1,93 @@
+@import "../../../../../styles/colors/colors.module";
+@import "../../../../../styles/mixins/transition.module";
+
+.assistanceListItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 0;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+}
+
+.assistanceListItem:hover {
+	.assistanceListItem__arrow {
+		color: $gold;
+		opacity: 1;
+	}
+
+	.assistanceListItem__price {
+		margin-right: 100px;
+		//font-weight: 600;
+		color: $light;
+	}
+
+	.assistanceListItem__name {
+		//font-weight: 600
+	}
+
+	.assistanceListItem__name, .assistanceListItem__index {
+		color: $light;
+	}
+
+	.assistanceListItem__image {
+		opacity: .4;
+
+	}
+}
+
+.assistanceListItem__leftSide {
+	display: flex;
+	align-items: center;
+	margin-left: 44%;
+}
+
+.assistanceListItem__rightSide {
+	padding-right: 100px;
+}
+
+.assistanceListItem__name {
+	font-size: 32px;
+	letter-spacing: -1px;
+	color: $placeholder;
+
+	@include transition(color .2s, font-weight .2s)
+}
+
+.assistanceListItem__index {
+	margin-right: 35px;
+	color: $placeholder;
+	font-size: 18px;
+	letter-spacing: -0.005em;
+
+	@include transition(color .2s)
+}
+
+.assistanceListItem__price {
+	margin-right: 32px;
+	letter-spacing: -1px;
+	font-size: 18px;
+	color: $placeholder;
+
+	@include transition(margin .2s, font-weight .2s)
+}
+
+.assistanceListItem__arrow {
+	position: absolute;
+	right: 130px;
+	top: 45px;
+	opacity: 0;
+
+	@include transition(color .2s, opacity .2s)
+}
+
+.assistanceListItem__image {
+	position: absolute;
+	z-index: -1;
+	width: 100% !important;
+	opacity: 0;
+	top: 0;
+
+	@include transition(opacity .5s)
+}
