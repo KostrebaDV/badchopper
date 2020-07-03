@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {MediaSelectModal} from './MediaSelectModal';
 import PropTypes from 'prop-types';
 
@@ -6,10 +6,11 @@ import classes from './styles/index.module.scss';
 import plusIcon from '@iconify/icons-mdi/plus';
 import {Icon} from '@iconify/react';
 import ClassNames from 'classnames';
-import {MediaSelectorItem} from './MediaSelectorItem';
-import {getUniqueKey, isNull, isNullOrUndefined, removeArrayElementByValue} from '../../../utils';
-import {Image} from '../Image/Image';
+import {isNull, removeArrayElementByValue} from '../../../utils';
 import {getAllImages} from '../../modules/Media/api';
+import {MediaSelectorSingleItemPreview} from './MediaSelectorSingleItemPreview';
+import {MediaSelectorMultipleItemPreview} from './MediaSelectorMultipleItemPreview';
+import {SelectedItemsType} from './types';
 
 const MediaSelector = (
     {
@@ -23,8 +24,8 @@ const MediaSelector = (
     }
 ) => {
     const [modalOpen, setModalOpen] = useState(false);
-    const [selectedMediaId, setSelectedMediaId] = useState([]);
     const [mediaData, setMediaData] = useState<{_id: string}[]>([]);
+    const selectedMediaRef = useRef<SelectedItemsType>([]);
 
     useEffect(() => {
         getAllImages()
@@ -38,23 +39,22 @@ const MediaSelector = (
 
     useEffect(() => {
         if (!isNull(value)) {
-            setSelectedMediaId(value);
+            selectedMediaRef.current = value;
         }
         // eslint-disable-next-line
     }, []);
 
     const handleSubmit = (values) => {
         onFieldChange(getMediaValue(values));
-        setSelectedMediaId(values);
+        selectedMediaRef.current = values;
     };
 
     const handleDeleteProcessedImage = (id) => {
-        const mutateSelectedMedia = removeArrayElementByValue(selectedMediaId, id);
+        selectedMediaRef.current = removeArrayElementByValue(selectedMediaRef.current, id);
 
-        const mediaValues = mutateSelectedMedia.length === 0 ? null : getMediaValue(mutateSelectedMedia);
+        const mediaValues = selectedMediaRef.current.length === 0 ? null : getMediaValue(selectedMediaRef.current);
 
         onFieldChange(mediaValues);
-        setSelectedMediaId(mutateSelectedMedia);
     };
 
     const componentClassName = ClassNames(
@@ -64,14 +64,14 @@ const MediaSelector = (
         classes.mediaSelector
     );
 
-    const showButton = singleSelect && selectedMediaId.length !== 0;
+    const showButton = singleSelect && selectedMediaRef.current.length !== 0;
 
-    const showDeleteButton = !previewMode && selectedMediaId;
+    const showDeleteButton = !previewMode && selectedMediaRef.current;
 
     return mediaData.length !== 0 && (
         <>
             {
-                !showButton && (
+                !showButton && !previewMode && (
                     <div
                         className={componentClassName}
                         onClick={() => setModalOpen(!modalOpen)}
@@ -82,34 +82,38 @@ const MediaSelector = (
                     </div>
                 )
             }
+
             {
-                showButton && selectedMediaId.length !== 0 && selectedMediaId.map(item => {
-                    const currentItem = mediaData.find(mediaDataItem => item === mediaDataItem._id);
-
-                    if (isNullOrUndefined(currentItem)) {
-                        return (
-                            <Image
-                                width={150}
-                                height={200}
-                                src={null}
-                                alt="no image"
-                            />
-                        );
-                    }
-
-                    return (
-                        <MediaSelectorItem
-                            key={getUniqueKey()}
-                            item={currentItem}
-                            showDeleteButton={showDeleteButton}
-                            handleDeleteProcessedImage={handleDeleteProcessedImage}
-                        />
-                    );
-                })
+                singleSelect && selectedMediaRef.current.length !== 0 && (
+                    <MediaSelectorSingleItemPreview
+                        mediaData={mediaData}
+                        showDeleteButton={showDeleteButton}
+                        selectedItemId={selectedMediaRef.current[0]}
+                        handleDeleteProcessedImage={handleDeleteProcessedImage}
+                    />
+                )
+            }
+            {
+                !singleSelect && selectedMediaRef.current.length !== 0 && (
+                    <MediaSelectorMultipleItemPreview
+                        mediaData={mediaData}
+                        showDeleteButton={showDeleteButton}
+                        selectedItemId={selectedMediaRef.current}
+                        handleDeleteProcessedImage={handleDeleteProcessedImage}
+                    />
+                )
             }
             <MediaSelectModal
                 isOpen={modalOpen}
-                modalData={{mediaData, handleSubmit, ...mediaModalData, singleSelect}}
+                modalData={
+                    {
+                        mediaData,
+                        handleSubmit,
+                        ...mediaModalData,
+                        singleSelect,
+                        selectedMediaId: selectedMediaRef.current
+                    }
+                }
                 handleClose={() => setModalOpen(!modalOpen)}
             />
         </>
@@ -118,6 +122,7 @@ const MediaSelector = (
 
 MediaSelector.defaultProps = {
     singleSelect: false,
+    previewMode: false,
     value: []
 };
 

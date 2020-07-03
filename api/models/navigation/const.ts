@@ -36,6 +36,13 @@ export default [
         items: []
     },
     {
+        label: 'Галлерея',
+        route: '/adminPanel/gallery',
+        icon: 'gallery',
+        hasRoute: true,
+        items: []
+    },
+    {
         label: 'Отзывы',
         route: '/adminPanel/comments',
         icon: 'feedbacks',

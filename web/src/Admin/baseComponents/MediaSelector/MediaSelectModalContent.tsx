@@ -6,7 +6,7 @@ import {MediaSelectModalMediaItem} from './MediaSelectModalMediaItem';
 import {SelectedItemsType} from './types';
 
 import classes from './styles/index.module.scss';
-import {isNull, isNullOrUndefined} from '../../../utils';
+import {isNull, isNullOrUndefined, removeArrayElementByValue} from '../../../utils';
 
 const MediaSelectModalContent = (
     {
@@ -15,16 +15,35 @@ const MediaSelectModalContent = (
     }
 ) => {
     const {
+        mediaData,
         modalTitle,
-        handleSubmit: handleSubmitFromModalData,
         singleSelect,
-        mediaData
+        handleSubmit: handleSubmitFromModalData,
+        selectedMediaId: selectedMediaIdFromProps
     } = modalData;
 
     const [selectedItems, setSelectedItems] = useState<SelectedItemsType>([]);
     const checkboxAPIRef = useRef(null);
+    const selectedMediaRef = useRef<SelectedItemsType>(selectedMediaIdFromProps);
 
-    const handleItemCheck = (id: string, value: boolean, checkboxAPI) => {
+    const handleSingleItem = (id) => {
+        setSelectedItems([id]);
+    };
+
+    const handleMultipleItem = (id, isChecked) => {
+        const isItemSelected = selectedMediaRef.current.includes(id);
+
+        if (isChecked && !isItemSelected) {
+            selectedMediaRef.current.push(id);
+        }
+        if (!isChecked && isItemSelected) {
+            selectedMediaRef.current = removeArrayElementByValue(selectedMediaRef.current, id);
+        }
+
+        setSelectedItems(selectedMediaRef.current);
+    };
+
+    const handleItemCheck = (id: string, isChecked: boolean, checkboxAPI) => {
         if (singleSelect && !isNull(checkboxAPIRef.current) && checkboxAPI !== checkboxAPIRef.current) {
             // @ts-ignore
             checkboxAPIRef.current(false);
@@ -33,9 +52,9 @@ const MediaSelectModalContent = (
         checkboxAPIRef.current = checkboxAPI;
 
         if (singleSelect) {
-            setSelectedItems([id]);
+            handleSingleItem(id);
         } else {
-            // add logic to create bulk of selected items
+            handleMultipleItem(id, isChecked);
         }
     };
 
@@ -71,13 +90,20 @@ const MediaSelectModalContent = (
             <ModalContent>
                 {
                     hasItems && (
-                        <div  className={classes.mediaSelectModalContent}>
+                        <div className={classes.mediaSelectModalContent}>
                             {
                                 mediaData.map(item => {
+                                    let isCheck = false;
+
+                                    if (selectedMediaRef.current.length !== 0) {
+                                        isCheck = selectedMediaRef.current.some(selectedItemId => selectedItemId === item._id);
+                                    }
+
                                     return (
                                         <MediaSelectModalMediaItem
-                                            key={item._id}
                                             item={item}
+                                            key={item._id}
+                                            isCheck={isCheck}
                                             handleItemCheck={handleItemCheck}
                                         />
                                     );

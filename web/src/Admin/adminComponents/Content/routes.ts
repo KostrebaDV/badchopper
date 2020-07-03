@@ -9,5 +9,6 @@ export const ROUTES = {
     STAFF: '/adminPanel/staff',
     STAFF_BARBERS: '/adminPanel/staff/barbers',
     STAFF_MANAGERS: '/adminPanel/staff/managers',
-    COMMENTS: '/adminPanel/comments'
+    COMMENTS: '/adminPanel/comments',
+    GALLERY: '/adminPanel/GALLERY'
 };

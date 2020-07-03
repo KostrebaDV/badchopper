@@ -1,0 +1,28 @@
+@import "../../../../../styles/colors/colors.module";
+
+.assistanceListItem {
+	padding: 8px 0;
+	border-bottom: 1px solid $disabled;
+	transition: background-color .2s;
+	cursor: pointer;
+}
+
+.assistanceListItem:last-child {
+	border-bottom: none;
+}
+
+.assistanceListItem > div {
+	padding: 0 4px;
+	display: flex;
+	align-items: center;
+}
+
+.assistanceListItem:hover {
+	background-color: lighten($disabled, 20%);
+}
+
+.assistanceListItem__description {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}

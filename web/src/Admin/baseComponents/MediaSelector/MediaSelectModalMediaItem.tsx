@@ -7,6 +7,7 @@ import { HOST } from '../../../const';
 const MediaSelectModalMediaItem = (
     {
         item,
+        isCheck,
         handleItemCheck
     }
 ) => {
@@ -14,6 +15,7 @@ const MediaSelectModalMediaItem = (
         <div className={classes.mediaSelectModalMediaItem}>
             <div className={classes.mediaSelectModalMediaItem__checkboxWrapper}>
                 <Checkbox
+                    value={isCheck}
                     onFieldChange={(value, setCheckboxValue) => handleItemCheck(item._id, value, setCheckboxValue)}
                 />
                 <div className={classes.mediaSelectModalMediaItem__name}>

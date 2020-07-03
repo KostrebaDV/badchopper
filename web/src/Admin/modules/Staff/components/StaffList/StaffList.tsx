@@ -29,7 +29,7 @@ const StaffList = (
             getAllMangerStaff()
                 .then(({data}) => setAllStaff(data))
         }
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, []);
 
     const handleItemClick = (id) => {

@@ -14,9 +14,9 @@ const MediaAddImageModalContent = (
         handleClose: handleCloseFromProps
     }
 ) => {
-    const { upLoaders } = useContext(AdminAppContext);
-    const { setAllImages } = useContext(MediaContext);
-    const { removeUploaderFromGlobalContext } = useContext(AdminAppContext);
+    const {upLoaders} = useContext(AdminAppContext);
+    const {setAllImages} = useContext(MediaContext);
+    const {removeUploaderFromGlobalContext} = useContext(AdminAppContext);
 
     const handleUpload = () => {
         upLoaders.MEDIA_IMAGE_UPLOADER.upload()
@@ -24,13 +24,13 @@ const MediaAddImageModalContent = (
                 handleClose();
                 return getAllImages();
             })
-            .then(({ data }) => setAllImages(data))
-            .catch(e => console.log(e))
+            .then(({data}) => setAllImages(data))
+            .catch(e => console.log(e));
     };
 
     const handleClose = () => {
         handleCloseFromProps();
-        removeUploaderFromGlobalContext(MEDIA_IMAGE_UPLOADER)
+        removeUploaderFromGlobalContext(MEDIA_IMAGE_UPLOADER);
     };
 
     const leftButtons = (

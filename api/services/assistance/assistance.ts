@@ -18,7 +18,6 @@ import {
 
 import { normalizeAssistanceData } from "../../utils/assistance/normalizeAssistanceData"
 import {getImageService} from '../media/media';
-import {getStaffByIdService} from '../staff/staff';
 
 const addAssistanceService = (assistanceDTO, client) => {
     if (assistanceDTO.name.length !== 0) {

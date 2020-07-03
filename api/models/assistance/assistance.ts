@@ -1,12 +1,12 @@
 import { AssistanceDTOType } from "../../types/assistanceTypes";
-import CONSTS from "./consts";
+import CONST from "./const";
 import { documentIdType } from "../../types/general";
 import { ObjectID } from "bson";
 
 const addAssistanceModel = (assistanceDTO: AssistanceDTOType, client) => {
     return new Promise((resolve, reject) => {
         client
-            .collection(CONSTS.BASE_COLLECTION)
+            .collection(CONST.BASE_COLLECTION)
             .insertOne(assistanceDTO)
             .then(res => {
                 resolve([
@@ -23,7 +23,7 @@ const addAssistanceModel = (assistanceDTO: AssistanceDTOType, client) => {
 const getAllAssistanceModel = (client) => {
     return new Promise((resolve, reject) => {
         client
-            .collection(CONSTS.BASE_COLLECTION)
+            .collection(CONST.BASE_COLLECTION)
             .find()
             .toArray()
             .then(res => resolve(res))
@@ -42,7 +42,7 @@ const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) =
 
     return new Promise((resolve, reject) => {
         client
-            .collection(CONSTS.BASE_COLLECTION)
+            .collection(CONST.BASE_COLLECTION)
             .findOneAndUpdate(
                 {
                     _id: new ObjectID(id)
@@ -65,7 +65,7 @@ const updateAssistanceModel = (updateAssistanceDTO: AssistanceDTOType, client) =
 const deleteAssistanceModel = (deleteAssistanceDTO: documentIdType, client) => {
     return new Promise((resolve, reject) => {
         client
-            .collection(CONSTS.BASE_COLLECTION)
+            .collection(CONST.BASE_COLLECTION)
             .findOneAndDelete({_id: new ObjectID(deleteAssistanceDTO.id)})
             .then(res => resolve(res))
             .catch(err => reject(err));

@@ -7,12 +7,17 @@ import {Image} from '../Image/Image';
 const MediaSelectorItem = (
     {
         item,
+        width,
+        height,
         showDeleteButton,
         handleDeleteProcessedImage
     }
 ) => {
     return (
-        <div className={classes.mediaSelectorItem}>
+        <div
+            style={{width}}
+            className={classes.mediaSelectorItem}
+        >
             {
                 showDeleteButton && (
                     <div onClick={() => handleDeleteProcessedImage(item._id)}>
@@ -24,13 +29,18 @@ const MediaSelectorItem = (
                 )
             }
             <Image
-                width={150}
-                height={200}
+                width={width}
+                height={height}
                 src={item.path}
                 alt={item.name}
             />
         </div>
     );
+};
+
+MediaSelectorItem.defaultProps = {
+    width: 150,
+    height: 200,
 };
 
 export {MediaSelectorItem};

@@ -12,6 +12,7 @@ import classes from './styles/index.module.scss'
 import {DepartmentAdd} from '../../modules/Departments/components/DepartmentAdd/DepartmentAdd';
 import {Staff} from '../../modules/Staff/Staff';
 import {Comments} from '../../modules/Comments/Comments';
+import {Gallery} from '../../modules/Gallery/Gallery';
 
 const Content = () => {
     return (
@@ -31,6 +32,9 @@ const Content = () => {
                 </Route>
                 <Route path={ROUTES.STAFF}>
                     <Staff/>
+                </Route>
+                <Route path={ROUTES.GALLERY}>
+                    <Gallery/>
                 </Route>
                 <Route path={ROUTES.COMMENTS}>
                     <Comments/>
