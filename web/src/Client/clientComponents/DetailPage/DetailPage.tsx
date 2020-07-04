@@ -3,11 +3,12 @@ import {Route} from "react-router-dom";
 import {NavigationMenu} from '../NavigationMenu/NavigationMenu';
 import {Footer} from '../Footer/Footer';
 import {DepartmentDetailPage} from '../DepartmentDetailPage/DepartmentDetailPage';
-import {AssistancePage} from '../AssistancePage/AssistancePage';
+import {AssistanceDetailPage} from '../AssistanceDetailPage/AssistanceDetailPage';
+import {GalleryDetailPage} from '../GalleryDetailPage/GalleryDetailPage';
+import {FeedbacksDetailPage} from '../FeedbacksDetailPage/FeedbacksDetailPage';
 import {ROUTES} from '../../App/routes';
 
 const DetailPage = () => {
-
     return (
         <>
             <NavigationMenu />
@@ -15,7 +16,13 @@ const DetailPage = () => {
                 <DepartmentDetailPage/>
             </Route>
             <Route path={ROUTES.ASSISTANCE_DETAIL}>
-                <AssistancePage/>
+                <AssistanceDetailPage/>
+            </Route>
+            <Route path={ROUTES.GALLERY_DETAIL}>
+                <GalleryDetailPage/>
+            </Route>
+            <Route path={ROUTES.FEEDBACKS_DETAIL}>
+                <FeedbacksDetailPage/>
             </Route>
             {/*<Route exact path="*">*/}
             {/*   !!!404!!!*/}

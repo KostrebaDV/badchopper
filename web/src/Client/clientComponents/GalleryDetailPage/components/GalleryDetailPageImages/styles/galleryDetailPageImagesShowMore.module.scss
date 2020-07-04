@@ -1,0 +1,21 @@
+@import "../../../../../styles/colors/colors.module";
+
+.galleryDetailPageImagesShowMore {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 450px;
+	cursor: pointer;
+}
+
+.galleryDetailPageImagesShowMore__text {
+	width: 270px;
+}
+
+.galleryDetailPageImagesShowMore__count {
+	color: $gold;
+}
+
+.galleryDetailPageImagesShowMore__arrow {
+	margin-top: -35px;
+}

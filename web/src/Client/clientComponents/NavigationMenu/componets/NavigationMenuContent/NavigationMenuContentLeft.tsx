@@ -6,15 +6,13 @@ import {FormContext} from '../../../../../store/FormContext';
 import {Button} from '../../../Button/Button';
 import {addFeedback} from '../../api';
 
-const NavigationMenuContentLeft = (
-) => {
-    const {forms} = useContext(FormContext)
+const NavigationMenuContentLeft = () => {
+    const {forms} = useContext(FormContext);
 
     const handleAddFeedback = values => {
-        console.log(values);
-       addFeedback(values)
-            .then(({data}) => console.log(data))
-    }
+        addFeedback(values)
+            .then(({data}) => console.log(data));
+    };
 
     return (
         <div className={classes.navigationMenuContentLeft}>
@@ -24,9 +22,9 @@ const NavigationMenuContentLeft = (
                     bold="600"
                     className={classes.navigationMenuContentLeft__header}
                 >
-                   !!Оставить отзыв
+                    !!Оставить отзыв
                 </Typography>
-                <NavigationMenuForm handleAddFeedback={handleAddFeedback} />
+                <NavigationMenuForm handleAddFeedback={handleAddFeedback}/>
                 <Button
                     label="!отправить"
                     onClick={() => forms.ADD_FEEDBACK_FORM.submitForm()}

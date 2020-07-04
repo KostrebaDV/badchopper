@@ -9,6 +9,15 @@ export type DepartmentType = {
 };
 
 export type AppContextType = {
-    departments: DepartmentType[],
+    departments: DepartmentType[];
+    assistance: object[];
+    feedbacks: object[];
+    galleries: {
+        mainPageGallery: object[];
+        galleryImages: object[];
+    },
     setDepartments: (departments) => void;
+    setGalleries: (galleries) => void;
+    setAssistance: (assistance) => void;
+    setFeedbacks: (comments) => void;
 };

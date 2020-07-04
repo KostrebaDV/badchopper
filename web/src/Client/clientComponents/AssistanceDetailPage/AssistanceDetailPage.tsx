@@ -3,7 +3,7 @@ import {useGetAssistanceData} from './hooks';
 import {Header} from '../Header/Header';
 import {AssistanceList} from './components/AssistanceList/AssistanceList';
 
-const AssistancePage = () => {
+const AssistanceDetailPage = () => {
     const assistanceData = useGetAssistanceData();
 
     return (
@@ -19,4 +19,4 @@ const AssistancePage = () => {
     );
 };
 
-export {AssistancePage};
+export {AssistanceDetailPage};

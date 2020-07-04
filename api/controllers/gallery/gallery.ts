@@ -55,7 +55,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.get(CONST.ADD_GALLERY_IMAGES, (req: Request, res: Response) => {
+    serviceRouter.get(CONST.GET_GALLERY_IMAGES, (req: Request, res: Response) => {
         getGalleryImages(req.params, client)
             .then((status) => {
                 return res

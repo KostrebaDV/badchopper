@@ -57,7 +57,7 @@ export const getGalleryImagesModel = (getGalleryImagesDTO: GalleryDTOType, clien
     return new Promise((resolve, reject) => {
         client
             .collection(CONST.BASE_COLLECTION)
-            .findOne({systemName: getGalleryImagesDTO.systemName}, {})
+            .findOne({systemName: getGalleryImagesDTO.id}, {})
             .then(res => resolve(res))
             .catch(err => reject(err));
     });

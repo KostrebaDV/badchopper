@@ -9,7 +9,7 @@ import {
     getAllDepartmentsClientService
 } from "../../services/departments/departments";
 import CONSTS from "./consts"
-import { requestDocumetnParamsType } from "../../types/general";
+import {requestDocumetnParamsType} from "../../types/general";
 
 const departmentsRouter = Router();
 

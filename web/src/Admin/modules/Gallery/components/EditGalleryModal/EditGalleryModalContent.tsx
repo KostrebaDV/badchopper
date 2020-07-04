@@ -90,6 +90,7 @@ const EditGalleryModalContent = (
                                     name="name"
                                     label="!!!Название галлереи"
                                     required
+                                    previewMode
                                     validate={{
                                         required: true,
                                         length: {
@@ -105,6 +106,7 @@ const EditGalleryModalContent = (
                                     name="systemName"
                                     label="!!!Системное имя"
                                     required
+                                    previewMode
                                     validate={{
                                         required: true,
                                         onlyLatinSymbols: true,

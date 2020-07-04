@@ -1,0 +1,32 @@
+//@import "../../../styles/mixins/transition.module";
+
+.feedbacksGallery {
+	position: relative;
+	height: 514px;
+}
+
+.feedbacksGallery-item {
+	float: left;
+	display: flex;
+	padding-right: 110px;
+	box-sizing: content-box;
+}
+
+.feedbacksGallery-item__text {
+	font-size: 32px;
+	letter-spacing: -1px;
+	line-height: 34px;
+	width: 420px;
+	margin-right: 30px;
+}
+
+.feedbacksGallery-item__image {
+	object-fit: cover;
+	height: 514px;
+	width: 514px;
+	display: block;
+}
+
+.item__active {
+
+}

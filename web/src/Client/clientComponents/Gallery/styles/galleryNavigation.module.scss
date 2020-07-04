@@ -1,0 +1,17 @@
+.galleryNavigation {
+	display: flex;
+}
+
+.galleryNavigation__count {
+	width: 60px;
+}
+
+.galleryNavigation__navButtons {
+	display: flex;
+	margin-left: 62px;
+	cursor: pointer;
+}
+
+.galleryNavigation__navButtonRight {
+	margin-left: 30px;
+}

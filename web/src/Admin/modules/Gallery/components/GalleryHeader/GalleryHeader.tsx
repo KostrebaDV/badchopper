@@ -25,7 +25,7 @@ const GalleryHeader = () => {
                 </Typography>
             </ContentHeaderLeft>
             {
-                galleries.length === 0 && (
+                galleries.length < 2 && (
                     <ContentHeaderRight>
                         <Button
                             floatRight

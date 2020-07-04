@@ -87,7 +87,7 @@ const MediaSelectModalContent = (
                 label={modalTitle}
                 handleClose={handleClose}
             />
-            <ModalContent>
+            <ModalContent extraHeight>
                 {
                     hasItems && (
                         <div className={classes.mediaSelectModalContent}>

@@ -16,7 +16,12 @@ const App = () => {
                 <Route exact path={ROUTES.CLIENT_ROOT}>
                     <MainPage/>
                 </Route>
-                <Route path={[ROUTES.ASSISTANCE_DETAIL, ROUTES.DEPARTMENT_DETAIL]}>
+                <Route path={[
+                    ROUTES.ASSISTANCE_DETAIL,
+                    ROUTES.DEPARTMENT_DETAIL,
+                    ROUTES.FEEDBACKS_DETAIL,
+                    ROUTES.GALLERY_DETAIL
+                ]}>
                     <DetailPage/>
                 </Route>
             </div>

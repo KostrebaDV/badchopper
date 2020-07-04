@@ -7,19 +7,15 @@ import {isNull} from '../../utils';
 import {initEffect} from './imageEffector/imageEffectLoader';
 
 export const useGetDepartmentData = () => {
-    const {location} = useHistory();
-    const {setDepartments} = useContext(AppContext);
+    const {departments, setDepartments} = useContext(AppContext);
 
     useEffect(() => {
-        // if (location.pathname === ROUTES.CLIENT_ROOT || location.pathname.includes(ROUTES.DEPARTMENT_DETAIL) ) {
-        //     getAllDepartments()
-        //         .then(({data}) => setDepartments(data));
-        // }
-        getAllDepartments()
-            .then(({data}) => setDepartments(data));
+      if (departments.length === 0) {
+          getAllDepartments()
+              .then(({data}) => setDepartments(data));
+      }
         // eslint-disable-next-line
-    }, [location.pathname]);
-
+    }, []);
 };
 
 export const useCanvas = () => {

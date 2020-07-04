@@ -1,4 +1,4 @@
-import {GalleriesDTOType} from '../../types/gallery';
+import {GalleryDTOType} from '../../types/gallery';
 import {
     addGalleryModel,
     getGalleriesModel,
@@ -20,14 +20,10 @@ export const getGalleries = (client) => {
 
 export const getGalleryImages = async (getGalleryImagesDTO, client) => {
     const galleryImages = await getGalleryImagesModel(getGalleryImagesDTO, client)
-        .then((data: GalleriesDTOType) => data);
+        .then((data: GalleryDTOType) => data.imagesId);
 
     return Promise.all(galleryImages.map(async (imageId) => {
-        const image = await getImageService(imageId, client).then(image => image);
-
-        return {
-            image
-        }
+        return  await getImageService(imageId, client).then(image => image);
     }));
 };
 
