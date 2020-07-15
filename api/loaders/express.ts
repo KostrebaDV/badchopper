@@ -1,5 +1,6 @@
 import * as bodyParser from "body-parser";
 const cors = require('cors');
+const path = require('path');
 import express, { Request, Response } from 'express';
 import corsConfig from '../config/cors';
 import departmentsController from '../controllers/departments/departments';
@@ -22,6 +23,10 @@ export const expressClient = (expressApp, client) => {
     staffController(expressApp, client);
     commentsController(expressApp, client);
     galleryController(expressApp, client);
+
+    expressApp.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname, '../../web/build/index.html'))
+    })
 
     /// catch 404 and forward to error handler
     expressApp.use((req: Request, res: Response, next) => {
