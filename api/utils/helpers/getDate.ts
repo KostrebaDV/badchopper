@@ -17,7 +17,9 @@ export const getDate = (dateFormat = 'D-M-Y', timeFormat = 'H:M') => {
     const date = dateFormat
         //@ts-ignore
         .replace('Y', Y)
+        //@ts-ignore
         .replace('M', M)
+        //@ts-ignore
         .replace('D', D);
 
     const time = timeFormat
