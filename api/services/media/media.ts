@@ -1,5 +1,5 @@
 import {deleteDocumentResponseStatusType, documentIdType} from "../../types/general";
-
+const path = require('path');
 import { mediaImageDTOType } from "../../types/mediaTypes";
 import {
     addImageModel,
@@ -10,7 +10,9 @@ import {
 import { saveFiles, deleteFile } from "../../utils/media";
 
 const uploadImageService = (req, client) => {
-    const pathToSave = './public/images';
+    //make env
+    //const pathToSave = path.join(__dirname, '../../../public/images');
+    const pathToSave = path.join(__dirname, '../../public/images');
     const pathToFile = '/images';
 
     if (!req.files.files || Object.keys(req.files.files).length === 0) {
