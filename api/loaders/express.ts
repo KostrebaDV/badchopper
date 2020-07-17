@@ -15,6 +15,7 @@ export const expressClient = (expressApp, client) => {
     expressApp.use(cors(corsConfig));
     expressApp.use(bodyParser.json());
     expressApp.use(express.static('public'));
+    expressApp.use(express.static(path.join(__dirname, '../../../web/build')));
 
     departmentsController(expressApp, client);
     mediaController(expressApp, client);
@@ -24,8 +25,8 @@ export const expressClient = (expressApp, client) => {
     commentsController(expressApp, client);
     galleryController(expressApp, client);
 
-    expressApp.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, '../../web/build/index.html'))
+    expressApp.get('/', function (req, res) {
+        res.sendFile(path.join(__dirname, '../../../web/build/index.html'))
     })
 
     /// catch 404 and forward to error handler

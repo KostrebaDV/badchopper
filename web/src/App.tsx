@@ -15,7 +15,7 @@ import FormContextProvider from '../src/store/FormContext';
 function App() {
     return (
         <FormContextProvider>
-            <Router>
+            <Router basename='/'>
                 <Switch>
                     <Route path={ROUTES.ADMIN_PANEL}>
                         <AdminApp/>
