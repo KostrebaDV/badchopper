@@ -10,13 +10,14 @@ import navigationListController from '../controllers/navigation/navigationList';
 import staffController from '../controllers/staff/staff';
 import commentsController from '../controllers/comments/comments';
 import galleryController from '../controllers/gallery/gallery';
+require('dotenv').config()
+
+const EXPRESS_PUBLIC_FOLDER_PATH = process.env.EXPRESS_PUBLIC_FOLDER_PATH;
 
 export const expressClient = (expressApp, client) => {
     expressApp.use(cors(corsConfig));
     expressApp.use(bodyParser.json());
-    //make env
-    //expressApp.use(express.static(path.join(__dirname, '../../public')));
-    expressApp.use(express.static(path.join(__dirname, '../public')));
+    expressApp.use(express.static(path.join(__dirname, EXPRESS_PUBLIC_FOLDER_PATH)));
     expressApp.use(express.static(path.join(__dirname, '../../../web/build')));
 
     departmentsController(expressApp, client);

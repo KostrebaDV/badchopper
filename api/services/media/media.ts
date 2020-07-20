@@ -8,11 +8,12 @@ import {
     getImageModel
 } from "../../models/media/media";
 import { saveFiles, deleteFile } from "../../utils/media";
+require('dotenv').config()
+
+const IMAGES_PATH = process.env.IMAGES_PATH;
 
 const uploadImageService = (req, client) => {
-    //make env
-    //const pathToSave = path.join(__dirname, '../../../public/images');
-    const pathToSave = path.join(__dirname, '../../public/images');
+    const pathToSave = path.join(__dirname, IMAGES_PATH);
     const pathToFile = '/images';
 
     if (!req.files.files || Object.keys(req.files.files).length === 0) {
