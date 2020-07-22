@@ -1,3 +1,5 @@
+import {checkAuthenticated} from '../../middlewares/checkAuthenticated';
+
 const fileUpload = require('express-fileupload');
 import { Router, Response, Application, Request } from 'express';
 import {
@@ -12,7 +14,7 @@ const mediaRouter = Router();
 export default (app: Application, client) => {
     app.use(fileUpload());
 
-    mediaRouter.post(CONSTS.UPLOAD_IMAGES, (req: Request, res: Response) => {
+    mediaRouter.post(CONSTS.UPLOAD_IMAGES, checkAuthenticated, (req: Request, res: Response) => {
         uploadImageService(req, client)
             .then(() => {
                 return res
@@ -40,7 +42,7 @@ export default (app: Application, client) => {
             });
     });
 
-    mediaRouter.delete(CONSTS.DELETE_IMAGE, (req: Request, res: Response) => {
+    mediaRouter.delete(CONSTS.DELETE_IMAGE, checkAuthenticated, (req: Request, res: Response) => {
         deleteImageService(req.body, client)
             .then((status) => {
                 return res

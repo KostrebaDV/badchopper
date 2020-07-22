@@ -4,11 +4,12 @@ import {
     navigationListService,
 } from "../../services/navigation/navigationList";
 import CONST from "./const"
+import {checkAuthenticated} from '../../middlewares/checkAuthenticated';
 
 const serviceRouter = Router();
 
 export default (app: Application, client) => {
-    serviceRouter.get(CONST.GET_NAVIGATION_LIST, (req: Request, res: Response) => {
+    serviceRouter.get(CONST.GET_NAVIGATION_LIST, checkAuthenticated, (req: Request, res: Response) => {
         navigationListService(client)
             .then((status) => {
                 return res

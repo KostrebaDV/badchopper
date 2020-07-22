@@ -8,11 +8,12 @@ import {
 } from "../../services/comments/comments";
 import CONSTS from "./consts"
 import {CommentDTOItemType} from '../../types/commentsTypes';
+import {checkAuthenticated} from '../../middlewares/checkAuthenticated';
 
 const commentsRouter = Router();
 
 export default (app: Application, client) => {
-    commentsRouter.post(CONSTS.ADD_COMMENT, (req: Request, res: Response) => {
+    commentsRouter.post(CONSTS.ADD_COMMENT, checkAuthenticated, (req: Request, res: Response) => {
         addCommentService(req.body, client)
             .then((status: CommentDTOItemType) => {
                 return res
@@ -40,7 +41,7 @@ export default (app: Application, client) => {
             });
     });
 
-    commentsRouter.put(CONSTS.UPDATE_COMMENT, (req: Request, res: Response) => {
+    commentsRouter.put(CONSTS.UPDATE_COMMENT, checkAuthenticated, (req: Request, res: Response) => {
         updateCommentService(req.body, client)
             .then(status => {
                 return res
@@ -54,7 +55,7 @@ export default (app: Application, client) => {
             });
     });
 
-    commentsRouter.delete(CONSTS.DELETE_COMMENT, (req: Request, res: Response) => {
+    commentsRouter.delete(CONSTS.DELETE_COMMENT, checkAuthenticated, (req: Request, res: Response) => {
         deleteCommentService(req.body, client)
             .then((status) => {
                 return res

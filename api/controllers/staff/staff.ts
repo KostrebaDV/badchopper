@@ -10,11 +10,12 @@ import {
 } from '../../services/staff/staff';
 import CONST from "./const"
 import {StaffItemDTOType} from '../../types/staff';
+import {checkAuthenticated} from '../../middlewares/checkAuthenticated';
 
 const serviceRouter = Router();
 
 export default (app: Application, client) => {
-    serviceRouter.post(CONST.ADD_STAFF, (req: Request, res: Response) => {
+    serviceRouter.post(CONST.ADD_STAFF, checkAuthenticated, (req: Request, res: Response) => {
         addStaffService(req.body, client)
             .then((status: StaffItemDTOType) => {
                 return res
@@ -70,7 +71,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.put(CONST.UPDATE_STAFF, (req: Request, res: Response) => {
+    serviceRouter.put(CONST.UPDATE_STAFF, checkAuthenticated, (req: Request, res: Response) => {
         updateStaffService(req.body, client)
             .then(status => {
                 return res
@@ -84,7 +85,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.delete(CONST.DELETE_STAFF, (req: Request, res: Response) => {
+    serviceRouter.delete(CONST.DELETE_STAFF, checkAuthenticated, (req: Request, res: Response) => {
         deleteStaffService(req.body, client)
             .then((status) => {
                 return res

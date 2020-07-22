@@ -10,6 +10,7 @@ import navigationListController from '../controllers/navigation/navigationList';
 import staffController from '../controllers/staff/staff';
 import commentsController from '../controllers/comments/comments';
 import galleryController from '../controllers/gallery/gallery';
+import usersController from '../controllers/users/users';
 require('dotenv').config()
 
 const EXPRESS_PUBLIC_FOLDER_PATH = process.env.EXPRESS_PUBLIC_FOLDER_PATH;
@@ -20,6 +21,7 @@ export const expressClient = (expressApp, client) => {
     expressApp.use(express.static(path.join(__dirname, EXPRESS_PUBLIC_FOLDER_PATH)));
     expressApp.use(express.static(path.join(__dirname, '../../../web/build')));
 
+    usersController(expressApp, client);
     departmentsController(expressApp, client);
     mediaController(expressApp, client);
     assistanceController(expressApp, client);

@@ -8,11 +8,12 @@ import {
 } from "../../services/assistance/assistance";
 import CONSTS from "./consts"
 import {AssistanceResponseType} from '../../types/assistanceTypes';
+import {checkAuthenticated} from '../../middlewares/checkAuthenticated';
 
 const serviceRouter = Router();
 
 export default (app: Application, client) => {
-    serviceRouter.post(CONSTS.ADD_ASSISTANCE, (req: Request, res: Response) => {
+    serviceRouter.post(CONSTS.ADD_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
         addAssistanceService(req.body, client)
             .then((status: AssistanceResponseType) => {
                 return res
@@ -40,7 +41,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.put(CONSTS.UPDATE_ASSISTANCE, (req: Request, res: Response) => {
+    serviceRouter.put(CONSTS.UPDATE_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
         updateAssistanceService(req.body, client)
             .then(status => {
                 return res
@@ -54,7 +55,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.delete(CONSTS.DELETE_ASSISTANCE, (req: Request, res: Response) => {
+    serviceRouter.delete(CONSTS.DELETE_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
         deleteAssistanceService(req.body, client)
             .then((status) => {
                 return res

@@ -10,12 +10,13 @@ import {
 } from "../../services/departments/departments";
 import CONSTS from "./consts"
 import {requestDocumetnParamsType} from "../../types/general";
+import {checkAuthenticated} from '../../middlewares/checkAuthenticated';
 
 const departmentsRouter = Router();
 
 export default (app: Application, client) => {
 
-    departmentsRouter.post(CONSTS.ADD_DEPARTMENT, (req: Request, res: Response) => {
+    departmentsRouter.post(CONSTS.ADD_DEPARTMENT, checkAuthenticated, (req: Request, res: Response) => {
         addDepartmentService(req.body, client)
             .then(status => {
                 return res
@@ -29,7 +30,7 @@ export default (app: Application, client) => {
             });
     });
 
-    departmentsRouter.put(CONSTS.UPDATE_DEPARTMENT, (req: Request, res: Response) => {
+    departmentsRouter.put(CONSTS.UPDATE_DEPARTMENT, checkAuthenticated, (req: Request, res: Response) => {
         updateDepartmentService(req.body, client)
             .then(status => {
                 return res
@@ -43,7 +44,7 @@ export default (app: Application, client) => {
             });
     });
 
-    departmentsRouter.delete(CONSTS.DELETE_DEPARTMENT, (req: Request, res: Response) => {
+    departmentsRouter.delete(CONSTS.DELETE_DEPARTMENT, checkAuthenticated, (req: Request, res: Response) => {
         deleteDepartmentService(req.body, client)
             .then((status) => {
                 return res
@@ -57,7 +58,7 @@ export default (app: Application, client) => {
             });
     });
 
-    departmentsRouter.get(CONSTS.GET_ALL_DEPARTMENTS, (req: Request, res: Response) => {
+    departmentsRouter.get(CONSTS.GET_ALL_DEPARTMENTS, checkAuthenticated, (req: Request, res: Response) => {
         getAllDepartmentsService(client)
             .then((status) => {
                 return res
@@ -85,7 +86,7 @@ export default (app: Application, client) => {
             });
     });
 
-    departmentsRouter.get(CONSTS.GET_DEPARTMENT, (req: requestDocumetnParamsType, res: Response) => {
+    departmentsRouter.get(CONSTS.GET_DEPARTMENT, checkAuthenticated, (req: requestDocumetnParamsType, res: Response) => {
         getDepartmentService(req.params, client)
             .then((status) => {
                 return res
@@ -99,7 +100,7 @@ export default (app: Application, client) => {
             });
     });
 
-    departmentsRouter.get(CONSTS.GET_ADD_DEPARTMENT_DATA, (req: requestDocumetnParamsType, res: Response) => {
+    departmentsRouter.get(CONSTS.GET_ADD_DEPARTMENT_DATA, checkAuthenticated, (req: requestDocumetnParamsType, res: Response) => {
         getAddDepartmentDataService(client)
             .then((status) => {
                 return res

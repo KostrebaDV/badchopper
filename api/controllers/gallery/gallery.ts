@@ -9,11 +9,12 @@ import {
 } from "../../services/gallery/gallery";
 import CONST from "./const"
 import {AssistanceResponseType} from '../../types/assistanceTypes';
+import {checkAuthenticated} from '../../middlewares/checkAuthenticated';
 
 const serviceRouter = Router();
 
 export default (app: Application, client) => {
-    serviceRouter.post(CONST.ADD_GALLERY, (req: Request, res: Response) => {
+    serviceRouter.post(CONST.ADD_GALLERY, checkAuthenticated, (req: Request, res: Response) => {
         addGalleryService(req.body, client)
             .then((status: AssistanceResponseType) => {
                 return res
@@ -27,7 +28,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.put(CONST.UPDATE_GALLERY, (req: Request, res: Response) => {
+    serviceRouter.put(CONST.UPDATE_GALLERY, checkAuthenticated, (req: Request, res: Response) => {
         updateGalleryService(req.body, client)
             .then(status => {
                 return res
@@ -41,7 +42,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.get(CONST.GET_ALL_GALLERIES, (req: Request, res: Response) => {
+    serviceRouter.get(CONST.GET_ALL_GALLERIES, checkAuthenticated, (req: Request, res: Response) => {
         getGalleries(client)
             .then((status) => {
                 return res
@@ -69,7 +70,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.delete(CONST.DELETE_GALLERY, (req: Request, res: Response) => {
+    serviceRouter.delete(CONST.DELETE_GALLERY, checkAuthenticated, (req: Request, res: Response) => {
         deleteGalleryService(req.body, client)
             .then((status) => {
                 return res
