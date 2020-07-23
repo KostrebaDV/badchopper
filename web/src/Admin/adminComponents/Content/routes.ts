@@ -10,5 +10,6 @@ export const ROUTES = {
     STAFF_BARBERS: '/adminPanel/staff/barbers',
     STAFF_MANAGERS: '/adminPanel/staff/managers',
     COMMENTS: '/adminPanel/comments',
-    GALLERY: '/adminPanel/GALLERY'
+    GALLERY: '/adminPanel/GALLERY',
+    LOGIN: '/adminPanel/login',
 };

@@ -1,5 +1,6 @@
 import {useEffect, useContext} from 'react';
 import {ROUTES} from './routes';
+import {ROUTES as baseRoutes} from '../../const';
 import {useHistory} from "react-router-dom";
 import {AppContext} from './store';
 import {getAllDepartments} from './api';
@@ -8,9 +9,14 @@ import {initEffect} from './imageEffector/imageEffectLoader';
 
 export const useGetDepartmentData = () => {
     const {departments, setDepartments} = useContext(AppContext);
+    const {location} = useHistory();
 
     useEffect(() => {
-      if (departments.length === 0) {
+      if (
+          departments.length === 0
+          && location.pathname !== baseRoutes.ADMIN_PANEL
+          && location.pathname !== baseRoutes.LOGIN
+      ) {
           getAllDepartments()
               .then(({data}) => setDepartments(data));
       }

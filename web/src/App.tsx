@@ -11,12 +11,16 @@ import {ROUTES} from './const';
 
 import './styles/base.css';
 import FormContextProvider from '../src/store/FormContext';
+import {Login} from './Admin/modules/Login/Login';
 
 function App() {
     return (
         <FormContextProvider>
             <Router basename='/'>
                 <Switch>
+                    <Route path={ROUTES.LOGIN}>
+                        <Login/>
+                    </Route>
                     <Route path={ROUTES.ADMIN_PANEL}>
                         <AdminApp/>
                     </Route>

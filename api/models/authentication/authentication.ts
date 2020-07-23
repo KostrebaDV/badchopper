@@ -1,31 +1,30 @@
-import {UserItemDTOType} from '../../types/users';
 import CONST from './const';
 
-export const addUserModel = (staffDTO: UserItemDTOType, client) => {
+export const addTokenModel = (tokenDTO, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONST.BASE_COLLECTION)
-            .insertOne(staffDTO)
+            .insertOne(tokenDTO)
             .then(res => resolve(res))
             .catch(err => reject(err));
     });
 };
 
-export const getUserModel = (login, client) => {
+export const deleteTokenModel = (tokenDTO, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONST.BASE_COLLECTION)
-            .findOne({login}, {})
+            .findOneAndDelete({refreshToken: tokenDTO.refreshToken})
             .then(res => resolve(res))
             .catch(err => reject(err));
     });
 };
 
-export const getAdminUserModel = (roleId, client) => {
+export const getTokenModel = (tokenDTO, client) => {
     return new Promise((resolve, reject) => {
         client
             .collection(CONST.BASE_COLLECTION)
-            .findOne({roleId}, {})
+            .findOne({refreshToken: tokenDTO.refreshToken})
             .then(res => resolve(res))
             .catch(err => reject(err));
     });
