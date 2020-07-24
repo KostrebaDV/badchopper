@@ -8,7 +8,7 @@ export const checkAuthenticated = (req, res, next) => {
     const token = getAccessToken(req);
 
     if (token == null) {
-        return res.sendStatus(401);
+        return res.send({location: '/login'})
     }
 
     jwt.verify(token, JWT_SECRET_KEY, (error, user) => {

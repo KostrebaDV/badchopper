@@ -1,4 +1,5 @@
 import {HOST} from '../const';
+import {redirect as redirectMiddleware} from '../middlewares/redirect';
 
 const axios = require('axios');
 
@@ -8,23 +9,23 @@ const axiosInstance = axios.create({
 });
 
 const GET = (url: string) => {
-    return axiosInstance.get(url);
+    return redirectMiddleware(axiosInstance.get(url));
 };
 
 const POST = (url: string, data: object, options = {}) => {
-    return axiosInstance.post(url, data, options);
+    return redirectMiddleware(axiosInstance.post(url, data, options));
 };
 
 const PUT = (url: string, data: object) => {
-    return axiosInstance.put(url, data);
+    return redirectMiddleware(axiosInstance.put(url, data));
 };
 
 const DELETE = (url: string, data: object = {}) => {
-    return axiosInstance.delete(url, { data: { ...data } });
+    return redirectMiddleware(axiosInstance.delete(url, { data: { ...data } }));
 };
 
 const UPLOAD = (url: string, data: object, handleUploadProgress) => {
-    return axiosInstance.post(
+    return redirectMiddleware(axiosInstance.post(
         url,
         data,
         {
@@ -33,7 +34,7 @@ const UPLOAD = (url: string, data: object, handleUploadProgress) => {
             },
             onUploadProgress: progress => handleUploadProgress(progress)
         }
-    );
+    ));
 };
 
 export {

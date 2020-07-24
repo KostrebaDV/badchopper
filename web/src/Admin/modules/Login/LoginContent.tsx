@@ -8,9 +8,11 @@ import {MarginBox} from '../../baseComponents/MarginBox/MarginBox';
 import {login} from './api';
 import {AdminAppContext} from '../../App/store/AdminAppContext/const';
 import {getUniqueId} from '../../../utils';
+import { useHistory } from "react-router-dom";
 
 const LoginContent = () => {
     const {forms} = useContext(FormContext);
+    const history = useHistory();
     const {showNotification} = useContext(AdminAppContext);
 
     const handleLoginError = code => {
@@ -40,7 +42,9 @@ const LoginContent = () => {
     const handleLogin = (data) => {
         login(data)
             .then(res => {
-                console.log(res);
+                if (res.status === 201) {
+                    history.push("/adminPanel");
+                }
             })
             .catch(error => {
                 if (error.response.status) {
