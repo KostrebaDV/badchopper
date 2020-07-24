@@ -43,7 +43,9 @@ const LoginContent = () => {
                 console.log(res);
             })
             .catch(error => {
-                handleLoginError(error.response.status);
+                if (error.response.status) {
+                    handleLoginError(error.response.status);
+                }
             });
     };
 

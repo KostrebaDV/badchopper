@@ -1,7 +1,7 @@
 import {UserItemDTOType} from '../../types/users';
 import {addUserModel, getUserModel, getAdminUserModel} from '../../models/users/users';
 import {bcryptPassword, comparePassword} from '../../utils/users/bcryptPassword';
-import {createAccessToken, createRefreshToken, getToken, getTokenBody} from '../../utils/authentication/authentication';
+import {createAccessToken, createRefreshToken, getRefreshToken, getTokenBody} from '../../utils/authentication/authentication';
 import {
     saveRefreshToken,
     deleteRefreshToken,
@@ -53,7 +53,7 @@ export const loginUserService = async (loginDTO, client) => {
         }, client);
 
         return Promise.resolve({
-            status: 200,
+            status: 201,
             accessToken,
             refreshToken
         });
@@ -67,7 +67,7 @@ export const loginUserService = async (loginDTO, client) => {
 
 export const logoutUserService = async (request, client) => {
     console.log(request.headers);
-    const refreshToken = getToken(request, 'RefreshToken');
+    const refreshToken = getRefreshToken(request);
     const decodeTokenBody = getTokenBody(refreshToken);
 
     const logoutDTO = {

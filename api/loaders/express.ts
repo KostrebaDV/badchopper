@@ -2,6 +2,7 @@ import * as bodyParser from "body-parser";
 const cors = require('cors');
 const path = require('path');
 import express from 'express';
+const cookieParser = require('cookie-parser')
 import corsConfig from '../config/cors';
 import departmentsController from '../controllers/departments/departments';
 import mediaController from '../controllers/media/media';
@@ -18,6 +19,7 @@ const EXPRESS_PUBLIC_FOLDER_PATH = process.env.EXPRESS_PUBLIC_FOLDER_PATH;
 export const expressClient = (expressApp, client) => {
     expressApp.use(cors(corsConfig));
     expressApp.use(bodyParser.json());
+    expressApp.use(cookieParser());
     expressApp.use(express.static(path.join(__dirname, EXPRESS_PUBLIC_FOLDER_PATH)));
     expressApp.use(express.static(path.join(__dirname, '../../../web/build')));
 

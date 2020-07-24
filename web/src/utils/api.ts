@@ -4,14 +4,15 @@ const axios = require('axios');
 
 const axiosInstance = axios.create({
     baseURL: HOST,
+    withCredentials: true
 });
 
 const GET = (url: string) => {
     return axiosInstance.get(url);
 };
 
-const POST = (url: string, data: object) => {
-    return axiosInstance.post(url, data);
+const POST = (url: string, data: object, options = {}) => {
+    return axiosInstance.post(url, data, options);
 };
 
 const PUT = (url: string, data: object) => {

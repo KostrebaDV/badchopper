@@ -30,7 +30,7 @@ const addCommentService = (commentDTO, client) => {
     }
 };
 
-const getAllCommentsService = async  (client) => {
+const getAllCommentsService = async (client) => {
     const comments = await getAllCommentsModel(client)
         .then((data: CommentsDTOType) => data);
 

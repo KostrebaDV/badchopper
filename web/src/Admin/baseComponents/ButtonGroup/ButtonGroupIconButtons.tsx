@@ -30,7 +30,10 @@ ButtonGroupIconButtons.defaultProps = {
 };
 
 ButtonGroupIconButtons.propTypes = {
-	children: PropTypes.array,
+	children: PropTypes.oneOfType([
+        PropTypes.array,
+        PropTypes.object
+    ]),
 	alignCenter: PropTypes.bool,
     className: PropTypes.string
 };

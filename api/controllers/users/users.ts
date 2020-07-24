@@ -44,8 +44,12 @@ export default (app: Application, client) => {
             .then((response: any) => {
                 return res
                     .status(response.status)
-                    .header('Authorization', 'Bearer '+ response.accessToken)
-                    .header('RefreshToken', 'Bearer '+ response.refreshToken)
+                    .cookie('access_token', 'Bearer ' + response.accessToken, {
+                        expires: new Date(Date.now() + 24 * 3600000)
+                    })
+                    .cookie('refresh_token', 'Bearer ' + response.refreshToken, {
+                        expires: new Date(Date.now() + 30 * 24 * 3600000)
+                    })
                     .send('Authorization successful');
             })
             .catch((e) => {

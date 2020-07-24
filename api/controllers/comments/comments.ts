@@ -34,7 +34,7 @@ export default (app: Application, client) => {
                     .status(200)
                     .send(status);
             })
-            .catch(() => {
+            .catch((e) => {
                 return res
                     .status(500)
                     .send("error occur");
