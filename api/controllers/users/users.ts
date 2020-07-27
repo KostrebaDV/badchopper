@@ -64,6 +64,8 @@ export default (app: Application, client) => {
             .then((response: any) => {
                 return res
                     .status(response.status)
+                    .clearCookie('access_token')
+                    .clearCookie('refresh_token')
                     .send(response);
             })
             .catch((e) => {

@@ -5,6 +5,24 @@
 	color: $light;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	box-sizing: border-box;
 	height: 70px;
+}
+
+.adminNavigationUserLeftSide {
+	display: flex;
+}
+
+.adminNavigationUserLogout {
+	font-size: 22px;
+	cursor: pointer;
+	padding: 5px;
+	margin-top: 10px;
+	margin-right: -5px;
+	transition: color .3s;
+
+	:hover {
+		color: $primary;
+	}
 }

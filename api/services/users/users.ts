@@ -44,8 +44,8 @@ export const loginUserService = async (loginDTO, client) => {
     }
 
     if (await comparePassword(loginDTO.password, user.password)) {
-        const accessToken = createAccessToken({name: user.name, role: user.roleId});
-        const refreshToken = createRefreshToken({name: user.name, role: user.roleId})
+        const accessToken = createAccessToken({name: user.name, role: user.roleId, surname: user.surname});
+        const refreshToken = createRefreshToken({name: user.name, role: user.roleId, surname: user.surname})
 
         await saveRefreshToken({
             refreshToken,
@@ -66,7 +66,6 @@ export const loginUserService = async (loginDTO, client) => {
 };
 
 export const logoutUserService = async (request, client) => {
-    console.log(request.headers);
     const refreshToken = getRefreshToken(request);
     const decodeTokenBody = getTokenBody(refreshToken);
 
@@ -87,7 +86,8 @@ export const logoutUserService = async (request, client) => {
     await deleteRefreshToken(logoutDTO, client)
 
     return Promise.resolve({
-        status: 204,
+        status: 200,
+        location: '/login',
         msg: `User '${existToken.userName}' has logout`
     });
 };

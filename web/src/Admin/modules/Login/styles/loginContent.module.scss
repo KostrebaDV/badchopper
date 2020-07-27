@@ -1,4 +1,26 @@
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/box-shadow.module";
+
+.loginPage {
+	background-image: url('../../../../static/images/login_bg_image.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 100vh;
+	display: flow-root;
+}
+
 .loginContent {
 	width: 350px;
 	margin: 15% auto 0;
+	background-color: $light;
+	border-radius: 3px;
+
+	@include box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.loginContentHeader {
+	display: block;
+	text-align: center;
+	margin-bottom: 30px;
 }

@@ -9,6 +9,8 @@ import {login} from './api';
 import {AdminAppContext} from '../../App/store/AdminAppContext/const';
 import {getUniqueId} from '../../../utils';
 import { useHistory } from "react-router-dom";
+import {Typography} from '../../baseComponents/Typography/Typography';
+import {PaddingBox} from '../../baseComponents/PaddingBox/PaddingBox';
 
 const LoginContent = () => {
     const {forms} = useContext(FormContext);
@@ -53,24 +55,37 @@ const LoginContent = () => {
             });
     };
 
-    const rightButtons = (
+    const loginButton = (
         <Button
             actionHandler={() => forms.LOGIN_FORM.submitForm()}
-            label="!!Авторизоваться"
+            label="!!Login"
             type="primary"
         />
     );
 
     return (
-        <div className={classes.loginContent}>
-            <LoginForm
-                handleLogin={handleLogin}
-            />
-            <MarginBox tSmall>
-                <ButtonGroup
-                    rightButtons={rightButtons}
+        <div className={classes.loginPage}>
+
+            <PaddingBox
+                large
+                className={classes.loginContent}
+
+            >
+                <Typography
+                    className={classes.loginContentHeader}
+                    variant='26'
+                >
+                    BadChopper control panel
+                </Typography>
+                <LoginForm
+                    handleLogin={handleLogin}
                 />
-            </MarginBox>
+                <MarginBox tSmall>
+                    <ButtonGroup
+                        singleButton={loginButton}
+                    />
+                </MarginBox>
+            </PaddingBox>
         </div>
     );
 };

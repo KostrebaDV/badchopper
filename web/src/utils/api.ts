@@ -12,8 +12,8 @@ const GET = (url: string) => {
     return redirectMiddleware(axiosInstance.get(url));
 };
 
-const POST = (url: string, data: object, options = {}) => {
-    return redirectMiddleware(axiosInstance.post(url, data, options));
+const POST = (url: string, data: object) => {
+    return redirectMiddleware(axiosInstance.post(url, data));
 };
 
 const PUT = (url: string, data: object) => {
