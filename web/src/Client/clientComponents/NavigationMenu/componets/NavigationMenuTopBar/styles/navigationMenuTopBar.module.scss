@@ -1,0 +1,37 @@
+@import "../../../../../styles/colors/colors.module";
+@import "../../../../../styles/mixins/_transition.module";
+
+.navigationMenuTopBar {
+	width: 54%;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid $dark;
+	padding-bottom: 22px;
+}
+
+.navigationMenuTopBar__button {
+	font-size: 14px;
+	line-height: 18px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	display: block;
+	position: relative;
+	cursor: pointer;
+
+	@include transition(color .2s)
+}
+
+.navigationMenuTopBar__button:hover {
+	color: $gold;
+}
+
+.navigationMenuTopBar__button:nth-child(2):after,
+.navigationMenuTopBar__button:nth-child(3):after {
+	content: '';
+	height: 1px;
+	width: 100%;
+	display: block;
+	bottom: -22px;
+	position: absolute;
+	background-color: $gold;
+}

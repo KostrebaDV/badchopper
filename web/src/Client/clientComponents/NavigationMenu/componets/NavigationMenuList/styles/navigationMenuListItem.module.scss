@@ -1,24 +1,30 @@
 @import "../../../../../styles/mixins/_transition.module";
+@import "../../../../../styles/colors/colors.module";
 
 .navigationMenuListItem {
 	display: flex;
-	align-items: center;
 	cursor: pointer;
+	line-height: 132px;
 
-	@include transition (margin-left .3s);
+	@include transition (color .3s);
 }
 
 .navigationMenuListItem:hover {
-	margin-left: 55px;
+	color: $gold;
 }
 
 .navigationMenuListItem__label {
-	font-size: 54px;
+	font-size: 102px;
 	letter-spacing: -1px;
+	font-style: normal;
+	font-weight: normal;
+	font-family: Nocturne;
 }
 
 .navigationMenuListItem__index {
-	margin-right: 32px;
-	font-size: 14px;
+	margin-right: 10px;
+	margin-top: -40px;
+	font-size: 18px;
 	opacity: .4;
+	letter-spacing: -0.005em;
 }

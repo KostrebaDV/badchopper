@@ -1,3 +1,32 @@
+@import "../../../styles/colors/colors.module";
+
 .feedbacksDetailPage {
-	margin: 60px 12% 160px;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.feedbacksDetailPage__feedbackQuotes {
+	margin-top: 160px;
+}
+
+.feedbacksDetailPage__feedbacks {
+	overflow: hidden;
+	width: 55%;
+	padding-bottom: 180px;
+}
+
+.feedbacksDetailPage__headLabel {
+	margin: 0 0 50px 0;
+}
+
+.feedbacksDetailPage__navigationClassname {
+	position: absolute;
+	left: 0;
+	bottom: 520px;
+}
+
+.feedbacksGallery {
+	border-bottom: 1px solid $light;
+	margin-bottom: 40px;
 }

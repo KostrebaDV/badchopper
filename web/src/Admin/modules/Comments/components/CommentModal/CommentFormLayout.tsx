@@ -54,6 +54,15 @@ const CommentFormLayout = (
                                     placeholder="Фамилия"
                                 />
                             </FormLayoutItem>
+                            <FormLayoutItem>
+                                <Field
+                                    previewMode={isPreviewMode}
+                                    component={Textbox}
+                                    name="instagramUrl"
+                                    label="Instagram"
+                                    placeholder="Instagram url"
+                                />
+                            </FormLayoutItem>
                         </FormLayoutItemGroup>
                         <FormLayoutItem>
                             <Field
@@ -81,7 +90,7 @@ const CommentFormLayout = (
                         validate={{
                             required: true,
                             length: {
-                                max: 250
+                                max: 500
                             }
                         }}
                         placeholder="Описание"

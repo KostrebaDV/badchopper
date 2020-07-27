@@ -1,15 +1,18 @@
 @import "../../../styles/colors/colors.module";
 
 .header {
-	margin: 0 12% 24px;
+	margin: 0 8% 24px;
 	display: flex;
 	align-items: center;
 }
 
 .header__label {
 	color: $gold;
-	margin-right: 13%;
-	letter-spacing: -0.03em;
+	margin-right: 7.5%;
+	font-size: 102px;
+	font-family: Nocturne;
+	font-style: normal;
+	font-weight: normal;
 }
 
 

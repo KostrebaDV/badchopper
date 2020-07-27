@@ -6,13 +6,17 @@ type GlobalType = {
     galleryInterval: number[]
     galleryTimeout: number
     infiniteGalleryContainerWidth: number
+    prevActiveIndex: number | undefined
+    nextActiveIndex: number | undefined
 };
 
 const GLOBAL: GlobalType = {
     galleryInterval: [],
     galleryTimeout: 0,
     infiniteGalleryContainerWidth: 0,
-    widthShift: []
+    widthShift: [],
+    prevActiveIndex: undefined,
+    nextActiveIndex: undefined
 };
 
 const elements = ({galleryName}) => {
@@ -40,6 +44,10 @@ const _getGallery = (items, {galleryName, galleryItemTemplate}) => {
 
 
     return itemsElements.join(' ');
+};
+
+const _getSliderElement = (index) => {
+    return document.getElementsByClassName(`index-${index}`);
 };
 
 const _setActiveElement = (index) => {
@@ -155,14 +163,48 @@ const _clearGalleryInterval = () => {
 };
 
 const _setInfiniteScrollActiveItem = (index, options) => {
-    console.log(GLOBAL.widthShift);
-    const {galleryContainer} = elements(options);
+     const {galleryContainer, galleryItems} = elements(options);
+     const galleryDuplicateContainer = document.getElementsByClassName('galleryDuplicateContainer');
+    _setActiveElement(index);
+
+    if (GLOBAL.prevActiveIndex !== undefined && GLOBAL.nextActiveIndex !== undefined) {
+        const prevElement = _getSliderElement(GLOBAL.prevActiveIndex);
+        const nextElement = _getSliderElement(GLOBAL.nextActiveIndex);
+
+        prevElement[0].classList.remove("item__active-prev");
+        nextElement[0].classList.remove("item__active-next");
+    }
+
+    const prevIndex = index - 1 === 0 ? galleryItems.length : index - 1;
+    const nextIndex = index === galleryItems.length ? 1 : index + 1;
+
+    const prevElement = _getSliderElement(prevIndex);
+    const nextElement = _getSliderElement(nextIndex);
+
+    prevElement[0].classList.add("item__active-prev");
+    nextElement[0].classList.add("item__active-next");
+
+    console.log(prevElement);
+
+    // @ts-ignore
+    galleryDuplicateContainer[0].innerHTML = `
+        <div class="galleryDuplicateContainer__item">
+            ${prevElement[0].innerHTML}
+        </div>
+        <div class="galleryDuplicateContainer__item">
+            ${nextElement[0].innerHTML}
+        </div>
+    `;
+
     //@ts-ignore
     galleryContainer[0].style.transform = `translate3d(-${GLOBAL.widthShift[index]}px, 0px, 0px)`;
     //@ts-ignore
     galleryContainer[0].style.webkitTransform = `translate3d(-${GLOBAL.widthShift[index]}px, 0px, 0px)`;
     //@ts-ignore
     galleryContainer[0].style.msTransform = `translate3d(-${GLOBAL.widthShift[index]}px, 0px, 0px)`;
+
+    GLOBAL.prevActiveIndex = prevIndex;
+    GLOBAL.nextActiveIndex = nextIndex;
 };
 
 const _initInfiniteScrollTranslateParams = (options) => {
@@ -258,4 +300,8 @@ export const initGallery = (
 
     _initTouchEvents(options, setActiveIndex);
     _initInterval(options, setActiveIndex);
+};
+
+export const destroyGallery = () => {
+    _clearGalleryInterval();
 };

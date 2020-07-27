@@ -1,32 +1,13 @@
-@import "../../../../../styles/mixins/transition.module";
+@import "../../../../../styles/colors/colors.module";
 
-.detailPageStaffList {
-	margin-top: 60px;
-	//display: flex;
-	//flex-wrap: wrap;
-	//justify-content: space-between;
-	opacity: 1;
-	filter: alpha(opacity=0);
-
-	//&:after {
-	//	content: "";
-	//	width: 315px
-	//}
-
-	@include transition(opacity .4s ease-in-out);
+.detailPageStaffList__header {
+	color: $gold;
+	font-size: 102px;
+	font-family: Nocturne Serif;
+	font-style: normal;
+	font-weight: normal;
+	display: block;
+	text-align: center;
+	margin-bottom: 30px;
 }
 
-.detailPageStaffList__transparent {
-	opacity: 0;
-	position: fixed;
-	right: -9999px;
-}
-
-.detailPageStaffList__displayNone {
-	display: none;
-}
-
-.detailPageStaffList div:nth-last-child(-n+1) {
-	//margin-right: auto;
-	//margin-left: 2%;
-}

@@ -2,9 +2,10 @@
 @import "../../../../../styles/mixins/transition.module";
 
 .detailPageStaffListItem {
-	margin-bottom: 60px;
-	//margin: 0 20px 60px 0;
 	display: block;
+	width: 360px;
+	height: 440px;
+	margin: 0 auto 110px;
 }
 
 .detailPageStaffListItem:hover {
@@ -30,5 +31,6 @@
 
 .detailPageStaffListItem__description {
 	opacity: .6;
+	margin-top: 10px;
 }
 

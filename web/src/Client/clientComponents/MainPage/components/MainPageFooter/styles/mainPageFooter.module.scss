@@ -9,12 +9,13 @@
 
 .mainPageFooter__leftSide {
 	display: flex;
-	width: 350px;
+	width: 365px;
 	margin: 80px 0;
+	position: relative;
 }
 
 .mainPageFooter__rightSide {
-	margin: 0 60px;
+	margin: 0 20px;
 }
 
 .mainPageFooter__instagramLink {
@@ -22,5 +23,29 @@
 }
 
 .mainPageFooter__bookingText {
-	letter-spacing: -1px;
+	font-family: Nocturne;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: 1px;
 }
+
+.mainPageFooter__bookingRoundText {
+	position: absolute;
+	top: -30px;
+	right: -46px;
+	//-webkit-animation: rotation 25s infinite linear;
+	//-moz-animation: rotation 25s infinite linear;
+	//-o-animation: rotation 25s infinite linear;
+	//-ms-animation: rotation 25s infinite linear;
+	//animation: rotation 25s infinite linear;
+	//display: block;
+}
+
+//@keyframes rotation {
+//	from {
+//		transform: rotate(0deg);
+//	}
+//	to {
+//		transform: rotate(359deg);
+//	}
+//}

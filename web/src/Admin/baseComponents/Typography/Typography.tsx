@@ -31,6 +31,7 @@ const Typography: FC<TypographyType> = (
 			[classes.typography_26]: variant === '26',
 			[classes.typography_28]: variant === '28',
 			[classes.typography_32]: variant === '32',
+            [classes.typography_48]: variant === '48',
 			[classes.typography_54]: variant === '54',
             [classes.typography_82]: variant === '82',
 			[classes.typography_bold200]: bold === '200',

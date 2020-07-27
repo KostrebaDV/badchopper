@@ -1,40 +1,45 @@
 import React from 'react';
+import Masonry from 'react-masonry-css';
 import {DetailPageStaffListItem} from './detailPageStaffListItem';
 import {getUniqueKey} from '../../../../../utils';
+import './styles/detailPageStaffListMasonry.scss';
+import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
-import ClassNames from 'classnames';
-import {GridLayoutRow} from '../../../../../Admin/baseComponents/GridLayout';
 
 const DetailPageStaffList = (
     {
-        staff,
-        active
+        staff
     }
 ) => {
-    const componentClassName = ClassNames(
-        classes.detailPageStaffList,
-        {
-            [classes.detailPageStaffList__transparent]: !active
-        }
-    );
+    const breakpointColumnsObj = {
+        default: 3,
+        700: 2,
+        500: 1
+    };
 
     return (
-        <GridLayoutRow
-            gridColumn={4}
-            gridGap='20px'
-            className={componentClassName}
-        >
-            {
-                staff.map(item => {
-                    return (
-                        <DetailPageStaffListItem
-                            item={item}
-                            key={getUniqueKey()}
-                        />
-                    );
-                })
-            }
-        </GridLayoutRow>
+        <>
+            <Typography
+                className={classes.detailPageStaffList__header}
+            >
+                !!Команда
+            </Typography>
+            <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column">
+                {
+                    staff.map(item => {
+                        return (
+                            <DetailPageStaffListItem
+                                item={item}
+                                key={getUniqueKey()}
+                            />
+                        );
+                    })
+                }
+            </Masonry>
+        </>
     );
 };
 

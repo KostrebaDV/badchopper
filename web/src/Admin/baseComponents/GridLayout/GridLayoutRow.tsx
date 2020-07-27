@@ -12,6 +12,7 @@ const GridLayoutRow = (
 		children,
 		gapColumn,
 		className,
+        gridItemClassName,
 		alignItems,
 		gridColumn,
         onClick,
@@ -41,7 +42,7 @@ const GridLayoutRow = (
                 const key = getUniqueKey('griditem', index);
 
                 return (
-                    <div key={key} style={gridItemsStyles[index]}>
+                    <div className={gridItemClassName} key={key} style={gridItemsStyles[index]}>
                         {child}
                     </div>
                 );
@@ -56,12 +57,14 @@ GridLayoutRow.defaultProps = {
 	gridColumn: 12,
     onClick: () => {},
 	alignItems: 'start',
-    gridGap: ''
+    gridGap: '',
+    gridItemClassName: ''
 };
 
 GridLayoutRow.propTypes = {
 	grid: PropTypes.string,
     gridGap: PropTypes.string,
+    gridItemClassName: PropTypes.string,
     gridTemplateColumns: PropTypes.string,
 	gapColumn: PropTypes.number,
 	gridColumn: PropTypes.number,

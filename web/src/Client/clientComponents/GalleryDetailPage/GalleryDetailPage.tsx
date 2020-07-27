@@ -24,7 +24,6 @@ const GalleryDetailPage = () => {
         <>
             <Header
                 label="!!Галерея"
-                content="!!BadChopper - это первый Черновицкий Barbershop, который полностью воспроизводит традиции"
             />
             <div className={classes.galleryDetailPage}>
                 <Gallery

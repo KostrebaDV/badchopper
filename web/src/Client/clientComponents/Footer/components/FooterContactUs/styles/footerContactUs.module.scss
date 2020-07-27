@@ -1,7 +1,10 @@
+@import "../../../../../styles/colors/colors.module";
+
 .footerContactUs {
-	width: 200px;
+	width: 50%;
+	cursor: pointer;
 }
 
-.footerContactUs__button {
-	margin-top: 25px;
+.footerContactUs__yesText {
+	color: $gold;
 }

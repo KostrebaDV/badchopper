@@ -1,8 +1,9 @@
 import React from 'react';
 import classes from './styles/index.module.scss';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
-import {Link} from '../../../../../Admin/baseComponents/Link/Link';
 import scissorsSvgUrl from "../../../../../static/images/scissors.svg";
+import bookingRoundText from "../../../../../static/images/bookingRoundText.svg";
+import {MainPageFooterSocialLinks} from './MainPageFooterSocialLinks';
 
 const MainPageFooter = () => {
     return (
@@ -15,27 +16,14 @@ const MainPageFooter = () => {
                 >
                     !!Запишись онлайн прямо сейчас!
                 </Typography>
+                <img
+                    src={bookingRoundText}
+                    alt="bookingRoundText"
+                    className={classes.mainPageFooter__bookingRoundText}
+                />
                 <img src={scissorsSvgUrl} alt="scissors"/>
             </div>
-            <div className={classes.mainPageFooter__rightSide}>
-                <Typography
-                    upperCase
-                    variant="14"
-                >
-                    <Link hasRoute={false} link="/">
-                        Facebook
-                    </Link>
-                </Typography>
-                <Typography
-                    upperCase
-                    variant="14"
-                    className={classes.mainPageFooter__instagramLink}
-                >
-                    <Link hasRoute={false} link="/">
-                        Instagramm
-                    </Link>
-                </Typography>
-            </div>
+            <MainPageFooterSocialLinks/>
         </div>
     );
 };

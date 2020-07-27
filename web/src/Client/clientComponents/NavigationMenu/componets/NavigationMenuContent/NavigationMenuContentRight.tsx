@@ -3,7 +3,7 @@ import classes from './styles/index.module.scss';
 import {NavigationMenuLanguageBar} from '../NavigationMenuLanguageBar/NavigationMenuLanguageBar';
 import {NavigationMenuList} from '../NavigationMenuList/NavigationMenuList';
 
-const NavigationMenuContentRight = (
+const NavigationMenuContent = (
 ) => {
     return (
         <div className={classes.navigationMenuContent__right}>
@@ -13,4 +13,4 @@ const NavigationMenuContentRight = (
     );
 };
 
-export {NavigationMenuContentRight};
+export {NavigationMenuContent};

@@ -1,24 +1,35 @@
 import React from 'react';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
-import {Button} from '../../../Button/Button';
 import classes from './styles/index.module.scss';
+import { useHistory } from "react-router-dom";
 
 const FooterContactUs = () => {
+    const history = useHistory();
+
+    const handleContactUsClick = () => {
+        history.push("/contacts");
+    };
+
     return (
-        <div className={classes.footerContactUs}>
+        <div
+            onClick={handleContactUsClick}
+            className={classes.footerContactUs}
+        >
             <Typography
-                variant="18"
+                variant="48"
                 lineHeight="1"
+                upperCase
             >
-                !!Хочешь стать частью нашей команды?
+                !!Хочешь стать частью нашей команды?&nbsp;
             </Typography>
-            <Button
-                className={classes.footerContactUs__button}
-                labelUppercase
-                label="!!свяжись с нами"
-                onClick={() => {}}
-                fontSize="12"
-            />
+            <Typography
+                variant="48"
+                lineHeight="1"
+                upperCase
+                className={classes.footerContactUs__yesText}
+            >
+                /да
+            </Typography>
         </div>
     );
 };

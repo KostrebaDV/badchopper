@@ -16,7 +16,7 @@ export default (departmentData) => {
             imageId: 'error',
             staff: [],
             assistance: [],
-        }
+        };
     }
 
     return {

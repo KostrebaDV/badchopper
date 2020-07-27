@@ -1,4 +1,5 @@
 @import "../../../../../styles/colors/colors.module";
+@import "../../../../../styles/mixins/_transition.module";
 
 .mainPageContentItem {
 	flex-direction: column;
@@ -6,6 +7,7 @@
 	display: flex;
 	position: relative;
 	cursor: pointer;
+	text-align: center;
 }
 
 .mainPageContentItem_image {
@@ -15,9 +17,18 @@
 .mainPageContentItem__label {
 	color: $gold;
 	z-index: 1;
+	font-family: 'Nocturne';
+	font-style: normal;
+	font-weight: normal;
+
+	@include transition(color .35s);
+}
+
+.mainPageContentItem__label:hover {
+	color: $light;
 }
 
 .mainPageContentItem__address {
-	margin-top: -12px;
+	margin-top: -10px;
 	z-index: 1;
 }

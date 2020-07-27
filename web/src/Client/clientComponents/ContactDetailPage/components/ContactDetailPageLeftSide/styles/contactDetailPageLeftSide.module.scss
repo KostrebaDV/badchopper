@@ -1,0 +1,23 @@
+@import "../../../../../styles/colors/colors.module";
+
+.contactDetailPageLeftSide {
+	flex: 1 1 20%;
+}
+
+.contactDetailPageLeftSide__headLabel {
+	font-size: 64px;
+	color: $gold;
+	font-family: Nocturne Serif;
+	font-style: normal;
+	font-weight: normal;
+	margin-bottom: 70px;
+}
+
+.contactDetailPageLeftSide__text {
+	margin-bottom: 40px;
+	letter-spacing: 0.04em;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	width: 250px;
+}

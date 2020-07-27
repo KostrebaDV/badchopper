@@ -7,7 +7,7 @@
 	position: fixed;
 	top: 0;
 	display: flex;
-	background-color: $metro_menu_bg_color;
+	background-color: $dark;
 	z-index: 2;
 
 	@include transition(right .35s)
@@ -19,10 +19,4 @@
 
 .navigationMenuContent__close {
 	right: -10000px;
-}
-
-.navigationMenuContent__right {
-	flex: 1 1 55%;
-	color: $dark;
-	padding: 40px 112px;
 }

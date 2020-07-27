@@ -3,6 +3,7 @@ type CommentDTOItemType = {
     name: string;
     surname: string;
     description: string;
+    instagramUrl: string;
     imageId: string;
     creationDate: string;
     image?: object;

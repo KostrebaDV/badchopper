@@ -20,7 +20,8 @@ const App = () => {
                     ROUTES.ASSISTANCE_DETAIL,
                     ROUTES.DEPARTMENT_DETAIL,
                     ROUTES.FEEDBACKS_DETAIL,
-                    ROUTES.GALLERY_DETAIL
+                    ROUTES.GALLERY_DETAIL,
+                    ROUTES.CONTACT_DETAIL
                 ]}>
                     <DetailPage/>
                 </Route>

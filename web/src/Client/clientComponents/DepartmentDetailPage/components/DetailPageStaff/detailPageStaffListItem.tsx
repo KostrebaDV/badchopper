@@ -17,7 +17,7 @@ const DetailPageStaffListItem = (
         <div className={componentClassName}>
             <Image
                 width='100%'
-                height={390}
+                height={440}
                 src={item.image.path}
                 alt={`${item.name} ${item.surname}`}
                 className={classes.detailPageStaffListItem__image}

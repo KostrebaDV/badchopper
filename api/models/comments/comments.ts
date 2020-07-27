@@ -30,7 +30,8 @@ const updateCommentModel = (updateCommentDTO: CommentDTOItemType, client) => {
         name,
         description,
         imageId,
-        surname
+        surname,
+        instagramUrl
     } = updateCommentDTO;
 
     return new Promise((resolve, reject) => {
@@ -45,7 +46,8 @@ const updateCommentModel = (updateCommentDTO: CommentDTOItemType, client) => {
                         name,
                         description,
                         imageId,
-                        surname
+                        surname,
+                        instagramUrl
                     }
                 },
                 {returnOriginal: false}

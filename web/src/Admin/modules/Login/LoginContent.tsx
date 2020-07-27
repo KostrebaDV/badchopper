@@ -45,7 +45,7 @@ const LoginContent = () => {
         login(data)
             .then(res => {
                 if (res.status === 201) {
-                    history.push("/adminPanel");
+                    history.push("/adminPanel/departments/list");
                 }
             })
             .catch(error => {

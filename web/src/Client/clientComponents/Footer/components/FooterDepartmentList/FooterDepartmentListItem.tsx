@@ -4,14 +4,23 @@ import classes from './styles/index.module.scss';
 import positionSvg from "../../../../../static/images/position.svg";
 import {ROUTES} from '../../../../App/routes';
 import {Link} from '../../../../../Admin/baseComponents/Link/Link';
+import ClassNames from 'classnames';
 
 const FooterDepartmentListItem = (
     {
-        item
+        item,
+        isContactPage
     }
 ) => {
+    const componentClassName = ClassNames(
+        {
+            [classes.footerDepartmentListItem]: !isContactPage,
+            [classes.footerDepartmentListItem_contactPage]: isContactPage
+        }
+    );
+
     return (
-        <div className={classes.footerDepartmentListItem}>
+        <div className={componentClassName}>
             <Link link={`${ROUTES.DEPARTMENT_DETAIL}${item.publicId}`}>
                 <Typography
                     letterSpacing="-0.01em"

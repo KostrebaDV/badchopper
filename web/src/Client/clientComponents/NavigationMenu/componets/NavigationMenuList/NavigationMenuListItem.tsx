@@ -8,7 +8,7 @@ const NavigationMenuListItem = (
         item
     }
 ) => {
-    const {openNavigation} = useContext(NavigationMenuContext)
+    const {openNavigation} = useContext(NavigationMenuContext);
 
     return (
         <Link
