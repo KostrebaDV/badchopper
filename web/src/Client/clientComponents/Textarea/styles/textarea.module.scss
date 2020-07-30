@@ -19,6 +19,10 @@
 	@include transition(height .2s);
 }
 
+.textbox:valid {
+	background-color: transparent;
+}
+
 .textarea__focus {
 	height: 70px;
 }

@@ -39,7 +39,7 @@ const DepartmentAddFormAssistance = (
                         previewMode={!editMode}
                         component={CheckboxGroup}
                         name="assistance"
-                        label="!!!Выберите сотрудников"
+                        label="Выберите сотрудников"
                         items={stuffItems}
                     />
                 )
@@ -48,7 +48,7 @@ const DepartmentAddFormAssistance = (
                 !hasAssistanceData && (
                     <EmptyContent>
                         <div>
-                            <p>!!Нет добавленых услуг</p>
+                            <p>Нет добавленых услуг</p>
                             <p>!Добавьте <Link underline link={ROUTES.ASSISTANCE}>услуг</Link></p>
                         </div>
                     </EmptyContent>

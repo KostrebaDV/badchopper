@@ -4,13 +4,19 @@ import {
     SET_DEPARTMENTS,
     SET_GALLERIES,
     SET_ASSISTANCE,
-    SET_FEEDBACKS
+    SET_FEEDBACKS,
+    SET_LANGUAGE_CODE
 } from './const';
 
 export const reducer = (state, payload) => {
     actionLogger(payload.type, payload);
 
     switch (payload.type) {
+        case SET_LANGUAGE_CODE:
+            return {
+                ...state,
+                languageCode: payload.languageCode
+            };
         case SET_DEPARTMENTS:
             return {
                 ...state,

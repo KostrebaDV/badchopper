@@ -14,18 +14,11 @@
 
 .detailPageStaffListItem__image {
 	margin-bottom: 16px;
-
-	@include transition(.2s filter linear)
 }
 
 .detailPageStaffListItem:hover {
 	.detailPageStaffListItem__name {
 		color: $gold;
-	}
-
-	.detailPageStaffListItem__image {
-		filter: blur(6px);
-		-webkit-filter: blur(6px);
 	}
 }
 

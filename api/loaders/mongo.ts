@@ -2,8 +2,8 @@ import { MongoClient } from "mongodb"
 
 require('dotenv').config()
 
-const DB_PORT = process.env.DB_CONNECTION_PORT;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+const DB_PORT = process.env.DB_CONNECTION_PORT;
 
 const mongo = new MongoClient(
     `${DB_CONNECTION_STRING}:${DB_PORT}`,

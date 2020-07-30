@@ -1,6 +1,8 @@
 type AssistanceItemType = {
     _id: string;
-    name: string;
+    name: {
+        ru: string;
+    };
     description: string;
 }
 

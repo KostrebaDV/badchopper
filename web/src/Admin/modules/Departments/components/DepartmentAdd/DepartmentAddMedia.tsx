@@ -23,8 +23,8 @@ const DepartmentAddMedia = (
         openModal(
             MODALS.MEDIA_SELECT_MODAL,
             {
-                modalTitle: '!!Выберите одно изображение',
-                rightButtonLabel: '!!Выбрать',
+                modalTitle: 'Выберите одно изображение',
+                rightButtonLabel: 'Выбрать',
                 handleSubmit: handleSelectMedia,
                 mediaData,
             }

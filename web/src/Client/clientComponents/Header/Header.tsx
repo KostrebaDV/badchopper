@@ -2,14 +2,19 @@ import React from 'react';
 import classes from './styles/index.module.scss';
 import {Typography} from '../../../Admin/baseComponents/Typography/Typography';
 import {Button} from '../Button/Button';
+import {isMobile} from "react-device-detect";
 import ClassNames from 'classnames';
+import {translate} from '../../../utils';
+import {codes} from '../../../static/translations/codes';
+import {yClientsUrl} from '../../../const';
 
 const Header = (
     {
         label,
         content,
         showButton,
-        className
+        className,
+        firstLetterUppercase
     }
 ) => {
     const componentClassName = ClassNames(
@@ -17,12 +22,20 @@ const Header = (
         className
     );
 
+    const headerLabelClassName = ClassNames(
+        {
+            [classes.header__label_marginOffset]: content && isMobile,
+            [classes.header__label_firstLetterUppercase]: firstLetterUppercase
+        },
+        classes.header__label
+    );
+
     return (
         <div className={componentClassName}>
             <Typography
                 displayBlock
                 lineHeight="1"
-                className={classes.header__label}
+                className={headerLabelClassName}
             >
                 {label}
             </Typography>
@@ -44,8 +57,9 @@ const Header = (
                         <Button
                             className={classes.header__button}
                             labelUppercase
-                            label="!!записаться онлайн"
+                            label={translate(codes.bookNow)}
                             onClick={() => {
+                                window.open(yClientsUrl, '_blank');
                             }}
                         />
                     )
@@ -57,6 +71,7 @@ const Header = (
 
 Header.defaultProps = {
     showButton: false,
+    firstLetterUppercase: false,
     content: '',
     className: ''
 };

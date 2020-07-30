@@ -1,0 +1,126 @@
+@import "../../../../../styles/colors/colors.module";
+
+.footerContactUsForm {
+	padding: 40px;
+	width: 100%;
+}
+
+.footerContactUsForm__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 130px;
+}
+
+.footerContactUsForm__closeButton {
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.footerContactUsForm__closeButton:hover {
+	color: $gold;
+}
+
+.footerContactUsForm__content {
+	display: flex;
+	padding: 100px;
+	justify-content: space-between;
+}
+
+.footerContactUsForm__contentLeft {
+	flex: 1 1 60%;
+}
+
+.footerContactUsForm__headLabel {
+	font-size: 64px;
+	color: $gold;
+	font-family: Nocturne;
+	font-style: normal;
+	font-weight: normal;
+	margin-bottom: 40px;
+	line-height: 55px;
+}
+
+.footerContactUsForm__headLabel::first-letter {
+	text-transform: uppercase;
+}
+
+.footerContactUsForm__text {
+	letter-spacing: 0.04em;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+}
+
+.footerContactUsForm__contentRight {
+	flex: 1 1 40%;
+	margin-left: 50px;
+}
+
+@media (max-width: 575.98px) {
+	.footerContactUsForm {
+		padding: 24px;
+	}
+
+	.footerContactUsForm__header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 40px;
+	}
+
+	.footerContactUsForm__closeButton {
+		margin-top: -20px;
+		display: block;
+	}
+
+	.footerContactUsForm__content {
+		display: block;
+		padding: 0;
+	}
+
+	.footerContactUsForm__contentLeft {
+		flex: none;
+		margin-bottom: 40px;
+	}
+
+	.footerContactUsForm__headLabel {
+		font-size: 48px;
+		line-height: 40px;
+		margin-bottom: 32px;
+		text-align: left;
+	}
+
+	.footerContactUsForm__text {
+		letter-spacing: 0.04em;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		text-align: left;
+	}
+
+	.footerContactUsForm__contentRight {
+		flex: none;
+		margin-left:0;
+		margin-bottom: 60px;
+	}
+
+	.footerContactUsForm__formButton {
+		width: 100%;
+		box-sizing: border-box;
+		font-size: 16px;
+		text-align: center;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
+}

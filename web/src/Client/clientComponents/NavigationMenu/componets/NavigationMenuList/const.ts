@@ -1,22 +1,22 @@
 export default [
     {
         index: '01',
-        label: '!Услуги',
+        label: 'services',
         link: '/services'
     },
     {
         index: '02',
-        label: '!Галерея',
+        label: 'gallery',
         link: '/gallery'
     },
     {
         index: '03',
-        label: '!Отзывы',
+        label: 'feedbacks',
         link: '/feedbacks'
     },
     {
         index: '04',
-        label: '!Контакты',
+        label: 'contacts',
         link: '/contacts'
     }
 ];

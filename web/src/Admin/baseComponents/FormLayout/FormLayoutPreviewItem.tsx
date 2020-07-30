@@ -1,5 +1,6 @@
 import React from 'react';
 import {Typography} from '../Typography/Typography';
+import classes from './styles/index.module.scss';
 
 const FormLayoutPreviewItem = (
     {
@@ -8,7 +9,7 @@ const FormLayoutPreviewItem = (
     }
 ) => {
     return (
-        <div>
+        <div className={classes.formLayoutPreviewItem}>
             <div>{label}</div>
             <Typography variant="14">{value}</Typography>
         </div>

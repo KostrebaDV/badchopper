@@ -1,16 +1,71 @@
+@import "../../../../../styles/colors/colors.module";
+
 .navigationMenuList {
 	height: 100%;
 	width: 100%;
 	padding: 45px 45px 0 45%;
 	display: flex;
 	flex-direction: column;
+	background-image: url('../../../../../../static/images/menuBg.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: $metro_bg_color;
 }
 
 .navigationMenuList__closeButton {
 	cursor: pointer;
 }
 
+.navigationMenuList__closeButton:hover {
+	color: $gold;
+}
+
+.navigationMenuList__closeButton_mobile {
+	margin-top: 15px;
+}
+
 .navigationMenuList__topBar {
 	display: flex;
 	justify-content: space-between;
+}
+
+.navigationMenuList__feedbackButton {
+	text-transform: uppercase;
+	position: relative;
+}
+
+.navigationMenuList__feedbackButton:after {
+	content: '';
+	display: block;
+	position: absolute;
+	border-bottom: 1px solid $gold;;
+	bottom: -15px;
+	width: 100%;
+}
+
+@media (max-width: 575.98px) {
+	.navigationMenuList {
+		padding: 24px;
+	}
+
+	.navigationMenuList__closeButton {
+		display: none;
+	}
+
+	.navigationMenuList__topBar {
+		margin-bottom: 100px;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

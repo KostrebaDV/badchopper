@@ -36,7 +36,7 @@ const MediaAddImageModalContent = (
     const leftButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             transparent
         />
     );
@@ -44,7 +44,7 @@ const MediaAddImageModalContent = (
     const rightButtons = (
         <Button
             actionHandler={handleUpload}
-            label="!!Загрузить"
+            label="Загрузить"
             type="primary"
         />
     );
@@ -52,7 +52,7 @@ const MediaAddImageModalContent = (
     return (
         <>
             <ModalHeader
-                label="!!Добавить изображения"
+                label="Добавить изображения"
                 handleClose={handleClose}
             />
             <ModalContent

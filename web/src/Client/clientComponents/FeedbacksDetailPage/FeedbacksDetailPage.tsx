@@ -7,6 +7,9 @@ import './styles/feedbacksGallery.scss';
 import {Header} from '../Header/Header';
 import classes from './styles/index.module.scss';
 import feedbackQuotes from "../../../static/images/feedback_quotes.svg";
+import {isMobile} from "react-device-detect";
+import {translate} from '../../../utils';
+import {codes} from '../../../static/translations/codes';
 
 const feedbackTemplate = ({item, index}, galleryName) => {
     return `
@@ -18,9 +21,12 @@ const feedbackTemplate = ({item, index}, galleryName) => {
                 class="${galleryName}-item__text"
                 data-index="${index}"
             >
-            ${item.description}
+                ${item.description}
             </div>
-            <div class="${galleryName}-item__imageWrapper">
+            <div
+                class="${galleryName}-item__imageWrapper"
+                data-index="${index}"
+            >
                  <img
                     data-index="${index}"
                     class="${galleryName}-item__image"
@@ -35,7 +41,6 @@ const feedbackTemplate = ({item, index}, galleryName) => {
                         </div>
                 </div> 
             </div>
-               
         </div>
     `;
 };
@@ -46,14 +51,28 @@ const FeedbacksDetailPage = () => {
     return (
         <>
             <div className={classes.feedbacksDetailPage}>
+                {
+                    isMobile && (
+                        <Header
+                            firstLetterUppercase
+                            label={translate(codes.feedbacks)}
+                            className={classes.feedbacksDetailPage__headLabel}
+                        />
+                    )
+                }
                 <div className={classes.feedbacksDetailPage__feedbackQuotes}>
                     <img src={feedbackQuotes} alt="feedbackQuotes"/>
                 </div>
                 <div className={classes.feedbacksDetailPage__feedbacks}>
-                    <Header
-                        label="!!Отзывы"
-                        className={classes.feedbacksDetailPage__headLabel}
-                    />
+                    {
+                        !isMobile && (
+                            <Header
+                                firstLetterUppercase
+                                label={translate(codes.feedbacks)}
+                                className={classes.feedbacksDetailPage__headLabel}
+                            />
+                        )
+                    }
                     <Gallery
                         navigationClassname={classes.feedbacksDetailPage__navigationClassname}
                         galleryContainerClassName={classes.feedbacksGallery}
@@ -63,8 +82,9 @@ const FeedbacksDetailPage = () => {
                             galleryItemTemplate: feedbackTemplate,
                             galleryName: FEEDBACKS_GALLERY,
                             activeElement: 1,
-                            autoPlaytime: 5000,
-                            infiniteScroll: true
+                            autoPlaytime: 50000,
+                            infiniteScroll: true,
+                            allowDuplicateContainer: true
                         }}
                         allowNavigation
                     />

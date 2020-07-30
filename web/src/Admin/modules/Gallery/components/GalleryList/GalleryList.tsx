@@ -30,7 +30,7 @@ const GalleryList = () => {
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `!!Галлерея "${itemName}" удалена`
+                        message: `Галлерея "${itemName}" удалена`
                     });
                 }
             });
@@ -58,10 +58,10 @@ const GalleryList = () => {
             openModal(
                 MODALS.DELETE_GALLERY_MODAL,
                 {
-                    modalTitle: '!!Удалить галлерею',
-                    rightButtonLabel: '!!Удалить',
+                    modalTitle: 'Удалить галлерею',
+                    rightButtonLabel: 'Удалить',
                     handleSubmit: () => handleItemDelete(id, selectedItem.name),
-                    content: `!!Вы уверены, что хотите удалить галлерею "${selectedItem.name}"?`
+                    content: `Вы уверены, что хотите удалить галлерею "${selectedItem.name}"?`
                 }
             );
         }
@@ -94,9 +94,9 @@ const GalleryList = () => {
                             grid="3-3-3-_2-1"
                             className={classes.galleryList__header}
                         >
-                            <div>!!название</div>
-                            <div>!!системное название</div>
-                            <div>!!кол-во фото</div>
+                            <div>название</div>
+                            <div>системное название</div>
+                            <div>кол-во фото</div>
                         </GridLayoutRow>
                     )
                 }
@@ -116,7 +116,7 @@ const GalleryList = () => {
                 {
                     !hasAssistance && (
                         <EmptyContent>
-                            !!Добавьте галлерею
+                            Добавьте галлерею
                         </EmptyContent>
                     )
                 }

@@ -25,12 +25,13 @@ const StaffListHeader = (
         }
     };
 
-    const addButtonLabel = isBarberLayout ? "!!Добавить мастера" : "!!Добавить менеджера";
+    const addButtonLabel = isBarberLayout ? "Добавить мастера" : "Добавить менеджера";
 
     return (
         <ContentHeader>
             <ContentHeaderLeft>
                 <Typography
+                    bold="600"
                     variant="24"
                 >
                     {headerLabel}

@@ -39,7 +39,7 @@ const DepartmentAddFormStaff = (
                         previewMode={!editMode}
                         component={CheckboxGroup}
                         name="staff"
-                        label="!!!Выберите сотрудников"
+                        label="Выберите сотрудников"
                         items={stuffItems}
                     />
                 )
@@ -48,7 +48,7 @@ const DepartmentAddFormStaff = (
                 !hasStaffData && (
                     <EmptyContent>
                         <div>
-                            <p>!!Нет добавленного персонала</p>
+                            <p>Нет добавленного персонала</p>
                             <p>!Добавьте&nbsp;
                                 <Link underline link={ROUTES.STAFF_BARBERS}>мастеров</Link>
                                 &nbsp;!или&nbsp;

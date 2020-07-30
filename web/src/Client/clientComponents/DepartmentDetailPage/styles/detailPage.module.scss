@@ -1,9 +1,66 @@
-.detailPage {
+@import "../../../styles/colors/colors.module";
 
+.detailPage__header {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.detailPage__headerRight {
+	width: 520px;
+	margin: -46px auto 0;
+}
+
+.detailPage__phone {
+	margin-top: 16px;
+	text-decoration: underline;
+}
+
+.detailPageHeaderList__header {
+	color: $gold;
+	font-size: 102px;
+	font-family: Nocturne;
+	font-style: normal;
+	font-weight: normal;
+	display: block;
+	margin-top: 50px;
+	margin-bottom: 30px;
 }
 
 .detailPage__image {
 	display: block;
 	box-sizing: border-box;
 	margin-bottom: 60px;
+}
+
+@media (max-width: 575.98px) {
+	.detailPage__header {
+		width: auto;
+	}
+
+	.detailPage__image {
+		margin-bottom: 40px;
+	}
+
+	.detailPage__headerRight {
+		margin: 32px 0 0;
+		width: auto;
+	}
+
+	.detailPageHeaderList__header {
+		font-size: 55px;
+		margin-top: 40px;
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

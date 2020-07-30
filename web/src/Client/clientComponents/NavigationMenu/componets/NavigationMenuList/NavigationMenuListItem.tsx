@@ -2,6 +2,8 @@ import React, {useContext} from 'react';
 import classes from './styles/index.module.scss';
 import {Link} from '../../../../../Admin/baseComponents/Link/Link';
 import {NavigationMenuContext} from '../../store/const';
+import {codes} from '../../../../../static/translations/codes';
+import {translate} from '../../../../../utils';
 
 const NavigationMenuListItem = (
     {
@@ -19,7 +21,7 @@ const NavigationMenuListItem = (
                 className={classes.navigationMenuListItem}
             >
                 <div className={classes.navigationMenuListItem__index}>{item.index}</div>
-                <div className={classes.navigationMenuListItem__label}>{item.label}</div>
+                <div className={classes.navigationMenuListItem__label}>{translate(codes[item.label])}</div>
             </div>
         </Link>
     );

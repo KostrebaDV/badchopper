@@ -3,17 +3,15 @@
 
 .navigationMenuButtonIcon__stripWrapper {
 	position: absolute;
-	right: 60px;
-	top: 30px;
-	cursor: pointer;
-	padding: 20px 0;
+	right: 24px;
+	z-index: 1000;
 }
 
 .navigationMenuButtonIcon__topStrip {
-	width: 50px;
+	width: 30px;
 	height: 2px;
 	background-color: $light;
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 
 	@include transition(transform .2s, background-color .2s)
 }
@@ -21,11 +19,10 @@
 .navigationMenuButtonIcon__topStrip_open {
 	transform: rotate(45deg);
 	margin-bottom: -2px;
-	background-color: $dark !important;
 }
 
 .navigationMenuButtonIcon__downStrip {
-	width: 50px;
+	width: 30px;
 	height: 2px;
 	background-color: $light;
 
@@ -34,5 +31,19 @@
 
 .navigationMenuButtonIcon__downStrip_open {
 	transform: rotate(-45deg);
-	background-color: $dark !important;
+}
+
+.navigationMenuButtonIcon__MiddleStrip {
+	width: 30px;
+	height: 2px;
+	background-color: $light;
+	position: absolute;
+	top: 7px;
+	right: 0;
+
+	@include transition(right .2s)
+}
+
+.navigationMenuButtonIcon__MiddleStrip_open {
+	right: -2000px;
 }

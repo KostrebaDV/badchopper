@@ -1,8 +1,23 @@
 @import "../../styles/colors/colors.module";
 
 .app {
-	background-color: $metro_bg_color;
 	overflow-x: hidden;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: $metro_bg_color;
+}
+
+.mainPageBg {
+	background-image: url('../../../static/images/mainPageBg.png');
+}
+
+.assistancePageBg {
+	background-image: url('../../../static/images/assistanceBg.png');
+}
+
+.departmentPageBg {
+	background-image: url('../../../static/images/departmentsBg.png');
 }
 
 .app__content {
@@ -14,4 +29,22 @@
 	position: relative;
 	padding: 0 40px;
 	box-sizing: border-box;
+}
+
+@media (max-width: 575.98px) {
+	.app__content {
+		padding: 0 24px;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

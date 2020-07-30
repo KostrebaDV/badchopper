@@ -6,7 +6,7 @@ const StaffBarbers = () => {
     return (
         <>
             <StaffListHeader
-                headerLabel="!!!Мастера"
+                headerLabel="Мастера"
                 isBarberLayout
             />
             <StaffList isBarberLayout/>

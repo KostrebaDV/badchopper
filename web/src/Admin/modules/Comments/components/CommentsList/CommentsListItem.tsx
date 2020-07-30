@@ -21,7 +21,7 @@ const CommentsListItem = (
         <GridLayoutRow
             alignItems="center"
             gridColumn={24}
-            grid="3-8-7-3-3"
+            grid="3-5-9-_1-3-3"
             onClick={() => handleItemClick(item._id)}
             className={classes.staffListItem}
         >
@@ -34,7 +34,7 @@ const CommentsListItem = (
                 />
             </MarginBox>
             <div>{item.name} {item.surname}</div>
-            <div>{item.description}</div>
+            <div className={classes.assistanceListItem__description}>{item.description}</div>
             <div>{item.creationDate}</div>
             <ButtonGroupIconButtons>
                 <Button

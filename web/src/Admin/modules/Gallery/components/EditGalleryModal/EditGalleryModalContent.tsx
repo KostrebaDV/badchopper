@@ -42,7 +42,7 @@ const EditGalleryModalContent = (
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: '!!Галлерея добавлена'
+                        message: 'Галлерея добавлена'
                     });
                 }
             });
@@ -55,7 +55,7 @@ const EditGalleryModalContent = (
     const leftButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             transparent
         />
     );
@@ -63,7 +63,7 @@ const EditGalleryModalContent = (
     const rightButtons = (
         <Button
             actionHandler={() => forms.EDIT_GALLERY_FORM.submitForm()}
-            label="!!Обновить"
+            label="Обновить"
             type="primary"
         />
     );
@@ -71,7 +71,7 @@ const EditGalleryModalContent = (
     return (
         <>
             <ModalHeader
-                label="!!Обновить галлерею"
+                label="Обновить галлерею"
                 handleClose={handleClose}
             />
             <ModalContent
@@ -88,7 +88,7 @@ const EditGalleryModalContent = (
                                 <Field
                                     component={Textbox}
                                     name="name"
-                                    label="!!!Название галлереи"
+                                    label="Название галлереи"
                                     required
                                     previewMode
                                     validate={{
@@ -104,7 +104,7 @@ const EditGalleryModalContent = (
                                 <Field
                                     component={Textbox}
                                     name="systemName"
-                                    label="!!!Системное имя"
+                                    label="Системное имя"
                                     required
                                     previewMode
                                     validate={{
@@ -115,7 +115,7 @@ const EditGalleryModalContent = (
                                         }
                                     }}
                                     hasTooltip
-                                    toolTipMessage="!!Системное имя необходимо для вызова галлереи на стороне кликнта. Только латинские символы или цифры"
+                                    toolTipMessage="Системное имя необходимо для вызова галлереи на стороне кликнта. Только латинские символы или цифры"
                                     placeholder="Системное имя"
                                 />
                             </FormLayoutItem>

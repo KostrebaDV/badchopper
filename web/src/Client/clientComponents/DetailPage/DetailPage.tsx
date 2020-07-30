@@ -1,7 +1,9 @@
 import React, {useMemo} from 'react';
 import {Route, useLocation} from "react-router-dom";
-import {NavigationMenu} from '../NavigationMenu/NavigationMenu';
+import {isBrowser, isMobile} from "react-device-detect";
+import {NavigationMenuWithProvider} from '../NavigationMenu/NavigationMenu';
 import {Footer} from '../Footer/Footer';
+import {FooterMobile} from '../FooterMobile/FooterMobile';
 import {DepartmentDetailPage} from '../DepartmentDetailPage/DepartmentDetailPage';
 import {AssistanceDetailPage} from '../AssistanceDetailPage/AssistanceDetailPage';
 import {GalleryDetailPage} from '../GalleryDetailPage/GalleryDetailPage';
@@ -18,7 +20,7 @@ const DetailPage = () => {
 
     return (
         <>
-            <NavigationMenu />
+            <NavigationMenuWithProvider />
             <Route path={ROUTES.DEPARTMENT_DETAIL}>
                 <DepartmentDetailPage/>
             </Route>
@@ -38,8 +40,13 @@ const DetailPage = () => {
             {/*   !!!404!!!*/}
             {/*</Route>*/}
             {
-                !isContactPage && (
+                !isContactPage && isBrowser &&  (
                     <Footer/>
+                )
+            }
+            {
+                !isContactPage && isMobile && (
+                    <FooterMobile/>
                 )
             }
         </>

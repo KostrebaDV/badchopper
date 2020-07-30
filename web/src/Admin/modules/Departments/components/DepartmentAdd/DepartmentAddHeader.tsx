@@ -8,7 +8,7 @@ const DepartmentAddHeader = () => {
         <ContentHeader>
             <ContentHeaderLeft>
                 <Typography variant="24">
-                    !!Новый филиал
+                    Новый филиал
                 </Typography>
             </ContentHeaderLeft>
         </ContentHeader>

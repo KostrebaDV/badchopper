@@ -1,15 +1,17 @@
 import React from 'react';
 import classes from './styles/index.module.scss';
 import {MainPageFooterSocialLinks} from '../../../MainPage/components/MainPageFooter/MainPageFooterSocialLinks';
+import {translate} from '../../../../../utils';
+import {codes} from '../../../../../static/translations/codes';
 
 const ContactDetailPageLeftSide = () => {
     return (
         <div className={classes.contactDetailPageLeftSide}>
             <div className={classes.contactDetailPageLeftSide__headLabel}>
-                Контакты
+                {translate(codes.contacts)}
             </div>
             <div className={classes.contactDetailPageLeftSide__text}>
-                !!По поводу любых вопросов и предложений!
+                {translate(codes.forAnyQuestions)}
             </div>
             <MainPageFooterSocialLinks noMargin/>
         </div>

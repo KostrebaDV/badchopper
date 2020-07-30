@@ -50,7 +50,7 @@ const DepartmentsListContent = (
                         {
                             !hasDepartments && (
                                 <EmptyContent>
-                                    !!Добавьте филиал
+                                    Добавьте филиал
                                 </EmptyContent>
                             )
                         }

@@ -27,7 +27,7 @@ const CommentFormLayout = (
                                     previewMode={isPreviewMode}
                                     component={Textbox}
                                     name="name"
-                                    label="!!!Имя"
+                                    label="!Имя"
                                     required
                                     validate={{
                                         required: true,
@@ -43,7 +43,7 @@ const CommentFormLayout = (
                                     previewMode={isPreviewMode}
                                     component={Textbox}
                                     name="surname"
-                                    label="!!!Фамилия"
+                                    label="Фамилия"
                                     required
                                     validate={{
                                         required: true,
@@ -85,12 +85,12 @@ const CommentFormLayout = (
                         previewMode={isPreviewMode}
                         component={Textarea}
                         name="description"
-                        label="!!!Отзыв"
+                        label="Отзыв"
                         required
                         validate={{
                             required: true,
                             length: {
-                                max: 500
+                                max: 1000
                             }
                         }}
                         placeholder="Описание"

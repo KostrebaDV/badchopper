@@ -1,0 +1,34 @@
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/transition.module";
+
+.footerMobile {
+	text-align: center;
+	padding-top: 32px;
+	padding-bottom: 40px;
+	position: relative;
+}
+
+.footerMobile:before {
+	display: block;
+	content: '';
+	width: 100vw;
+	height: 1px;
+	background-color: $light;
+	mix-blend-mode: difference;
+	position: absolute;
+	top: 0;
+	left: -25px;
+}
+
+.footerMobile__departmentList {
+	margin-bottom: 56px;
+	margin-top: 40px;
+}
+
+.footerMobile__copyright {
+	font-family: Manrope;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 18px;
+}

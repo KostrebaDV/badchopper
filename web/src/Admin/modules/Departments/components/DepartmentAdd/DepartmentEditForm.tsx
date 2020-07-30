@@ -23,6 +23,7 @@ const DepartmentEditForm = (
 ) => {
     return (
         <Form
+            reInitOnEdit={editMode}
             initialValues={initialValues}
             onSubmit={handleEditDepartment}
             name={FORMS.EDIT_DEPARTMENT_FORM}

@@ -56,7 +56,7 @@ const StaffList = (
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `!!Сотрудник "${itemName}" удален`
+                        message: `Сотрудник "${itemName}" удален`
                     })
                 }
             })
@@ -71,10 +71,10 @@ const StaffList = (
             openModal(
                 MODALS.DELETE_STAFF_MODAL,
                 {
-                    modalTitle: '!!Удалить сотрудника',
-                    rightButtonLabel: '!!Удалить',
+                    modalTitle: 'Удалить сотрудника',
+                    rightButtonLabel: 'Удалить',
                     handleSubmit: () => handleItemDelete(id, selectedItem.name),
-                    content: `!!Вы уверены, что хотите удалить "${selectedItem.name}"?`
+                    content: `Вы уверены, что хотите удалить "${selectedItem.name} ${selectedItem.surname}"?`
                 }
             );
         }
@@ -99,7 +99,7 @@ const StaffList = (
     };
 
     const hasStaff = staffList.length !== 0;
-    const staffLabel = isBarberLayout ? '!!мастеров' : '!!менеджеров';
+    const staffLabel = isBarberLayout ? 'мастеров' : 'менеджеров';
 
     return (
         <ContentLayout>
@@ -113,9 +113,9 @@ const StaffList = (
                             className={classes.staffList}
                         >
                             <div></div>
-                            <div>!!имя</div>
-                            <div>!!описание</div>
-                            <div>!!соц. сети</div>
+                            <div>имя</div>
+                            <div>описание</div>
+                            <div>соц. сети</div>
                         </GridLayoutRow>
                     )
                 }
@@ -135,7 +135,7 @@ const StaffList = (
                 {
                     !hasStaff && (
                         <EmptyContent>
-                            !!Добавьте {staffLabel}
+                            Добавьте {staffLabel}
                         </EmptyContent>
                     )
                 }

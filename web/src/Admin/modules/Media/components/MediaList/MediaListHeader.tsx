@@ -17,9 +17,10 @@ const MediaListHeader = () => {
         <ContentHeader>
             <ContentHeaderLeft>
                 <Typography
+                    bold="600"
                     variant="24"
                 >
-                    !!Медиа
+                    Медиа
                 </Typography>
             </ContentHeaderLeft>
             <ContentHeaderRight>
@@ -27,7 +28,7 @@ const MediaListHeader = () => {
                     floatRight
                     type="primary"
                     transparent
-                    label="!!Добавить свiтлину"
+                    label="Добавить свiтлину"
                     actionHandler={actionButtonHandler}
                 />
             </ContentHeaderRight>

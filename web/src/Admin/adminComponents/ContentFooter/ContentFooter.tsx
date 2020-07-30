@@ -8,11 +8,14 @@ const ContentFooter = (
     }
 ) => {
     return (
-        <div
-            className={classes.contentFooter}
-        >
-            { children }
-        </div>
+        <>
+            <div style={{height: 55}}></div>
+            <div
+                className={classes.contentFooter}
+            >
+                { children }
+            </div>
+        </>
     );
 };
 

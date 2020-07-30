@@ -13,15 +13,15 @@ const AssistanceDetailModalContent = (
     const rightButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             transparent
         />
     );
 
-    return (
+    return modalData && (
         <>
             <ModalHeader
-                label={modalData.name}
+                label={modalData.name.ru}
                 handleClose={handleClose}
             />
             <ModalContent>
@@ -29,13 +29,25 @@ const AssistanceDetailModalContent = (
                         <FormLayoutItemGroup>
                             <FormLayoutItem>
                                 <FormLayoutPreviewItem
-                                    label="!!!Описание"
-                                    value={modalData.description}
+                                    label="Описание RU"
+                                    value={modalData.description.ru}
                                 />
                             </FormLayoutItem>
                             <FormLayoutItem>
                                 <FormLayoutPreviewItem
-                                    label="!!!Стоимость"
+                                    label="Описание EN"
+                                    value={modalData.description.en}
+                                />
+                            </FormLayoutItem>
+                            <FormLayoutItem>
+                                <FormLayoutPreviewItem
+                                    label="Описание UA"
+                                    value={modalData.description.ua}
+                                />
+                            </FormLayoutItem>
+                            <FormLayoutItem>
+                                <FormLayoutPreviewItem
+                                    label="Стоимость"
                                     value={`${modalData.price} грн.`}
                                 />
                             </FormLayoutItem>

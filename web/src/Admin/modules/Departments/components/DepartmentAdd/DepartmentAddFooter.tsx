@@ -16,7 +16,7 @@ const DepartmentAddFooter = (
                 !isDepartmentDetail && (
                     <Button
                         actionHandler={() => forms.ADD_DEPARTMENT_FORM.submitForm()}
-                        label='!!Добавить филиал'
+                        label='Добавить филиал'
                         type="primary"
                     />
                 )
@@ -25,7 +25,7 @@ const DepartmentAddFooter = (
                 isDepartmentDetail && (
                     <Button
                         actionHandler={() => forms.EDIT_DEPARTMENT_FORM.submitForm()}
-                        label='!!Редактировать'
+                        label='Редактировать'
                         type="primary"
                     />
                 )

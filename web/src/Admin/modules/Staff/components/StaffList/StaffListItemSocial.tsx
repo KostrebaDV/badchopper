@@ -16,7 +16,7 @@ const StaffListItemSocial = (
                         hasRoute={false}
                         link={facebook}
                     >
-                        !!Facebook
+                        Facebook
                     </Link>
                 )
             }
@@ -26,7 +26,7 @@ const StaffListItemSocial = (
                         hasRoute={false}
                         link={instagram}
                     >
-                        !!Instagram
+                        Instagram
                     </Link>
                 )
             }

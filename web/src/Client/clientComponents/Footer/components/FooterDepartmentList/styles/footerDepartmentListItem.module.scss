@@ -8,6 +8,16 @@
 	margin-right: 110px;
 }
 
+.footerDepartmentListItem__label {
+	text-decoration: underline;
+}
+
+.footerDepartmentListItem__phone {
+	margin-top: 6px;
+	margin-bottom: 6px;
+	text-decoration: underline;
+}
+
 .footerDepartmentListItem__label:hover {
 	color: $gold;
 	cursor: pointer;
@@ -21,4 +31,26 @@
 .footerDepartmentListItem__geoPositionLabel {
 	color: $gold;
 	margin-right: 7px;
+}
+
+@media (max-width: 575.98px) {
+	.footerDepartmentListItem_contactPage {
+		margin-right: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 32px;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

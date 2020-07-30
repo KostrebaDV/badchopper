@@ -6,14 +6,14 @@ import {
     getAllAssistanceService,
     updateAssistanceService
 } from "../../services/assistance/assistance";
-import CONSTS from "./consts"
+import CONST from "./const"
 import {AssistanceResponseType} from '../../types/assistanceTypes';
 import {checkAuthenticated} from '../../middlewares/checkAuthenticated';
 
 const serviceRouter = Router();
 
 export default (app: Application, client) => {
-    serviceRouter.post(CONSTS.ADD_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
+    serviceRouter.post(CONST.ADD_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
         addAssistanceService(req.body, client)
             .then((status: AssistanceResponseType) => {
                 return res
@@ -27,7 +27,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.get(CONSTS.GET_ALL_ASSISTANCE, (req: Request, res: Response) => {
+    serviceRouter.get(CONST.GET_ALL_ASSISTANCE, (req: Request, res: Response) => {
         getAllAssistanceService(client)
             .then((status) => {
                 return res
@@ -41,7 +41,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.put(CONSTS.UPDATE_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
+    serviceRouter.put(CONST.UPDATE_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
         updateAssistanceService(req.body, client)
             .then(status => {
                 return res
@@ -55,7 +55,7 @@ export default (app: Application, client) => {
             });
     });
 
-    serviceRouter.delete(CONSTS.DELETE_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
+    serviceRouter.delete(CONST.DELETE_ASSISTANCE, checkAuthenticated, (req: Request, res: Response) => {
         deleteAssistanceService(req.body, client)
             .then((status) => {
                 return res
@@ -69,5 +69,5 @@ export default (app: Application, client) => {
             });
     });
 
-    app.use(CONSTS.BASE_ROUTE, serviceRouter);
+    app.use(CONST.BASE_ROUTE, serviceRouter);
 };

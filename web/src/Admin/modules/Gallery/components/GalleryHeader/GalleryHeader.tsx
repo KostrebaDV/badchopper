@@ -19,9 +19,10 @@ const GalleryHeader = () => {
         <ContentHeader>
             <ContentHeaderLeft>
                 <Typography
+                    bold="600"
                     variant="24"
                 >
-                    !!Галлереи
+                    Галлереи
                 </Typography>
             </ContentHeaderLeft>
             {
@@ -31,7 +32,7 @@ const GalleryHeader = () => {
                             floatRight
                             type="primary"
                             transparent
-                            label="!!Добавить галлерею"
+                            label="Добавить галлерею"
                             actionHandler={actionButtonHandler}
                         />
                     </ContentHeaderRight>

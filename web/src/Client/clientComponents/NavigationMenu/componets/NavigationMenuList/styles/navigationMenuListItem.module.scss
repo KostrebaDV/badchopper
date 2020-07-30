@@ -4,7 +4,7 @@
 .navigationMenuListItem {
 	display: flex;
 	cursor: pointer;
-	line-height: 132px;
+	margin-bottom: 40px;
 
 	@include transition (color .3s);
 }
@@ -21,10 +21,31 @@
 	font-family: Nocturne;
 }
 
+.navigationMenuListItem__label::first-letter {
+	text-transform: uppercase;
+}
+
 .navigationMenuListItem__index {
-	margin-right: 10px;
-	margin-top: -40px;
+	margin-right: 16px;
 	font-size: 18px;
 	opacity: .4;
 	letter-spacing: -0.005em;
+}
+
+@media (max-width: 575.98px) {
+	.navigationMenuListItem__label {
+		font-size: 56px;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

@@ -1,7 +1,15 @@
 export type DepartmentType = {
     publicId?: string;
-    name: string;
+    address: {
+        number: string;
+        street: {
+            ua: string;
+            ru: string;
+            en: string;
+        };
+    };
     description: string;
+    phone: string;
     image: {
         path: string
     };
@@ -12,6 +20,7 @@ export type AppContextType = {
     departments: DepartmentType[];
     assistance: object[];
     feedbacks: object[];
+    languageCode: string;
     galleries: {
         mainPageGallery: object[];
         galleryImages: object[];
@@ -20,4 +29,5 @@ export type AppContextType = {
     setGalleries: (galleries) => void;
     setAssistance: (assistance) => void;
     setFeedbacks: (comments) => void;
+    setLanguageCode: (languageCode: string) => void;
 };

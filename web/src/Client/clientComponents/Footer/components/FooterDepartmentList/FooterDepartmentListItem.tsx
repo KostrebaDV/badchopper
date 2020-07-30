@@ -1,17 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
 import positionSvg from "../../../../../static/images/position.svg";
-import {ROUTES} from '../../../../App/routes';
-import {Link} from '../../../../../Admin/baseComponents/Link/Link';
 import ClassNames from 'classnames';
+import {AppContext} from '../../../../App/store';
+import {translate} from '../../../../../utils';
+import {codes} from '../../../../../static/translations/codes';
 
 const FooterDepartmentListItem = (
     {
         item,
-        isContactPage
+        isContactPage,
+        onDepartmentClick
     }
 ) => {
+    const {languageCode} = useContext(AppContext);
     const componentClassName = ClassNames(
         {
             [classes.footerDepartmentListItem]: !isContactPage,
@@ -21,28 +24,33 @@ const FooterDepartmentListItem = (
 
     return (
         <div className={componentClassName}>
-            <Link link={`${ROUTES.DEPARTMENT_DETAIL}${item.publicId}`}>
-                <Typography
-                    letterSpacing="-0.01em"
-                    displayBlock
-                    variant="24"
-                    className={classes.footerDepartmentListItem__label}
+            <div>
+                <div
+                    onClick={() => onDepartmentClick(item.publicId)}
                 >
-                    {item.name}
+                    <Typography
+                        letterSpacing="-0.01em"
+                        displayBlock
+                        variant="24"
+                        className={classes.footerDepartmentListItem__label}
+                    >
+                        {item.name}
+                    </Typography>
+                </div>
+                <Typography
+                    variant="14"
+                    displayBlock
+                >
+                    {translate(codes.str)}. {item.address.street[languageCode]}, {item.address.number}
                 </Typography>
-            </Link>
-            <Typography
-                variant="14"
-                displayBlock
-            >
-                !ул. {item.address.street}, {item.address.number}
-            </Typography>
-            <Typography
-                variant="14"
-                displayBlock
-            >
-                {item.phone}
-            </Typography>
+                <Typography
+                    variant="14"
+                    displayBlock
+                    className={classes.footerDepartmentListItem__phone}
+                >
+                    <a href={"tel:" + item.phone}>{item.phone}</a>
+                </Typography>
+            </div>
             <div className={classes.footerDepartmentListItem__geoPosition}>
                 <Typography
                     variant="12"

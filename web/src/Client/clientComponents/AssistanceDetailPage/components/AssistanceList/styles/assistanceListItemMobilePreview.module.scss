@@ -1,0 +1,66 @@
+@import "../../../../../styles/colors/colors.module";
+@import "../../../../../styles/mixins/transition.module";
+
+.assistanceListItemMobilePreview {
+	position: fixed;
+	width: 100%;
+	padding: 25px;
+	background-color: $metro_bg_color;
+	border-radius: 28px;
+	box-sizing: border-box;
+	z-index: 10;
+	bottom: -2000px;
+
+	@include transition(bottom .3s)
+}
+
+.assistanceListItemMobilePreview__header {
+	color: $gold;
+	text-transform: uppercase;
+	font-size: 24px;
+	font-family: Nocturne Serif;
+	font-style: normal;
+	font-weight: normal;
+	text-align: center;
+	width: 80%;
+	margin: 10px auto 25px;
+}
+
+.assistanceListItemMobilePreview__closeButton {
+	width: 20px;
+	float: right;
+}
+
+.assistanceListItemMobilePreview__image {
+	margin-bottom: 25px;
+}
+
+.assistanceListItemMobilePreview__text {
+	font-size: 16px;
+	line-height: 20px;
+	opacity: 0.6;
+	margin-bottom: 55px;
+}
+
+.assistanceListItemMobilePreview__overlay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 5;
+
+	@include transition(background-color 3s)
+}
+
+.assistanceListItemMobilePreview__overlay_close {
+	top: -2000px;
+	background-color: transparent;
+}
+
+.assistanceListItemMobilePreview__overlay_open {
+	top: 0;
+	background-color: rgba(0,0,0, .7);
+}
+
+.assistanceListItemMobilePreview_open {
+	bottom: -25px;
+}

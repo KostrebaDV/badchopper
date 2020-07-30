@@ -20,8 +20,9 @@ const MainPageFooterSocialLinks = (
             <Typography
                 upperCase
                 variant="14"
+                className={classes.mainPageFooter__facebookLink}
             >
-                <Link hasRoute={false} link="/">
+                <Link hasRoute={false} link="https://www.facebook.com/badchopper.cv">
                     Facebook
                 </Link>
             </Typography>
@@ -30,7 +31,7 @@ const MainPageFooterSocialLinks = (
                 variant="14"
                 className={classes.mainPageFooter__instagramLink}
             >
-                <Link hasRoute={false} link="/">
+                <Link hasRoute={false} link="https://www.instagram.com/bad_chopper/">
                     Instagramm
                 </Link>
             </Typography>

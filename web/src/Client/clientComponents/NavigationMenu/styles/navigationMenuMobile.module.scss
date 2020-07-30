@@ -1,0 +1,24 @@
+@import "../../../styles/colors/colors.module";
+
+.navigationMenuMobile {
+	display: flex;
+	margin-top: 20px;
+}
+
+.navigationMenuMobile__signInButton {
+	margin-right: 54px;
+	line-height: 18px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	position: relative;
+}
+
+
+.navigationMenuMobile__signInButton:after {
+	content: '';
+	display: block;
+	position: absolute;
+	border-bottom: 1px solid $gold;;
+	bottom: -15px;
+	width: 100%;
+}

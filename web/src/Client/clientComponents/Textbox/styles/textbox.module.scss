@@ -12,6 +12,10 @@
 	height: 55px;
 }
 
+.textbox:valid {
+	background-color: transparent;
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 	font-style: normal;
 	color: $placeholder;

@@ -4,6 +4,8 @@ import {Typography} from '../../../../../Admin/baseComponents/Typography/Typogra
 import scissorsSvgUrl from "../../../../../static/images/scissors.svg";
 import bookingRoundText from "../../../../../static/images/bookingRoundText.svg";
 import {MainPageFooterSocialLinks} from './MainPageFooterSocialLinks';
+import {codes} from '../../../../../static/translations/codes';
+import {translate} from '../../../../../utils';
 
 const MainPageFooter = () => {
     return (
@@ -14,14 +16,17 @@ const MainPageFooter = () => {
                     lineHeight="1"
                     className={classes.mainPageFooter__bookingText}
                 >
-                    !!Запишись онлайн прямо сейчас!
+                    {translate(codes.bookUpOnlineRightNow)}
                 </Typography>
                 <img
                     src={bookingRoundText}
                     alt="bookingRoundText"
                     className={classes.mainPageFooter__bookingRoundText}
                 />
-                <img src={scissorsSvgUrl} alt="scissors"/>
+                <img
+                    className={classes.mainPageFooter__scissors}
+                    src={scissorsSvgUrl} alt="scissors"
+                />
             </div>
             <MainPageFooterSocialLinks/>
         </div>

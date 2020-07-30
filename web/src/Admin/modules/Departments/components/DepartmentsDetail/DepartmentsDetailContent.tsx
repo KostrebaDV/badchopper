@@ -63,15 +63,15 @@ const DepartmentsDetailContent = (
     };
 
     const handleDeleteModalOpen = () => {
-        if ( typeof openModal === 'undefined') return;
+        if (typeof openModal === 'undefined') return;
 
         openModal(
             MODALS.DELETE_DEPARTMENT_MODAL,
             {
-                modalTitle: '!!Удалить филиал',
-                rightButtonLabel: '!!Удалить',
+                modalTitle: 'Удалить филиал',
+                rightButtonLabel: 'Удалить',
                 handleSubmit: deleteDepartment,
-                content: '!!Вы уверены, что хотите удалить филиал?'
+                content: 'Вы уверены, что хотите удалить филиал?'
             }
         );
     };

@@ -122,8 +122,8 @@ class GeneralUploaderDragDrop extends Component<GeneralUploaderDragDropProps, Ge
 						icon={uploadIcon}
 						className={componentIconClassName}
 					/>
-					<div>!!перетащите</div>
-					<PaddingBox vrSmall>!!или</PaddingBox>
+					<div>перетащите</div>
+					<PaddingBox vrSmall>или</PaddingBox>
 					{this.props.children}
 				</div>
 			</div>

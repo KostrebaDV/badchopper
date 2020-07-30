@@ -66,7 +66,7 @@ const MediaSelectModalContent = (
     const leftButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             type="secondary"
         />
     );
@@ -74,7 +74,7 @@ const MediaSelectModalContent = (
     const rightButtons = (
         <Button
             actionHandler={handleSubmit}
-            label="!!Выбрать"
+            label="Выбрать"
             type="primary"
         />
     );

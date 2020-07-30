@@ -20,7 +20,7 @@ const LoginForm = (
                         <Field
                             component={Textbox}
                             name="login"
-                            label="!!!User name"
+                            label="User name"
                             required
                             validate={{
                                 required: true
@@ -31,7 +31,7 @@ const LoginForm = (
                         <Field
                             component={Textbox}
                             name="password"
-                            label="!!!Password"
+                            label="Password"
                             required
                             validate={{
                                 required: true

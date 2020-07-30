@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {LoginForm} from './LoginForm';
 import {FormContext} from '../../../store/FormContext';
 import {ButtonGroup} from '../../baseComponents/ButtonGroup/ButtonGroup';
@@ -7,15 +7,23 @@ import classes from './styles/index.module.scss';
 import {MarginBox} from '../../baseComponents/MarginBox/MarginBox';
 import {login} from './api';
 import {AdminAppContext} from '../../App/store/AdminAppContext/const';
-import {getUniqueId} from '../../../utils';
+import {getUniqueId, isNullOrUndefined} from '../../../utils';
 import { useHistory } from "react-router-dom";
 import {Typography} from '../../baseComponents/Typography/Typography';
 import {PaddingBox} from '../../baseComponents/PaddingBox/PaddingBox';
+import Cookies from 'js-cookie';
 
 const LoginContent = () => {
     const {forms} = useContext(FormContext);
     const history = useHistory();
     const {showNotification} = useContext(AdminAppContext);
+    const token = Cookies.get('access_token');
+
+    useEffect(() => {
+        if (!isNullOrUndefined(token)) {
+            history.push("/adminPanel/departments/list");
+        }
+    }, [token, history])
 
     const handleLoginError = code => {
         if (code === 403) {
@@ -24,7 +32,7 @@ const LoginContent = () => {
                     id: getUniqueId(),
                     type: 'danger',
                     duration: 5000,
-                    message: '!!Пароль указан не верно'
+                    message: 'Пароль указан не верно'
                 });
             }
         }
@@ -35,7 +43,7 @@ const LoginContent = () => {
                     id: getUniqueId(),
                     type: 'info',
                     duration: 5000,
-                    message: '!!Пользователь не существует'
+                    message: 'Пользователь не существует'
                 });
             }
         }
@@ -58,18 +66,16 @@ const LoginContent = () => {
     const loginButton = (
         <Button
             actionHandler={() => forms.LOGIN_FORM.submitForm()}
-            label="!!Login"
+            label="Login"
             type="primary"
         />
     );
 
     return (
         <div className={classes.loginPage}>
-
             <PaddingBox
                 large
                 className={classes.loginContent}
-
             >
                 <Typography
                     className={classes.loginContentHeader}

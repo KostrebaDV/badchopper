@@ -1,0 +1,21 @@
+@import '../../../styles/colors/colors.module';
+
+.multiLanguageField {
+	position: relative;
+}
+
+.multiLanguageField__label {
+	font-weight: normal;
+	display: flex;
+	margin-bottom: 4px;
+	justify-content: space-between;
+}
+
+.multiLanguageField__labelRequired {
+	color: $danger;
+}
+
+.multiLanguageField__codeWrapper {
+	display: flex;
+}
+

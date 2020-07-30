@@ -13,7 +13,7 @@ const GeneralUploaderMessages = (
 			{
 				showNoFilesMessage && (
 					<DangerMessage
-						title="!!Нет выбраных файлов"
+						title="Нет выбраных файлов"
 					/>
 				)
 

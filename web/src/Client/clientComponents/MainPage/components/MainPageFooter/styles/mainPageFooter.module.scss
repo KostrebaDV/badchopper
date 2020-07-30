@@ -22,6 +22,11 @@
 	margin-left: 32px;
 }
 
+.mainPageFooter__facebookLink,
+.mainPageFooter__instagramLink {
+	text-decoration: underline;
+}
+
 .mainPageFooter__bookingText {
 	font-family: Nocturne;
 	font-style: normal;
@@ -33,19 +38,64 @@
 	position: absolute;
 	top: -30px;
 	right: -46px;
-	//-webkit-animation: rotation 25s infinite linear;
-	//-moz-animation: rotation 25s infinite linear;
-	//-o-animation: rotation 25s infinite linear;
-	//-ms-animation: rotation 25s infinite linear;
-	//animation: rotation 25s infinite linear;
-	//display: block;
 }
 
-//@keyframes rotation {
-//	from {
-//		transform: rotate(0deg);
-//	}
-//	to {
-//		transform: rotate(359deg);
-//	}
-//}
+@media (max-width: 355.98px) {
+	.mainPageFooter__bookingText {
+		font-size: 24px;
+		max-width: 230px;
+	}
+
+	.mainPageFooter__bookingRoundText {
+		right: 0 !important;
+		top: -20px !important;
+	}
+
+	.mainPageFooter__scissors {
+		position: absolute;
+		right: 45px !important;
+		top: 20px !important;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.mainPageFooter {
+		position: initial;
+		display: block;
+		width: 100%;
+	}
+
+	.mainPageFooter__bookingRoundText {
+		right: 10px;
+		top: -13px;
+		letter-spacing: 0;
+	}
+
+	.mainPageFooter__scissors {
+		position: absolute;
+		right: 55px;
+		top: 25px;
+	}
+
+	.mainPageFooter__leftSide {
+		width: 100%;
+		margin: 60px 0 90px 0;
+	}
+
+	.mainPageFooter__rightSide {
+		margin-bottom: 24px;
+		text-align: center;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
+}

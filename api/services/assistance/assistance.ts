@@ -18,12 +18,15 @@ import {
 
 import { normalizeAssistanceData } from "../../utils/assistance/normalizeAssistanceData"
 import {getImageService} from '../media/media';
+import {updateClientSyncHashService} from '../clientSyncHash/clientSyncHash';
 
 const addAssistanceService = (assistanceDTO, client) => {
     if (assistanceDTO.name.length !== 0) {
         const normalizeAssistanceDTO: AssistanceDTOType = normalizeAssistanceData(assistanceDTO);
 
+
         return addAssistanceModel(normalizeAssistanceDTO, client)
+            .then(() => updateClientSyncHashService(client));
     }
 };
 
@@ -49,6 +52,8 @@ const updateAssistanceService = (updateAssistanceDTO, client) => {
         return updateAssistanceModel(normalizeAssistanceDTO, client)
             .then((status: updateDocumentResponseStatusType) => {
                 if (status.ok === 1) {
+                    updateClientSyncHashService(client)
+
                     return status.value
                 }
 
@@ -67,6 +72,8 @@ const deleteAssistanceService = (deleteAssistanceDTO: documentIdType, client) =>
         return deleteAssistanceModel(deleteAssistanceDTO, client)
             .then((status: deleteDocumentResponseStatusType) => {
                 if (status.deletedCount !== 0) {
+                    updateClientSyncHashService(client)
+
                     return 'Assistance was deleted successfully'
                 }
 

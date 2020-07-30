@@ -7,19 +7,41 @@ const normalizeRequestData = (values) => {
         number,
         latitude,
         longitude,
+        descriptionEN,
+        descriptionRU,
+        descriptionUA,
+        cityEN,
+        cityRU,
+        cityUA,
+        streetRU,
+        streetUA,
+        streetEN,
         ...rest
     } = values;
 
     return {
         ...rest,
         address: {
-            street: values.street,
-            city: values.city,
+            street: {
+                ru: streetRU,
+                ua: streetUA,
+                en: streetEN,
+            },
+            city: {
+                ru: cityRU,
+                ua: cityUA,
+                en: cityEN,
+            },
             number: values.number
         },
         location: {
             latitude: values.latitude,
             longitude: values.longitude
+        },
+        description: {
+            ru: descriptionRU,
+            ua: descriptionUA,
+            en: descriptionEN,
         }
     };
 };

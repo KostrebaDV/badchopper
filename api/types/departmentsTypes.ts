@@ -2,7 +2,7 @@ type DepartmentDTOType = {
     id?: string;
     name: string;
     publicId: string;
-    description: string;
+    description: object;
     address: {
         city: string;
         street: string;

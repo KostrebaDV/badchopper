@@ -19,14 +19,14 @@ const DepartmentsListHeader = () => {
                 <Typography
                     variant="24"
                 >
-                    !!Филиалы
+                    Филиалы
                 </Typography>
             </ContentHeaderLeft>
             <ContentHeaderRight>
                 <Button
                     type="primary"
                     transparent
-                    label="!!Добавить филиал"
+                    label="Добавить филиал"
                     className={classes.departmentHeader__actionButton}
                     actionHandler={actionButtonHandler}
                 />

@@ -43,7 +43,7 @@ const GeneralUploaderContent = (
 						<GridLayoutRow gridColumn={32} grid={buttonGridLayout}>
 							<Button
 								className={classes.generalUploader_buttons}
-								label="!!добавить файлы"
+								label="добавить файлы"
 								actionHandler={() => inputRef.current.click()}
 							/>
 							{
@@ -51,7 +51,7 @@ const GeneralUploaderContent = (
 									<Button
 										className={classes.generalUploader_buttons}
 										type="danger"
-										label="!Удалить"
+										label="Удалить"
 										actionHandler={removeAllFiles}
 									/>
 								)

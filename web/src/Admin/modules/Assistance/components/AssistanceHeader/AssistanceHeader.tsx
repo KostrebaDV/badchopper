@@ -17,16 +17,17 @@ const AssistanceHeader = () => {
         <ContentHeader>
             <ContentHeaderLeft>
                 <Typography
+                    bold="600"
                     variant="24"
                 >
-                    !!Услуги
+                    Услуги
                 </Typography>
             </ContentHeaderLeft>
             <ContentHeaderRight>
                 <Button
                     type="primary"
                     transparent
-                    label="!!Добавить услугу"
+                    label="Добавить услугу"
                     floatRight
                     actionHandler={actionButtonHandler}
                 />

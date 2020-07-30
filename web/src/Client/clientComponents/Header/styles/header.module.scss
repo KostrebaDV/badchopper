@@ -15,6 +15,13 @@
 	font-weight: normal;
 }
 
+.header__label_firstLetterUppercase::first-letter {
+	text-transform: uppercase;
+}
+
+.header__label_marginOffset {
+	margin-bottom: 16px;
+}
 
 .header__description {
 	max-width: 540px;
@@ -23,4 +30,41 @@
 
 .header__button {
 	margin-top: 25px;
+}
+
+@media (max-width: 575.98px) {
+	.header {
+		flex-direction: column;
+		align-items: start;
+		margin: 0 0 40px 0;
+	}
+
+	.header__label {
+		font-size: 64px;
+		margin-right: 0;
+		margin-top: 24px;
+	}
+
+	.header__description {
+		font-size: 16px;
+		opacity: .8;
+	}
+
+	.header__button {
+		width: 100%;
+		box-sizing: border-box;
+		text-align: center;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

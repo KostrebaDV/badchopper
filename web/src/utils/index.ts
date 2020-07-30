@@ -19,3 +19,5 @@ export { getBooleanCookie } from './getBooleanCookie';
 export { uuidv4 } from './uuidv4';
 export { removeArrayElementByValue } from './removeArrayElementByValue';
 export { parseUrl } from './parseUrl';
+export { translate } from './translate';
+export { scrollToTop } from './scrollToTop';

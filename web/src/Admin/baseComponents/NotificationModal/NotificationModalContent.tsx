@@ -13,22 +13,16 @@ const NotificationModalContent = (
 		handleClose
 	}
 ) => {
-	const {
-		content,
-		modalTitle,
-		handleSubmit: handleSubmitFromModalData,
-		rightButtonLabel
-	} = modalData;
-
+    console.log(modalData);
 	const handleSubmit = () => {
-		return handleSubmitFromModalData()
+		return modalData.handleSubmit()
 			.then(() => handleClose());
 	};
 
 	const leftButtons = (
 		<Button
 			actionHandler={handleClose}
-			label="!!Закрыть"
+			label="Закрыть"
 			type="secondary"
 		/>
 	);
@@ -36,7 +30,7 @@ const NotificationModalContent = (
 	const rightButtons = (
 		<Button
 			actionHandler={handleSubmit}
-			label={rightButtonLabel}
+			label={modalData.rightButtonLabel}
 			type="danger"
 		/>
 	);
@@ -44,14 +38,14 @@ const NotificationModalContent = (
 	return (
 		<>
 			<ModalHeader
-				label={modalTitle}
+				label={modalData.modalTitle}
 				handleClose={handleClose}
 			/>
 			<ModalContent
 				autoHeight
 				className={classes.notificationModalContent}
 			>
-				{content}
+				{modalData.content}
 			</ModalContent>
 			<ModalFooter>
 				<ButtonGroup

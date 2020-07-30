@@ -21,7 +21,7 @@ const DepartmentsDetailHeader = (
                             variant="28"
                             className={classes.departmentsDetailHeader__label}
                         >
-                            !!Error
+                            Error
                         </Typography>
                     </div>
                 )

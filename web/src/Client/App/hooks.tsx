@@ -1,27 +1,30 @@
-import {useEffect, useContext} from 'react';
+import {useEffect, useContext, useCallback, useState, useRef} from 'react';
 import {ROUTES} from './routes';
-import {ROUTES as baseRoutes} from '../../const';
 import {useHistory} from "react-router-dom";
 import {AppContext} from './store';
-import {getAllDepartments} from './api';
-import {isNull} from '../../utils';
+import {getAllDepartments, getSyncHash, getTranslations} from './api';
+import {isNull, isUndefined} from '../../utils';
 import {initEffect} from './imageEffector/imageEffectLoader';
+import Cookies from 'js-cookie';
 
-export const useGetDepartmentData = () => {
-    const {departments, setDepartments} = useContext(AppContext);
-    const {location} = useHistory();
+export const useGetDepartmentData = (allowReloadData) => {
+    const {setDepartments} = useContext(AppContext);
+    const departmentLocalStorageData = localStorage.getItem('departmentData');
 
     useEffect(() => {
-      if (
-          departments.length === 0
-          && location.pathname !== baseRoutes.ADMIN_PANEL
-          && location.pathname !== baseRoutes.LOGIN
-      ) {
-          getAllDepartments()
-              .then(({data}) => setDepartments(data));
-      }
+        if (allowReloadData === 2 || isNull(departmentLocalStorageData)) {
+            getAllDepartments()
+                .then(({data}) => {
+                    setDepartments(data)
+                    localStorage.setItem('departmentData', JSON.stringify(data));
+                });
+        } else {
+            if (allowReloadData === 1 && departmentLocalStorageData !== null) {
+                setDepartments(JSON.parse(departmentLocalStorageData));
+            }
+        }
         // eslint-disable-next-line
-    }, []);
+    }, [allowReloadData]);
 };
 
 export const useCanvas = () => {
@@ -34,7 +37,7 @@ export const useCanvas = () => {
         if (!isNull(canvasHTMLCollection)) {
             if (location.pathname === ROUTES.CLIENT_ROOT) {
 
-                while(canvasHTMLCollectionClass.length > 0) {
+                while (canvasHTMLCollectionClass.length > 0) {
                     canvasHTMLCollectionClass[0].remove();
                 }
 
@@ -48,4 +51,63 @@ export const useCanvas = () => {
         }
         // eslint-disable-next-line
     }, [location.pathname]);
+};
+
+export const useGetSyncHASH = () => {
+    const [allowReloadData, setAllowReloadData] = useState(0);
+    const allowReq = useRef(true);
+
+    const localStorageHash = localStorage.getItem('localStorageHash');
+
+    useEffect(() => {
+        if (!allowReq.current) return;
+
+        getSyncHash()
+            .then(({data}) => {
+                localStorage.setItem('localStorageHash', JSON.stringify(data.hash));
+                allowReq.current = false;
+
+                if (localStorageHash === null) return 1;
+
+                const allowCode = data.hash !== localStorageHash.replace(/['"]+/g, '') ? 2 : 1;
+                setAllowReloadData(allowCode);
+            })
+            .catch(() => {
+                allowReq.current = true;
+            })
+    }, [localStorageHash])
+
+    return allowReloadData;
+};
+
+export const useGetTranslations = (allowReloadData) => {
+    useEffect(() => {
+        const t = localStorage.getItem('translations');
+
+        if (isNull(t) || allowReloadData === 2) {
+            getTranslations()
+                .then(({data}) => {
+                    localStorage.setItem('translations', JSON.stringify(data));
+                })
+        }
+    }, [allowReloadData])
+};
+
+export const useSetLanguage = (setLanguageCode) => {
+    const setLanguageCodeCB = useCallback((languageCode) => {
+        setLanguageCode(languageCode);
+    }, [setLanguageCode])
+
+    useEffect(() => {
+        const languageCode = Cookies.get('language');
+
+        if (!isUndefined(languageCode)) {
+            setLanguageCodeCB(languageCode);
+
+            return;
+        }
+
+        Cookies.set('language', 'ua')
+        // eslint-disable-next-line
+    }, [])
 };

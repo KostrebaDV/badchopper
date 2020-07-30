@@ -5,7 +5,8 @@ import ClassNames from 'classnames';
 import {
     initGallery,
     handleNext as handleNextItem,
-    handlePrev as handlePrevItem, destroyGallery
+    handlePrev as handlePrevItem,
+    destroyGallery
 } from './utils';
 import {useSetActiveIndex} from './hooks';
 
@@ -39,7 +40,6 @@ const Gallery = (
         if (activeIndex === 1) {
             return handlePrevItem({
                 index: items.length,
-                options: galleryOptions,
                 setActiveIndex: setActiveIndex,
                 clearGalleryInterval: true
             });
@@ -47,7 +47,6 @@ const Gallery = (
 
         handlePrevItem({
                 index: activeIndex -1,
-                options: galleryOptions,
                 setActiveIndex: setActiveIndex,
                 clearGalleryInterval: true
             });
@@ -57,7 +56,6 @@ const Gallery = (
         if (activeIndex >= items.length) {
             return handleNextItem({
                 index: 1,
-                options: galleryOptions,
                 setActiveIndex: setActiveIndex,
                 clearGalleryInterval: true
             });
@@ -65,7 +63,6 @@ const Gallery = (
 
         handleNextItem({
             index: activeIndex + 1,
-            options: galleryOptions,
             setActiveIndex: setActiveIndex,
             clearGalleryInterval: true
         });
@@ -86,7 +83,11 @@ const Gallery = (
     return (
         <>
             <div className={componentClassName}></div>
-            <div className={duplicateClassName}></div>
+            {
+                galleryOptions.allowDuplicateContainer && (
+                    <div className={duplicateClassName}></div>
+                )
+            }
             <GalleryNavigation
                 handlePrev={handlePrev}
                 handleNext={handleNext}

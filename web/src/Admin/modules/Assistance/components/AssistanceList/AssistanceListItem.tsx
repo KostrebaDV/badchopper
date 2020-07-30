@@ -23,8 +23,8 @@ const AssistanceListItem = (
                 onClick={() => handleItemClick(item._id)}
                 className={classes.assistanceListItem}
             >
-                <div>{item.name}</div>
-                <div className={classes.assistanceListItem__description}>{item.description}</div>
+                <div>{item.name.ru}</div>
+                <div className={classes.assistanceListItem__description}>{item.description.ru}</div>
                 <div>{item.price}</div>
                 <div>грн.</div>
                     <ButtonGroupIconButtons>

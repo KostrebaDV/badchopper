@@ -2,9 +2,6 @@
 @import "../../../../../styles/mixins/transition.module";
 
 .assistanceListItem {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	padding: 30px 0;
 	cursor: pointer;
 	position: relative;
@@ -12,14 +9,7 @@
 }
 
 .assistanceListItem:hover {
-	.assistanceListItem__arrow {
-		color: $gold;
-		opacity: 1;
-	}
-
 	.assistanceListItem__price {
-		margin-right: 100px;
-		//font-weight: 600;
 		color: $light;
 	}
 
@@ -29,14 +19,23 @@
 
 	.assistanceListItem__image {
 		opacity: .4;
+	}
 
+	.assistanceListItem__description {
+		display: flex;
 	}
 }
 
 .assistanceListItem__leftSide {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	margin-left: 43%;
+}
+
+.assistanceListItem__nameWrapper {
+	display: flex;
+	align-items: center;
 }
 
 .assistanceListItem__rightSide {
@@ -53,6 +52,23 @@
 	text-transform: uppercase;
 
 	@include transition(color .2s, font-weight .2s)
+}
+
+.assistanceListItem__description {
+	display: none;
+	margin: 16px 110px 32px 48%;
+	opacity: .8;
+}
+
+.assistanceListItem__description:after {
+	content: '';
+	width: 100%;
+	height: 1px;
+	background-color: #d9d9dc;
+	display: block;
+	position: absolute;
+	bottom: 32px;
+	right: -43%;
 }
 
 .assistanceListItem__index {
@@ -73,15 +89,6 @@
 	@include transition(margin .2s, font-weight .2s)
 }
 
-.assistanceListItem__arrow {
-	position: absolute;
-	right: 130px;
-	top: 45px;
-	opacity: 0;
-
-	@include transition(color .2s, opacity .2s)
-}
-
 .assistanceListItem__image {
 	position: absolute;
 	z-index: -1;
@@ -90,4 +97,50 @@
 	top: 0;
 
 	@include transition(opacity .5s)
+}
+
+@media (max-width: 575.98px) {
+	.assistanceListItem__name {
+		font-size: 24px;
+		color: $light;
+		opacity: .8;
+	}
+
+	.assistanceListItem__leftSide {
+		margin-left: 0;
+		padding-left: 24px;
+	}
+
+	.assistanceListItem__rightSide {
+		padding-right: 24px;
+	}
+
+	.assistanceListItem__index {
+		margin-right: 10px;
+		margin-bottom: 4px;
+	}
+
+	.assistanceListItem__price {
+		margin-right: 0;
+		color: $gold;
+		font-size: 20px;
+	}
+
+	.assistanceListItem:hover {
+		.assistanceListItem__image {
+			opacity: 0;
+		}
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

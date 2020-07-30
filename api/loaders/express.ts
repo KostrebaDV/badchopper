@@ -12,6 +12,8 @@ import staffController from '../controllers/staff/staff';
 import commentsController from '../controllers/comments/comments';
 import galleryController from '../controllers/gallery/gallery';
 import usersController from '../controllers/users/users';
+import translationsController from '../controllers/translations/translations';
+import clientSyncHash from '../controllers/clientSyncHash/clientSyncHash';
 require('dotenv').config()
 
 const EXPRESS_PUBLIC_FOLDER_PATH = process.env.EXPRESS_PUBLIC_FOLDER_PATH;
@@ -23,6 +25,7 @@ export const expressClient = (expressApp, client) => {
     expressApp.use(express.static(path.join(__dirname, EXPRESS_PUBLIC_FOLDER_PATH)));
     expressApp.use(express.static(path.join(__dirname, '../../../web/build')));
 
+    clientSyncHash(expressApp, client);
     usersController(expressApp, client);
     departmentsController(expressApp, client);
     mediaController(expressApp, client);
@@ -31,6 +34,7 @@ export const expressClient = (expressApp, client) => {
     staffController(expressApp, client);
     commentsController(expressApp, client);
     galleryController(expressApp, client);
+    translationsController(expressApp, client);
 
     expressApp.get('*', function (req, res) {
         res.sendFile(path.join(__dirname, '../../../web/build/index.html'))

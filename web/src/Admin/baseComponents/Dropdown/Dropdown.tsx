@@ -85,7 +85,7 @@ const Dropdown = (
 	const getDropdownItems = useMemo(() => {
 		if (hasDefaultValue) {
 			items.unshift({
-				name: '!!пусто',
+				name: 'пусто',
 				id: null
 			});
 		}

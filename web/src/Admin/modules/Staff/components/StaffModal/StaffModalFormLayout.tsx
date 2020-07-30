@@ -29,7 +29,7 @@ const StaffModalFormLayout = (
                                     previewMode={isPreviewMode}
                                     component={Textbox}
                                     name="name"
-                                    label="!!!Имя"
+                                    label="Имя"
                                     required
                                     validate={{
                                         required: true,
@@ -45,7 +45,7 @@ const StaffModalFormLayout = (
                                     previewMode={isPreviewMode}
                                     component={Textbox}
                                     name="surname"
-                                    label="!!!Фамилия"
+                                    label="Фамилия"
                                     required
                                     validate={{
                                         required: true,
@@ -61,7 +61,7 @@ const StaffModalFormLayout = (
                                     previewMode={isPreviewMode}
                                     component={Textbox}
                                     name="patronymic"
-                                    label="!!!Отчество"
+                                    label="Отчество"
                                     required
                                     validate={{
                                         required: true,
@@ -94,7 +94,7 @@ const StaffModalFormLayout = (
                         previewMode={isPreviewMode}
                         component={Textarea}
                         name="description"
-                        label="!!!Описание"
+                        label="Описание"
                         required
                         validate={{
                             required: true,
@@ -111,7 +111,7 @@ const StaffModalFormLayout = (
                         component={Dropdown}
                         name="position"
                         items={positionDropDownItems}
-                        label="!!!должность"
+                        label="должность"
                         required
                         disabled
                         value={positionDropDownValue}
@@ -125,8 +125,21 @@ const StaffModalFormLayout = (
                     <Field
                         previewMode={isPreviewMode}
                         component={Textbox}
+                        name="yClientsUrl"
+                        label="yClients"
+                        placeholder="yClients url"
+                        required
+                        validate={{
+                            required: true
+                        }}
+                    />
+                </FormLayoutItem>
+                <FormLayoutItem>
+                    <Field
+                        previewMode={isPreviewMode}
+                        component={Textbox}
                         name="instagramUrl"
-                        label="!!!Instagram"
+                        label="Instagram"
                         placeholder="Instagram url"
                     />
                 </FormLayoutItem>
@@ -135,7 +148,7 @@ const StaffModalFormLayout = (
                         previewMode={isPreviewMode}
                         component={Textbox}
                         name="facebookUrl"
-                        label="!!!Facebook"
+                        label="Facebook"
                         placeholder="Facebook url"
                     />
                 </FormLayoutItem>

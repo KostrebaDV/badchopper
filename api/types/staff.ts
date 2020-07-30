@@ -6,6 +6,7 @@ export type StaffItemDTOType = {
     imageId: string;
     instagramUrl: string;
     facebookUrl: string;
+    yClientsUrl: string;
     description: string;
     patronymic: string;
 }

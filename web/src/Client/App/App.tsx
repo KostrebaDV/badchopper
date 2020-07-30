@@ -1,17 +1,34 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {MainPage} from '../clientComponents/MainPage/MainPage';
 import classes from './styles/index.module.scss';
 import {DetailPage} from '../clientComponents/DetailPage/DetailPage';
-import {Route} from "react-router-dom";
+import {Route, useLocation} from "react-router-dom";
 import {ROUTES} from './routes';
-import {useGetDepartmentData} from './hooks';
-import {AppContextProvider} from './store';
+import {useGetDepartmentData, useGetTranslations, useSetLanguage, useGetSyncHASH} from './hooks';
+import {AppContext, AppContextProvider} from './store';
+import ClassNames from 'classnames';
 
 const App = () => {
-    useGetDepartmentData();
+    const {pathname} = useLocation();
+    const {setLanguageCode} = useContext(AppContext);
+
+    const allowReloadData = useGetSyncHASH();
+
+    useGetDepartmentData(allowReloadData);
+    useGetTranslations(allowReloadData);
+    useSetLanguage(setLanguageCode);
+
+    const componentClassName = ClassNames(
+        classes.app,
+        {
+            [classes.mainPageBg]: pathname === ROUTES.CLIENT_ROOT,
+            [classes.departmentPageBg]: pathname.includes(ROUTES.DEPARTMENT_DETAIL),
+            [classes.assistancePageBg]: pathname === ROUTES.ASSISTANCE_DETAIL
+        }
+    );
 
     return (
-        <div className={classes.app}>
+        <div className={componentClassName}>
             <div className={classes.app__content}>
                 <Route exact path={ROUTES.CLIENT_ROOT}>
                     <MainPage/>

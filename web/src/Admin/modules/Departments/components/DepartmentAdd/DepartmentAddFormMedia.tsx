@@ -18,7 +18,7 @@ const DepartmentAddFormMedia: FC<DepartmentAddFormMediaType> = (
        <>
            <PaddingBox hrSmall>
                <Typography bold='600' variant='18'>
-                   !!Медиа
+                   Медиа
                </Typography>
            </PaddingBox>
            <PaddingBox small>

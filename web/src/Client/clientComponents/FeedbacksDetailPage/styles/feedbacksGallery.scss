@@ -1,7 +1,4 @@
-//@import "../../../styles/mixins/transition.module";
-
 .feedbacksGallery {
-	height: 514px;
 	display: flex;
 }
 
@@ -42,6 +39,10 @@
 
 .galleryDuplicateContainer {
 	display: flex;
+	justify-content: space-between;
+}
+.galleryDuplicateContainer .galleryDuplicateContainer__item {
+	width: 370px !important;
 }
 
 .galleryDuplicateContainer .feedbacksGallery-item__text {
@@ -53,4 +54,50 @@
 	display: -webkit-box;
 	-webkit-line-clamp: 5;
 	-webkit-box-orient: vertical;
+}
+
+@media (max-width: 575.98px) {
+	.feedbacksGallery-item.item__active {
+		margin-right: 10vw;
+	}
+
+	.feedbacksGallery-item.item__active-prev {
+		opacity: 0;
+	}
+
+	.feedbacksGallery-item__text {
+		font-size: 24px;
+		width: 85vw;
+		margin-bottom: 30px;
+	}
+
+	.feedbacksGallery-item__image {
+		height: 70px;
+		width: 70px;
+	}
+
+	.galleryDuplicateContainer .galleryDuplicateContainer__item {
+		width: 320px !important;
+	}
+
+	.galleryDuplicateContainer .feedbacksGallery-item__text {
+		width: 290px !important;
+		margin-right: 20px;
+	}
+
+	.feedbacksGallery-item__name {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

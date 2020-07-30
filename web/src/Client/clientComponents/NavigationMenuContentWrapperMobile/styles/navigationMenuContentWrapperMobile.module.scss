@@ -1,0 +1,27 @@
+@import "../../../styles/colors/colors.module";
+@import "../../../styles/mixins/_transition.module";
+
+.navigationMenuContentWrapperMobile {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	display: flex;
+	background-color: $dark;
+	z-index: 2;
+	overflow-x: scroll;
+
+	@include transition(right .35s)
+}
+
+.navigationMenuContentWrapperMobile_zIndex {
+	z-index: 9999;
+}
+
+.navigationMenuContentWrapperMobile__open {
+	right: 0;
+}
+
+.navigationMenuContentWrapperMobile__close {
+	right: -10000px;
+}

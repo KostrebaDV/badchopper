@@ -16,7 +16,6 @@ const GalleryDetailPageImagesShowMore = (
         >
             <Typography
                 displayBlock
-                variant='32'
                 letterSpacing='-1px'
                 className={classes.galleryDetailPageImagesShowMore__text}
             >

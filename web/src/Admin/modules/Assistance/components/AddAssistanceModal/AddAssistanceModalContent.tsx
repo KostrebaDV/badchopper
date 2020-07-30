@@ -6,11 +6,13 @@ import {addAssistance} from '../../api';
 import {FORMS} from '../../const';
 import Form, {Field} from '../../../../baseComponents/Form';
 import FormLayout, {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseComponents/FormLayout';
-import {Textbox, Textarea, MediaSelector} from '../../../../baseComponents/Form/Adapters';
+import {Textbox, MediaSelector} from '../../../../baseComponents/Form/Adapters';
 import {AssistanceContext} from '../../store';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 import {getUniqueId} from '../../../../../utils';
 import {FormContext} from '../../../../../store/FormContext';
+import {MultiLanguageField} from '../../../../baseComponents/MultiLanguageField/MultiLanguageField';
+import {LANGUAGE_CODES} from '../../../../../const';
 
 const AddAssistanceModalContent = (
     {
@@ -22,7 +24,31 @@ const AddAssistanceModalContent = (
     const {showNotification} = useContext(AdminAppContext);
 
     const handleAddAssistance = (values) => {
-        addAssistance(values)
+        const {
+            nameEN,
+            nameRU,
+            nameUA,
+            descriptionEN,
+            descriptionRU,
+            descriptionUA,
+            ...rest
+        } = values
+
+        const requestData = {
+            ...rest,
+            name: {
+                ua: nameUA,
+                ru: nameRU,
+                en: nameEN,
+            },
+            description: {
+                ua: descriptionUA,
+                ru: descriptionRU,
+                en: descriptionEN,
+            }
+        }
+
+        addAssistance(requestData)
             .then(({data}) => {
                 setAssistance(data);
                 handleClose();
@@ -30,7 +56,7 @@ const AddAssistanceModalContent = (
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: '!! Услуга добавлена'
+                        message: 'Услуга добавлена'
                     });
                 }
             });
@@ -39,7 +65,7 @@ const AddAssistanceModalContent = (
     const leftButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             transparent
         />
     );
@@ -47,7 +73,7 @@ const AddAssistanceModalContent = (
     const rightButtons = (
         <Button
             actionHandler={() => forms.ADD_ASSISTANCE_FORM.submitForm()}
-            label="!!Добавить"
+            label="Добавить"
             type="primary"
         />
     );
@@ -71,18 +97,13 @@ const AddAssistanceModalContent = (
                                 gridColumn={13}
                                 inline
                             >
-                                <FormLayoutItem>
-                                    <Field
-                                        component={Textbox}
-                                        name="name"
-                                        label="!!!название услуги"
-                                        required
-                                        validate={{
-                                            required: true
-                                        }}
-                                        placeholder="название услуги"
-                                    />
-                                </FormLayoutItem>
+                                <MultiLanguageField
+                                    name='name'
+                                    adapter={Textbox}
+                                    label='название услуги'
+                                    required
+                                    languages={LANGUAGE_CODES}
+                                />
                                 <FormLayoutItem>
                                     <Field
                                         component={MediaSelector}
@@ -95,18 +116,13 @@ const AddAssistanceModalContent = (
                                     />
                                 </FormLayoutItem>
                             </FormLayoutItemGroup>
-                            <FormLayoutItem>
-                                <Field
-                                    component={Textarea}
-                                    name="description"
-                                    label="!!!Описание"
-                                    required
-                                    validate={{
-                                        required: true
-                                    }}
-                                    placeholder="Описание"
-                                />
-                            </FormLayoutItem>
+                            <MultiLanguageField
+                                name='description'
+                                adapter={Textbox}
+                                label='описание'
+                                required
+                                languages={LANGUAGE_CODES}
+                            />
                             <FormLayoutItemGroup
                                 inline
                                 noPadding
@@ -117,7 +133,7 @@ const AddAssistanceModalContent = (
                                     <Field
                                         component={Textbox}
                                         name="price"
-                                        label="!!!Стоимость"
+                                        label="Стоимость"
                                         required
                                         validate={{
                                             required: true,

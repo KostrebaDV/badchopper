@@ -11,6 +11,7 @@ type FormType = {
     onSubmit: (object, resetFormValues) => void;
     initialValues: object;
     restFormValues: boolean;
+    reInitOnEdit: boolean | undefined;
 }
 
 const Form = memo<FormType>((
@@ -18,11 +19,11 @@ const Form = memo<FormType>((
 		name,
 		children,
 		onSubmit,
+        reInitOnEdit,
 		initialValues,
 		restFormValues
 	}
 ) => {
-
 	const {
 		addFormToGlobalContext,
 		removeFormFromGlobalContext
@@ -91,11 +92,19 @@ const Form = memo<FormType>((
 	}, []);
 
 	useEffect(() => {
+	    let timeOut;
 		if (!isNull(initialValues)) {
-			setFormValues(initialValues);
+		    timeOut = setTimeout(() => {
+                setFormValues(initialValues);
+            }, 50)
 		}
+
+        return () => {
+            clearTimeout(timeOut);
+            setFormValues({});
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [initialValues]);
+	}, [initialValues, reInitOnEdit]);
 
 	useEffect(() => {
 		valuesRef.current = formValues;

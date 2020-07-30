@@ -6,6 +6,8 @@ import {Field} from '../../../../baseComponents/Form';
 import {Textarea, Textbox} from '../../../../baseComponents/Form/Adapters';
 import FormLayout from '../../../../baseComponents/FormLayout';
 import {DepartmentAddFormGeneralType} from './types';
+import {MultiLanguageField} from '../../../../baseComponents/MultiLanguageField/MultiLanguageField';
+import {LANGUAGE_CODES} from '../../../../../const';
 
 const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
     {
@@ -17,7 +19,7 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
         <>
 			<PaddingBox hrSmall>
 				<Typography bold='600' variant='18'>
-					!!Общая информация
+					Общая информация
 				</Typography>
 			</PaddingBox>
             <FormLayout>
@@ -26,7 +28,7 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                         <Field
                             component={Textbox}
                             name="name"
-                            label="!!!Название филиала"
+                            label="Название филиала"
                             required
                             previewMode={!editMode}
                             validate={{
@@ -35,27 +37,23 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                         />
                     </FormLayoutItem>
                     <FormLayoutItem>
-                        <Field
-                            component={Textarea}
-                            name="description"
-                            label="!!!Описание"
+                        <MultiLanguageField
+                            name='description'
+                            adapter={Textarea}
                             required
                             previewMode={!editMode}
-                            validate={{
-                                required: true
-                            }}
+                            label='Описание'
+                            languages={LANGUAGE_CODES}
                         />
                     </FormLayoutItem>
                     <FormLayoutItem>
-                        <Field
-                            component={Textbox}
-                            name="city"
-                            label="!!!Город"
+                        <MultiLanguageField
+                            name='city'
+                            adapter={Textbox}
                             required
                             previewMode={!editMode}
-                            validate={{
-                                required: true
-                            }}
+                            label='Город'
+                            languages={LANGUAGE_CODES}
                         />
                     </FormLayoutItem>
                     <FormLayoutItemGroup
@@ -65,22 +63,20 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                         gridColumn={13}
                     >
                         <FormLayoutItem>
-                            <Field
-                                component={Textbox}
-                                name="street"
-                                label="!!!Улица"
+                            <MultiLanguageField
+                                name='street'
+                                adapter={Textbox}
                                 required
                                 previewMode={!editMode}
-                                validate={{
-                                    required: true
-                                }}
+                                label='Улица'
+                                languages={LANGUAGE_CODES}
                             />
                         </FormLayoutItem>
                         <FormLayoutItem>
                             <Field
                                 component={Textbox}
                                 name="number"
-                                label="!!!Номер"
+                                label="Номер"
                                 required
                                 previewMode={!editMode}
                                 validate={{
@@ -93,7 +89,7 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                         <Field
                             component={Textbox}
                             name="phone"
-                            label="!!!Телефон"
+                            label="Телефон"
                             required
                             previewMode={!editMode}
                             placeholder="+38_(000)_000_00_00"
@@ -101,7 +97,7 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                                 required: true
                             }}
                             hasTooltip
-                            toolTipMessage="!! вместо символа '_' поставте пробел"
+                            toolTipMessage="вместо символа '_' поставте пробел"
                         />
                     </FormLayoutItem>
                     <FormLayoutItemGroup
@@ -109,13 +105,13 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                         noPadding
                         gridColumn={13}
                         grid="6-_1-6"
-                        label="!!Координаты на карте"
+                        label="Координаты на карте"
                     >
                         <FormLayoutItem>
                             <Field
                                 component={Textbox}
                                 name="latitude"
-                                label="!!!Широта"
+                                label="Широта"
                                 required
                                 previewMode={!editMode}
                                 validate={{
@@ -128,7 +124,7 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                             <Field
                                 component={Textbox}
                                 name="longitude"
-                                label="!!!Долгота"
+                                label="Долгота"
                                 required
                                 previewMode={!editMode}
                                 validate={{

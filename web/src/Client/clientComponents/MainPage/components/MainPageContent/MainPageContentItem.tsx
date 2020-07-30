@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
 import {Image} from '../../../../../Admin/baseComponents/Image/Image';
 import {Link} from '../../../../../Admin/baseComponents/Link/Link';
 import {ROUTES} from '../../../../App/routes';
+import {translate} from '../../../../../utils';
+import {codes} from '../../../../../static/translations/codes';
+import {AppContext} from '../../../../App/store';
 
 const MainPageContentItem = (
     {
         item
     }
 ) => {
+    const {languageCode} = useContext(AppContext);
     const componentClassName = ClassNames(
         classes.mainPageContentItem,
         "link"
@@ -35,7 +39,7 @@ const MainPageContentItem = (
                     variant='18'
                     className={classes.mainPageContentItem__address}
                 >
-                    !!ул. {item.address.street}, {item.address.number}
+                    {translate(codes.str)}. {item.address.street[languageCode]}, {item.address.number}
                 </Typography>
             </Link>
     );

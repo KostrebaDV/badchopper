@@ -9,6 +9,7 @@ import { LinkType } from './types';
 const Link: FC<LinkType> = (
 	{
 		link,
+        target,
 		children,
         underline,
 		hasRoute,
@@ -55,7 +56,13 @@ const Link: FC<LinkType> = (
 	const getLink = () => {
 		return hasRoute
 			? getRouteLink()
-			: <a className={nativeLinkClassName} href={link}>{children}</a>;
+			: <a
+                target={target}
+                className={nativeLinkClassName}
+                href={link}
+            >
+                {children}
+		</a>;
 	};
 
 	return <>{getLink()}</>;
@@ -63,7 +70,8 @@ const Link: FC<LinkType> = (
 
 Link.defaultProps = {
 	hasRoute: true,
-    underline: false
+    underline: false,
+    target: '_self'
 };
 
 

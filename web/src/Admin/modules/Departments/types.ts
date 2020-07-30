@@ -1,9 +1,16 @@
 export type DepartmentAddContentType = {
     initialValues?: {
-        city: string;
         number: string;
         street: string;
-        description: string;
+        descriptionRU: string;
+        descriptionEN: string;
+        descriptionUA: string;
+        cityUA: string;
+        cityRU: string;
+        cityEN: string;
+        streetUA: string;
+        streetRU: string;
+        streetEN: string;
         latitude: string;
         longitude: string;
         name: string;

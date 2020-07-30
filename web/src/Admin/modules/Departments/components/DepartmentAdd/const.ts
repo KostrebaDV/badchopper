@@ -1,14 +1,14 @@
 export const TABS = [
     {
         tabName: 'GENERAL',
-        label: '!!Общая инфор-ция'
+        label: 'Общая инфор-ция'
     },
     {
         tabName: 'STAFF',
-        label: '!!Персонал'
+        label: 'Персонал'
     },
     {
         tabName: 'ASSISTANCE',
-        label: '!!Услуги'
+        label: 'Услуги'
     }
 ]

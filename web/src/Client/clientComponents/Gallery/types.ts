@@ -3,6 +3,7 @@ export type GalleryOptions = {
     activeElement: number;
     autoPlaytime: number;
     infiniteScroll: boolean;
+    allowDuplicateContainer?: boolean;
     galleryItemTemplate: () => void;
 };
 

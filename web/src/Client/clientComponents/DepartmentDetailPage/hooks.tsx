@@ -15,8 +15,20 @@ export const useGetDepartment = () => {
     }
 
     return {
-        name: '',
-        description: '',
+        address: {
+            street: {
+                ua: '',
+                ru: '',
+                en: ''
+            },
+            number: '',
+        },
+        description: {
+            ua: '',
+            ru: '',
+            en: ''
+        },
+        phone: '',
         image: {
             path: '',
         },

@@ -1,0 +1,38 @@
+@import "../../../../../styles/colors/colors.module";
+
+.mobileStaffGallery {
+	display: flex;
+}
+
+.mobileStaffGallery-item {
+	height: 530px;
+	width: 80vw;
+	display: block;
+}
+
+.mobileStaffGallery-item__image {
+	object-fit: cover;
+	height: 360px;
+	width: 77.5vw;
+	margin-right: 25px;
+}
+
+.mobileStaffGallery-item__name {
+	color: $gold;
+	font-size: 20px;
+}
+
+.mobileStaffGallery-item__description {
+	opacity: 0.6;
+	font-size: 16px;
+	margin-bottom: 24px;
+}
+
+.mobileStaffGallery-item__reserve-button {
+	font-size: 14px;
+	text-transform: uppercase;
+	padding-bottom: 22px;
+	border-bottom: 1px solid $gold;
+	text-align: center;
+	width: 77vw;
+}

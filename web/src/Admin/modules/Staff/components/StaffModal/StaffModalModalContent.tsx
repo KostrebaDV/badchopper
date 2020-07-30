@@ -28,8 +28,8 @@ const StaffModalModalContent = (
                 handleClose();
 
                 const notificationMessage = isBarberLayout
-                    ? `!!Мастера ${data.name} ${data.surname} добавлен`
-                    : `!!Мастера ${data.name} ${data.surname} добавлен`;
+                    ? `Мастера ${data.name} ${data.surname} добавлен`
+                    : `Мастера ${data.name} ${data.surname} добавлен`;
 
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
@@ -51,7 +51,7 @@ const StaffModalModalContent = (
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `!! Карточка обновлена`
+                        message: `Карточка обновлена`
                     });
                 }
             });
@@ -62,7 +62,7 @@ const StaffModalModalContent = (
             return `${selectedItem.name} ${selectedItem.surname}`;
         }
 
-        return isBarberLayout ? "!!Добавить мастера" : "!!Добавить менеджера";
+        return isBarberLayout ? "Добавить мастера" : "Добавить менеджера";
     };
 
     const submitHandler = () => {
@@ -74,7 +74,7 @@ const StaffModalModalContent = (
     const leftButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             transparent
         />
     );
@@ -90,8 +90,8 @@ const StaffModalModalContent = (
     const positionDropDownValue = isBarberLayout ? 1 : 2;
 
     const mediaModalData = {
-        modalTitle: "!!Медиа файлы",
-        rightButtonLabel: "!!Выбрать",
+        modalTitle: "Медиа файлы",
+        rightButtonLabel: "Выбрать",
         singleSelect: true
     };
 

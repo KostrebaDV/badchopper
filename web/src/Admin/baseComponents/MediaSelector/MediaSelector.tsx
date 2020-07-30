@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {MediaSelectModal} from './MediaSelectModal';
 import PropTypes from 'prop-types';
 
@@ -23,9 +23,10 @@ const MediaSelector = (
         previewMode
     }
 ) => {
+    const [selectedMedia, setSelectedMedia] = useState<SelectedItemsType>([]);
     const [modalOpen, setModalOpen] = useState(false);
     const [mediaData, setMediaData] = useState<{_id: string}[]>([]);
-    const selectedMediaRef = useRef<SelectedItemsType>([]);
+    //const selectedMediaRef = useRef<SelectedItemsType>([]);
 
     useEffect(() => {
         getAllImages()
@@ -39,20 +40,20 @@ const MediaSelector = (
 
     useEffect(() => {
         if (!isNull(value)) {
-            selectedMediaRef.current = value;
+            setSelectedMedia(value);
         }
         // eslint-disable-next-line
-    }, []);
+    }, [value]);
 
     const handleSubmit = (values) => {
         onFieldChange(getMediaValue(values));
-        selectedMediaRef.current = values;
+        setSelectedMedia(values);
     };
 
     const handleDeleteProcessedImage = (id) => {
-        selectedMediaRef.current = removeArrayElementByValue(selectedMediaRef.current, id);
+        setSelectedMedia(removeArrayElementByValue(selectedMedia, id));
 
-        const mediaValues = selectedMediaRef.current.length === 0 ? null : getMediaValue(selectedMediaRef.current);
+        const mediaValues = selectedMedia.length === 0 ? null : getMediaValue(selectedMedia);
 
         onFieldChange(mediaValues);
     };
@@ -64,9 +65,9 @@ const MediaSelector = (
         classes.mediaSelector
     );
 
-    const showButton = singleSelect && selectedMediaRef.current.length !== 0;
+    const showButton = singleSelect && selectedMedia.length !== 0;
 
-    const showDeleteButton = !previewMode && selectedMediaRef.current;
+    const showDeleteButton = !previewMode && selectedMedia;
 
     return mediaData.length !== 0 && (
         <>
@@ -84,21 +85,21 @@ const MediaSelector = (
             }
 
             {
-                singleSelect && selectedMediaRef.current.length !== 0 && (
+                singleSelect && selectedMedia.length !== 0 && (
                     <MediaSelectorSingleItemPreview
                         mediaData={mediaData}
                         showDeleteButton={showDeleteButton}
-                        selectedItemId={selectedMediaRef.current[0]}
+                        selectedItemId={selectedMedia[0]}
                         handleDeleteProcessedImage={handleDeleteProcessedImage}
                     />
                 )
             }
             {
-                !singleSelect && selectedMediaRef.current.length !== 0 && (
+                !singleSelect && selectedMedia.length !== 0 && (
                     <MediaSelectorMultipleItemPreview
                         mediaData={mediaData}
                         showDeleteButton={showDeleteButton}
-                        selectedItemId={selectedMediaRef.current}
+                        selectedItemId={selectedMedia}
                         handleDeleteProcessedImage={handleDeleteProcessedImage}
                     />
                 )
@@ -111,7 +112,7 @@ const MediaSelector = (
                         handleSubmit,
                         ...mediaModalData,
                         singleSelect,
-                        selectedMediaId: selectedMediaRef.current
+                        selectedMediaId: selectedMedia
                     }
                 }
                 handleClose={() => setModalOpen(!modalOpen)}

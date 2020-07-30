@@ -17,16 +17,17 @@ const CommentsHeader = () => {
         <ContentHeader>
             <ContentHeaderLeft>
                 <Typography
+                    bold="600"
                     variant="24"
                 >
-                    !!Отзывы
+                    Отзывы
                 </Typography>
             </ContentHeaderLeft>
             <ContentHeaderRight>
                 <Button
                     type="primary"
                     transparent
-                    label="!!Добавить отзыв"
+                    label="Добавить отзыв"
                     floatRight
                     actionHandler={actionButtonHandler}
                 />

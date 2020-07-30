@@ -4,10 +4,11 @@ import classes from './styles/index.module.scss';
 import {GALLERIES_NAME} from '../Gallery/conts';
 import './styles/mainGallery.scss';
 import {HOST} from '../../../const';
-import {GallerySocialLinkButtons} from './components/GallerySocialLinkButtons/GallerySocialLinkButtons';
 import {GalleryDetailPageImages} from './components/GalleryDetailPageImages/GalleryDetailPageImages';
 import {useGetGalleries} from './hooks';
 import {Header} from '../Header/Header';
+import {translate} from '../../../utils';
+import {codes} from '../../../static/translations/codes';
 
 const mainGalleryItemTemplate = ({ item, index }, galleryName) => {
     return `<img
@@ -23,7 +24,8 @@ const GalleryDetailPage = () => {
     return (
         <>
             <Header
-                label="!!Галерея"
+                firstLetterUppercase
+                label={translate(codes.gallery)}
             />
             <div className={classes.galleryDetailPage}>
                 <Gallery
@@ -36,7 +38,6 @@ const GalleryDetailPage = () => {
                     }}
                     navigationClassname={classes.galleryDetailPage__galleryNavigation}
                     allowNavigation
-                    afterNavigationContent={GallerySocialLinkButtons}
                 />
                 <GalleryDetailPageImages
                     items={galleries['galleryImages']}

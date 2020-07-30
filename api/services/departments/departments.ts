@@ -23,6 +23,7 @@ import {
 } from '../staff/staff';
 import {getAllAssistanceService} from '../assistance/assistance';
 import {getPublicDepartmentId} from '../../utils/departments/getPublicDepartmentId';
+import {updateClientSyncHashService} from '../clientSyncHash/clientSyncHash';
 
 const addDepartmentService = (departmentDTO: DepartmentDTOType, client) => {
     if (departmentDTO.name.length !== 0) {
@@ -33,6 +34,7 @@ const addDepartmentService = (departmentDTO: DepartmentDTOType, client) => {
             },
             client
         )
+        .then(() => updateClientSyncHashService(client))
     }
 };
 
@@ -78,6 +80,8 @@ const updateDepartmentService = (updateDepartmentDTO, client) => {
                 client)
             .then((status: updateDocumentResponseStatusType) => {
                 if (status.ok === 1) {
+                    updateClientSyncHashService(client);
+
                     return 'Department was updated successfully'
                 }
 
@@ -131,6 +135,8 @@ const deleteDepartmentService = (deleteDepartmentDTO: documentIdType, client) =>
         return deleteDepartmentModel(deleteDepartmentDTO, client)
             .then((status: deleteDocumentResponseStatusType) => {
                 if (status.deletedCount !== 0) {
+                    updateClientSyncHashService(client);
+
                     return 'Department was deleted successfully'
                 }
 

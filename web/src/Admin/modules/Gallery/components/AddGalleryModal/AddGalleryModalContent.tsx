@@ -35,7 +35,7 @@ const AddGalleryModalContent = (
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: '!!Галлерея добавлена'
+                        message: 'Галлерея добавлена'
                     });
                 }
             });
@@ -48,7 +48,7 @@ const AddGalleryModalContent = (
     const leftButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             transparent
         />
     );
@@ -56,7 +56,7 @@ const AddGalleryModalContent = (
     const rightButtons = (
         <Button
             actionHandler={() => forms.ADD_GALLERY_FORM.submitForm()}
-            label="!!Выбрать"
+            label="Выбрать"
             type="primary"
         />
     );
@@ -66,7 +66,7 @@ const AddGalleryModalContent = (
     return (
         <>
             <ModalHeader
-                label="!!Добавить галлерею"
+                label="Добавить галлерею"
                 handleClose={handleClose}
             />
             <ModalContent
@@ -84,7 +84,7 @@ const AddGalleryModalContent = (
                                     previewMode={isPreviewMode}
                                     component={Textbox}
                                     name="name"
-                                    label="!!!Название галлереи"
+                                    label="Название галлереи"
                                     required
                                     validate={{
                                         required: true,
@@ -100,7 +100,7 @@ const AddGalleryModalContent = (
                                     previewMode={isPreviewMode}
                                     component={Textbox}
                                     name="systemName"
-                                    label="!!!Системное имя"
+                                    label="Системное имя"
                                     required
                                     validate={{
                                         required: true,
@@ -110,7 +110,7 @@ const AddGalleryModalContent = (
                                         }
                                     }}
                                     hasTooltip
-                                    toolTipMessage="!!Системное имя необходимо для вызова галлереи на стороне кликнта. Только латинские символы или цифры"
+                                    toolTipMessage="Системное имя необходимо для вызова галлереи на стороне кликнта. Только латинские символы или цифры"
                                     placeholder="Системное имя"
                                 />
                             </FormLayoutItem>

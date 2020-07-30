@@ -2,10 +2,18 @@ import {
     SET_ASSISTANCE,
     SET_DEPARTMENTS,
     SET_GALLERIES,
-    SET_FEEDBACKS
+    SET_FEEDBACKS,
+    SET_LANGUAGE_CODE
 } from './const';
 
 export default (dispatch) => {
+    const setLanguageCode = (languageCode) => {
+        dispatch({
+            type: SET_LANGUAGE_CODE,
+            languageCode
+        });
+    };
+
     const setDepartments = (departments) => {
         dispatch({
             type: SET_DEPARTMENTS,
@@ -38,6 +46,7 @@ export default (dispatch) => {
         setDepartments,
         setGalleries,
         setAssistance,
-        setFeedbacks
+        setFeedbacks,
+        setLanguageCode
     };
 };

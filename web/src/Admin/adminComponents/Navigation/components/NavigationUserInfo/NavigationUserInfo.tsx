@@ -32,6 +32,13 @@ const NavigationUserInfo = () => {
         }
     }, [token]);
 
+    const handleLogout = () => {
+        logout()
+            .then(({data}) => {
+                window.location = data.location;
+            })
+    };
+
     return (
         <PaddingBox
             lNormal
@@ -52,7 +59,7 @@ const NavigationUserInfo = () => {
             </div>
             <div
                 className={classes.adminNavigationUserLogout}
-                onClick={logout}
+                onClick={handleLogout}
             >
                 <Icon
                     icon={logoutIcon}

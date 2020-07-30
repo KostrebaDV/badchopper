@@ -29,4 +29,45 @@
 .feedbacksGallery {
 	border-bottom: 1px solid $light;
 	margin-bottom: 40px;
+	padding-bottom: 30px;
+}
+
+@media (max-width: 575.98px) {
+	.feedbacksDetailPage {
+		display: block;
+	}
+
+	.feedbacksDetailPage__feedbackQuotes {
+		margin: 40px 0;
+	}
+
+	.feedbacksDetailPage__feedbackQuotes img {
+		width: 165px;
+	}
+
+	.feedbacksDetailPage__feedbacks {
+		width: 100%;
+		overflow: initial;
+		padding-bottom: 85px;
+	}
+
+	.feedbacksGallery {
+		padding-bottom: 80px;
+	}
+
+	.feedbacksDetailPage__navigationClassname {
+		bottom: 375px;
+	}
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
 }

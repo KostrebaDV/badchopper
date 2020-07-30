@@ -50,15 +50,15 @@ const CommentModalContent = (
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `!! Карточка обновлена`
+                        message: `Карточка обновлена`
                     });
                 }
             });
     };
 
     const mediaModalData = {
-        modalTitle: "!!Медиа файлы",
-        rightButtonLabel: "!!Выбрать",
+        modalTitle: "Медиа файлы",
+        rightButtonLabel: "Выбрать",
         singleSelect: true
     };
 
@@ -71,7 +71,7 @@ const CommentModalContent = (
     const leftButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             transparent
         />
     );
@@ -89,7 +89,7 @@ const CommentModalContent = (
             return `${selectedItem.name} ${selectedItem.surname}`;
         }
 
-        return "!!Добавить отзыв";
+        return "Добавить отзыв";
     };
 
     return (

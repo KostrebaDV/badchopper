@@ -9,8 +9,10 @@ import FormLayout, {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseC
 import {Textbox, Textarea, MediaSelector} from '../../../../baseComponents/Form/Adapters';
 import {AssistanceContext} from '../../store';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
-import {getUniqueId} from '../../../../../utils';
+import {getUniqueId, isNull} from '../../../../../utils';
 import {FormContext} from '../../../../../store/FormContext';
+import {LANGUAGE_CODES} from '../../../../../const';
+import {MultiLanguageField} from '../../../../baseComponents/MultiLanguageField/MultiLanguageField';
 
 const EditAssistanceModalContent = (
     {
@@ -23,14 +25,33 @@ const EditAssistanceModalContent = (
     const {showNotification} = useContext(AdminAppContext);
 
     const handleUpdateAssistance = (values) => {
-        const {_id, ...rest} = values;
-
-        const requestValues = {
-            id: modalData._id,
+        const {
+            _id,
+            nameEN,
+            nameRU,
+            nameUA,
+            descriptionEN,
+            descriptionRU,
+            descriptionUA,
             ...rest
-        };
+        } = values
 
-        updateAssistanceAPI(requestValues)
+        const requestData = {
+            ...rest,
+            id: modalData._id,
+            name: {
+                ua: nameUA,
+                ru: nameRU,
+                en: nameEN,
+            },
+            description: {
+                ua: descriptionUA,
+                ru: descriptionRU,
+                en: descriptionEN,
+            }
+        }
+
+        updateAssistanceAPI(requestData)
             .then(({data}) => {
                 updateAssistance([data]);
                 handleClose();
@@ -38,7 +59,7 @@ const EditAssistanceModalContent = (
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `!! Услуга "${data.name}" обновлена`
+                        message: `Услуга "${data.name.ru}" обновлена`
                     });
                 }
             });
@@ -47,7 +68,7 @@ const EditAssistanceModalContent = (
     const leftButtons = (
         <Button
             actionHandler={handleClose}
-            label="!!Закрыть"
+            label="Закрыть"
             transparent
         />
     );
@@ -55,20 +76,34 @@ const EditAssistanceModalContent = (
     const rightButtons = (
         <Button
             actionHandler={() => forms.UPDATE_ASSISTANCE_FORM.submitForm()}
-            label="!!Редактировать"
+            label="Редактировать"
             type="primary"
         />
     );
 
-    return (
+    const initialValues = () => {
+        if (isNull(modalData)) return {};
+
+        return {
+            ...modalData,
+            nameUA: modalData?.name?.ua,
+            nameRU: modalData?.name?.ru,
+            nameEN: modalData?.name?.en,
+            descriptionUA: modalData?.description?.ua,
+            descriptionRU: modalData?.description?.ru,
+            descriptionEN: modalData?.description?.en,
+        }
+    }
+
+    return modalData && (
         <>
             <ModalHeader
-                label={`!!Редактировать "${modalData.name}"`}
+                label={`Редактировать "${modalData?.name?.ru}"`}
                 handleClose={handleClose}
             />
             <ModalContent>
                 <Form
-                    initialValues={modalData}
+                    initialValues={initialValues()}
                     onSubmit={handleUpdateAssistance}
                     name={FORMS.UPDATE_ASSISTANCE_FORM}
                 >
@@ -80,18 +115,13 @@ const EditAssistanceModalContent = (
                                 gridColumn={13}
                                 inline
                             >
-                                <FormLayoutItem>
-                                    <Field
-                                        component={Textbox}
-                                        name="name"
-                                        label="!!!название услуги"
-                                        required
-                                        validate={{
-                                            required: true
-                                        }}
-                                        placeholder="название услуги"
-                                    />
-                                </FormLayoutItem>
+                                <MultiLanguageField
+                                    name='name'
+                                    adapter={Textbox}
+                                    required
+                                    label='название услуги'
+                                    languages={LANGUAGE_CODES}
+                                />
                                 <FormLayoutItem>
                                     <Field
                                         component={MediaSelector}
@@ -105,18 +135,13 @@ const EditAssistanceModalContent = (
                                     />
                                 </FormLayoutItem>
                             </FormLayoutItemGroup>
-                            <FormLayoutItem>
-                                <Field
-                                    component={Textarea}
-                                    name="description"
-                                    label="!!!Описание"
-                                    required
-                                    validate={{
-                                        required: true
-                                    }}
-                                    placeholder="Описание"
-                                />
-                            </FormLayoutItem>
+                            <MultiLanguageField
+                                name='description'
+                                adapter={Textarea}
+                                label='описание'
+                                required
+                                languages={LANGUAGE_CODES}
+                            />
                             <FormLayoutItemGroup
                                 inline
                                 noPadding
@@ -127,7 +152,7 @@ const EditAssistanceModalContent = (
                                     <Field
                                         component={Textbox}
                                         name="price"
-                                        label="!!!Стоимость"
+                                        label="Стоимость"
                                         required
                                         validate={{
                                             required: true,
@@ -148,7 +173,7 @@ const EditAssistanceModalContent = (
                 />
             </ModalFooter>
         </>
-    );
+    )
 };
 
 export {EditAssistanceModalContent};

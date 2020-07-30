@@ -2,31 +2,38 @@ import {GalleryItems, GalleryOptions} from './types';
 import {isNullOrUndefined} from '../../../utils';
 
 type GlobalType = {
-    widthShift: number[]
-    galleryInterval: number[]
-    galleryTimeout: number
-    infiniteGalleryContainerWidth: number
-    prevActiveIndex: number | undefined
-    nextActiveIndex: number | undefined
+    widthShift: number[];
+    galleryInterval: number[];
+    options: any;
+    galleryTimeout: number;
+    yOffset: number;
+    infiniteGalleryContainerWidth: number;
+    prevActiveIndex: number | undefined;
+    nextActiveIndex: number | undefined;
 };
 
 const GLOBAL: GlobalType = {
     galleryInterval: [],
+    options: {},
     galleryTimeout: 0,
     infiniteGalleryContainerWidth: 0,
     widthShift: [],
     prevActiveIndex: undefined,
-    nextActiveIndex: undefined
+    nextActiveIndex: undefined,
+    yOffset: 0
 };
 
-const elements = ({galleryName}) => {
+const elements = () => {
+    const {galleryName} = GLOBAL.options;
+
     return {
         galleryContainer: document.getElementsByClassName(galleryName),
         galleryItems: document.getElementsByClassName(`${galleryName}-item`)
     };
 };
 
-const _getGallery = (items, {galleryName, galleryItemTemplate}) => {
+const _getGallery = (items) => {
+    const {galleryName, galleryItemTemplate} = GLOBAL.options;
     const itemsElements = [];
 
     items.forEach((item, index) => {
@@ -40,8 +47,6 @@ const _getGallery = (items, {galleryName, galleryItemTemplate}) => {
         // @ts-ignore
         itemsElements.push(itemElement);
     });
-
-
 
     return itemsElements.join(' ');
 };
@@ -66,8 +71,8 @@ const _removeActiveElement = (index) => {
     }
 };
 
-const _initTouchEvents = (options, setActiveIndex) => {
-    const {galleryItems} = elements(options);
+const _initTouchEvents = (setActiveIndex) => {
+    const {galleryItems} = elements();
     let touch_start_x;
     let touch_end_x;
 
@@ -81,9 +86,16 @@ const _initTouchEvents = (options, setActiveIndex) => {
         item.addEventListener('touchend', function(e) {
             touch_end_x = e.changedTouches[e.changedTouches.length - 1].clientX;
 
-            _initInterval(options, setActiveIndex, +e.srcElement.dataset.index);
+            _initInterval(setActiveIndex, +e.srcElement.dataset.index);
 
-            _handleTouchEvent(touch_start_x, touch_end_x, e.srcElement.dataset.index, setActiveIndex, galleryItems.length);
+            _handleTouchEvent(
+                touch_start_x,
+                touch_end_x,
+                e.view.pageYOffset,
+                e.srcElement.dataset.index,
+                setActiveIndex,
+                galleryItems.length
+            );
         });
     });
 };
@@ -101,12 +113,18 @@ const _normalizedIndex = (isNext, itemIndex, itemsCount) => {
     return normalizedIndex;
 };
 
-const _handleTouchEvent = (startCord, endCord, itemIndex, setActiveIndex, itemsCount) => {
+const _handleTouchEvent = (startCord, endCord, yOffset, itemIndex, setActiveIndex, itemsCount) => {
+    if (startCord === endCord || yOffset !== GLOBAL.yOffset) {
+        GLOBAL.yOffset = yOffset;
+        return;
+    }
+
     if (startCord > endCord) {
         const normalizedIndex = _normalizedIndex(true, itemIndex, itemsCount);
 
         _removeActiveElement(+itemIndex);
         _setActiveElement(normalizedIndex);
+        _setInfiniteScrollActiveItem(normalizedIndex);
 
         setActiveIndex(normalizedIndex);
     } else {
@@ -114,14 +132,17 @@ const _handleTouchEvent = (startCord, endCord, itemIndex, setActiveIndex, itemsC
 
         _removeActiveElement(+itemIndex);
         _setActiveElement(normalizedIndex);
+        _setInfiniteScrollActiveItem(normalizedIndex);
 
         setActiveIndex(normalizedIndex);
     }
+
+
 };
 
-const _initInterval = (options, setActiveIndex, activeItemIndex = 1) => {
-    if (isNullOrUndefined(options.autoPlaytime)) return;
-    const {galleryItems} = elements(options);
+const _initInterval = (setActiveIndex, activeItemIndex = 1) => {
+    if (isNullOrUndefined(GLOBAL.options.autoPlaytime)) return;
+    const {galleryItems} = elements();
 
     let i = activeItemIndex;
     const itemsCount = galleryItems.length;
@@ -129,19 +150,18 @@ const _initInterval = (options, setActiveIndex, activeItemIndex = 1) => {
     const interval = setInterval(() => {
         handleNext({
             index: i,
-            options: options,
             setActiveIndex: setActiveIndex,
             clearGalleryInterval: false
         });
 
         i = i === itemsCount ? 1 : i + 1;
-    }, options.autoPlaytime);
+    }, GLOBAL.options.autoPlaytime);
 
     // @ts-ignore
     GLOBAL.galleryInterval.push(interval);
 };
 
-const _handleInterval = ({clearGalleryInterval, options, setActiveIndex, index }) => {
+const _handleInterval = ({clearGalleryInterval, setActiveIndex, index }) => {
     if (clearGalleryInterval) {
         _clearGalleryInterval();
 
@@ -150,9 +170,9 @@ const _handleInterval = ({clearGalleryInterval, options, setActiveIndex, index }
 
         // @ts-ignore
         GLOBAL.galleryTimeout = setTimeout(() => {
-            _initInterval(options, setActiveIndex, index);
+            _initInterval(setActiveIndex, index);
 
-        }, options.autoPlaytime);
+        }, GLOBAL.options.autoPlaytime);
     }
 };
 
@@ -162,17 +182,19 @@ const _clearGalleryInterval = () => {
     GLOBAL.galleryInterval.splice(0, GLOBAL.galleryInterval.length);
 };
 
-const _setInfiniteScrollActiveItem = (index, options) => {
-     const {galleryContainer, galleryItems} = elements(options);
-     const galleryDuplicateContainer = document.getElementsByClassName('galleryDuplicateContainer');
+const _setInfiniteScrollActiveItem = (index) => {
+     const {galleryContainer, galleryItems} = elements();
+
     _setActiveElement(index);
 
     if (GLOBAL.prevActiveIndex !== undefined && GLOBAL.nextActiveIndex !== undefined) {
         const prevElement = _getSliderElement(GLOBAL.prevActiveIndex);
         const nextElement = _getSliderElement(GLOBAL.nextActiveIndex);
 
-        prevElement[0].classList.remove("item__active-prev");
-        nextElement[0].classList.remove("item__active-next");
+        if (prevElement[0]  !== undefined && nextElement[0]  !== undefined) {
+            prevElement[0].classList.remove("item__active-prev");
+            nextElement[0].classList.remove("item__active-next");
+        }
     }
 
     const prevIndex = index - 1 === 0 ? galleryItems.length : index - 1;
@@ -181,20 +203,24 @@ const _setInfiniteScrollActiveItem = (index, options) => {
     const prevElement = _getSliderElement(prevIndex);
     const nextElement = _getSliderElement(nextIndex);
 
-    prevElement[0].classList.add("item__active-prev");
-    nextElement[0].classList.add("item__active-next");
+    if (prevElement[0]  !== undefined && nextElement[0]  !== undefined) {
+        prevElement[0].classList.add("item__active-prev");
+        nextElement[0].classList.add("item__active-next");
+    }
 
-    console.log(prevElement);
+    if (GLOBAL.options.allowDuplicateContainer) {
+        const galleryDuplicateContainer = document.getElementsByClassName('galleryDuplicateContainer');
 
-    // @ts-ignore
-    galleryDuplicateContainer[0].innerHTML = `
-        <div class="galleryDuplicateContainer__item">
-            ${prevElement[0].innerHTML}
-        </div>
-        <div class="galleryDuplicateContainer__item">
-            ${nextElement[0].innerHTML}
-        </div>
-    `;
+        // @ts-ignore
+        galleryDuplicateContainer[0].innerHTML = `
+            <div class="galleryDuplicateContainer__item">
+                ${prevElement[0].innerHTML}
+            </div>
+            <div class="galleryDuplicateContainer__item">
+                ${nextElement[0].innerHTML}
+            </div>
+        `;
+    }
 
     //@ts-ignore
     galleryContainer[0].style.transform = `translate3d(-${GLOBAL.widthShift[index]}px, 0px, 0px)`;
@@ -207,26 +233,29 @@ const _setInfiniteScrollActiveItem = (index, options) => {
     GLOBAL.nextActiveIndex = nextIndex;
 };
 
-const _initInfiniteScrollTranslateParams = (options) => {
-    const {galleryItems} = elements(options);
+const _initInfiniteScrollTranslateParams = () => {
+    const {galleryItems} = elements();
 
     GLOBAL.widthShift = [0];
 
     let i = 0;
     const totalItems = galleryItems.length;
-    const itemWidth = galleryItems[0].clientWidth;
 
-    for (i; i < totalItems;) {
-        GLOBAL.widthShift.push(itemWidth * i);
+    setTimeout(() => {
+        const itemWidth = galleryItems[1].clientWidth;
 
-        i++;
-    }
+        for (i; i < totalItems;) {
+            GLOBAL.widthShift.push(itemWidth * i);
 
-    _setInfiniteScrollActiveItem(options.activeElement, options);
+            i++;
+        }
+
+        _setInfiniteScrollActiveItem(GLOBAL.options.activeElement);
+    }, 300)
 };
 
-const _initInfiniteScroll = (options) => {
-    const {galleryContainer, galleryItems} = elements(options);
+const _initInfiniteScroll = () => {
+    const {galleryContainer, galleryItems} = elements();
 
     const itemWidth = galleryItems[0].clientWidth;
 
@@ -238,44 +267,42 @@ const _initInfiniteScroll = (options) => {
 
 };
 
-export const handlePrev = ({index, options, setActiveIndex, clearGalleryInterval}) => {
+export const handlePrev = ({index, setActiveIndex, clearGalleryInterval}) => {
     setActiveIndex(index);
-    _handleInterval({index, options, setActiveIndex, clearGalleryInterval});
+    _handleInterval({index, setActiveIndex, clearGalleryInterval});
 
-    const {galleryItems} = elements(options);
+    const {galleryItems} = elements();
 
     // @ts-ignore
     [...galleryItems].forEach((item, index) => {
        _removeActiveElement(index + 1);
     });
 
-    if (options.infiniteScroll) {
-        _setInfiniteScrollActiveItem(index, options);
+    if (GLOBAL.options.infiniteScroll) {
+        _setInfiniteScrollActiveItem(index);
     } else {
         _setActiveElement(index);
     }
 };
 
-export const handleNext = ({index, options, setActiveIndex, clearGalleryInterval}) => {
+export const handleNext = ({index, setActiveIndex, clearGalleryInterval}) => {
     setActiveIndex(index);
-    _handleInterval({index, options, setActiveIndex, clearGalleryInterval});
+    _handleInterval({index, setActiveIndex, clearGalleryInterval});
 
-    const {galleryItems} = elements(options);
+    const {galleryItems} = elements();
 
     // @ts-ignore
     [...galleryItems].forEach((item, index) => {
         _removeActiveElement(index + 1);
     });
 
-    if (options.infiniteScroll) {
-        _setInfiniteScrollActiveItem(index, options);
+    if (GLOBAL.options.infiniteScroll) {
+        _setInfiniteScrollActiveItem(index);
     } else {
         _setActiveElement(index);
     }
 
-
     //manage transform here
-
 };
 
 export const initGallery = (
@@ -283,23 +310,24 @@ export const initGallery = (
     options: GalleryOptions,
     setActiveIndex
 ) => {
-    const {galleryContainer} = elements(options);
-    const galleryLayout = _getGallery(items, options);
+    GLOBAL.options = options;
+    const {galleryContainer} = elements();
+    const galleryLayout = _getGallery(items);
 
     if (galleryLayout.length !== 0) {
         // @ts-ignore
         galleryContainer[0].innerHTML = galleryLayout;
     }
 
-    if (options.infiniteScroll) {
-        _initInfiniteScroll(options);
-        _initInfiniteScrollTranslateParams(options);
+    if (galleryLayout.length !== 0 && options.infiniteScroll) {
+        _initInfiniteScroll();
+        _initInfiniteScrollTranslateParams();
     } else {
         _setActiveElement(options.activeElement);
     }
 
-    _initTouchEvents(options, setActiveIndex);
-    _initInterval(options, setActiveIndex);
+    _initTouchEvents(setActiveIndex);
+    _initInterval(setActiveIndex);
 };
 
 export const destroyGallery = () => {

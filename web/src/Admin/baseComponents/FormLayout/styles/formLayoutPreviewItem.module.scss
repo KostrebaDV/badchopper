@@ -1,3 +1,6 @@
-.formLayoutPreviewItem {
+@import "../../../styles/colors/colors.module";
 
+.formLayoutPreviewItem {
+	padding-bottom: 8px;
+	border-bottom: 1px solid $gray;
 }

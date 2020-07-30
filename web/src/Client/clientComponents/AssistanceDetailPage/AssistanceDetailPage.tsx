@@ -2,6 +2,8 @@ import React from 'react';
 import {useGetAssistanceData} from './hooks';
 import {Header} from '../Header/Header';
 import {AssistanceList} from './components/AssistanceList/AssistanceList';
+import {translate} from '../../../utils';
+import {codes} from '../../../static/translations/codes';
 
 const AssistanceDetailPage = () => {
     const assistanceData = useGetAssistanceData();
@@ -9,8 +11,9 @@ const AssistanceDetailPage = () => {
     return (
         <div>
             <Header
-                label="!!Услуги"
-                content="!! Каждая услуга может быть приобретена в нашем Barbershop в виде Подарочного сертификата"
+                firstLetterUppercase
+                label={translate(codes.services)}
+                content={translate(codes.eachServiceCan)}
             />
             <AssistanceList
                 assistance={assistanceData}

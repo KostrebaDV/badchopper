@@ -30,7 +30,7 @@ const AssistanceList = () => {
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `!! Услуга "${itemName}" удалена`
+                        message: `Услуга "${itemName}" удалена`
                     });
                 }
             });
@@ -56,10 +56,10 @@ const AssistanceList = () => {
             openModal(
                 MODALS.DELETE_ASSISTANCE_MODAL,
                 {
-                    modalTitle: '!!Удалить услугу',
-                    rightButtonLabel: '!!Удалить',
-                    handleSubmit: () => handleItemDelete(id, selectedItem.name),
-                    content: `!!Вы уверены, что хотите удалить услугу "${selectedItem.name}"?`
+                    modalTitle: 'Удалить услугу',
+                    rightButtonLabel: 'Удалить',
+                    handleSubmit: () => handleItemDelete(id, selectedItem.name.ru),
+                    content: `Вы уверены, что хотите удалить услугу "${selectedItem.name.ru}"?`
                 }
             );
         }
@@ -90,9 +90,9 @@ const AssistanceList = () => {
                             grid="8-9-7"
                             className={classes.assistanceList__header}
                         >
-                            <div>!!название</div>
-                            <div>!!описание</div>
-                            <div>!!цена</div>
+                            <div>название</div>
+                            <div>описание</div>
+                            <div>цена</div>
                         </GridLayoutRow>
                     )
                 }
@@ -112,7 +112,7 @@ const AssistanceList = () => {
                 {
                     !hasAssistance && (
                         <EmptyContent>
-                            !!Добавьте услуги
+                            Добавьте услуги
                         </EmptyContent>
                     )
                 }

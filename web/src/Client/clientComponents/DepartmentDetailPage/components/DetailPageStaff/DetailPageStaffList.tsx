@@ -2,9 +2,9 @@ import React from 'react';
 import Masonry from 'react-masonry-css';
 import {DetailPageStaffListItem} from './detailPageStaffListItem';
 import {getUniqueKey} from '../../../../../utils';
+import {isMobile} from "react-device-detect";
 import './styles/detailPageStaffListMasonry.scss';
-import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
-import classes from './styles/index.module.scss';
+import {DetailPageStaffGallery} from './DetailPageStaffGallery';
 
 const DetailPageStaffList = (
     {
@@ -19,26 +19,33 @@ const DetailPageStaffList = (
 
     return (
         <>
-            <Typography
-                className={classes.detailPageStaffList__header}
-            >
-                !!Команда
-            </Typography>
-            <Masonry
-                breakpointCols={breakpointColumnsObj}
-                className="my-masonry-grid"
-                columnClassName="my-masonry-grid_column">
-                {
-                    staff.map(item => {
-                        return (
-                            <DetailPageStaffListItem
-                                item={item}
-                                key={getUniqueKey()}
-                            />
-                        );
-                    })
-                }
-            </Masonry>
+            {
+                !isMobile && (
+                    <Masonry
+                        breakpointCols={breakpointColumnsObj}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column">
+                        {
+                            staff.map(item => {
+                                return (
+                                    <DetailPageStaffListItem
+                                        item={item}
+                                        key={getUniqueKey()}
+                                    />
+                                );
+                            })
+                        }
+                    </Masonry>
+                )
+            }
+            {
+                isMobile && (
+                    <DetailPageStaffGallery
+                        staff={staff}
+                    />
+                )
+            }
+
         </>
     );
 };

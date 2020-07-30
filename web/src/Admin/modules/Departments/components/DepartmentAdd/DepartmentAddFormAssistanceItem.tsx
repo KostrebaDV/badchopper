@@ -10,10 +10,10 @@ const DepartmentAddFormAssistanceItem = (
     return (
         <div className={classes.departmentAddFormAssistanceItem}>
             <Typography bold="600">
-                {item.name}
+                {item.name.ru}
             </Typography>
             <Typography variant="14">
-                !!цена: {item.price}
+                цена: {item.price}
             </Typography>
         </div>
     );

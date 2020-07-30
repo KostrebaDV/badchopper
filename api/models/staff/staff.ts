@@ -73,7 +73,8 @@ export const updateStaffModel = (updateStaffDTO: StaffItemDTOType, client) => {
         facebookUrl,
         description,
         patronymic,
-        surname
+        surname,
+        yClientsUrl
     } = updateStaffDTO;
 
     return new Promise((resolve, reject) => {
@@ -92,7 +93,8 @@ export const updateStaffModel = (updateStaffDTO: StaffItemDTOType, client) => {
                         instagramUrl,
                         description,
                         patronymic,
-                        surname
+                        surname,
+                        yClientsUrl
                     }
                 },
                 {returnOriginal: false}

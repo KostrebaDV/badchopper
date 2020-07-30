@@ -38,10 +38,10 @@ const MediaListContent = () => {
         openModal(
             MODALS.DELETE_MEDIA_MODAL,
             {
-                modalTitle: '!!Удалить изображение',
-                rightButtonLabel: '!!Удалить',
+                modalTitle: 'Удалить изображение',
+                rightButtonLabel: 'Удалить',
                 handleSubmit: () => handleDeleteImage(id),
-                content: '!!Вы уверены, что хотите удалить изображение?'
+                content: 'Вы уверены, что хотите удалить изображение?'
             }
         );
     };
@@ -63,7 +63,7 @@ const MediaListContent = () => {
                 {
                     !hasImages && (
                         <EmptyContent>
-                            !!Добавьте изображение
+                            Добавьте изображение
                         </EmptyContent>
                     )
                 }

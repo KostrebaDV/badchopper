@@ -3,6 +3,8 @@ import Form, {Field} from "../../../../../Admin/baseComponents/Form";
 import {Textbox, Textarea} from "../../../FormAdapters";
 import {FormFieldGroup} from '../../../FormFieldGroup/FormFieldGroup';
 import {ADD_FEEDBACK_FORM} from '../../const';
+import {translate} from '../../../../../utils';
+import {codes} from '../../../../../static/translations/codes';
 
 const ContactForm = (
     {
@@ -18,7 +20,7 @@ const ContactForm = (
             <FormFieldGroup>
                 <Field
                     required
-                    placeholder="!Ваше имя *"
+                    placeholder={`${translate(codes.yourName)} *`}
                     name="name"
                     component={Textbox}
                     validate={{required: true}}
@@ -31,7 +33,7 @@ const ContactForm = (
                     validate={{required: true}}
                 />
                 <Field
-                    placeholder="!Комментарий *"
+                    placeholder={`${translate(codes.comment)} *`}
                     name="feedback"
                     component={Textarea}
                     required

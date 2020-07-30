@@ -11,6 +11,7 @@ import {
 import {deleteDocumentResponseStatusType, documentIdType, updateDocumentResponseStatusType} from '../../types/general';
 import {getImageService} from '../media/media';
 import {normalizeImage} from '../../utils/staff/normalizeImage';
+import {updateClientSyncHashService} from '../clientSyncHash/clientSyncHash';
 
 export const addStaffService = (assistanceDTO: StaffItemDTOType, client) => {
     if (assistanceDTO.name.length !== 0) {
@@ -18,6 +19,8 @@ export const addStaffService = (assistanceDTO: StaffItemDTOType, client) => {
             .then((data: StaffResponseType) => {
                 return getImageService(data.ops[0].imageId, client)
                     .then(image => {
+                        updateClientSyncHashService(client)
+
                         return {
                             image: normalizeImage(image),
                             ...data.ops[0]
@@ -90,6 +93,8 @@ export const updateStaffService = (updateStaffDTO, client) => {
                 if (status.ok === 1) {
                     return getImageService(status.value.imageId, client)
                         .then(image => {
+                            updateClientSyncHashService(client)
+
                             return {
                                 image: normalizeImage(image),
                                 ...status.value
@@ -112,6 +117,8 @@ export const deleteStaffService = (deleteAssistanceDTO: documentIdType, client) 
         return deleteStaffModel(deleteAssistanceDTO, client)
             .then((status: deleteDocumentResponseStatusType) => {
                 if (status.deletedCount !== 0) {
+                    updateClientSyncHashService(client)
+
                     return 'Staff was deleted successfully'
                 }
 

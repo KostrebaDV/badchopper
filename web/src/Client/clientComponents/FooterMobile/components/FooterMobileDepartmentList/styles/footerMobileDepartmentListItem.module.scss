@@ -1,0 +1,35 @@
+@import "../../../../../styles/colors/colors.module";
+
+.footerMobileDepartmentListItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.footerMobileDepartmentListItem__leftSection {
+	text-align: left;
+}
+
+.footerMobileDepartmentListItem_contactPage {
+	margin-right: 110px;
+}
+
+.footerMobileDepartmentListItem__label:hover {
+	color: $gold;
+	cursor: pointer;
+}
+
+.footerMobileDepartmentListItem__phone {
+	margin-top: 6px;
+	text-decoration: underline;
+}
+
+.footerMobileDepartmentListItem__geoPosition {
+	display: flex;
+}
+
+.footerMobileDepartmentListItem__geoPositionLabel {
+	color: $gold;
+	margin-right: 7px;
+}

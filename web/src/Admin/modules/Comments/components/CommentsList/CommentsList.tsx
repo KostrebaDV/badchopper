@@ -46,7 +46,7 @@ const CommentsList = () => {
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `!!Отзыв удален`
+                        message: `Отзыв удален`
                     });
                 }
             });
@@ -61,10 +61,10 @@ const CommentsList = () => {
             openModal(
                 MODALS.DELETE_COMMENT_MODAL,
                 {
-                    modalTitle: '!!Удалить отзыв',
-                    rightButtonLabel: '!!Удалить',
+                    modalTitle: 'Удалить отзыв',
+                    rightButtonLabel: 'Удалить',
                     handleSubmit: () => handleItemDelete(id),
-                    content: `!!Вы уверены, что хотите удалить отзыв?`
+                    content: `Вы уверены, что хотите удалить отзыв?`
                 }
             );
         }
@@ -97,13 +97,13 @@ const CommentsList = () => {
                         <GridLayoutRow
                             alignItems="center"
                             gridColumn={24}
-                            grid="3-8-7-3-3"
+                            grid="3-5-9-_1-3-3"
                             className={classes.staffList}
                         >
                             <div></div>
-                            <div>!!имя</div>
-                            <div>!!описание</div>
-                            <div>!!дата</div>
+                            <div>имя</div>
+                            <div>описание</div>
+                            <div>дата</div>
                         </GridLayoutRow>
                     )
                 }
@@ -123,7 +123,7 @@ const CommentsList = () => {
                 {
                     !hasStaff && (
                         <EmptyContent>
-                            !!Добавьте отзыв
+                            Добавьте отзыв
                         </EmptyContent>
                     )
                 }
