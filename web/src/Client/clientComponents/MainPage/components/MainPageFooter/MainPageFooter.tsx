@@ -6,6 +6,8 @@ import bookingRoundText from "../../../../../static/images/bookingRoundText.svg"
 import {MainPageFooterSocialLinks} from './MainPageFooterSocialLinks';
 import {codes} from '../../../../../static/translations/codes';
 import {translate} from '../../../../../utils';
+import {Link} from '../../../../../Admin/baseComponents/Link/Link';
+import {yClientsUrl} from '../../../../../const';
 
 const MainPageFooter = () => {
     return (
@@ -16,7 +18,13 @@ const MainPageFooter = () => {
                     lineHeight="1"
                     className={classes.mainPageFooter__bookingText}
                 >
-                    {translate(codes.bookUpOnlineRightNow)}
+                    <Link
+                        target="_blank"
+                        hasRoute={false}
+                        link={yClientsUrl}
+                    >
+                        {translate(codes.bookUpOnlineRightNow)}
+                    </Link>
                 </Typography>
                 <img
                     src={bookingRoundText}

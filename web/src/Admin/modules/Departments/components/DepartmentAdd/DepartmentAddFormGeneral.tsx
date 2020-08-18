@@ -100,40 +100,18 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                             toolTipMessage="вместо символа '_' поставте пробел"
                         />
                     </FormLayoutItem>
-                    <FormLayoutItemGroup
-                        inline
-                        noPadding
-                        gridColumn={13}
-                        grid="6-_1-6"
-                        label="Координаты на карте"
-                    >
-                        <FormLayoutItem>
-                            <Field
-                                component={Textbox}
-                                name="latitude"
-                                label="Широта"
-                                required
-                                previewMode={!editMode}
-                                validate={{
-                                    required: true
-                                }}
-                                placeholder="00.000000"
-                            />
-                        </FormLayoutItem>
-                        <FormLayoutItem>
-                            <Field
-                                component={Textbox}
-                                name="longitude"
-                                label="Долгота"
-                                required
-                                previewMode={!editMode}
-                                validate={{
-                                    required: true
-                                }}
-                                placeholder="00.000000"
-                            />
-                        </FormLayoutItem>
-                    </FormLayoutItemGroup>
+                    <FormLayoutItem>
+                        <Field
+                            component={Textbox}
+                            name="location"
+                            label="Ссылка на карту"
+                            required
+                            previewMode={!editMode}
+                            validate={{
+                                required: true
+                            }}
+                        />
+                    </FormLayoutItem>
                 </FormLayoutItemGroup>
             </FormLayout>
         </>

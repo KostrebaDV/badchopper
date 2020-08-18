@@ -49,10 +49,7 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
                             number: address.number,
                         },
                         phone,
-                        location: {
-                            latitude: location.latitude,
-                            longitude: location.longitude
-                        },
+                        location,
                         imageId,
                         assistance,
                         staff,

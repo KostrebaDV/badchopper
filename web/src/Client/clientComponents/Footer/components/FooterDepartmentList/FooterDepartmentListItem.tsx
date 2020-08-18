@@ -6,6 +6,7 @@ import ClassNames from 'classnames';
 import {AppContext} from '../../../../App/store';
 import {translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
+import {Link} from '../../../../../Admin/baseComponents/Link/Link';
 
 const FooterDepartmentListItem = (
     {
@@ -57,7 +58,13 @@ const FooterDepartmentListItem = (
                     className={classes.footerDepartmentListItem__geoPositionLabel}
                     letterSpacing="-0.005em"
                 >
-                    Google maps
+                    <Link
+                        target="_blank"
+                        hasRoute={false}
+                        link={item.location}
+                    >
+                        Google maps
+                    </Link>
                 </Typography>
                 <img
                     src={positionSvg}

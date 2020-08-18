@@ -5,8 +5,6 @@ const normalizeRequestData = (values) => {
         city,
         street,
         number,
-        latitude,
-        longitude,
         descriptionEN,
         descriptionRU,
         descriptionUA,
@@ -33,10 +31,6 @@ const normalizeRequestData = (values) => {
                 en: cityEN,
             },
             number: values.number
-        },
-        location: {
-            latitude: values.latitude,
-            longitude: values.longitude
         },
         description: {
             ru: descriptionRU,

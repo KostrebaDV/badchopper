@@ -11,8 +11,7 @@ export type DepartmentAddContentType = {
         streetUA: string;
         streetRU: string;
         streetEN: string;
-        latitude: string;
-        longitude: string;
+        location: string;
         name: string;
         phone: string;
         imageId: string;

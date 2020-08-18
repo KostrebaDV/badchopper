@@ -13,7 +13,6 @@ const NotificationModalContent = (
 		handleClose
 	}
 ) => {
-    console.log(modalData);
 	const handleSubmit = () => {
 		return modalData.handleSubmit()
 			.then(() => handleClose());
