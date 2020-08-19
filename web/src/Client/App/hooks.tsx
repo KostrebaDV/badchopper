@@ -10,18 +10,17 @@ import Cookies from 'js-cookie';
 export const useGetDepartmentData = (allowReloadData) => {
     const {setDepartments} = useContext(AppContext);
     const departmentLocalStorageData = localStorage.getItem('departmentData');
-
     useEffect(() => {
-        if (allowReloadData === 2 || isNull(departmentLocalStorageData)) {
+        if (allowReloadData === 2 && isNull(departmentLocalStorageData)) {
             getAllDepartments()
                 .then(({data}) => {
                     setDepartments(data)
                     localStorage.setItem('departmentData', JSON.stringify(data));
                 });
-        } else {
-            if (allowReloadData === 1 && departmentLocalStorageData !== null) {
-                setDepartments(JSON.parse(departmentLocalStorageData));
-            }
+        }
+
+        if (allowReloadData === 1 && departmentLocalStorageData !== null) {
+           setDepartments(JSON.parse(departmentLocalStorageData));
         }
         // eslint-disable-next-line
     }, [allowReloadData]);
