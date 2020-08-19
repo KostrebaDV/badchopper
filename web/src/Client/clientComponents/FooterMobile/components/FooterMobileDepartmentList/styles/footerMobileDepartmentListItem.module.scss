@@ -15,8 +15,9 @@
 	margin-right: 110px;
 }
 
-.footerMobileDepartmentListItem__label {
+.footerMobileDepartmentListItem__label:hover {
 	color: $gold;
+	cursor: pointer;
 }
 
 .footerMobileDepartmentListItem__phone {

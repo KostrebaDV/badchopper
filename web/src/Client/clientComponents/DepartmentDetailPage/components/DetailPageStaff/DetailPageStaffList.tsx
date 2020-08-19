@@ -13,8 +13,8 @@ const DetailPageStaffList = (
 ) => {
     const breakpointColumnsObj = {
         default: 3,
-        1200: 2,
-        800: 1
+        700: 2,
+        500: 1
     };
 
     return (

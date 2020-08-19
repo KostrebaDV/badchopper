@@ -9,7 +9,10 @@ type DepartmentDTOType = {
         number: string;
     },
     phone: string;
-    location: string,
+    location: {
+        latitude: string;
+        longitude: string;
+    },
     imageId: string;
     staff?: [];
     assistance?: [];
