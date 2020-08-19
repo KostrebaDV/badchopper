@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start:api": "node -r esm --inspect=5858 -r ts-node/register ./app.ts",
-		"start:api-watch": "nodemon",
+		"start:api-watch": "nodemon --sourcemap",
 		"build:api": "tsc",
 		"test:api": "echo \"Error: no test specified\" && exit 1"
 	},
