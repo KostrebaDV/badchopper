@@ -37,7 +37,11 @@ const FooterContactUsForm = (
                     onClick={onClose}
                     className={classes.footerContactUsForm__closeButton}
                 >
-                    <Typography>
+                    <Typography
+                        bold="600"
+                        upperCase
+                        letterSpacing="1px"
+                    >
                         {translate(codes.close)}&nbsp;
                     </Typography>
                     <img src={closeIcon} alt="closeIcon"/>

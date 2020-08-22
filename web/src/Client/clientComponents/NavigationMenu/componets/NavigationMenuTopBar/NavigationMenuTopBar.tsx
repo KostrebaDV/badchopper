@@ -15,6 +15,7 @@ const NavigationMenuTopBar = () => {
         <div className={classes.navigationMenuTopBar}>
             <div onClick={() => openNavigation(!isOpen)}>
                 <Typography
+                    bold="700"
                     variant="14"
                     className={classes.navigationMenuTopBar__button}
                 >
@@ -23,6 +24,7 @@ const NavigationMenuTopBar = () => {
             </div>
             <Typography
                 variant="14"
+                bold="700"
                 className={classes.navigationMenuTopBar__button}
             >
                 <Link
@@ -41,6 +43,7 @@ const NavigationMenuTopBar = () => {
                 }}
             >
                 <Typography
+                    bold="700"
                     variant="14"
                 >
                     {translate(codes.leaveFeedback)}

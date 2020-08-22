@@ -10,8 +10,6 @@
 	background-color: $dark;
 	z-index: 2;
 	overflow-x: scroll;
-
-	@include transition(right .35s)
 }
 
 .navigationMenuContentWrapperMobile_zIndex {

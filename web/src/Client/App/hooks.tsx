@@ -59,6 +59,10 @@ export const useGetSyncHASH = () => {
 
     const localStorageHash = localStorage.getItem('localStorageHash');
 
+    if (localStorageHash === null) {
+        localStorage.setItem('localStorageHash', '000-0000-0000');
+    }
+
     useEffect(() => {
         if (!allowReq.current) return;
 

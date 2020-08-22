@@ -3,7 +3,7 @@
 .navigationMenuList {
 	height: 100%;
 	width: 100%;
-	padding: 45px 45px 0 45%;
+	padding: 35px 45px 0 45%;
 	display: flex;
 	flex-direction: column;
 	background-image: url('../../../../../../static/images/menuBg.jpg');
@@ -15,6 +15,7 @@
 
 .navigationMenuList__closeButton {
 	cursor: pointer;
+	letter-spacing: 1px;
 }
 
 .navigationMenuList__closeButton:hover {

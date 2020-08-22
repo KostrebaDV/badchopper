@@ -29,16 +29,10 @@ const NavigationMenu = () => {
             {
                 isMobile && (
                     <div className={classes.navigationMenuMobile}>
-                        <div
-                            className={classes.navigationMenuMobile__signInButton}
-                            onClick={() => {
-                                // @ts-ignore
-                                console.log('call y-clients');
-                            }}
-                        >
+                        <div className={classes.navigationMenuMobile__signInButton}>
                             <Typography
+                                bold="700"
                                 variant="14"
-                                className={classes.navigationMenuTopBar__button}
                             >
                                 <Link
                                     target="_blank"
@@ -47,6 +41,7 @@ const NavigationMenu = () => {
                                 >
                                     {translate(codes.bookNow)}
                                 </Link>
+
                             </Typography>
                         </div>
                         <NavigationMenuButtonIcon/>

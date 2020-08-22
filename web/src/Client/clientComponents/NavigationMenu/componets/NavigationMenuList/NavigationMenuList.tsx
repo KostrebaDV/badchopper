@@ -31,6 +31,7 @@ const NavigationMenuList = () => {
                             <>
                                 <div onClick={() => openNavigation(!isOpen)}>
                                     <Typography
+                                        bold="600"
                                         variant="18"
                                         className={classes.navigationMenuList__closeButton}
                                     >
@@ -46,6 +47,7 @@ const NavigationMenuList = () => {
                     isMobile && (
                         <div onClick={handleAddFeedbackClick}>
                             <Typography
+                                bold="700"
                                 variant="14"
                                 className={classes.navigationMenuList__feedbackButton}
                             >

@@ -9,8 +9,6 @@
 	display: flex;
 	background-color: $dark;
 	z-index: 2;
-
-	@include transition(right .35s)
 }
 
 .navigationMenuContentWrapper__open {
