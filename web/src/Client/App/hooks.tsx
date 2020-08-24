@@ -12,7 +12,7 @@ export const useGetDepartmentData = (allowReloadData) => {
     const departmentLocalStorageData = localStorage.getItem('departmentData');
 
     useEffect(() => {
-        if (allowReloadData === 2) {
+        if (allowReloadData === 2 || departmentLocalStorageData === null) {
             getAllDepartments()
                 .then(({data}) => {
                     setDepartments(data)
@@ -71,8 +71,7 @@ export const useGetSyncHASH = () => {
                 localStorage.setItem('localStorageHash', JSON.stringify(data.hash));
                 allowReq.current = false;
 
-                if (localStorageHash === null) return 1;
-
+                // @ts-ignore
                 const allowCode = data.hash !== localStorageHash.replace(/['"]+/g, '') ? 2 : 1;
                 setAllowReloadData(allowCode);
             })

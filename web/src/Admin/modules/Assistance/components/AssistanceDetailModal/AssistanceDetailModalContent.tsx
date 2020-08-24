@@ -21,7 +21,7 @@ const AssistanceDetailModalContent = (
     return modalData && (
         <>
             <ModalHeader
-                label={modalData.name.ru}
+                label={modalData?.name?.ru}
                 handleClose={handleClose}
             />
             <ModalContent>
@@ -30,19 +30,19 @@ const AssistanceDetailModalContent = (
                             <FormLayoutItem>
                                 <FormLayoutPreviewItem
                                     label="Описание RU"
-                                    value={modalData.description.ru}
+                                    value={modalData?.description?.ru}
                                 />
                             </FormLayoutItem>
                             <FormLayoutItem>
                                 <FormLayoutPreviewItem
                                     label="Описание EN"
-                                    value={modalData.description.en}
+                                    value={modalData?.description?.en}
                                 />
                             </FormLayoutItem>
                             <FormLayoutItem>
                                 <FormLayoutPreviewItem
                                     label="Описание UA"
-                                    value={modalData.description.ua}
+                                    value={modalData?.description?.ua}
                                 />
                             </FormLayoutItem>
                             <FormLayoutItem>

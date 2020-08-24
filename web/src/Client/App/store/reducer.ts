@@ -20,7 +20,7 @@ export const reducer = (state, payload) => {
         case SET_DEPARTMENTS:
             return {
                 ...state,
-                departments: [...state.departments, ...payload.departments]
+                departments: [...payload.departments]
             };
         case SET_GALLERIES:
             return {
