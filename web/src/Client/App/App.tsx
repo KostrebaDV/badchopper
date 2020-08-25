@@ -24,7 +24,8 @@ const App = () => {
             [classes.mainPageBg]: pathname === ROUTES.CLIENT_ROOT,
             [classes.departmentPageBg]: pathname.includes(ROUTES.DEPARTMENT_DETAIL),
             [classes.assistancePageBg]: pathname === ROUTES.ASSISTANCE_DETAIL,
-            [classes.feedbacksPageBg]: pathname === ROUTES.FEEDBACKS_DETAIL
+            [classes.feedbacksPageBg]: pathname === ROUTES.FEEDBACKS_DETAIL,
+            [classes.contactsPageBg]: pathname === ROUTES.CONTACT_DETAIL,
         }
     );
 
