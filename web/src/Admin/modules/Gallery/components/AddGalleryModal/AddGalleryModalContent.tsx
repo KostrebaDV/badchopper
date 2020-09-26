@@ -53,13 +53,13 @@ const AddGalleryModalContent = (
         />
     );
 
-    const rightButtons = (
-        <Button
-            actionHandler={() => forms.ADD_GALLERY_FORM.submitForm()}
-            label="Выбрать"
-            type="primary"
-        />
-    );
+    // const rightButtons = (
+    //     <Button
+    //         actionHandler={() => forms.ADD_GALLERY_FORM.submitForm()}
+    //         label="Выбрать"
+    //         type="primary"
+    //     />
+    // );
 
     const isPreviewMode = !isNullOrUndefined(initialValues);
 
@@ -133,7 +133,7 @@ const AddGalleryModalContent = (
             <ModalFooter>
                 <ButtonGroup
                     leftButtons={leftButtons}
-                    rightButtons={rightButtons}
+                    // rightButtons={rightButtons}
                 />
             </ModalFooter>
         </>
