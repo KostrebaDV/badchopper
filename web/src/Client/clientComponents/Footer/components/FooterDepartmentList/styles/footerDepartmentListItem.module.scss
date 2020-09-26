@@ -13,6 +13,10 @@
 	margin-bottom: 6px;
 }
 
+.footerDepartmentListItem__label {
+	margin-bottom: 24px;
+}
+
 .footerDepartmentListItem__label:hover {
 	color: $gold;
 	cursor: pointer;
@@ -20,7 +24,7 @@
 
 .footerDepartmentListItem__geoPosition {
 	display: flex;
-	margin-top: 5px;
+	margin-top: 16px;
 }
 
 .footerDepartmentListItem__geoPositionLabel {

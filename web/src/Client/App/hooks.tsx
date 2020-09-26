@@ -7,24 +7,16 @@ import {isNull, isUndefined} from '../../utils';
 import {initEffect} from './imageEffector/imageEffectLoader';
 import Cookies from 'js-cookie';
 
-export const useGetDepartmentData = (allowReloadData) => {
+export const useGetDepartmentData = () => {
     const {setDepartments} = useContext(AppContext);
-    const departmentLocalStorageData = localStorage.getItem('departmentData');
 
     useEffect(() => {
-        if (allowReloadData === 2 || departmentLocalStorageData === null) {
-            getAllDepartments()
-                .then(({data}) => {
-                    setDepartments(data)
-                    localStorage.setItem('departmentData', JSON.stringify(data));
-                });
-        }
-
-        if (allowReloadData === 1 && departmentLocalStorageData !== null) {
-            setDepartments(JSON.parse(departmentLocalStorageData));
-        }
+        getAllDepartments()
+            .then(({data}) => {
+                setDepartments(data)
+            });
         // eslint-disable-next-line
-    }, [allowReloadData]);
+    }, []);
 };
 
 export const useCanvas = () => {

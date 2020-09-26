@@ -2,10 +2,11 @@
 @import "../../../../../styles/mixins/_transition.module";
 
 .navigationMenuTopBar {
-	width: 54%;
+	width: 55.5%;
 	display: flex;
 	justify-content: space-between;
-	padding-bottom: 22px;
+	padding-bottom: 21px;
+	border-bottom: 1px solid #292929;
 }
 
 .navigationMenuTopBar__button {

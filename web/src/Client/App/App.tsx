@@ -4,6 +4,7 @@ import classes from './styles/index.module.scss';
 import {DetailPage} from '../clientComponents/DetailPage/DetailPage';
 import {Route, useLocation} from "react-router-dom";
 import {ROUTES} from './routes';
+import {isMobile} from "react-device-detect";
 import {useGetDepartmentData, useGetTranslations, useSetLanguage, useGetSyncHASH} from './hooks';
 import {AppContext, AppContextProvider} from './store';
 import ClassNames from 'classnames';
@@ -14,7 +15,7 @@ const App = () => {
 
     const allowReloadData = useGetSyncHASH();
 
-    useGetDepartmentData(allowReloadData);
+    useGetDepartmentData();
     useGetTranslations(allowReloadData);
     useSetLanguage(setLanguageCode);
 
@@ -22,9 +23,12 @@ const App = () => {
         classes.app,
         {
             [classes.mainPageBg]: pathname === ROUTES.CLIENT_ROOT,
-            [classes.departmentPageBg]: pathname.includes(ROUTES.DEPARTMENT_DETAIL),
-            [classes.assistancePageBg]: pathname === ROUTES.ASSISTANCE_DETAIL,
-            [classes.feedbacksPageBg]: pathname === ROUTES.FEEDBACKS_DETAIL,
+            [classes.departmentPageBg]: pathname.includes(ROUTES.DEPARTMENT_DETAIL) && !isMobile,
+            [classes.departmentPageBg__mobile]: pathname.includes(ROUTES.DEPARTMENT_DETAIL) && isMobile,
+            [classes.assistancePageBg]: pathname === ROUTES.ASSISTANCE_DETAIL && !isMobile,
+            [classes.assistancePageBg__mobile]: pathname === ROUTES.ASSISTANCE_DETAIL && isMobile,
+            [classes.feedbacksPageBg]: pathname === ROUTES.FEEDBACKS_DETAIL && !isMobile,
+            [classes.feedbacksPageBg__mobile]: pathname === ROUTES.FEEDBACKS_DETAIL && isMobile,
             [classes.contactsPageBg]: pathname === ROUTES.CONTACT_DETAIL,
         }
     );

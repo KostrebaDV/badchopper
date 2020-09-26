@@ -2,13 +2,21 @@
 	display: flex;
 }
 
+.logo img{
+	width: 81px;
+}
+
 .logo__column {
 	flex-direction: column;
+	width: auto;
+}
+
+.logo__column img{
+	width: auto;
 }
 
 .logo__text {
 	margin-left: 12px;
-	margin-top: 6px;
 	font-family: Nocturne;
 	font-style: normal;
 	font-weight: normal;
@@ -16,6 +24,10 @@
 	p {
 		margin: 0;
 	}
+}
+
+.logo__text p:nth-child(odd) {
+	margin-bottom: 6px;
 }
 
 @media (max-width: 575.98px) {

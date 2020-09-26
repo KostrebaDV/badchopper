@@ -1,10 +1,14 @@
 @import "../../../../../styles/colors/colors.module";
 @import "../../../../../styles/mixins/transition.module";
 
-.assistanceListItem {
+.assistanceListItem  {
 	cursor: pointer;
 	position: relative;
 	z-index: 1;
+}
+
+.assistanceListItem:last-child .assistanceListItem__leftSide {
+	border: none;
 }
 
 .assistanceListItem:hover {
@@ -37,9 +41,8 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-left: 43%;
-	border-bottom: 1px solid #d9d9dc;
+	border-bottom: 1px solid rgba(217, 217, 220, 0.3);
 }
-
 
 .assistanceListItem__nameWrapper {
 	display: flex;
@@ -121,7 +124,7 @@
 
 	.assistanceListItem__leftSide {
 		margin-left: 0;
-		padding-left: 24px;
+		padding-left: 0;
 	}
 
 	.assistanceListItem__rightSide {

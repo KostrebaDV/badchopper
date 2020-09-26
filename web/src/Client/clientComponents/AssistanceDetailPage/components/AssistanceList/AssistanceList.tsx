@@ -26,19 +26,21 @@ const AssistanceList = (
     }
 
     return (
-        <div className={classes.assistanceList}>
-            {
-                assistance.map((item, index) => {
-                    return (
-                        <AssistanceListItem
-                            key={getUniqueKey()}
-                            item={item}
-                            index={index + 1}
-                            onItemClick={id => onItemClick(id)}
-                        />
-                    );
-                })
-            }
+        <>
+            <div className={classes.assistanceList}>
+                {
+                    assistance.map((item, index) => {
+                        return (
+                            <AssistanceListItem
+                                key={getUniqueKey()}
+                                item={item}
+                                index={index + 1}
+                                onItemClick={id => onItemClick(id)}
+                            />
+                        );
+                    })
+                }
+            </div>
             {
                 isMobile && (
                     <AssistanceListItemMobilePreview
@@ -48,7 +50,7 @@ const AssistanceList = (
                     />
                 )
             }
-        </div>
+        </>
     );
 };
 

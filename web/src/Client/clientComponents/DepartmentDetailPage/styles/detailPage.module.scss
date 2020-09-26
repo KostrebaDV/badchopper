@@ -1,18 +1,19 @@
 @import "../../../styles/colors/colors.module";
 
 .detailPage__header {
-	width: 90%;
+	width: auto;
 	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 96px;
 }
 
 .detailPage__headerRight {
-	width: 520px;
-	margin: -46px auto 0;
+	width: 65.5%;
 }
 
 .detailPage__phone {
-	margin-top: 16px;
-	text-decoration: underline;
+	margin-top: 8px;
 }
 
 .detailPageHeaderList__header {
@@ -35,6 +36,8 @@
 @media (max-width: 575.98px) {
 	.detailPage__header {
 		width: auto;
+		display: block;
+		padding: 0;
 	}
 
 	.detailPage__image {

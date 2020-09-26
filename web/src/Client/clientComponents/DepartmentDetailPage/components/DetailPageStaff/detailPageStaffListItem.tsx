@@ -3,6 +3,8 @@ import {Image} from '../../../../../Admin/baseComponents/Image/Image';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
+import {Link} from '../../../../../Admin/baseComponents/Link/Link';
+import instaIcon from "../../../../../static/images/insta_icon.png";
 
 const DetailPageStaffListItem = (
     {
@@ -22,21 +24,48 @@ const DetailPageStaffListItem = (
                 alt={`${item.name} ${item.surname}`}
                 className={classes.detailPageStaffListItem__image}
             />
-            <Typography
-                variant='20'
-                upperCase
-                bold='600'
-                displayBlock
-                className={classes.detailPageStaffListItem__name}
+            <Link
+                hasRoute={false}
+                target="_blank"
+                link={item.instagramUrl}
             >
-                {item.name} {item.surname}
-            </Typography>
+                <Typography
+                    variant='20'
+                    upperCase
+                    bold='600'
+                    displayBlock
+                    className={classes.detailPageStaffListItem__name}
+                >
+                    {item.name} {item.surname}
+                    {
+                        item.instagramUrl && (
+                            <img
+                                className={classes.detailPageStaffListItem__instaIcon}
+                                src={instaIcon}
+                                alt="instaIcon"
+                            />
+                        )
+                    }
+                </Typography>
+            </Link>
             <Typography
                 className={classes.detailPageStaffListItem__description}
                 displayBlock
             >
                 {item.description}
             </Typography>
+            {
+                item.yClientsUrl && (
+                    <Link
+                        hasRoute={false}
+                        target="_blank"
+                        link={item.yClientsUrl}
+                        className={classes.detailPageStaffListItem__signInButton}
+                    >
+                        записаться
+                    </Link>
+                )
+            }
         </div>
     );
 };

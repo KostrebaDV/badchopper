@@ -3,7 +3,7 @@
 
 .detailPageStaffListItem {
 	display: block;
-	width: 360px;
+	width: 322px;
 	height: 440px;
 	margin: 0 auto 110px;
 }
@@ -16,15 +16,30 @@
 	margin-bottom: 16px;
 }
 
-.detailPageStaffListItem:hover {
-	.detailPageStaffListItem__name {
-		color: $gold;
-	}
+.detailPageStaffListItem__name {
+	color: $gold;
+}
+
+.detailPageStaffListItem__instaIcon {
+	margin-left: 8px;
 }
 
 .detailPageStaffListItem__description {
 	opacity: .6;
-	margin-top: 10px;
+	margin-bottom: 28px;
+}
+
+.detailPageStaffListItem__signInButton {
+	text-align: center;
+	display: block;
+	text-transform: uppercase;
+	font-size: 14px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid $gold;
+}
+
+.detailPageStaffListItem__signInButton:hover {
+	color: $gold;
 }
 
 @media (max-width: 575.98px) {

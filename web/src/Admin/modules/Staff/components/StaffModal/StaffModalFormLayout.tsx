@@ -62,9 +62,7 @@ const StaffModalFormLayout = (
                                     component={Textbox}
                                     name="patronymic"
                                     label="Отчество"
-                                    required
                                     validate={{
-                                        required: true,
                                         length: {
                                             max: 20
                                         }

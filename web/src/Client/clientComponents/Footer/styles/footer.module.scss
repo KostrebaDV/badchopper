@@ -5,13 +5,13 @@
 	display: flex;
 	justify-content: space-between;
 	padding: 25px 0 55px;
-	border-top: 1px solid $light;
+	border-top: 1px solid rgba(217, 217, 220, 0.3);
 }
 
 .footer__bottom {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-end;
 	margin-bottom: 60px;
 }
 

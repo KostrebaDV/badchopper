@@ -2,8 +2,11 @@
 @import "../../../../../styles/mixins/transition.module";
 
 .footerContactUs {
-	width: 50%;
+	width: 55%;
 	cursor: pointer;
+	font-family: Nocturne;
+	font-style: normal;
+	font-weight: normal;
 
 	@include transition(color, .3s)
 }
