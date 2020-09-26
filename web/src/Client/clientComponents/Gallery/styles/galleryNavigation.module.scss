@@ -1,9 +1,15 @@
+@import "../../../styles/colors/colors.module";
+
 .galleryNavigation {
 	display: flex;
 }
 
 .galleryNavigation__count {
 	width: 60px;
+}
+
+.galleryNavigation__currentCount {
+	color: $gold;
 }
 
 .galleryNavigation__navButtons {

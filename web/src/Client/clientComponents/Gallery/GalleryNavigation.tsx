@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import leftArrow from "../../../static/images/left_arrow.svg";
-import leftArrowHover from "../../../static/images/left_arrow_hover.svg";
-import rightArrow from "../../../static/images/right_arrow.svg";
-import rightArrowHover from "../../../static/images/right_arrow_hover.svg";
+import leftArrow from "../../../static/images/arrow_feedback_left.svg";
+import rightArrow from "../../../static/images/arrow_feedback_right.svg";
 import {Typography} from '../../../Admin/baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
@@ -20,8 +18,6 @@ const GalleryNavigation = (
         currentIndex: currentIndexFromProps
     }
 ) => {
-    const [leftNavButton, setLeftNavButton] = useState(leftArrow);
-    const [rightNavButton, setRightNavButton] = useState(rightArrow);
     const currentIndex = currentIndexFromProps.toString().length === 1 ? `0${currentIndexFromProps}` : currentIndexFromProps;
     const totalItems = totalItemsFromProps.toString().length === 1 ? `0${totalItemsFromProps}` : totalItemsFromProps;
 
@@ -40,7 +36,7 @@ const GalleryNavigation = (
             {
                 allowIndex && (
                     <Typography className={classes.galleryNavigation__count}>
-                        {currentIndex} - {totalItems}
+                        <span className={classes.galleryNavigation__currentCount}>{currentIndex}</span> - {totalItems}
                     </Typography>
                 )
             }
@@ -51,18 +47,14 @@ const GalleryNavigation = (
                     >
                         <div
                             onClick={handlePrev}
-                            onMouseEnter={() => setLeftNavButton(leftArrowHover)}
-                            onMouseLeave={() => setLeftNavButton(leftArrow)}
                         >
-                            <img src={leftNavButton} alt="leftArrow"/>
+                            <img src={leftArrow} alt="leftArrow"/>
                         </div>
                         <div
-                            onMouseEnter={() => setRightNavButton(rightArrowHover)}
-                            onMouseLeave={() => setRightNavButton(rightArrow)}
                             onClick={handleNext}
                             className={classes.galleryNavigation__navButtonRight}
                         >
-                            <img src={rightNavButton} alt="rightArrow"/>
+                            <img src={rightArrow} alt="rightArrow"/>
                         </div>
                     </div>
                 )
