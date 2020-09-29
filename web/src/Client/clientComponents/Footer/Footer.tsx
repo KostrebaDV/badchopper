@@ -5,6 +5,9 @@ import {FooterDepartmentList} from './components/FooterDepartmentList/FooterDepa
 import {FooterContactUs} from './components/FooterContactUs/FooterContactUs';
 import {FooterContactUsForm} from './components/FooterContactUsForm/FooterContactUsForm';
 import {NavigationMenuContentWrapper} from '../NavigationMenuContentWrapper/NavigationMenuContentWrapper';
+import {BasePageLayout} from '../BasePageLayout/BasePageLayout';
+import {BasePageLayoutLeft} from '../BasePageLayout/BasePageLayoutLeft';
+import {BasePageLayoutRight} from '../BasePageLayout/BasePageLayoutRight';
 
 const Footer = () => {
     const date = new Date();
@@ -20,18 +23,24 @@ const Footer = () => {
     };
     return (
         <>
-            <div className={classes.footer__top}>
-                <Logo footerLogo/>
-                <FooterDepartmentList/>
-            </div>
-            <div className={classes.footer__bottom}>
-                <div className={classes.footer__copyright}>
+            <BasePageLayout className={classes.footer__top}>
+                <BasePageLayoutLeft>
+                    <Logo footerLogo/>
+                </BasePageLayoutLeft>
+                <BasePageLayoutRight>
+                    <FooterDepartmentList/>
+                </BasePageLayoutRight>
+            </BasePageLayout>
+            <BasePageLayout className={classes.footer__bottom}>
+                <BasePageLayoutLeft className={classes.footer__copyright}>
                     {date.getFullYear()}. Bad Chopper
-                </div>
-                <FooterContactUs
-                    handleContactUsFormOpen={handleContactUsFormOpen}
-                />
-            </div>
+                </BasePageLayoutLeft>
+                <BasePageLayoutRight>
+                    <FooterContactUs
+                        handleContactUsFormOpen={handleContactUsFormOpen}
+                    />
+                </BasePageLayoutRight>
+            </BasePageLayout>
             <NavigationMenuContentWrapper
                 isOpen={isOpen}
                 render={() => {

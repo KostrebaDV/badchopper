@@ -1,7 +1,11 @@
 @import "../../../../../styles/colors/colors.module";
 
 .footerDepartmentListItem {
-	margin-right: 120px;
+	margin-left: 121px;
+}
+
+.footerDepartmentListItem:first-child {
+	margin-left: 0;
 }
 
 .footerDepartmentListItem_contactPage {

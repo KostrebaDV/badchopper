@@ -32,13 +32,11 @@ const AssistanceListItem = (
                         {item.name[languageCode]}
                     </Typography>
                 </div>
-                <div className={classes.assistanceListItem__rightSide}>
-                    <Typography
-                        className={classes.assistanceListItem__price}
-                    >
-                        {item.price}
-                    </Typography>
-                </div>
+                <Typography
+                    className={classes.assistanceListItem__price}
+                >
+                    {item.price}
+                </Typography>
             </div>
             <Typography
                 displayBlock

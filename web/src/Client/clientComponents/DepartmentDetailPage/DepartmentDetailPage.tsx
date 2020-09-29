@@ -9,6 +9,9 @@ import {Typography} from '../../../Admin/baseComponents/Typography/Typography';
 import {AppContext} from '../../App/store';
 import {codes} from '../../../static/translations/codes';
 import {translate} from '../../../utils';
+import {BasePageLayout} from '../BasePageLayout/BasePageLayout';
+import {BasePageLayoutLeft} from '../BasePageLayout/BasePageLayoutLeft';
+import {BasePageLayoutRight} from '../BasePageLayout/BasePageLayoutRight';
 
 const DepartmentDetailPage = () => {
     const {languageCode} = useContext(AppContext);
@@ -33,8 +36,8 @@ const DepartmentDetailPage = () => {
                 alt='departmentImage'
                 src={image.path}
             />
-            <div className={classes.detailPage__header}>
-                <div>
+            <BasePageLayout className={classes.detailPage__header}>
+                <BasePageLayoutLeft>
                     <Typography
                         variant='18'
                         displayBlock
@@ -48,21 +51,22 @@ const DepartmentDetailPage = () => {
                     >
                         <a href={"tel:" + phone}>{phone}</a>
                     </Typography>
-                </div>
-                <div className={classes.detailPage__headerRight}>
+                </BasePageLayoutLeft>
+                <BasePageLayoutRight className={classes.detailPage__headerRight}>
                     <Typography
                         variant='20'
                         displayBlock
                     >
                         {description[languageCode]}
                     </Typography>
-                    <Typography
-                        className={classes.detailPageHeaderList__header}
-                    >
-                        {translate(codes.team)}
-                    </Typography>
-                </div>
-            </div>
+
+                </BasePageLayoutRight>
+            </BasePageLayout>
+            <Typography
+                className={classes.detailPageHeaderList__header}
+            >
+                {translate(codes.team)}
+            </Typography>
             <DetailPageStaff staff={staff} />
         </>
     );

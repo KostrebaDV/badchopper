@@ -1,15 +1,13 @@
 @import "../../../styles/colors/colors.module";
 
 .detailPage__header {
-	width: auto;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-	padding: 0 96px;
+	margin-bottom: 50px;
+	padding: 0 95px;
+	align-items: flex-start;
 }
 
 .detailPage__headerRight {
-	width: 65.5%;
+	margin-left: -12px;
 }
 
 .detailPage__phone {
@@ -23,14 +21,14 @@
 	font-style: normal;
 	font-weight: normal;
 	display: block;
-	margin-top: 50px;
-	margin-bottom: 30px;
+	margin-left: 95px;
+	margin-bottom: 50px;
 }
 
 .detailPage__image {
 	display: block;
 	box-sizing: border-box;
-	margin-bottom: 60px;
+	margin-bottom: 34px;
 }
 
 @media (max-width: 575.98px) {
@@ -41,7 +39,8 @@
 	}
 
 	.detailPage__image {
-		margin-bottom: 40px;
+		width: 130% !important;
+		margin: 0 -24px 22px;
 	}
 
 	.detailPage__headerRight {
@@ -51,8 +50,9 @@
 
 	.detailPageHeaderList__header {
 		font-size: 55px;
-		margin-top: 40px;
-		margin-bottom: 30px;
+		margin-top: 60px;
+		margin-bottom: 40px;
+		margin-left: 0;
 	}
 }
 

@@ -14,16 +14,26 @@ import {translate} from '../../../utils';
 import {codes} from '../../../static/translations/codes';
 import {yClientsUrl} from '../../../const';
 import {Link} from '../../../Admin/baseComponents/Link/Link';
+import {BasePageLayout} from '../BasePageLayout/BasePageLayout';
+import {BasePageLayoutLeft} from '../BasePageLayout/BasePageLayoutLeft';
+import {BasePageLayoutRight} from '../BasePageLayout/BasePageLayoutRight';
 
 const NavigationMenu = () => {
     const {isOpen} = useContext(NavigationMenuContext);
 
     return (
-        <div className={classes.navigationMenu}>
-            <Logo/>
+        <BasePageLayout
+            className={classes.navigationMenu}
+        >
+            <BasePageLayoutLeft>
+                <Logo/>
+            </BasePageLayoutLeft>
+
             {
                 isBrowser && (
-                    <NavigationMenuTopBar/>
+                    <BasePageLayoutRight>
+                        <NavigationMenuTopBar/>
+                    </BasePageLayoutRight>
                 )
             }
             {
@@ -64,7 +74,7 @@ const NavigationMenu = () => {
                     />
                 )
             }
-        </div>
+        </BasePageLayout>
     );
 };
 

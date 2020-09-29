@@ -1,14 +1,11 @@
 .navigationMenu {
 	padding-top: 22px;
 	padding-bottom: 40px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 }
 
 @media (max-width: 575.98px) {
 	.navigationMenu {
-		padding: 16px 0 40px;
+		padding: 16px 0 45px;
 		align-items: start;
 	}
 }

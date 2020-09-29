@@ -1,5 +1,4 @@
 .galleryDetailPage {
-	margin-top: 32px;
 	margin-bottom: 120px;
 }
 
@@ -11,6 +10,10 @@
 @media (max-width: 575.98px) {
 	.galleryDetailPage__galleryNavigation {
 		margin: 0;
+	}
+
+	.galleryDetailPage {
+		margin-bottom: 80px;
 	}
 }
 

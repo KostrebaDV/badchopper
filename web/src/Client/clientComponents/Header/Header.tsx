@@ -7,6 +7,9 @@ import ClassNames from 'classnames';
 import {translate} from '../../../utils';
 import {codes} from '../../../static/translations/codes';
 import {yClientsUrl} from '../../../const';
+import {BasePageLayout} from '../BasePageLayout/BasePageLayout';
+import {BasePageLayoutRight} from '../BasePageLayout/BasePageLayoutRight';
+import {BasePageLayoutLeft} from '../BasePageLayout/BasePageLayoutLeft';
 
 const Header = (
     {
@@ -31,41 +34,45 @@ const Header = (
     );
 
     return (
-        <div className={componentClassName}>
-            <Typography
-                displayBlock
-                lineHeight="1"
-                className={headerLabelClassName}
-            >
-                {label}
-            </Typography>
-            <div>
-                {
-                    content && (
-                        <Typography
-                            displayBlock
-                            variant="20"
-                            className={classes.header__description}
-                        >
-                            {content}
-                        </Typography>
-                    )
-                }
+        <BasePageLayout className={componentClassName}>
+            <BasePageLayoutLeft>
+                <Typography
+                    displayBlock
+                    lineHeight="1"
+                    className={headerLabelClassName}
+                >
+                    {label}
+                </Typography>
+            </BasePageLayoutLeft>
+           <BasePageLayoutRight>
+               <div>
+                   {
+                       content && (
+                           <Typography
+                               displayBlock
+                               variant="20"
+                               className={classes.header__description}
+                           >
+                               {content}
+                           </Typography>
+                       )
+                   }
 
-                {
-                    showButton && (
-                        <Button
-                            className={classes.header__button}
-                            labelUppercase
-                            label={translate(codes.bookNow)}
-                            onClick={() => {
-                                window.open(yClientsUrl, '_blank');
-                            }}
-                        />
-                    )
-                }
-            </div>
-        </div>
+                   {
+                       showButton && (
+                           <Button
+                               className={classes.header__button}
+                               labelUppercase
+                               label={translate(codes.bookNow)}
+                               onClick={() => {
+                                   window.open(yClientsUrl, '_blank');
+                               }}
+                           />
+                       )
+                   }
+               </div>
+           </BasePageLayoutRight>
+        </BasePageLayout>
     );
 };
 
