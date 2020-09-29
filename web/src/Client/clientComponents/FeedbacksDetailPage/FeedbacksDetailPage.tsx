@@ -10,6 +10,9 @@ import feedbackQuotes from "../../../static/images/feedback_quotes.svg";
 import {isMobile} from "react-device-detect";
 import {translate} from '../../../utils';
 import {codes} from '../../../static/translations/codes';
+import {BasePageLayout} from '../BasePageLayout/BasePageLayout';
+import {BasePageLayoutLeft} from '../BasePageLayout/BasePageLayoutLeft';
+import {BasePageLayoutRight} from '../BasePageLayout/BasePageLayoutRight';
 
 const feedbackTemplate = ({item, index}, galleryName) => {
     return `
@@ -49,10 +52,21 @@ const FeedbacksDetailPage = () => {
     const feedbacks = useGetFeedbacks();
 
     return (
-        <>
-            <div className={classes.feedbacksDetailPage}>
+        <BasePageLayout className={classes.feedbacksDetailPage}>
+            {
+                isMobile && (
+                    <Header
+                        firstLetterUppercase
+                        label={translate(codes.feedbacks)}
+                    />
+                )
+            }
+            <BasePageLayoutLeft className={classes.feedbacksDetailPage__feedbackQuotes}>
+                <img src={feedbackQuotes} alt="feedbackQuotes"/>
+            </BasePageLayoutLeft>
+            <BasePageLayoutRight className={classes.feedbacksDetailPage__feedbacks}>
                 {
-                    isMobile && (
+                    !isMobile && (
                         <Header
                             firstLetterUppercase
                             label={translate(codes.feedbacks)}
@@ -60,37 +74,23 @@ const FeedbacksDetailPage = () => {
                         />
                     )
                 }
-                <div className={classes.feedbacksDetailPage__feedbackQuotes}>
-                    <img src={feedbackQuotes} alt="feedbackQuotes"/>
-                </div>
-                <div className={classes.feedbacksDetailPage__feedbacks}>
-                    {
-                        !isMobile && (
-                            <Header
-                                firstLetterUppercase
-                                label={translate(codes.feedbacks)}
-                                className={classes.feedbacksDetailPage__headLabel}
-                            />
-                        )
-                    }
-                    <Gallery
-                        navigationClassname={classes.feedbacksDetailPage__navigationClassname}
-                        galleryContainerClassName={classes.feedbacksGallery}
-                        galleryDuplicateContainerClassName={classes.duplicateFeedbacksGallery}
-                        items={feedbacks}
-                        galleryOptions={{
-                            galleryItemTemplate: feedbackTemplate,
-                            galleryName: FEEDBACKS_GALLERY,
-                            activeElement: 1,
-                            autoPlaytime: 50000,
-                            infiniteScroll: true,
-                            allowDuplicateContainer: true
-                        }}
-                        allowNavigation
-                    />
-                </div>
-            </div>
-        </>
+                <Gallery
+                    navigationClassname={classes.feedbacksDetailPage__navigationClassname}
+                    galleryContainerClassName={classes.feedbacksGallery}
+                    galleryDuplicateContainerClassName={classes.duplicateFeedbacksGallery}
+                    items={feedbacks}
+                    galleryOptions={{
+                        galleryItemTemplate: feedbackTemplate,
+                        galleryName: FEEDBACKS_GALLERY,
+                        activeElement: 1,
+                        autoPlaytime: 50000,
+                        infiniteScroll: true,
+                        allowDuplicateContainer: true
+                    }}
+                    allowNavigation
+                />
+            </BasePageLayoutRight>
+        </BasePageLayout>
     );
 };
 
