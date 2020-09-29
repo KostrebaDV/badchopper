@@ -2,7 +2,8 @@
 
 .navigationMenuMobile {
 	display: flex;
-	margin-top: 20px;
+	margin-top: 11px;
+	position: relative;
 }
 
 .navigationMenuMobile__signInButton {
@@ -19,6 +20,6 @@
 	display: block;
 	position: absolute;
 	border-bottom: 1px solid $gold;;
-	bottom: -15px;
+	bottom: -18px;
 	width: 100%;
 }

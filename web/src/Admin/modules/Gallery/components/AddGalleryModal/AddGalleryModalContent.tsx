@@ -11,7 +11,7 @@ import FormLayout, {
 import {MediaSelector, Textbox} from '../../../../baseComponents/Form/Adapters';
 import Form, {Field} from '../../../../baseComponents/Form';
 import {FORMS} from '../../const';
-import {FormContext} from '../../../../../store/FormContext';
+//import {FormContext} from '../../../../../store/FormContext';
 import {getUniqueId, isNullOrUndefined} from '../../../../../utils';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
 
@@ -21,7 +21,7 @@ const AddGalleryModalContent = (
         modalData
     }
 ) => {
-    const {forms} = useContext(FormContext);
+    //const {forms} = useContext(FormContext);
     const {setGallery} = useContext(GalleryContext);
     const {showNotification} = useContext(AdminAppContext);
     const {initialValues} = modalData;

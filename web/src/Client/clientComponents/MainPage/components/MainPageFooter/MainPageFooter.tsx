@@ -36,7 +36,7 @@ const MainPageFooter = () => {
                     src={scissorsSvgUrl} alt="scissors"
                 />
             </div>
-            <MainPageFooterSocialLinks/>
+            <MainPageFooterSocialLinks />
         </div>
     );
 };

@@ -20,7 +20,6 @@ const MainPageFooterSocialLinks = (
             <Typography
                 upperCase
                 variant="14"
-                className={classes.mainPageFooter__instagramLink}
             >
                 <Link hasRoute={false} link="https://www.instagram.com/bad_chopper/">
                     Instagramm

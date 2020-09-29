@@ -3,8 +3,9 @@
 
 .navigationMenuButtonIcon__stripWrapper {
 	position: absolute;
-	right: 24px;
+	right: 0;
 	z-index: 1000;
+	top: 2px;
 }
 
 .navigationMenuButtonIcon__topStrip {
@@ -41,7 +42,7 @@
 	top: 7px;
 	right: 0;
 
-	@include transition(right .2s)
+	//@include transition(right .2s)
 }
 
 .navigationMenuButtonIcon__MiddleStrip_open {
