@@ -3,10 +3,11 @@ import classes from './styles/index.module.scss';
 import {MainPageFooterSocialLinks} from '../../../MainPage/components/MainPageFooter/MainPageFooterSocialLinks';
 import {translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
+import {BasePageLayoutLeft} from '../../../BasePageLayout/BasePageLayoutLeft';
 
 const ContactDetailPageLeftSide = () => {
     return (
-        <div className={classes.contactDetailPageLeftSide}>
+        <BasePageLayoutLeft className={classes.contactDetailPageLeftSide}>
             <div className={classes.contactDetailPageLeftSide__headLabel}>
                 {translate(codes.contacts)}
             </div>
@@ -14,7 +15,7 @@ const ContactDetailPageLeftSide = () => {
                 {translate(codes.forAnyQuestions)}
             </div>
             <MainPageFooterSocialLinks noMargin/>
-        </div>
+        </BasePageLayoutLeft>
     );
 };
 

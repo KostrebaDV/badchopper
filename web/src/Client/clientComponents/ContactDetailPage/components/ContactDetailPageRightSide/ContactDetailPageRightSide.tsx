@@ -7,6 +7,7 @@ import classes from './styles/index.module.scss';
 import {FooterDepartmentList} from '../../../Footer/components/FooterDepartmentList/FooterDepartmentList';
 import {translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
+import {BasePageLayoutRight} from '../../../BasePageLayout/BasePageLayoutRight';
 
 const ContactDetailPageRightSide = () => {
     const {forms} = useContext(FormContext);
@@ -17,7 +18,7 @@ const ContactDetailPageRightSide = () => {
     };
 
     return (
-        <div className={classes.contactDetailPageRightSide}>
+        <BasePageLayoutRight className={classes.contactDetailPageRightSide}>
             <div className={classes.contactDetailPageRightSide__form}>
                 <ContactForm handleAddFeedback={handleAddFeedback}/>
                 <Button
@@ -29,9 +30,8 @@ const ContactDetailPageRightSide = () => {
             </div>
             <FooterDepartmentList
                 isContactPage
-                className={classes.navigationMenuContentLeft__footerDepartmentList}
             />
-        </div>
+        </BasePageLayoutRight>
     );
 };
 

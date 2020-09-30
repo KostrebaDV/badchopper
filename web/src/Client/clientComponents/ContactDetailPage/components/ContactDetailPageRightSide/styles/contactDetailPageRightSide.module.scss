@@ -1,30 +1,16 @@
-.contactDetailPageRightSide {
-	flex: 1 1 50%;
-}
-
 .contactDetailPageRightSide__form {
 	width: 520px;
 	margin-bottom: 100px;
 }
 
-.navigationMenuContentLeft__footerDepartmentList {
-	position: fixed;
-	bottom: 60px;
-}
-
 @media (max-width: 575.98px) {
 	.contactDetailPageRightSide {
-		flex: none;
+		width: 100%;
 	}
 
 	.contactDetailPageRightSide__form {
 		width: 100%;
 		margin-bottom: 60px;
-	}
-
-	.navigationMenuContentLeft__footerDepartmentList {
-		position: initial;
-		bottom: 0;
 	}
 
 	.navigationMenuContentLeft__formButton {

@@ -1,7 +1,7 @@
 @import "../../../../../styles/colors/colors.module";
 
 .contactDetailPageLeftSide {
-	flex: 1 1 20%;
+	margin-left: 95px;
 }
 
 .contactDetailPageLeftSide__headLabel {
@@ -10,7 +10,7 @@
 	font-family: Nocturne;
 	font-style: normal;
 	font-weight: normal;
-	margin-bottom: 70px;
+	margin-bottom: 32px;
 }
 
 .contactDetailPageLeftSide__headLabel::first-letter {
@@ -18,18 +18,19 @@
 }
 
 .contactDetailPageLeftSide__text {
-	margin-bottom: 40px;
+	margin-bottom: 36px;
 	letter-spacing: 0.04em;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 18px;
-	width: 250px;
+	line-height: 24px;
+	font-size: 20px;
+	width: 290px;
 }
 
 @media (max-width: 575.98px) {
 	.contactDetailPageLeftSide {
-		flex: none;
 		margin-bottom: 24px;
+		margin-left: 0;
 	}
 
 	.contactDetailPageLeftSide__headLabel {

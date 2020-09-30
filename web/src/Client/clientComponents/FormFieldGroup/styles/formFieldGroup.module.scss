@@ -1,3 +1,7 @@
 .formFieldGroup > div {
-	margin-bottom: 30px;
+	margin-bottom: 32px;
+}
+
+.formFieldGroup:last-child > div {
+	margin-bottom: 40px;
 }

@@ -1,15 +1,22 @@
 .contactDetailPage {
 	margin-top: 80px;
-	display: flex;
-	justify-content: space-between;
-	padding-left: 110px;
+	align-items: flex-start;
+}
+
+.contactDetailPage_planeImg {
+	position: absolute;
+	bottom: 0;
 }
 
 @media (max-width: 575.98px) {
 	.contactDetailPage {
-		margin-top: 40px;
-		display: block;
-		padding-left: 0;
+		margin-top: 0;
+		flex-direction: column;
+	}
+
+	.contactDetailPage_planeImg {
+		margin: 0 -24px;
+		position: initial;
 	}
 }
 

@@ -35,12 +35,10 @@ const NavigationMenuTopBar = () => {
                     {translate(codes.bookNow)}
                 </Link>
             </Typography>
-            <div
+            <Link
+                activeLinkClass={classes.navigationMenuTopBar__button_active}
                 className={classes.navigationMenuTopBar__button}
-                onClick={() => {
-                    // @ts-ignore
-                    window.location = ROUTES.CONTACT_DETAIL
-                }}
+                link={ROUTES.CONTACT_DETAIL}
             >
                 <Typography
                     bold="700"
@@ -48,7 +46,7 @@ const NavigationMenuTopBar = () => {
                 >
                     {translate(codes.leaveFeedback)}
                 </Typography>
-            </div>
+            </Link>
         </div>
     );
 };

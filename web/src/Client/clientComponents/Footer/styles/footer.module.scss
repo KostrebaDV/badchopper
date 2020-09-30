@@ -3,8 +3,18 @@
 
 .footer__top {
 	padding: 68px 0;
-	border-top: 1px solid rgba(217, 217, 220, 0.3);
 	align-items: flex-start;
+	position: relative;
+}
+
+.footer__top:before {
+	position: absolute;
+	content: '';
+	height: 1px;
+	width: 1000%;
+	left: -200px;
+	top: 0;
+	background-color: rgba(217, 217, 220, 0.3);
 }
 
 .footer__bottom {
