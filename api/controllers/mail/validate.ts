@@ -1,4 +1,4 @@
-import {isEmptyString, isNullOrUndefined} from '../../../web/src/utils';
+import {isEmptyString, isNullOrUndefined} from '../../utils/common';
 
 export default (req, res, next) => {
     const { body } = req;

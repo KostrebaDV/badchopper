@@ -38,12 +38,12 @@ export default (app: Application) => {
             .then(() => {
                 return res
                     .status(200)
-                    .send("feedback send");
+                    .send("feedback mail send");
         })
             .catch(() => {
                 return res
                     .status(500)
-                    .send("feedback not send");
+                    .send("feedback mail not send");
             });
     });
 
@@ -60,12 +60,12 @@ export default (app: Application) => {
             .then(() => {
                 return res
                     .status(200)
-                    .send("feedback send");
+                    .send("mail send");
             })
             .catch(() => {
                 return res
                     .status(500)
-                    .send("feedback not send");
+                    .send("mail not send");
             });
     });
 

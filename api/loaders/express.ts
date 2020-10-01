@@ -36,7 +36,7 @@ export const expressClient = (expressApp, client) => {
     commentsController(expressApp, client);
     galleryController(expressApp, client);
     translationsController(expressApp, client);
-    mailController(expressApp, client);
+    mailController(expressApp);
 
     expressApp.get('*', function (req, res) {
         res.sendFile(path.join(__dirname, '../../../web/build/index.html'))
