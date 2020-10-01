@@ -1,4 +1,5 @@
 export const EMPLOYEE_FORM = 'EMPLOYEE_FORM';
+export const EMPLOYEE_FORM_URL = '/mail/membership';
 
 export const positionDropdownItems = {
     ua: [

@@ -33,18 +33,18 @@ const FooterMobile = () => {
                 <div className={classes.footerMobile__copyright}>
                     {date.getFullYear()}. Bad Chopper
                 </div>
+                <NavigationMenuContentWrapperMobile
+                    isOpen={isOpen}
+                    zIndex
+                    render={() => {
+                        return (
+                            <FooterContactUsForm
+                                onClose={handleContactUsFormClose}
+                            />
+                        );
+                    }}
+                />
             </div>
-            <NavigationMenuContentWrapperMobile
-                isOpen={isOpen}
-                zIndex
-                render={() => {
-                    return (
-                        <FooterContactUsForm
-                            onClose={handleContactUsFormClose}
-                        />
-                    );
-                }}
-            />
         </>
     );
 };

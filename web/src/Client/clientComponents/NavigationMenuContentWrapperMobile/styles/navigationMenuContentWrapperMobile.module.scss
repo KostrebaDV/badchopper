@@ -2,14 +2,19 @@
 @import "../../../styles/mixins/_transition.module";
 
 .navigationMenuContentWrapperMobile {
-	width: 100vw;
 	height: 100vh;
+	width: 100%;
 	position: fixed;
 	top: 0;
 	display: flex;
-	background-color: $dark;
 	z-index: 2;
 	overflow-x: scroll;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-color: $metro_bg_color;
+	background-image: url('../../../../static/images/employeeFormBg.png');
+
 }
 
 .navigationMenuContentWrapperMobile_zIndex {

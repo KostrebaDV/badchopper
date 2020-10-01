@@ -11,6 +11,7 @@ import navigationListController from '../controllers/navigation/navigationList';
 import staffController from '../controllers/staff/staff';
 import commentsController from '../controllers/comments/comments';
 import galleryController from '../controllers/gallery/gallery';
+import mailController from '../controllers/mail/mail';
 import usersController from '../controllers/users/users';
 import translationsController from '../controllers/translations/translations';
 import clientSyncHash from '../controllers/clientSyncHash/clientSyncHash';
@@ -35,6 +36,7 @@ export const expressClient = (expressApp, client) => {
     commentsController(expressApp, client);
     galleryController(expressApp, client);
     translationsController(expressApp, client);
+    mailController(expressApp, client);
 
     expressApp.get('*', function (req, res) {
         res.sendFile(path.join(__dirname, '../../../web/build/index.html'))

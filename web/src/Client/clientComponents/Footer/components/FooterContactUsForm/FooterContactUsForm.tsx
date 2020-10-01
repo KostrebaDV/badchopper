@@ -12,6 +12,7 @@ import {FormContext} from '../../../../../store/FormContext';
 import {translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
 import {AppContext} from '../../../../App/store';
+import {addMemberShipApplication} from './api';
 
 const FooterContactUsForm = (
     {
@@ -22,7 +23,7 @@ const FooterContactUsForm = (
     const {forms} = useContext(FormContext);
 
     const handleSubmitForm = values => {
-        console.log(values);
+        addMemberShipApplication(values);
     };
 
     const dropdownItems = useMemo(() => {
