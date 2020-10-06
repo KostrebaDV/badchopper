@@ -1,6 +1,7 @@
 type SubmitFormType = {
     submitForm: () => {};
     resetFormValues: () => {};
+    values: {};
 };
 
 export type FormContextType = {
@@ -9,4 +10,5 @@ export type FormContextType = {
     },
     addFormToGlobalContext: ({}) => void;
     removeFormFromGlobalContext: (name: string) => void;
+    updateFormValues: (name: string, values: {}) => void;
 };

@@ -1,6 +1,11 @@
 .contactDetailPageRightSide__form {
 	width: 520px;
-	margin-bottom: 100px;
+	margin-bottom: 58px;
+}
+
+.contactDetailPageRightSide {
+	width: 100%;
+	z-index: 2;
 }
 
 @media (max-width: 575.98px) {

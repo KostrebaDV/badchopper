@@ -23,6 +23,13 @@ const FooterDepartmentListItem = (
         }
     );
 
+    const labelClassName = ClassNames(
+        {
+            [classes.footerDepartmentListItem__label]: !isContactPage,
+            [classes.footerDepartmentListItem__label_contactPage]: isContactPage
+        }
+    );
+
     return (
         <div className={componentClassName}>
             <div>
@@ -33,7 +40,7 @@ const FooterDepartmentListItem = (
                         letterSpacing="-0.01em"
                         displayBlock
                         variant="24"
-                        className={classes.footerDepartmentListItem__label}
+                        className={labelClassName}
                     >
                         {item.name}
                     </Typography>

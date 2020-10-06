@@ -3,7 +3,7 @@
 @import "../../../styles/mixins/_transition.module";
 
 .formFieldBox {
-	border-bottom: 1px solid $light;
+	border-bottom: 1px solid rgba(217, 217, 220, 0.2);
 	box-shadow: none;
 	position: relative;
 
@@ -40,7 +40,7 @@
 }
 
 .formFieldBox_fieldWrapper__hasFocus {
-	border-color: $gold;
+	border-color: $light;
 }
 
 .formFieldBox_dynamicHeight__filled {

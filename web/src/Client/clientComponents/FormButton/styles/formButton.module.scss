@@ -1,0 +1,34 @@
+@import "../../../styles/colors/colors.module";
+
+.formButton {
+	padding: 12px 32px;
+	border-bottom: 1px solid $gold;
+	border-radius: 2px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.formButton_disabled {
+	color: rgba(217, 217, 220, 0.2);
+	border-color: rgba(238, 208, 173, 0.4);
+}
+
+.formButton:hover {
+	color: $gold;
+}
+
+@media (max-width: 575.98px) {
+
+}
+
+@media (max-width: 767.98px) {
+
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
+}

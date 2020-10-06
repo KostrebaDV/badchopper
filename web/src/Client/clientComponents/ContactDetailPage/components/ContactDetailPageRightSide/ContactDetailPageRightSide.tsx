@@ -1,16 +1,25 @@
-import React, {useContext} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {ContactForm} from '../ContactForm/ContactForm';
-import {Button} from '../../../Button/Button';
 import {FormContext} from '../../../../../store/FormContext';
 import {addFeedback} from '../../api';
 import classes from './styles/index.module.scss';
 import {FooterDepartmentList} from '../../../Footer/components/FooterDepartmentList/FooterDepartmentList';
-import {translate} from '../../../../../utils';
+import {isUndefined, translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
 import {BasePageLayoutRight} from '../../../BasePageLayout/BasePageLayoutRight';
+import {FormButton} from '../../../FormButton/FormButton';
 
 const ContactDetailPageRightSide = () => {
     const {forms} = useContext(FormContext);
+
+
+    const isFormFilled = useMemo(() => {
+        if (isUndefined(forms.ADD_FEEDBACK_FORM) || isUndefined(forms.ADD_FEEDBACK_FORM.values)) return;
+
+        const {values} = forms.ADD_FEEDBACK_FORM;
+
+        return !!values['name'] && !!values['email'] && !!values['feedback'];
+    }, [forms.ADD_FEEDBACK_FORM]);
 
     const handleAddFeedback = values => {
         addFeedback(values)
@@ -21,7 +30,8 @@ const ContactDetailPageRightSide = () => {
         <BasePageLayoutRight className={classes.contactDetailPageRightSide}>
             <div className={classes.contactDetailPageRightSide__form}>
                 <ContactForm handleAddFeedback={handleAddFeedback}/>
-                <Button
+                <FormButton
+                    disable={!isFormFilled}
                     label={`${translate(codes.send)}`}
                     onClick={() => forms.ADD_FEEDBACK_FORM.submitForm()}
                     labelUppercase

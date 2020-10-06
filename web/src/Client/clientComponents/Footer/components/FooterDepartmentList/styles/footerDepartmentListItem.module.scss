@@ -12,6 +12,15 @@
 	margin-right: 110px;
 }
 
+.footerDepartmentListItem__label_contactPage {
+	margin-bottom: 8px;
+}
+
+.footerDepartmentListItem__label_contactPage:hover {
+	color: $gold;
+	cursor: pointer;
+}
+
 .footerDepartmentListItem__phone {
 	margin-top: 6px;
 	margin-bottom: 6px;
@@ -19,6 +28,7 @@
 
 .footerDepartmentListItem__label {
 	margin-bottom: 24px;
+	font-weight: 600;
 }
 
 .footerDepartmentListItem__label:hover {

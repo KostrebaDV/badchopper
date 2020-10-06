@@ -24,7 +24,7 @@ const Logo = (
             {
                 !footerLogo && (
                     <div className={classes.logo__text}>
-                        <p>Barbershop 24/7</p>
+                        <p>Barbershop</p>
                         <p>с 10:00 - 20:00</p>
                     </div>
                 )

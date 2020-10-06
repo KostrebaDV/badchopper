@@ -1,7 +1,7 @@
 import React from 'react';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
-import rightArrow from "../../../../../static/images/right_arrow.svg";
+import rightArrow from "../../../../../static/images/arrow_feedback_right.svg";
 
 const GalleryDetailPageImagesShowMore = (
     {

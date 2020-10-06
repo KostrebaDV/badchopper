@@ -25,9 +25,10 @@ const Form = memo<FormType>((
 	}
 ) => {
 	const {
-		addFormToGlobalContext,
-		removeFormFromGlobalContext
-	} = useContext(FormContext);
+        addFormToGlobalContext,
+        removeFormFromGlobalContext,
+        updateFormValues
+    } = useContext(FormContext);
 
 	const {
 		fields,
@@ -107,19 +108,21 @@ const Form = memo<FormType>((
 	}, [initialValues, reInitOnEdit]);
 
 	useEffect(() => {
-		valuesRef.current = formValues;
-		fieldsRef.current = fields;
-	}, [formValues, fields]);
+        valuesRef.current = formValues;
+        fieldsRef.current = fields;
+
+        updateFormValues(name, formValues);
+    }, [formValues, fields]);
 
 	//set submit function to global context on init
 	useEffect(() => {
-		addFormToGlobalContext({ [name]: { submitForm,  resetFormValues } });
+        addFormToGlobalContext({[name]: {submitForm, resetFormValues, formValues}});
 
-		return () => {
-			removeFormFromGlobalContext(name);
-		};
+        return () => {
+            removeFormFromGlobalContext(name);
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+    }, []);
 
 	//submit for button type=submit
 	const handleFormSubmit = e => {

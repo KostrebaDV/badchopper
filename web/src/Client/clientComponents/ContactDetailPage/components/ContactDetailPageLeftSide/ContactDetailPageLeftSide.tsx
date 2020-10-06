@@ -7,14 +7,16 @@ import {BasePageLayoutLeft} from '../../../BasePageLayout/BasePageLayoutLeft';
 
 const ContactDetailPageLeftSide = () => {
     return (
-        <BasePageLayoutLeft className={classes.contactDetailPageLeftSide}>
-            <div className={classes.contactDetailPageLeftSide__headLabel}>
-                {translate(codes.contacts)}
+        <BasePageLayoutLeft>
+            <div className={classes.contactDetailPageLeftSide}>
+                <div className={classes.contactDetailPageLeftSide__headLabel}>
+                    {translate(codes.contacts)}
+                </div>
+                <div className={classes.contactDetailPageLeftSide__text}>
+                    {translate(codes.forAnyQuestions)}
+                </div>
+                <MainPageFooterSocialLinks noMargin/>
             </div>
-            <div className={classes.contactDetailPageLeftSide__text}>
-                {translate(codes.forAnyQuestions)}
-            </div>
-            <MainPageFooterSocialLinks noMargin/>
         </BasePageLayoutLeft>
     );
 };

@@ -29,6 +29,7 @@ const App = () => {
             [classes.assistancePageBg__mobile]: pathname === ROUTES.ASSISTANCE_DETAIL && isMobile,
             [classes.feedbacksPageBg]: pathname === ROUTES.FEEDBACKS_DETAIL && !isMobile,
             [classes.feedbacksPageBg__mobile]: pathname === ROUTES.FEEDBACKS_DETAIL && isMobile,
+            [classes.galleyPageBg__mobile]: pathname === ROUTES.GALLERY_DETAIL && isMobile,
             [classes.contactsPageBg]: pathname === ROUTES.CONTACT_DETAIL,
         }
     );
