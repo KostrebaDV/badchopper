@@ -5,6 +5,8 @@ import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
 import {Link} from '../../../../../Admin/baseComponents/Link/Link';
 import instaIcon from "../../../../../static/images/insta_icon.png";
+import {translate} from '../../../../../utils';
+import {codes} from '../../../../../static/translations/codes';
 
 const DetailPageStaffListItem = (
     {
@@ -62,7 +64,7 @@ const DetailPageStaffListItem = (
                         link={item.yClientsUrl}
                         className={classes.detailPageStaffListItem__signInButton}
                     >
-                        записаться
+                        {translate(codes.bookNow)}
                     </Link>
                 )
             }

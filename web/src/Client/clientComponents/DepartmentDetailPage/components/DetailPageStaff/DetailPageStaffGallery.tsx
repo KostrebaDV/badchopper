@@ -3,6 +3,8 @@ import {Gallery} from '../../../Gallery/Gallery';
 import classes from './styles/index.module.scss';
 import {HOST} from '../../../../../const';
 import './styles/mobileStaffGallery.scss'
+import {translate} from '../../../../../utils';
+import {codes} from '../../../../../static/translations/codes';
 
 const galleryItemTemplate = ({item, index}, galleryName) => {
     return ` <div
@@ -21,7 +23,7 @@ const galleryItemTemplate = ({item, index}, galleryName) => {
                     ${item.description}
                 </div>
                  <div data-index="${index}" class="${galleryName}-item__reserve-button">
-                    <a href="${item.yClientsUrl}" target="_blank">!!записаться</a>
+                    <a href="${item.yClientsUrl}" target="_blank">${translate(codes.bookNow)}</a>
                 </div>
             </div>`;
 };

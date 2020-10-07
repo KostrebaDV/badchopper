@@ -9,10 +9,11 @@ import {Dropdown, Textbox} from '../../../FormAdapters';
 import {EMPLOYEE_FORM, positionDropdownItems} from './consts';
 import {Button} from '../../../Button/Button';
 import {FormContext} from '../../../../../store/FormContext';
-import {translate} from '../../../../../utils';
+import {isUndefined, translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
 import {AppContext} from '../../../../App/store';
 import {addMemberShipApplication} from './api';
+import {FormButton} from '../../../FormButton/FormButton';
 
 const FooterContactUsForm = (
     {
@@ -29,6 +30,14 @@ const FooterContactUsForm = (
     const dropdownItems = useMemo(() => {
         return positionDropdownItems[languageCode]
     }, [languageCode])
+
+    const isFormFilled = useMemo(() => {
+        if (isUndefined(forms.EMPLOYEE_FORM) || isUndefined(forms.EMPLOYEE_FORM.values)) return;
+
+        const {values} = forms.EMPLOYEE_FORM;
+
+        return !!values['position'] && !!values['name'] && !!values['phone'];
+    }, [forms.EMPLOYEE_FORM]);
 
     return (
         <div className={classes.footerContactUsForm}>
@@ -88,7 +97,8 @@ const FooterContactUsForm = (
                             />
                         </FormFieldGroup>
                     </Form>
-                    <Button
+                    <FormButton
+                        disable={!isFormFilled}
                         label={translate(codes.send)}
                         onClick={() => forms.EMPLOYEE_FORM.submitForm()}
                         labelUppercase

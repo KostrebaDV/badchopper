@@ -45,7 +45,10 @@ const NavigationMenuList = () => {
                 }
                 {
                     isMobile && (
-                        <div onClick={handleAddFeedbackClick}>
+                        <div
+                            className={classes.navigationMenuList__feedbackButtonWrapper}
+                            onClick={handleAddFeedbackClick}
+                        >
                             <Typography
                                 bold="700"
                                 variant="14"
