@@ -29,7 +29,8 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
         imageId,
         assistance,
         staff,
-        publicId
+        publicId,
+        departmentYClients
     } = updateDepartmentDTO;
 
     return new Promise((resolve, reject) => {
@@ -43,7 +44,7 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
                     $set: {
                         name,
                         description,
-                        address : {
+                        address: {
                             city: address.city,
                             street: address.street,
                             number: address.number,
@@ -53,7 +54,8 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
                         imageId,
                         assistance,
                         staff,
-                        publicId
+                        publicId,
+                        departmentYClients
                     }
                 }
             )

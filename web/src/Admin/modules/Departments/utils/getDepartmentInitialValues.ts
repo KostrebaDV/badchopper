@@ -10,6 +10,7 @@ export default (departmentData) => {
         image,
         staff,
         assistance,
+        departmentYClients
     } = departmentData;
 
     if (isNullOrUndefined(image)) {
@@ -25,6 +26,7 @@ export default (departmentData) => {
             descriptionRU: 'error',
             descriptionUA: 'error',
             descriptionEN: 'error',
+            departmentYClients: 'error',
             streetRU: 'error',
             streetUA: 'error',
             streetEN: 'error',
@@ -53,6 +55,7 @@ export default (departmentData) => {
         phone,
         imageId: image._id,
         staff,
-        assistance
+        assistance,
+        departmentYClients
     }
 }

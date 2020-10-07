@@ -10,6 +10,7 @@ type DepartmentDTOType = {
     },
     phone: string;
     location: string,
+    departmentYClients: string,
     imageId: string;
     staff?: [];
     assistance?: [];

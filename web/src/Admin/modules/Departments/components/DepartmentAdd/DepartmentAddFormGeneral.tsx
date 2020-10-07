@@ -112,6 +112,18 @@ const DepartmentAddFormGeneral: FC<DepartmentAddFormGeneralType> = (
                             }}
                         />
                     </FormLayoutItem>
+                    <FormLayoutItem>
+                        <Field
+                            component={Textbox}
+                            name="departmentYClients"
+                            label="yClients"
+                            required
+                            previewMode={!editMode}
+                            validate={{
+                                required: true
+                            }}
+                        />
+                    </FormLayoutItem>
                 </FormLayoutItemGroup>
             </FormLayout>
         </>
