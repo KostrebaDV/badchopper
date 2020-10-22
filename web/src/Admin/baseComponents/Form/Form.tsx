@@ -3,7 +3,8 @@ import React, { useEffect, useContext, useRef, memo, useCallback } from 'react';
 import { ContextForm } from './store/FormContext';
 import { FormContext} from '../../../store/FormContext';
 
-import { isNull, actionLoggerWarning, actionLogger } from '../../../utils';
+import {isNull, actionLoggerWarning, actionLogger} from '../../../utils';
+import {usePrevious} from '../../../hooks/usePrevious';
 
 type FormType = {
     name: string;
@@ -30,24 +31,26 @@ const Form = memo<FormType>((
         updateFormValues
     } = useContext(FormContext);
 
-	const {
-		fields,
-		initForm,
-		formValues,
-		validateForm,
-		setFormValues,
-		resetFormValues
-	} = useContext(ContextForm);
+    const {
+        fields,
+        initForm,
+        formValues,
+        validateForm,
+        setFormValues,
+        resetFormValues
+    } = useContext(ContextForm);
 
-	const valuesRef = useRef();
-	const fieldsRef = useRef();
+    const prevFormValues = usePrevious(formValues)
 
-	const handleErrors = useCallback((fields) => {
-		const errors = fields.map(field => {
-			return `\n${field.field}: ${field.errorMessages}`;
-		});
+    const valuesRef = useRef();
+    const fieldsRef = useRef();
 
-		actionLoggerWarning(`Field validation error: ${errors.join(';')};`);
+    const handleErrors = useCallback((fields) => {
+        const errors = fields.map(field => {
+            return `\n${field.field}: ${field.errorMessages}`;
+        });
+
+        actionLoggerWarning(`Field validation error: ${errors.join(';')};`);
 	}, []);
 
 	const handleSuccess = useCallback((values) => {
@@ -107,12 +110,14 @@ const Form = memo<FormType>((
         // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [initialValues, reInitOnEdit]);
 
-	useEffect(() => {
+    useEffect(() => {
+        if (JSON.stringify(prevFormValues) === JSON.stringify(formValues)) return;
+
         valuesRef.current = formValues;
         fieldsRef.current = fields;
 
         updateFormValues(name, formValues);
-    }, []);
+    }, [formValues]);
 
 	//set submit function to global context on init
 	useEffect(() => {
