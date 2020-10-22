@@ -112,7 +112,7 @@ const Form = memo<FormType>((
         fieldsRef.current = fields;
 
         updateFormValues(name, formValues);
-    }, [formValues, fields]);
+    }, []);
 
 	//set submit function to global context on init
 	useEffect(() => {

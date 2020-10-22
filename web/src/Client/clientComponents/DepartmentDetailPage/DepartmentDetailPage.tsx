@@ -12,6 +12,7 @@ import {translate} from '../../../utils';
 import {BasePageLayout} from '../BasePageLayout/BasePageLayout';
 import {BasePageLayoutLeft} from '../BasePageLayout/BasePageLayoutLeft';
 import {BasePageLayoutRight} from '../BasePageLayout/BasePageLayoutRight';
+import {FormButton} from '../FormButton/FormButton';
 
 const DepartmentDetailPage = () => {
     const {languageCode} = useContext(AppContext);
@@ -22,7 +23,8 @@ const DepartmentDetailPage = () => {
         image,
         description,
         phone,
-        staff
+        staff,
+        departmentYClients
     } = useGetDepartment();
 
     const imageHeight = isMobile ? 370 : 418;
@@ -59,7 +61,16 @@ const DepartmentDetailPage = () => {
                     >
                         {description[languageCode]}
                     </Typography>
-
+                    {
+                        departmentYClients && (
+                            <FormButton
+                                label={translate(codes.bookUpOnlineRightNow)}
+                                onClick={() => window.open(departmentYClients, '_blank')}
+                                labelUppercase
+                                className={classes.detailPage__bookButton}
+                            />
+                        )
+                    }
                 </BasePageLayoutRight>
             </BasePageLayout>
             <Typography

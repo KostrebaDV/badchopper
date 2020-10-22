@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useMemo} from 'react';
 import {ModalContent, ModalFooter, ModalHeader} from '../../../../baseComponents/Modal';
 import {ButtonGroup} from '../../../../baseComponents/ButtonGroup/ButtonGroup';
 import {Button} from '../../../../baseComponents/Button/Button';
@@ -81,11 +81,12 @@ const EditAssistanceModalContent = (
         />
     );
 
-    const initialValues = () => {
+    const initialValues = useMemo(() => {
         if (isNull(modalData)) return {};
 
         return {
-            ...modalData,
+            imageId: modalData.imageId,
+            price: modalData.price,
             nameUA: modalData?.name?.ua,
             nameRU: modalData?.name?.ru,
             nameEN: modalData?.name?.en,
@@ -93,7 +94,7 @@ const EditAssistanceModalContent = (
             descriptionRU: modalData?.description?.ru,
             descriptionEN: modalData?.description?.en,
         }
-    }
+    }, [])
 
     return modalData && (
         <>
@@ -103,7 +104,7 @@ const EditAssistanceModalContent = (
             />
             <ModalContent>
                 <Form
-                    initialValues={initialValues()}
+                    initialValues={initialValues}
                     onSubmit={handleUpdateAssistance}
                     name={FORMS.UPDATE_ASSISTANCE_FORM}
                 >

@@ -9,6 +9,7 @@ export type DepartmentType = {
         };
     };
     description: string;
+    departmentYClients: string;
     phone: string;
     image: {
         path: string

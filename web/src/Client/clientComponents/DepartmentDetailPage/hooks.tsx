@@ -32,6 +32,7 @@ export const useGetDepartment = () => {
         image: {
             path: '',
         },
+        departmentYClients: '',
         staff: []
     };
 };
