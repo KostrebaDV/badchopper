@@ -2,17 +2,24 @@ import React, { useContext, useRef, useCallback, useEffect, useState } from 'rea
 import { ContextForm } from './store/FormContext';
 
 import { validate as validateFromUtils } from './utils';
-import { isUndefined } from '../../../utils';
+import {isUndefined} from '../../../utils';
+import {FormContext as FormGlobalContext} from '../../../store/FormContext';
 
 const Field = (props) => {
-	const { name, component, validate } = props;
-	const {
-		fields,
-		formValues,
-		setFieldValue,
-		registerField,
-		setFieldValidationResult
-	} = useContext(ContextForm);
+    const {name, component, validate} = props;
+    const {
+        updateFormValues
+    } = useContext(FormGlobalContext);
+
+    const {
+        formName,
+        fields,
+        formValues,
+        setFieldValue,
+        registerField,
+        setFieldValidationResult
+    } = useContext(ContextForm);
+
 	const [hasFocus, setHasFocus] = useState(false);
 	const isRegistered = useRef(false);
 	const prevValue = useRef(null);
@@ -46,13 +53,15 @@ const Field = (props) => {
 	}, [validate, setFieldValidationResult, name]);
 
 	const handleChange = useCallback(value => {
-		validateField(value);
+        validateField(value);
 
-		setFieldValue({
-			[name]: value
-		});
+        setFieldValue({
+            [name]: value
+        });
+
+        updateFormValues(formName, name, value);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [name, setFieldValue, validate, validateField]);
+    }, [name, setFieldValue, validate, validateField]);
 
 	const handleFieldFocus = (hasFocus) => {
 		setHasFocus(hasFocus);

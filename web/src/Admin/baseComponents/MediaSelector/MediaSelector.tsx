@@ -43,7 +43,7 @@ const MediaSelector = (
             setSelectedMedia(value);
         }
         // eslint-disable-next-line
-    }, [value]);
+    }, []);
 
     const handleSubmit = (values) => {
         onFieldChange(getMediaValue(values));
@@ -51,9 +51,10 @@ const MediaSelector = (
     };
 
     const handleDeleteProcessedImage = (id) => {
-        setSelectedMedia(removeArrayElementByValue(selectedMedia, id));
+        const imageArray = removeArrayElementByValue(selectedMedia, id);
+        setSelectedMedia(imageArray);
 
-        const mediaValues = selectedMedia.length === 0 ? null : getMediaValue(selectedMedia);
+        const mediaValues = selectedMedia.length === 0 ? null : getMediaValue(imageArray);
 
         onFieldChange(mediaValues);
     };
@@ -83,7 +84,6 @@ const MediaSelector = (
                     </div>
                 )
             }
-
             {
                 singleSelect && selectedMedia.length !== 0 && (
                     <MediaSelectorSingleItemPreview

@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-import {getUniqueKey} from '../../../utils';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
 import {MultiLanguageLanguageCodeLabel} from './MultiLanguageLanguageCodeLabel';
@@ -45,12 +44,14 @@ const MultiLanguageField = (
                 </div>
                 <div className={multiLanguageCodeWrapper}>
                 {
-                    languages.map(code => {
+                    languages.map((code, index) => {
+                        const key = `${name}${index}`;
+
                         return (
                             <MultiLanguageLanguageCodeLabel
+                                key={key}
                                 code={code}
                                 name={name}
-                                key={getUniqueKey()}
                                 setActiveTranslationCode={code => setActiveTranslationCode(code, name)}
                             />
                         )
@@ -59,14 +60,16 @@ const MultiLanguageField = (
                 </div>
             </div>
             {
-                languages.map(code => {
+                languages.map((code, index) => {
+                    const key = `${name}${index}`;
+
                     return (
                         <MultiLanguageFieldComponent
+                            key={key}
                             name={name}
                             code={code}
                             required={required}
                             adapter={adapter}
-                            key={getUniqueKey()}
                             previewMode={previewMode}
                         />
                     );

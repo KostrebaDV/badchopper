@@ -1,4 +1,4 @@
-import React, {useContext, useMemo} from 'react';
+import React, {useContext} from 'react';
 import {ModalContent, ModalFooter, ModalHeader} from '../../../../baseComponents/Modal';
 import {ButtonGroup} from '../../../../baseComponents/ButtonGroup/ButtonGroup';
 import {Button} from '../../../../baseComponents/Button/Button';
@@ -9,7 +9,7 @@ import FormLayout, {FormLayoutItem, FormLayoutItemGroup} from '../../../../baseC
 import {Textbox, Textarea, MediaSelector} from '../../../../baseComponents/Form/Adapters';
 import {AssistanceContext} from '../../store';
 import {AdminAppContext} from '../../../../App/store/AdminAppContext/const';
-import {getUniqueId, isNull} from '../../../../../utils';
+import {getUniqueId} from '../../../../../utils';
 import {FormContext} from '../../../../../store/FormContext';
 import {LANGUAGE_CODES} from '../../../../../const';
 import {MultiLanguageField} from '../../../../baseComponents/MultiLanguageField/MultiLanguageField';
@@ -59,7 +59,8 @@ const EditAssistanceModalContent = (
                 if (typeof showNotification !== 'undefined') {
                     showNotification({
                         id: getUniqueId(),
-                        message: `Услуга "${data.name.ru}" обновлена`
+                        message: `Услуга "${data.name.ru}" обновлена`,
+                        duration: 1000,
                     });
                 }
             });
@@ -81,20 +82,16 @@ const EditAssistanceModalContent = (
         />
     );
 
-    const initialValues = useMemo(() => {
-        if (isNull(modalData)) return {};
-
-        return {
-            imageId: modalData.imageId,
-            price: modalData.price,
-            nameUA: modalData?.name?.ua,
-            nameRU: modalData?.name?.ru,
-            nameEN: modalData?.name?.en,
-            descriptionUA: modalData?.description?.ua,
-            descriptionRU: modalData?.description?.ru,
-            descriptionEN: modalData?.description?.en,
-        }
-    }, [])
+    const initialValues = {
+        imageId: modalData.imageId,
+        price: modalData.price,
+        nameUA: modalData?.name?.ua,
+        nameRU: modalData?.name?.ru,
+        nameEN: modalData?.name?.en,
+        descriptionUA: modalData?.description?.ua,
+        descriptionRU: modalData?.description?.ru,
+        descriptionEN: modalData?.description?.en,
+    }
 
     return modalData && (
         <>

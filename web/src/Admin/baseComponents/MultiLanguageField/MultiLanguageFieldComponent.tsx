@@ -1,6 +1,5 @@
 import React from 'react';
 import {Field} from '../Form';
-import {getUniqueKey} from '../../../utils';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
 import './styles/utilStyles.scss'
@@ -25,7 +24,6 @@ const MultiLanguageFieldComponent = (
             className={componentClassName}
         >
             <Field
-                key={getUniqueKey()}
                 component={adapter}
                 name={`${name}${code}`}
                 required={required}

@@ -7,7 +7,6 @@ import Form, {Field} from '../../../../../Admin/baseComponents/Form';
 import {FormFieldGroup} from '../../../FormFieldGroup/FormFieldGroup';
 import {Dropdown, Textbox} from '../../../FormAdapters';
 import {EMPLOYEE_FORM, positionDropdownItems} from './consts';
-import {Button} from '../../../Button/Button';
 import {FormContext} from '../../../../../store/FormContext';
 import {isUndefined, translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';

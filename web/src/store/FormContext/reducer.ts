@@ -19,13 +19,18 @@ export const reducer = (state, payload) => {
                 forms: {...state.forms, ...payload.form}
             };
         case UPDATE_FORM_VALUES:
+            const {formName, fieldName, value} = payload.data
+
             return {
                 ...state,
                 forms: {
                     ...state.forms,
-                    [payload.form]: {
-                        ...state.forms[payload.form],
-                        values: payload.values
+                    [formName]: {
+                        ...state.forms[formName],
+                        values: {
+                            ...state.forms[formName].values,
+                            [fieldName]: value
+                        }
                     }
                 }
             };

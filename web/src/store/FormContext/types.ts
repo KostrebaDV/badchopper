@@ -10,5 +10,5 @@ export type FormContextType = {
     },
     addFormToGlobalContext: ({}) => void;
     removeFormFromGlobalContext: (name: string) => void;
-    updateFormValues: (name: string, values: {}) => void;
+    updateFormValues: (formName: string, fieldName: string, value: any) => void;
 };

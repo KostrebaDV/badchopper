@@ -18,11 +18,14 @@ export const FormContextProvider = ({ children }) => {
         });
     };
 
-    const updateFormValues = (form, values) => {
+    const updateFormValues = (formName, fieldName, value) => {
         dispatch({
             type: UPDATE_FORM_VALUES,
-            form,
-            values
+            data: {
+                formName,
+                fieldName,
+                value
+            }
         });
     };
 

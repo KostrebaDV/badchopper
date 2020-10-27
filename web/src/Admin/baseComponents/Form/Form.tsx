@@ -1,10 +1,11 @@
-import React, { useEffect, useContext, useRef, memo, useCallback } from 'react';
+import React, {useEffect, useContext, useRef, memo, useCallback} from 'react';
 
-import { ContextForm } from './store/FormContext';
-import { FormContext} from '../../../store/FormContext';
+import {ContextForm} from './store/FormContext';
+import {FormContext as FormGlobalContext} from '../../../store/FormContext';
 
 import {isNull, actionLoggerWarning, actionLogger} from '../../../utils';
 import {usePrevious} from '../../../hooks/usePrevious';
+
 
 type FormType = {
     name: string;
@@ -16,20 +17,19 @@ type FormType = {
 }
 
 const Form = memo<FormType>((
-	{
-		name,
-		children,
-		onSubmit,
+    {
+        name,
+        children,
+        onSubmit,
         reInitOnEdit,
-		initialValues,
-		restFormValues
-	}
+        initialValues,
+        restFormValues
+    }
 ) => {
-	const {
+    const {
         addFormToGlobalContext,
-        removeFormFromGlobalContext,
-        updateFormValues
-    } = useContext(FormContext);
+        removeFormFromGlobalContext
+    } = useContext(FormGlobalContext);
 
     const {
         fields,
@@ -44,6 +44,7 @@ const Form = memo<FormType>((
 
     const valuesRef = useRef();
     const fieldsRef = useRef();
+    const isInit = useRef(false);
 
     const handleErrors = useCallback((fields) => {
         const errors = fields.map(field => {
@@ -51,77 +52,76 @@ const Form = memo<FormType>((
         });
 
         actionLoggerWarning(`Field validation error: ${errors.join(';')};`);
-	}, []);
+    }, []);
 
-	const handleSuccess = useCallback((values) => {
-		onSubmit(values, resetFormValues);
-		actionLogger(`SUBMIT FROM: "${name}"`);
+    const handleSuccess = useCallback((values) => {
+        onSubmit(values, resetFormValues);
+        actionLogger(`SUBMIT FROM: "${name}"`);
 
-		if (restFormValues) {
-			resetFormValues();
-			actionLogger(`RESET FROM: "${name}"`);
-		}
-	}, [name, onSubmit, restFormValues, resetFormValues]);
+        if (restFormValues) {
+            resetFormValues();
+            actionLogger(`RESET FROM: "${name}"`);
+        }
+    }, [name, onSubmit, restFormValues, resetFormValues]);
 
-	const submitForm = useCallback(() => {
-		validateForm(fieldsRef.current, valuesRef.current)
-		.then(values => handleSuccess(values))
-		.catch(fields => handleErrors(fields));
-	}, [handleSuccess, handleErrors, validateForm]);
+    const submitForm = useCallback(() => {
+        validateForm(fieldsRef.current, valuesRef.current)
+            .then(values => handleSuccess(values))
+            .catch(fields => handleErrors(fields));
+    }, [handleSuccess, handleErrors, validateForm]);
 
-	const handleSubmitOnEnter = useCallback((e) => {
-		const { keyCode } = e;
+    const handleSubmitOnEnter = useCallback((e) => {
+        const {keyCode} = e;
 
-		if (keyCode === 13) {
-			submitForm();
-		}
-	}, [submitForm]);
+        if (keyCode === 13) {
+            submitForm();
+        }
+    }, [submitForm]);
 
-	useEffect(() => {
-		window.addEventListener('keyup', handleSubmitOnEnter);
+    useEffect(() => {
+        window.addEventListener('keyup', handleSubmitOnEnter);
 
-		return () => {
-			window.removeEventListener('keyup', handleSubmitOnEnter);
-		};
-	}, [handleSubmitOnEnter]);
+        return () => {
+            window.removeEventListener('keyup', handleSubmitOnEnter);
+        };
+    }, [handleSubmitOnEnter]);
 
-	useEffect(() => {
-		initForm({ name });
+    useEffect(() => {
+        initForm({name});
 
-		return () => {
-			setFormValues({});
-			initForm({});
-		};
+        return () => {
+            setFormValues({});
+            initForm({});
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+    }, []);
 
-	useEffect(() => {
-	    let timeOut;
-		if (!isNull(initialValues)) {
-		    timeOut = setTimeout(() => {
+    useEffect(() => {
+        let timeOut;
+        if (!isNull(initialValues) && !isInit.current) {
+            timeOut = setTimeout(() => {
                 setFormValues(initialValues);
-            }, 50)
-		}
+                isInit.current = true;
+            }, 200)
+        }
 
         return () => {
             clearTimeout(timeOut);
             setFormValues({});
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [initialValues, reInitOnEdit]);
+    }, [initialValues, reInitOnEdit]);
 
     useEffect(() => {
-        if (JSON.stringify(prevFormValues) === JSON.stringify(formValues)) return;
-
-        valuesRef.current = formValues;
-        fieldsRef.current = fields;
-
-        updateFormValues(name, formValues);
+        if (JSON.stringify(prevFormValues) !== JSON.stringify(formValues) && isInit.current) {
+            valuesRef.current = formValues;
+            fieldsRef.current = fields;
+        }
     }, [formValues]);
 
-	//set submit function to global context on init
-	useEffect(() => {
-        addFormToGlobalContext({[name]: {submitForm, resetFormValues, formValues}});
+    //set submit function to global context on init
+    useEffect(() => {
+        addFormToGlobalContext({[name]: {submitForm, resetFormValues, values: initialValues}});
 
         return () => {
             removeFormFromGlobalContext(name);
@@ -129,23 +129,23 @@ const Form = memo<FormType>((
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-	//submit for button type=submit
-	const handleFormSubmit = e => {
-		e.preventDefault();
+    //submit for button type=submit
+    const handleFormSubmit = e => {
+        e.preventDefault();
 
-		validateForm(fieldsRef.current, valuesRef.current)
-			.then((values) => onSubmit(values, resetFormValues))
-			.catch(e => console.log(e));
-	};
+        validateForm(fieldsRef.current, valuesRef.current)
+            .then((values) => onSubmit(values, resetFormValues))
+            .catch(e => console.log(e));
+    };
 
-	return (
-		<form
-			name={name}
-			onSubmit={handleFormSubmit}
-		>
-			{children}
-		</form>
-	);
+    return (
+        <form
+            name={name}
+            onSubmit={handleFormSubmit}
+        >
+            {children}
+        </form>
+    );
 });
 
-export { Form };
+export {Form};
