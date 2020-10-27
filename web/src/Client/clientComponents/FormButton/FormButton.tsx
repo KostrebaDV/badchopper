@@ -5,7 +5,7 @@ import {Typography} from '../../../Admin/baseComponents/Typography/Typography';
 
 type FormButton = {
     label: string;
-    onClick: (data) => void;
+    onClick: () => void;
     className?: string;
     fontSize?: string;
     labelUppercase?: boolean;
@@ -30,9 +30,15 @@ const FormButton: FC<FormButton> = (
         className
     );
 
+    const handleClick = () => {
+        if (!disable) {
+            onClick && onClick()
+        }
+    }
+
     return (
         <div
-            onClick={onClick}
+            onClick={handleClick}
             className={componentClassName}
         >
             <Typography

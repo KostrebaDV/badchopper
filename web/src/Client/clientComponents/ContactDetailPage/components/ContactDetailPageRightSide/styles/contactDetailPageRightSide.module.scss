@@ -8,6 +8,12 @@
 	z-index: 1;
 }
 
+.contactDetailPageRightSide__submitSuccess {
+	font-size: 42px;
+	padding-top: 16px;
+	min-height: 340px;
+}
+
 @media (max-width: 575.98px) {
 	.contactDetailPageRightSide {
 		width: 100%;
@@ -22,6 +28,12 @@
 		width: 100%;
 		box-sizing: border-box;
 		text-align: center;
+	}
+
+	.contactDetailPageRightSide__submitSuccess {
+		font-size: 32px;
+		padding-top: 16px;
+		min-height: 0px;
 	}
 }
 

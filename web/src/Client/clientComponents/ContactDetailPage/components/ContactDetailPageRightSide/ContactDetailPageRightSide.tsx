@@ -1,4 +1,4 @@
-import React, {useContext, useMemo} from 'react';
+import React, {useContext, useMemo, useState} from 'react';
 import {ContactForm} from '../ContactForm/ContactForm';
 import {FormContext} from '../../../../../store/FormContext';
 import {addFeedback} from '../../api';
@@ -11,7 +11,7 @@ import {FormButton} from '../../../FormButton/FormButton';
 
 const ContactDetailPageRightSide = () => {
     const {forms} = useContext(FormContext);
-
+    const [isSubmitted, setIsSubmitted] = useState(false)
 
     const isFormFilled = useMemo(() => {
         if (isUndefined(forms.ADD_FEEDBACK_FORM) || isUndefined(forms.ADD_FEEDBACK_FORM.values)) return;
@@ -23,20 +23,38 @@ const ContactDetailPageRightSide = () => {
 
     const handleAddFeedback = values => {
         addFeedback(values)
-            .then(({data}) => console.log(data));
+            .then(() => {
+                setIsSubmitted(true);
+                setTimeout(() => {
+                    setIsSubmitted(false);
+                }, 2000)
+            });
     };
 
     return (
         <BasePageLayoutRight className={classes.contactDetailPageRightSide}>
             <div className={classes.contactDetailPageRightSide__form}>
-                <ContactForm handleAddFeedback={handleAddFeedback}/>
-                <FormButton
-                    disable={!isFormFilled}
-                    label={`${translate(codes.send)}`}
-                    onClick={() => forms.ADD_FEEDBACK_FORM.submitForm()}
-                    labelUppercase
-                    className={classes.navigationMenuContentLeft__formButton}
-                />
+                {
+                    !isSubmitted && (
+                        <>
+                            <ContactForm handleAddFeedback={handleAddFeedback}/>
+                            <FormButton
+                                disable={!isFormFilled}
+                                label={`${translate(codes.send)}`}
+                                onClick={() => forms.ADD_FEEDBACK_FORM.submitForm()}
+                                labelUppercase
+                                className={classes.navigationMenuContentLeft__formButton}
+                            />
+                        </>
+                    )
+                }
+                {
+                    isSubmitted && (
+                        <div className={classes.contactDetailPageRightSide__submitSuccess}>
+                            {translate(codes.thankYouForFeedback)}
+                        </div>
+                    )
+                }
             </div>
             <FooterDepartmentList
                 isContactPage

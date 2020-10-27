@@ -15,7 +15,7 @@ const ContactForm = (
         <Form
             name={ADD_FEEDBACK_FORM}
             onSubmit={handleAddFeedback}
-            restFormValues
+            resetFormValues
         >
             <FormFieldGroup>
                 <Field

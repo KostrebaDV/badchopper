@@ -19,5 +19,6 @@ export const codes = {
     send: 18,
     fillForm: 19,
     phone: 20,
-    selectPosition: 21
+    selectPosition: 21,
+    thankYouForFeedback: 22
 };

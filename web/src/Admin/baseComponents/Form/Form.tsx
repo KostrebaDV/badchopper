@@ -8,22 +8,24 @@ import {usePrevious} from '../../../hooks/usePrevious';
 
 
 type FormType = {
+    data: object;
     name: string;
     children: object | [];
     onSubmit: (object, resetFormValues) => void;
     initialValues: object;
-    restFormValues: boolean;
+    resetFormValues: boolean;
     reInitOnEdit: boolean | undefined;
 }
 
 const Form = memo<FormType>((
     {
+        data: environmentData,
         name,
         children,
         onSubmit,
         reInitOnEdit,
         initialValues,
-        restFormValues
+        resetFormValues: resetFormValuesFromProps
     }
 ) => {
     const {
@@ -55,14 +57,14 @@ const Form = memo<FormType>((
     }, []);
 
     const handleSuccess = useCallback((values) => {
-        onSubmit(values, resetFormValues);
+        onSubmit(values, environmentData);
         actionLogger(`SUBMIT FROM: "${name}"`);
 
-        if (restFormValues) {
+        if (resetFormValuesFromProps) {
             resetFormValues();
             actionLogger(`RESET FROM: "${name}"`);
         }
-    }, [name, onSubmit, restFormValues, resetFormValues]);
+    }, [name, onSubmit, resetFormValues, resetFormValues]);
 
     const submitForm = useCallback(() => {
         validateForm(fieldsRef.current, valuesRef.current)
