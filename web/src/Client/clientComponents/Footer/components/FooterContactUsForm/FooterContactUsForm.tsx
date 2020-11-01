@@ -1,5 +1,6 @@
-import React, {useCallback, useContext, useMemo, useState} from 'react';
+import React, {useContext, useMemo, useState} from 'react';
 import {Logo} from '../../../Logo/Logo';
+import {useHistory} from "react-router-dom";
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
 import closeIcon from '../../../../../static/images/closeIcon.svg';
@@ -21,7 +22,9 @@ const FooterContactUsForm = (
 ) => {
     const {languageCode} = useContext(AppContext);
     const {forms} = useContext(FormContext);
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const {push} = useHistory();
+    const [isSubmitted, setIsSubmitted] = useState(true)
+    const [isPending, setIsPending] = useState(false);
 
     const isFormFilled = useMemo(() => {
         if (isUndefined(forms.EMPLOYEE_FORM) || isUndefined(forms.EMPLOYEE_FORM.values)) return;
@@ -32,10 +35,13 @@ const FooterContactUsForm = (
     }, [forms.EMPLOYEE_FORM]);
 
     const handleSubmitForm = (values) => {
-
+        setIsPending(true);
 
         addMemberShipApplication(values)
-            .then(() => setIsSubmitted(true));
+            .then(() => {
+                setIsSubmitted(true);
+                setIsPending(false);
+            });
     };
 
     const dropdownItems = useMemo(() => {
@@ -46,6 +52,11 @@ const FooterContactUsForm = (
         setIsSubmitted(false);
         onClose();
     };
+
+    const handleGoToHomePage = () => {
+        onClose();
+        push('/');
+    }
 
     return (
         <div className={classes.footerContactUsForm}>
@@ -66,31 +77,18 @@ const FooterContactUsForm = (
                 </div>
             </div>
             <div className={classes.footerContactUsForm__content}>
-                <div className={classes.footerContactUsForm__contentLeft}>
-                    {
-                        !isSubmitted && (
-                            <>
+                {
+                    !isSubmitted && (
+                        <>
+                            <div className={classes.footerContactUsForm__contentLeft}>
                                 <div className={classes.footerContactUsForm__headLabel}>
                                     {translate(codes.doYouWantToBecomePart)}
                                 </div>
                                 <div className={classes.footerContactUsForm__text}>
                                     {translate(codes.fillForm)}
                                 </div>
-                            </>
-                        )
-                    }
-                    {
-                        isSubmitted && (
-                            <div className={classes.footerContactUsForm__headLabel}>
-                                {translate(codes.thankYouForFeedback)}
                             </div>
-                        )
-                    }
-                </div>
-                <div className={classes.footerContactUsForm__contentRight}>
-                    {
-                        !isSubmitted && (
-                            <>
+                            <div className={classes.footerContactUsForm__contentRight}>
                                 <Form
                                     data={{isFormFilled}}
                                     name={EMPLOYEE_FORM}
@@ -127,12 +125,32 @@ const FooterContactUsForm = (
                                     label={translate(codes.send)}
                                     onClick={() => forms.EMPLOYEE_FORM.submitForm()}
                                     labelUppercase
+                                    pending={isPending}
                                     className={classes.footerContactUsForm__formButton}
                                 />
-                            </>
-                        )
-                    }
-                </div>
+                            </div>
+                        </>
+                    )
+                }
+                {
+                    isSubmitted && (
+                        <div
+                            className={classes.footerContactUsForm__successSection}
+                        >
+                            <Typography className={classes.footerContactUsForm__successSectionLabel}>
+                                {translate(codes.thankYouForApplication)}
+                            </Typography>
+                            <Typography className={classes.footerContactUsForm__successSectionText}>
+                                {translate(codes.contactYouSoon)}
+                            </Typography>
+                            <div onClick={handleGoToHomePage}
+                                 className={classes.footerContactUsForm__successSectionButton}
+                            >
+                                {translate(codes.toHomePage)}
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );

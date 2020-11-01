@@ -20,5 +20,10 @@ export const codes = {
     fillForm: 19,
     phone: 20,
     selectPosition: 21,
-    thankYouForFeedback: 22
+    thankYouForFeedback: 22,
+    feedbackSent: 23,
+    feedbackImportant: 24,
+    thankYouForApplication: 25,
+    contactYouSoon: 26,
+    toHomePage: 27
 };

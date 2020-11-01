@@ -21,10 +21,6 @@
 		color: $light;
 	}
 
-	.assistanceListItem__image {
-		opacity: .4;
-	}
-
 	.assistanceListItem__description {
 		display: flex;
 	}
@@ -95,16 +91,6 @@
 	@include transition(margin .2s, font-weight .2s)
 }
 
-.assistanceListItem__image {
-	position: absolute;
-	z-index: -1;
-	width: 100% !important;
-	opacity: 0;
-	top: 0;
-
-	@include transition(opacity .5s)
-}
-
 @media (max-width: 575.98px) {
 	.assistanceListItem {
 		margin: 0 24px;
@@ -135,12 +121,6 @@
 	.assistanceListItem__price {
 		color: $gold;
 		font-size: 20px;
-	}
-
-	.assistanceListItem:hover {
-		.assistanceListItem__image {
-			opacity: 0;
-		}
 	}
 }
 

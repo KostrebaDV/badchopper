@@ -3,12 +3,12 @@
 .textbox {
 	padding: 16px 0;
 	font-size: .95rem;
-	background-color: transparent;
+	background-color: transparent !important;
 	box-sizing: border-box;
 	position: relative;
 	border: none;
 	width: 100%;
-	color: $light;
+	color: $light !important;
 	height: 55px;
 }
 
@@ -29,6 +29,7 @@
 	font-style: normal;
 	color: $placeholder;
 }
+
 :-moz-placeholder { /* Firefox 18- */
 	font-style: normal;
 	color: $placeholder;
@@ -36,4 +37,12 @@
 
 input.textbox:focus {
 	outline: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s ease-in-out 0s;
+	-webkit-text-fill-color: $light;
 }

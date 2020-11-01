@@ -2,14 +2,16 @@ import React, {FC} from 'react';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
 import {Typography} from '../../../Admin/baseComponents/Typography/Typography';
+import {LoadSpinnerInLine} from '../../../Admin/baseComponents/LoadSpinnerInLine/LoadSpinnerInLine';
 
 type FormButton = {
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
     className?: string;
     fontSize?: string;
     labelUppercase?: boolean;
     disable?: boolean;
+    pending?: boolean;
 }
 
 const FormButton: FC<FormButton> = (
@@ -19,7 +21,8 @@ const FormButton: FC<FormButton> = (
         fontSize,
         className,
         disable,
-        labelUppercase
+        labelUppercase,
+        pending
     }
 ) => {
     const componentClassName = ClassNames(
@@ -45,7 +48,16 @@ const FormButton: FC<FormButton> = (
                 variant={fontSize}
                 upperCase={labelUppercase}
             >
-                {label}
+                {
+                    !pending && (
+                        label
+                    )
+                }
+                {
+                    pending && (
+                        <LoadSpinnerInLine/>
+                    )
+                }
             </Typography>
         </div>
     );

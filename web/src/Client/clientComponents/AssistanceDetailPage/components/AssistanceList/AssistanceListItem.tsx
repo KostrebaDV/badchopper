@@ -44,16 +44,6 @@ const AssistanceListItem = (
             >
                 {item.description[languageCode]}
             </Typography>
-            {
-                !isMobile && (
-                    <Image
-                        className={classes.assistanceListItem__image}
-                        height={313}
-                        src={item.image.path}
-                        alt={item.image.name}
-                    />
-                )
-            }
         </div>
 
     );

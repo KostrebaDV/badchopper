@@ -59,6 +59,35 @@
 	margin-left: 50px;
 }
 
+.footerContactUsForm__successSection {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	width: 100%;
+}
+
+.footerContactUsForm__successSectionLabel {
+	color: $gold;
+	font-size: 32px;
+	margin-bottom: 16px;
+}
+
+.footerContactUsForm__successSectionText {
+	font-size: 20px;
+	margin-bottom: 24px;
+}
+
+.footerContactUsForm__successSectionButton {
+	font-size: 18px;
+	border: 1px solid $gold;
+	color: $gold;
+	padding: 8px 16px 10px;
+	cursor: pointer;
+	width: fit-content;
+	margin: 0 auto;
+}
+
 @media (max-width: 575.98px) {
 	.footerContactUsForm {
 		padding: 24px;

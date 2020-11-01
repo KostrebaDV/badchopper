@@ -8,10 +8,12 @@ import {isUndefined, translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
 import {BasePageLayoutRight} from '../../../BasePageLayout/BasePageLayoutRight';
 import {FormButton} from '../../../FormButton/FormButton';
+import {ContactDetailPageFeedbackSuccessModal} from '../ContactDetailPageFeedbackSuccessModal/ContactDetailPageFeedbackSuccessModal';
 
 const ContactDetailPageRightSide = () => {
     const {forms} = useContext(FormContext);
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isPending, setIsPending] = useState(false);
 
     const isFormFilled = useMemo(() => {
         if (isUndefined(forms.ADD_FEEDBACK_FORM) || isUndefined(forms.ADD_FEEDBACK_FORM.values)) return;
@@ -22,44 +24,38 @@ const ContactDetailPageRightSide = () => {
     }, [forms.ADD_FEEDBACK_FORM]);
 
     const handleAddFeedback = values => {
+        //Pending ob button
+        setIsPending(true);
         addFeedback(values)
             .then(() => {
-                setIsSubmitted(true);
-                setTimeout(() => {
-                    setIsSubmitted(false);
-                }, 2000)
+                setIsModalOpen(true);
+                setIsPending(false);
             });
     };
 
     return (
-        <BasePageLayoutRight className={classes.contactDetailPageRightSide}>
-            <div className={classes.contactDetailPageRightSide__form}>
-                {
-                    !isSubmitted && (
-                        <>
-                            <ContactForm handleAddFeedback={handleAddFeedback}/>
-                            <FormButton
-                                disable={!isFormFilled}
-                                label={`${translate(codes.send)}`}
-                                onClick={() => forms.ADD_FEEDBACK_FORM.submitForm()}
-                                labelUppercase
-                                className={classes.navigationMenuContentLeft__formButton}
-                            />
-                        </>
-                    )
-                }
-                {
-                    isSubmitted && (
-                        <div className={classes.contactDetailPageRightSide__submitSuccess}>
-                            {translate(codes.thankYouForFeedback)}
-                        </div>
-                    )
-                }
-            </div>
-            <FooterDepartmentList
-                isContactPage
+        <>
+            <BasePageLayoutRight className={classes.contactDetailPageRightSide}>
+                <div className={classes.contactDetailPageRightSide__form}>
+                    <ContactForm handleAddFeedback={handleAddFeedback}/>
+                    <FormButton
+                        pending={isPending}
+                        disable={!isFormFilled}
+                        label={`${translate(codes.send)}`}
+                        onClick={() => forms.ADD_FEEDBACK_FORM.submitForm()}
+                        labelUppercase
+                        className={classes.navigationMenuContentLeft__formButton}
+                    />
+                </div>
+                <FooterDepartmentList
+                    isContactPage
+                />
+            </BasePageLayoutRight>
+            <ContactDetailPageFeedbackSuccessModal
+                isOpen={isModalOpen}
+                handleClose={() => setIsModalOpen(false)}
             />
-        </BasePageLayoutRight>
+        </>
     );
 };
 

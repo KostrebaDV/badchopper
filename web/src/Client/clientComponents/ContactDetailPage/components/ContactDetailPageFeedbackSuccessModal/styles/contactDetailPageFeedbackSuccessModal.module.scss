@@ -1,0 +1,77 @@
+@import "../../../../../styles/colors/colors.module";
+@import "../../../../../styles/mixins/transition.module";
+
+.contactDetailPageFeedbackSuccessModal {
+	padding: 70px 64px 110px;
+	background-color: #1C1D21;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	width: 360px;
+	text-align: center;
+	margin-top: 25%;
+	position: relative;
+}
+
+.contactDetailPageFeedbackSuccessModal__closeButton {
+	position: absolute;
+	right: 25px;
+	top: 25px;
+	cursor: pointer;
+}
+
+.contactDetailPageFeedbackSuccessModal__icon {
+	width: 67px;
+	height: 67px;
+	margin-bottom: 32px;
+}
+
+.contactDetailPageFeedbackSuccessModal__label {
+	margin-bottom: 16px;
+	color: $gold;
+	font-size: 32px;
+}
+
+.contactDetailPageFeedbackSuccessModal__text {
+	font-size: 20px;
+	letter-spacing: 0.04em;
+}
+
+.contactDetailPageFeedbackSuccessModal__overlay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 5000;
+	left: 0;
+	right: 0;
+
+	@include transition(background-color 3s)
+}
+
+.contactDetailPageFeedbackSuccessModal__overlay_close {
+	top: -2000px;
+	background-color: transparent;
+}
+
+.contactDetailPageFeedbackSuccessModal__overlay_open {
+	top: 0;
+	background-color: rgba(0, 0, 0, .7);
+}
+
+@media (max-width: 767.98px) {
+	.contactDetailPageFeedbackSuccessModal {
+		width: 90%;
+		padding: 40px 0;
+		margin: 35% auto;
+	}
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
+}
