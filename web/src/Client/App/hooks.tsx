@@ -77,14 +77,10 @@ export const useGetSyncHASH = () => {
 
 export const useGetTranslations = (allowReloadData) => {
     useEffect(() => {
-        const t = localStorage.getItem('translations');
-
-        if (isNull(t) || allowReloadData === 2) {
-            getTranslations()
-                .then(({data}) => {
-                    localStorage.setItem('translations', JSON.stringify(data));
-                })
-        }
+        getTranslations()
+            .then(({data}) => {
+                localStorage.setItem('translations', JSON.stringify(data));
+            })
     }, [allowReloadData])
 };
 
