@@ -23,7 +23,7 @@ const FooterContactUsForm = (
     const {languageCode} = useContext(AppContext);
     const {forms} = useContext(FormContext);
     const {push} = useHistory();
-    const [isSubmitted, setIsSubmitted] = useState(true)
+    const [isSubmitted, setIsSubmitted] = useState(false)
     const [isPending, setIsPending] = useState(false);
 
     const isFormFilled = useMemo(() => {

@@ -73,17 +73,28 @@ const _removeActiveElement = (index) => {
 
 const _initTouchEvents = (setActiveIndex) => {
     const {galleryItems} = elements();
+
+    if (galleryItems.length === 1) return;
+
     let touch_start_x;
     let touch_end_x;
+    let current_touch_x;
 
     // @ts-ignore
     [...galleryItems].forEach(item => {
-        item.addEventListener('touchstart', function(e) {
+        item.addEventListener('touchstart', function (e) {
             touch_start_x = e.changedTouches[e.changedTouches.length - 1].clientX;
 
             _clearGalleryInterval();
         });
-        item.addEventListener('touchend', function(e) {
+        item.addEventListener('touchmove', function (e) {
+            current_touch_x = e.changedTouches[e.changedTouches.length - 1].clientX;
+
+            const difference = touch_start_x - current_touch_x;
+
+            _dragGallery(difference, e.srcElement.dataset.index,);
+        });
+        item.addEventListener('touchend', function (e) {
             touch_end_x = e.changedTouches[e.changedTouches.length - 1].clientX;
 
             _initInterval(setActiveIndex, +e.srcElement.dataset.index);
@@ -136,8 +147,6 @@ const _handleTouchEvent = (startCord, endCord, yOffset, itemIndex, setActiveInde
 
         setActiveIndex(normalizedIndex);
     }
-
-
 };
 
 const _initInterval = (setActiveIndex, activeItemIndex = 1) => {
@@ -231,6 +240,16 @@ const _setInfiniteScrollActiveItem = (index) => {
 
     GLOBAL.prevActiveIndex = prevIndex;
     GLOBAL.nextActiveIndex = nextIndex;
+};
+
+const _dragGallery = (difference, index) => {
+    const {galleryContainer} = elements();
+    //@ts-ignore
+    galleryContainer[0].style.transform = `translate3d(-${GLOBAL.widthShift[index] + (difference * 1.5)}px, 0px, 0px)`;
+    //@ts-ignore
+    galleryContainer[0].style.webkitTransform = `translate3d(-${GLOBAL.widthShift[index] + (difference * 1.5)}px, 0px, 0px)`;
+    //@ts-ignore
+    galleryContainer[0].style.msTransform = `translate3d(-${GLOBAL.widthShift[index] + (difference * 1.5)}px, 0px, 0px)`;
 };
 
 const _initInfiniteScrollTranslateParams = () => {

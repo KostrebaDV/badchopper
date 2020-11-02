@@ -17,8 +17,8 @@
 	font-size: 82px;
 	letter-spacing: -1px;
 	font-style: normal;
-	font-weight: normal;
-	font-family: Nocturne;
+	font-weight: 600;
+	font-family: CormorantGaramond;
 }
 
 .navigationMenuListItem__label::first-letter {
@@ -27,7 +27,7 @@
 
 .navigationMenuListItem__index {
 	margin-right: 16px;
-	margin-top: 7px;
+	margin-top: 18px;
 	font-size: 18px;
 	opacity: .4;
 	letter-spacing: -0.005em;
@@ -36,5 +36,9 @@
 @media (max-width: 575.98px) {
 	.navigationMenuListItem__label {
 		font-size: 56px;
+	}
+
+	.navigationMenuListItem__index {
+		margin-top: 12px;
 	}
 }

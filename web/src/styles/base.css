@@ -43,11 +43,31 @@
 }
 
 @font-face {
-	font-family: "Nocturne";
-	src: url("../static/fonts/Nocturne/ttf/NocturneSerif-Regular.ttf") format("truetype"),
-	url("../static/fonts/Nocturne/otf/NocturneSerif-Regular.otf") format("truetype"),
-	url("../static/fonts/Nocturne/woff/NocturneSerif-Regular.woff") format("truetype");;
+	font-family: "CormorantGaramond";
+	src: url("../static/fonts/CormorantGaramond/ttf/CormorantGaramond-Regular.ttf") format("truetype");
 	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "CormorantGaramond";
+	src: url("../static/fonts/CormorantGaramond/ttf/CormorantGaramond-Medium.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "CormorantGaramond";
+	src: url("../static/fonts/CormorantGaramond/ttf/CormorantGaramond-SemiBold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "CormorantGaramond";
+	src: url("../static/fonts/CormorantGaramond/ttf/CormorantGaramond-Bold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 700;
 }
 
 body, html {
