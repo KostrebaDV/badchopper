@@ -5,15 +5,22 @@ import ClassNames from 'classnames';
 import {AppContext} from '../../App/store';
 
 type LanguageBarProps = {
-    openNavigation?: (isOpen: boolean) => void
+    openNavigation?: (isOpen: boolean) => void;
+    className?: string;
 }
 
 const LanguageBar: FC<LanguageBarProps> = (
     {
-        openNavigation
+        openNavigation,
+        className
     }
 ) => {
     const {languageCode, setLanguageCode} = useContext(AppContext);
+
+    const componentClassName = ClassNames(
+        classes.languageBar,
+        className
+    );
 
     const ruClassName = ClassNames(
         {
@@ -51,7 +58,7 @@ const LanguageBar: FC<LanguageBarProps> = (
     ]);
 
     return (
-        <div className={classes.languageBar}>
+        <div className={componentClassName}>
             <div
                 onClick={() => onLanguageCodeClick('en')}
                 className={enClassName}

@@ -73,11 +73,10 @@ const NavigationMenuList = () => {
             }
             {
                 isMobile && (
-                    <div className={classes.navigationMenuList__languageBar}>
-                        <LanguageBar
-                            openNavigation={openNavigation}
-                        />
-                    </div>
+                    <LanguageBar
+                        className={classes.navigationMenuList__languageBar}
+                        openNavigation={openNavigation}
+                    />
                 )
             }
         </div>

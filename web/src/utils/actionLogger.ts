@@ -1,13 +1,17 @@
 export const actionLogger = (action: string, payload?: object, ommited?: string) => {
-	const payloadObj = payload === undefined ? '' : payload;
+    if (process.env.NODE_ENV === 'development') {
+        const payloadObj = payload === undefined ? '' : payload;
 
-	if (action !== ommited) console.log(`%c${action}`, 'color: green; font-size: 16px', payloadObj);
+        if (action !== ommited) console.log(`%c${action}`, 'color: green; font-size: 16px', payloadObj);
 
-	return {
-		payload
-	};
+        return {
+            payload
+        };
+    }
 };
 
 export const actionLoggerWarning = (msg) => {
-	console.warn(msg);
+    if (process.env.NODE_ENV === 'development') {
+        console.warn(msg);
+    }
 };

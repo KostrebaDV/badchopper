@@ -50,6 +50,10 @@
 	width: 100%;
 }
 
+.navigationMenuList__languageBar {
+	margin-bottom: 55px;
+}
+
 @media (max-width: 575.98px) {
 	.navigationMenuList {
 		padding: 24px;
@@ -62,10 +66,6 @@
 
 	.navigationMenuList__topBar {
 		margin-bottom: 80px;
-	}
-
-	.navigationMenuList__languageBar {
-		margin-bottom: 85px;
 	}
 }
 
