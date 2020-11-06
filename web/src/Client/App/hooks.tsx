@@ -1,10 +1,8 @@
 import {useEffect, useContext, useCallback, useState, useRef} from 'react';
-import {ROUTES} from './routes';
-import {useHistory} from "react-router-dom";
+
 import {AppContext} from './store';
 import {getAllDepartments, getSyncHash, getTranslations} from './api';
-import {isNull, isUndefined} from '../../utils';
-import {initEffect} from './imageEffector/imageEffectLoader';
+import {isUndefined} from '../../utils';
 import Cookies from 'js-cookie';
 
 export const useGetDepartmentData = () => {
@@ -17,32 +15,6 @@ export const useGetDepartmentData = () => {
             });
         // eslint-disable-next-line
     }, []);
-};
-
-export const useCanvas = () => {
-    const {location} = useHistory();
-    const canvasHTMLCollection = document.getElementById('imageEffector');
-    const canvasHTMLCollectionClass = document.getElementsByClassName('imageEffectorClass');
-
-    useEffect(() => {
-        // @ts-ignore
-        if (!isNull(canvasHTMLCollection)) {
-            if (location.pathname === ROUTES.CLIENT_ROOT) {
-
-                while (canvasHTMLCollectionClass.length > 0) {
-                    canvasHTMLCollectionClass[0].remove();
-                }
-
-                // @ts-ignore
-                canvasHTMLCollection.style.display = '';
-                initEffect();
-            } else {
-                // @ts-ignore
-                canvasHTMLCollection.style.display = 'none';
-            }
-        }
-        // eslint-disable-next-line
-    }, [location.pathname]);
 };
 
 export const useGetSyncHASH = () => {

@@ -25,5 +25,6 @@ export const codes = {
     feedbackImportant: 24,
     thankYouForApplication: 25,
     contactYouSoon: 26,
-    toHomePage: 27
+    toHomePage: 27,
+    home: 28
 };

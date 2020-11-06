@@ -1,40 +1,48 @@
-import React, {useContext, useCallback} from 'react';
+import React, {useContext, useCallback, FC} from 'react';
 import classes from './styles/index.module.scss';
 import Cookies from 'js-cookie';
 import ClassNames from 'classnames';
-import {AppContext} from '../../../../App/store';
-import {NavigationMenuContext} from '../../store/const';
+import {AppContext} from '../../App/store';
 
-const NavigationMenuLanguageBar = () => {
+type LanguageBarProps = {
+    openNavigation?: (isOpen: boolean) => void
+}
+
+const LanguageBar: FC<LanguageBarProps> = (
+    {
+        openNavigation
+    }
+) => {
     const {languageCode, setLanguageCode} = useContext(AppContext);
-    const {openNavigation} = useContext(NavigationMenuContext);
 
     const ruClassName = ClassNames(
         {
-            [classes.navigationMenuLanguageBar__item_active]: languageCode === 'ru'
+            [classes.languageBar__item_active]: languageCode === 'ru'
         },
-        classes.navigationMenuLanguageBar__item
+        classes.languageBar__item
     );
 
     const enClassName = ClassNames(
         {
-            [classes.navigationMenuLanguageBar__item_active]: languageCode === 'en'
+            [classes.languageBar__item_active]: languageCode === 'en'
         },
-        classes.navigationMenuLanguageBar__item
+        classes.languageBar__item
     );
 
     const uaClassName = ClassNames(
         {
-            [classes.navigationMenuLanguageBar__item_active]: languageCode === 'ua'
+            [classes.languageBar__item_active]: languageCode === 'ua'
         },
-        classes.navigationMenuLanguageBar__item
+        classes.languageBar__item
     );
 
     const onLanguageCodeClick = useCallback((code) => {
         if (languageCode !== code) {
             Cookies.set('language', code)
             setLanguageCode(code);
-            openNavigation(false);
+            if (typeof openNavigation !== 'undefined') {
+                openNavigation(false);
+            }
         }
     }, [
         setLanguageCode,
@@ -43,7 +51,7 @@ const NavigationMenuLanguageBar = () => {
     ]);
 
     return (
-        <div className={classes.navigationMenuLanguageBar}>
+        <div className={classes.languageBar}>
             <div
                 onClick={() => onLanguageCodeClick('en')}
                 className={enClassName}
@@ -66,4 +74,4 @@ const NavigationMenuLanguageBar = () => {
     );
 };
 
-export {NavigationMenuLanguageBar};
+export {LanguageBar};

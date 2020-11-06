@@ -1,5 +1,4 @@
 import React from 'react';
-import classes from './styles/index.module.scss';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import scissorsSvgUrl from "../../../../../static/images/scissors.svg";
 import bookingRoundText from "../../../../../static/images/bookingRoundText.svg";
@@ -8,6 +7,9 @@ import {codes} from '../../../../../static/translations/codes';
 import {translate} from '../../../../../utils';
 import {Link} from '../../../../../Admin/baseComponents/Link/Link';
 import {yClientsUrl} from '../../../../../const';
+import classes from './styles/index.module.scss';
+import {LanguageBar} from '../../../LanguageBar/LanguageBar';
+import {isMobile} from "react-device-detect";
 
 const MainPageFooter = () => {
     return (
@@ -36,7 +38,16 @@ const MainPageFooter = () => {
                     src={scissorsSvgUrl} alt="scissors"
                 />
             </div>
-            <MainPageFooterSocialLinks />
+            <div className={classes.mainPageFooter__rightSide}>
+                <div className={classes.mainPageFooter__rightSideSocialLinks}>
+                    <MainPageFooterSocialLinks/>
+                </div>
+                {
+                    !isMobile && (
+                        <LanguageBar/>
+                    )
+                }
+            </div>
         </div>
     );
 };

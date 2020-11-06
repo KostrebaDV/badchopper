@@ -16,7 +16,7 @@ export function initScript(scripts, callback) {
 			const s = document.createElement('script');
 			s.setAttribute('src', url);
 			s.onload = urlCallback();
-			document.head.appendChild(s);
+			document.body.appendChild(s);
 		}
 
 		for (let script of scripts) {

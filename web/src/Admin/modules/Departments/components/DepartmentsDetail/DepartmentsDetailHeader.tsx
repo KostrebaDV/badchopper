@@ -9,6 +9,8 @@ const DepartmentsDetailHeader = (
         departmentData
     }
 ) => {
+
+    console.log(departmentData);
     return (
         <>
             {
@@ -31,7 +33,7 @@ const DepartmentsDetailHeader = (
                     <div
                         className={classes.departmentsDetailHeader}
                         style={{
-                            backgroundImage: `url(${HOST}${departmentData.image.path})`
+                            backgroundImage: `url("${HOST}${departmentData.image.path}")`
                         }}
                     >
                         <Typography

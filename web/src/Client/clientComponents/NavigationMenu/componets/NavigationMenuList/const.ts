@@ -1,5 +1,10 @@
 export default [
     {
+        index: '00',
+        label: 'home',
+        link: '/'
+    },
+    {
         index: '01',
         label: 'services',
         link: '/services'

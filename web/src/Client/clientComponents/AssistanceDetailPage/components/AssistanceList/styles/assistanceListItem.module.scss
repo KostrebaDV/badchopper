@@ -13,12 +13,17 @@
 
 .assistanceListItem:hover {
 	padding: 30px 0;
+
 	.assistanceListItem__price {
 		color: $light;
 	}
 
-	.assistanceListItem__name, .assistanceListItem__index {
+	.assistanceListItem__index {
 		color: $light;
+	}
+
+	.assistanceListItem__name {
+		color: $gold;
 	}
 
 	.assistanceListItem__description {
@@ -46,6 +51,7 @@
 
 .assistanceListItem__name {
 	font-size: 28px;
+	line-height: 1;
 	letter-spacing: -1px;
 	color: $placeholder;
 	font-family: CormorantGaramond;
@@ -75,7 +81,6 @@
 
 .assistanceListItem__index {
 	margin-right: 35px;
-	margin-bottom: 12px;
 	color: $placeholder;
 	font-size: 16px;
 	letter-spacing: -0.005em;

@@ -3,7 +3,7 @@
 	bottom: 0;
 	width: calc(100% - 60px);
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	justify-content: space-between;
 }
 
@@ -15,7 +15,13 @@
 }
 
 .mainPageFooter__rightSide {
-	margin: 0 20px;
+	margin: 80px 20px;
+	display: flex;
+	align-items: center;
+}
+
+.mainPageFooter__rightSideSocialLinks {
+	margin-right: 40px;
 }
 
 .mainPageFooter__bookingText {
@@ -23,12 +29,13 @@
 	font-style: normal;
 	font-weight: normal;
 	letter-spacing: 1px;
+	width: 250px;
 }
 
 .mainPageFooter__bookingRoundText {
 	position: absolute;
 	top: -30px;
-	right: -46px;
+	right: 30px;
 
 	-webkit-transition-duration: 0.8s;
 	-moz-transition-duration: 0.8s;

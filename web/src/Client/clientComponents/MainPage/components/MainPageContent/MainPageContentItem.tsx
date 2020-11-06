@@ -30,7 +30,6 @@ const MainPageContentItem = (
                 />
                 <Typography
                     bold='600'
-                    variant='82'
                     className={classes.mainPageContentItem__label}
                 >
                     {item.name}

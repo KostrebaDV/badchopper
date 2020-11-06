@@ -47,6 +47,10 @@ class EffectShell {
 		this.renderer.setAnimationLoop(this.render.bind(this));
 	}
 
+	destroyAnimation () {
+		this.renderer.setAnimationLoop(null);
+	}
+
 	render () {
 		// called every frame
 		this.time += this.clock.getDelta() * this.timeSpeed;

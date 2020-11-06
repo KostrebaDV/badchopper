@@ -15,7 +15,7 @@ const ContactDetailPageLeftSide = () => {
                 <div className={classes.contactDetailPageLeftSide__text}>
                     {translate(codes.forAnyQuestions)}
                 </div>
-                <MainPageFooterSocialLinks noMargin/>
+                <MainPageFooterSocialLinks/>
             </div>
         </BasePageLayoutLeft>
     );

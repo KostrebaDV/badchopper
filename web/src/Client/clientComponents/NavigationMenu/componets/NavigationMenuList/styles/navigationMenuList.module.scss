@@ -29,6 +29,7 @@
 .navigationMenuList__topBar {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 60px;
 }
 
 .navigationMenuList__feedbackButtonWrapper {
@@ -60,7 +61,11 @@
 	}
 
 	.navigationMenuList__topBar {
-		margin-bottom: 100px;
+		margin-bottom: 80px;
+	}
+
+	.navigationMenuList__languageBar {
+		margin-bottom: 85px;
 	}
 }
 

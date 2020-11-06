@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import {useCanvas} from '../../App/hooks';
 import {useGetDepartment} from './hooks';
 import {isMobile} from "react-device-detect";
 import {Image} from '../../../Admin/baseComponents/Image/Image';
@@ -16,7 +15,6 @@ import {FormButton} from '../FormButton/FormButton';
 
 const DepartmentDetailPage = () => {
     const {languageCode} = useContext(AppContext);
-    useCanvas();
 
     const {
         address,

@@ -43,7 +43,7 @@ const MediaSelector = (
             setSelectedMedia(value);
         }
         // eslint-disable-next-line
-    }, []);
+    }, [value]);
 
     const handleSubmit = (values) => {
         onFieldChange(getMediaValue(values));

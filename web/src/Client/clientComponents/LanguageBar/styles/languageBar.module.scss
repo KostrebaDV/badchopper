@@ -1,28 +1,27 @@
-.navigationMenuLanguageBar {
+.languageBar {
 	display: flex;
 	justify-content: space-between;
 	width: 100px;
-	margin-bottom: 85px;
 }
 
-.navigationMenuLanguageBar__item {
+.languageBar__item {
 	font-size: 14px;
 	cursor: pointer;
 }
 
-.navigationMenuLanguageBar__item:hover {
+.languageBar__item:hover {
 	text-decoration: underline;
 }
 
-.navigationMenuLanguageBar__item_active {
+.languageBar__item_active {
 	font-weight: bold;
 	text-decoration: underline;
 }
 
 @media (max-width: 575.98px) {
-	.navigationMenuLanguageBar {
+	.languageBar {
 		position: fixed;
-		margin-bottom: 24px;
+		margin-bottom: 40px;
 		bottom: 0;
 	}
 }
