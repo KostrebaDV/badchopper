@@ -5,7 +5,7 @@ import {DetailPage} from '../clientComponents/DetailPage/DetailPage';
 import {Route, useLocation} from "react-router-dom";
 import {ROUTES} from './routes';
 import {isMobile} from "react-device-detect";
-import {useGetDepartmentData, useGetTranslations, useSetLanguage, useGetSyncHASH} from './hooks';
+import {useGetDepartmentData, useSetLanguage} from './hooks';
 import {AppContext, AppContextProvider} from './store';
 import ClassNames from 'classnames';
 
@@ -13,10 +13,7 @@ const App = () => {
     const {pathname} = useLocation();
     const {setLanguageCode} = useContext(AppContext);
 
-    const allowReloadData = useGetSyncHASH();
-
     useGetDepartmentData();
-    useGetTranslations(allowReloadData);
     useSetLanguage(setLanguageCode);
 
     const componentClassName = ClassNames(

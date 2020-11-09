@@ -24,11 +24,3 @@ export const getGallery = (systemName) => {
 export const getFeedbacks = () => {
     return GET(ENDPOINTS.GET_COMMENTS);
 };
-
-export const getTranslations = () => {
-    return GET(ENDPOINTS.GET_TRANSLATIONS);
-};
-
-export const getSyncHash = () => {
-    return GET(ENDPOINTS.GET_SYNC_HASH);
-};

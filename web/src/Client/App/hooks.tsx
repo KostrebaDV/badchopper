@@ -1,7 +1,7 @@
-import {useEffect, useContext, useCallback, useState, useRef} from 'react';
+import {useEffect, useContext, useCallback} from 'react';
 
 import {AppContext} from './store';
-import {getAllDepartments, getSyncHash, getTranslations} from './api';
+import {getAllDepartments} from './api';
 import {isUndefined} from '../../utils';
 import Cookies from 'js-cookie';
 
@@ -15,45 +15,6 @@ export const useGetDepartmentData = () => {
             });
         // eslint-disable-next-line
     }, []);
-};
-
-export const useGetSyncHASH = () => {
-    const [allowReloadData, setAllowReloadData] = useState(0);
-    const allowReq = useRef(true);
-
-    const localStorageHash = localStorage.getItem('localStorageHash');
-
-    if (localStorageHash === null) {
-        localStorage.setItem('localStorageHash', '000-0000-0000');
-    }
-
-    useEffect(() => {
-        if (!allowReq.current) return;
-
-        getSyncHash()
-            .then(({data}) => {
-                localStorage.setItem('localStorageHash', JSON.stringify(data.hash));
-                allowReq.current = false;
-
-                // @ts-ignore
-                const allowCode = data.hash !== localStorageHash.replace(/['"]+/g, '') ? 2 : 1;
-                setAllowReloadData(allowCode);
-            })
-            .catch(() => {
-                allowReq.current = true;
-            })
-    }, [localStorageHash])
-
-    return allowReloadData;
-};
-
-export const useGetTranslations = (allowReloadData) => {
-    useEffect(() => {
-        getTranslations()
-            .then(({data}) => {
-                localStorage.setItem('translations', JSON.stringify(data));
-            })
-    }, [allowReloadData])
 };
 
 export const useSetLanguage = (setLanguageCode) => {

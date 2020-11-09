@@ -1,10 +1,8 @@
 import Cookies from 'js-cookie';
+import translations from '../static/translations/translations';
 
 export const translate = (code) => {
     const languageCode = Cookies.get('language');
-    const t = localStorage.getItem('translations');
 
-    if (t === null) return;
-
-    return JSON.parse(t)[code][languageCode];
+    return translations[code][languageCode];
 };

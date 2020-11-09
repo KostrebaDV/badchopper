@@ -64,6 +64,7 @@ const Form = memo<FormType>((
             resetFormValues();
             actionLogger(`RESET FROM: "${name}"`);
         }
+        // eslint-disable-next-line
     }, [name, onSubmit, resetFormValues, resetFormValues]);
 
     const submitForm = useCallback(() => {
@@ -119,6 +120,7 @@ const Form = memo<FormType>((
             valuesRef.current = formValues;
             fieldsRef.current = fields;
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [formValues]);
 
     //set submit function to global context on init
