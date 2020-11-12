@@ -60,10 +60,12 @@ const getAllDepartmentsClientService = async (client) => {
         const {staff, assistance, _id, ...rest} = department;
 
         const image = await getImageService(department.imageId, client).then(image => image);
+        const effectImage = await getImageService(department.effectImageId, client).then(image => image);
         const personal = await getStaffByIdService(client, department.staff)
 
         return {
             image,
+            effectImage,
             staff: personal,
             ...rest
         }

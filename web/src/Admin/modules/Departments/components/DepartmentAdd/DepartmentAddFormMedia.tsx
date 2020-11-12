@@ -10,39 +10,65 @@ const DepartmentAddFormMedia: FC<DepartmentAddFormMediaType> = (
     {
         mediaModalData,
         isDepartmentDetail,
-        mediaId,
+        values,
         editMode
     }
 ) => {
     return (
-       <>
-           <PaddingBox hrSmall>
-               <Typography bold='600' variant='18'>
-                   Медиа
-               </Typography>
-           </PaddingBox>
-           <PaddingBox small>
-               <FormLayoutItem>
-                   <Field
-                       component={MediaSelector}
-                       mediaModalData={mediaModalData}
-                       name="imageId"
-                       required
-                       previewMode={!editMode}
-                       value={mediaId}
-                       singleSelect
-                       validate={{
-                           required: true
-                       }}
-                   />
-               </FormLayoutItem>
-           </PaddingBox>
-       </>
+        <>
+            <PaddingBox hrSmall>
+                <Typography bold='600' variant='18'>
+                    Медиа
+                </Typography>
+            </PaddingBox>
+            <PaddingBox hrSmall tSmall bTiny>
+                <Typography variant='16'>
+                    Фото филиала
+                </Typography>
+            </PaddingBox>
+            <PaddingBox hrSmall>
+                <FormLayoutItem>
+                    <Field
+                        component={MediaSelector}
+                        mediaModalData={mediaModalData}
+                        name="imageId"
+                        required
+                        previewMode={!editMode}
+                        value={values && values.mediaId}
+                        singleSelect
+                        validate={{
+                            required: true
+                        }}
+                    />
+                </FormLayoutItem>
+            </PaddingBox>
+            <PaddingBox hrSmall tSmall bTiny>
+                <Typography variant='16'>
+                    Фото филиала на главной странице
+                </Typography>
+            </PaddingBox>
+            <PaddingBox hrSmall>
+                <FormLayoutItem>
+                    <Field
+                        component={MediaSelector}
+                        mediaModalData={mediaModalData}
+                        name="effectImageId"
+                        required
+                        previewMode={!editMode}
+                        value={values && values.effectImageId}
+                        singleSelect
+                        validate={{
+                            required: true
+                        }}
+                    />
+                </FormLayoutItem>
+            </PaddingBox>
+        </>
     );
 };
 
 DepartmentAddFormMedia.defaultProps = {
-    mediaId: [],
+    values: {},
     mediaModalData: [],
     isDepartmentDetail: false,
     editMode: false,

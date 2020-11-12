@@ -12,6 +12,7 @@ type DepartmentDTOType = {
     location: string,
     departmentYClients: string,
     imageId: string;
+    effectImageId: string;
     staff?: [];
     assistance?: [];
     _id?: string

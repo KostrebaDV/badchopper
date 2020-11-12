@@ -46,7 +46,10 @@ const DepartmentEditForm = (
                                         />
                                         <DepartmentAddFormMedia
                                             editMode={editMode}
-                                            mediaId={[initialValues.imageId]}
+                                            values={{
+                                                mediaId: [initialValues.imageId],
+                                                effectImageId: [initialValues.effectImageId]
+                                            }}
                                             isDepartmentDetail={isDepartmentDetail}
                                             mediaModalData={mediaModalData}
                                         />

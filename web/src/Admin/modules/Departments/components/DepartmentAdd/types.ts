@@ -4,7 +4,7 @@ export type DepartmentAddFormGeneralType = {
 }
 
 export type DepartmentAddFormMediaType = {
-    mediaId?: string[];
+    values?: { [key: string]: any; };
     mediaModalData: [];
     isDepartmentDetail?: boolean;
     editMode?: boolean;

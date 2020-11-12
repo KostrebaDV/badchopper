@@ -30,7 +30,8 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
         assistance,
         staff,
         publicId,
-        departmentYClients
+        departmentYClients,
+        effectImageId
     } = updateDepartmentDTO;
 
     return new Promise((resolve, reject) => {
@@ -53,6 +54,7 @@ const updateDepartmentModel = (updateDepartmentDTO: DepartmentDTOType, client) =
                         location,
                         imageId,
                         assistance,
+                        effectImageId,
                         staff,
                         publicId,
                         departmentYClients

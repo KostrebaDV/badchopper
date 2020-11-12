@@ -15,6 +15,7 @@ export type DepartmentAddContentType = {
         name: string;
         phone: string;
         imageId: string;
+        effectImageId: string;
     };
     departmentId?: string;
     editMode?: boolean;

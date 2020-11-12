@@ -8,6 +8,7 @@ export default (departmentData) => {
         name,
         phone,
         image,
+        effectImageId,
         staff,
         assistance,
         departmentYClients
@@ -21,6 +22,7 @@ export default (departmentData) => {
             description: 'error',
             location: 'error',
             name: 'error',
+            effectImageId: 'error',
             phone: 'error',
             imageId: 'error',
             descriptionRU: 'error',
@@ -37,6 +39,7 @@ export default (departmentData) => {
             assistance: [],
         };
     }
+    console.log(effectImageId);
 
     return {
         cityUA: address.city.ua,
@@ -54,6 +57,7 @@ export default (departmentData) => {
         name,
         phone,
         imageId: image._id,
+        effectImageId,
         staff,
         assistance,
         departmentYClients

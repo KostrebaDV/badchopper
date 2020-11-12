@@ -6,7 +6,7 @@ import classes from './styles/index.module.scss';
 import plusIcon from '@iconify/icons-mdi/plus';
 import {Icon} from '@iconify/react';
 import ClassNames from 'classnames';
-import {isNull, removeArrayElementByValue} from '../../../utils';
+import {isNull, removeArrayElementByValue, isUndefined} from '../../../utils';
 import {getAllImages} from '../../modules/Media/api';
 import {MediaSelectorSingleItemPreview} from './MediaSelectorSingleItemPreview';
 import {MediaSelectorMultipleItemPreview} from './MediaSelectorMultipleItemPreview';
@@ -39,11 +39,13 @@ const MediaSelector = (
     };
 
     useEffect(() => {
-        if (!isNull(value)) {
+        if (!isNull(value) && !isUndefined(value) && value.lenght !== 0) {
             setSelectedMedia(value);
         }
         // eslint-disable-next-line
     }, [value]);
+
+    console.log(value);
 
     const handleSubmit = (values) => {
         onFieldChange(getMediaValue(values));

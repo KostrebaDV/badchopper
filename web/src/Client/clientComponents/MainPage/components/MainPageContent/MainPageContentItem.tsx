@@ -24,7 +24,7 @@ const MainPageContentItem = (
             //@ts-ignore
             <Link link={`${ROUTES.DEPARTMENT_DETAIL}${item.publicId}`} className={componentClassName}>
                 <Image
-                    src={item.image.path}
+                    src={item.effectImage.path}
                     alt={item.name}
                     className={classes.mainPageContentItem_image}
                 />
