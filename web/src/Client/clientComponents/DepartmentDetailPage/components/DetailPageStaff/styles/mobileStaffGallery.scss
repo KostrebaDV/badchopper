@@ -20,6 +20,8 @@
 .mobileStaffGallery-item__name {
 	color: $gold;
 	font-size: 20px;
+	display: flex;
+	align-items: center;
 }
 
 .mobileStaffGallery-item__description {
@@ -35,4 +37,8 @@
 	border-bottom: 1px solid $gold;
 	text-align: center;
 	width: 77vw;
+}
+
+.mobileStaffGallery-item__insta-image {
+	margin-left: 5px;
 }

@@ -16,9 +16,16 @@ const galleryItemTemplate = ({item, index}, galleryName) => {
                     src="${HOST}${item.image.path}"
                     data-index="${index}"
                 >
-                <div class="${galleryName}-item__name">
-                    ${item.name} ${item.surname} 
-                </div>
+                 <a href="${item.instagramUrl}" target="_blank">
+                    <div class="${galleryName}-item__name">
+                        ${item.name} ${item.surname} 
+                         <img
+                                class="${galleryName}-item__insta-image"
+                                src="images/insta_icon.png"
+                                alt="instaIcon"
+                            />
+                    </div>
+                </a>
                 <div class="${galleryName}-item__description">
                     ${item.description}
                 </div>

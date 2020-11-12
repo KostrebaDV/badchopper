@@ -9,5 +9,5 @@ export const yClientsUrl = 'https://n203813.yclients.com/';
 export const LANGUAGE_CODES = ['UA', 'RU', 'EN'];
 // @ts-ignore
 export const HOST = process.env.NODE_ENV === 'development'
-                    ? 'http://localhost:4040/'
-                    : 'http://185.25.116.2/'
+    ? 'http://localhost:4040/'
+    : 'http://badchopper.com.ua/'

@@ -61,16 +61,18 @@ const NavigationMenuList = () => {
                     )
                 }
             </div>
-            {
-                menuList.map(item => {
-                    return (
-                        <NavigationMenuListItem
-                            key={getUniqueKey()}
-                            item={item}
-                        />
-                    );
-                })
-            }
+            <div className={classes.navigationMenuList__wrapper}>
+                {
+                    menuList.map(item => {
+                        return (
+                            <NavigationMenuListItem
+                                key={getUniqueKey()}
+                                item={item}
+                            />
+                        );
+                    })
+                }
+            </div>
             {
                 isMobile && (
                     <LanguageBar
