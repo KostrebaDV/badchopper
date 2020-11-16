@@ -68,8 +68,6 @@ const EditGalleryModalContent = (
         />
     );
 
-    console.log(initialValues);
-
     return (
         <>
             <ModalHeader

@@ -166,5 +166,11 @@ export default {
         "ru": "главная",
         "ua": "головна",
         "en": "main page"
+    },
+    "29": {
+        "translationCode": 29,
+        "ru": "Посмотреть больше",
+        "ua": "Дивитися більше",
+        "en": "See more"
     }
 }

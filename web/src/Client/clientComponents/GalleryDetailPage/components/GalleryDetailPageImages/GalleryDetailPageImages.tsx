@@ -23,11 +23,12 @@ const GalleryDetailPageImages = (
         showOnInit
     });
 
-    const GridLayoutRowColumn = isMobile ? 1 : 3;
+    const gridLayoutRowColumn = isMobile ? 1 : 3;
+    const itemsToShowCount = itemsFromProps.length - showCount >= 3 ? 3 : itemsFromProps.length - showCount;
 
     return (
         <GridLayoutRow
-            gridColumn={GridLayoutRowColumn}
+            gridColumn={gridLayoutRowColumn}
             gridGap="20px"
             className={classes.galleryDetailPageImages}
         >
@@ -36,7 +37,7 @@ const GalleryDetailPageImages = (
                     if (item.isLast) {
                         return (
                             <GalleryDetailPageImagesShowMore
-                                showOnMore={showOnMore}
+                                showOnMore={itemsToShowCount}
                                 key={getUniqueKey()}
                                 onClick={() => showMore(showCount + showOnMore)}
                             />

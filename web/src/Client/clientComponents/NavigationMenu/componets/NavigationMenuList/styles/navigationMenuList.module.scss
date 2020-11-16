@@ -55,9 +55,9 @@
 	width: 100%;
 }
 
-//.navigationMenuList__languageBar {
-//	margin-bottom: 55px;
-//}
+.navigationMenuList__languageBar {
+	margin-top: 50px;
+}
 
 @media (max-width: 575.98px) {
 	.navigationMenuList {
@@ -71,7 +71,7 @@
 
 	.navigationMenuList__topBar {
 		//margin-bottom: 80px;
-		margin-bottom: 25%;
+		margin-bottom: 10%;
 	}
 }
 

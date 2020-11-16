@@ -15,10 +15,12 @@
 
 .galleryDetailPageImagesShowMore__count {
 	color: $gold;
+	margin-right: 8px;
 }
 
 .galleryDetailPageImagesShowMore__arrow {
-	margin-top: -35px;
+	vertical-align: sub;
+	margin-left: 5px;
 }
 
 @media (max-width: 575.98px) {
@@ -31,10 +33,6 @@
 	.galleryDetailPageImagesShowMore__text {
 		width: 200px;
 		font-size: 24px;
-	}
-
-	.galleryDetailPageImagesShowMore__arrow {
-		margin-top: -24px;
 	}
 }
 

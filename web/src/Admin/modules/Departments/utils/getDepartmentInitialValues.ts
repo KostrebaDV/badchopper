@@ -39,7 +39,6 @@ export default (departmentData) => {
             assistance: [],
         };
     }
-    console.log(effectImageId);
 
     return {
         cityUA: address.city.ua,

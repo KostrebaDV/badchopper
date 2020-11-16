@@ -45,8 +45,6 @@ const MediaSelector = (
         // eslint-disable-next-line
     }, [value]);
 
-    console.log(value);
-
     const handleSubmit = (values) => {
         onFieldChange(getMediaValue(values));
         setSelectedMedia(values);
