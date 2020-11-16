@@ -1,0 +1,82 @@
+@import "../../styles/colors/colors.module";
+
+.cookieNotification {
+	background-color: #484541;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	color: $light;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24px 36px;
+	box-sizing: border-box;
+	z-index: 1;
+}
+
+.cookieNotification__button {
+	text-transform: uppercase;
+}
+
+.cookieNotification__right {
+	display: flex;
+	align-items: center;
+}
+
+.cookieNotification__closeIcon {
+	margin-left: 40px;
+	width: 22px;
+	height: 22px;
+	cursor: pointer;
+}
+
+@media (max-width: 575.98px) {
+	.cookieNotification {
+		display: block;
+	}
+
+	.cookieNotification__right {
+		margin-top: 16px;
+		display: block;
+	}
+
+	.cookieNotification__button {
+		display: block;
+		text-align: center;
+	}
+
+	.cookieNotification__closeIcon {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.cookieNotification {
+		display: block;
+	}
+
+	.cookieNotification__right {
+		margin-top: 16px;
+	}
+
+	.cookieNotification__button {
+		display: block;
+		text-align: center;
+	}
+
+	.cookieNotification__closeIcon {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+	}
+}
+
+@media (max-width: 991.98px) {
+
+}
+
+@media (max-width: 1199.98px) {
+
+}

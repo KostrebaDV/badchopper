@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {MainPage} from '../clientComponents/MainPage/MainPage';
 import classes from './styles/index.module.scss';
 import {DetailPage} from '../clientComponents/DetailPage/DetailPage';
@@ -6,15 +6,17 @@ import {Route, useLocation} from "react-router-dom";
 import {ROUTES} from './routes';
 import {isMobile} from "react-device-detect";
 import {useGetDepartmentData, useSetLanguage} from './hooks';
-import {AppContext, AppContextProvider} from './store';
+import {AppContextProvider} from './store';
 import ClassNames from 'classnames';
+import {CookieNotification} from '../CookieNotification/CookieNotification';
+import Cookies from 'js-cookie';
 
 const App = () => {
     const {pathname} = useLocation();
-    const {setLanguageCode} = useContext(AppContext);
+    const allowCookie = Cookies.get('allowCookie');
 
     useGetDepartmentData();
-    useSetLanguage(setLanguageCode);
+    useSetLanguage();
 
     const componentClassName = ClassNames(
         classes.app,
@@ -47,6 +49,11 @@ const App = () => {
                     <DetailPage/>
                 </Route>
             </div>
+            {
+                allowCookie === 'false' && (
+                    <CookieNotification/>
+                )
+            }
         </div>
     );
 };

@@ -28,4 +28,6 @@ export const codes = {
     toHomePage: 27,
     home: 28,
     seeMore: 29,
+    cookieConfirmationText: 30,
+    confirm: 31,
 };
