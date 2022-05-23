@@ -1,13 +1,25 @@
 .mainPageContent {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 25vh;
+	margin-top: 13vh;
+}
+
+.mainPageContentLabel {
+	margin: 10vh auto 0;
+	display: block;
+	text-align: center;
+	font-size: 3em;
 }
 
 @media (max-width: 575.98px) {
 	.mainPageContent {
 		margin-top: 50px;
 		flex-direction: column;
+	}
+
+	.mainPageContentLabel {
+		margin-top: 3vh;
+		font-size: 2em;
 	}
 }
 

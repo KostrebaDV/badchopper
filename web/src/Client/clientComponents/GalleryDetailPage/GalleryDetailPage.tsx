@@ -25,7 +25,7 @@ const GalleryDetailPage = () => {
         <>
             <Header
                 firstLetterUppercase
-                label={translate(codes.gallery)}
+                label={translate(codes.galleryLabel)}
             />
             <div className={classes.galleryDetailPage}>
                 <Gallery

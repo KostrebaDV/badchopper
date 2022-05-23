@@ -57,7 +57,7 @@ const FeedbacksDetailPage = () => {
                 isMobile && (
                     <Header
                         firstLetterUppercase
-                        label={translate(codes.feedbacks)}
+                        label={translate(codes.feedbacksLabel)}
                     />
                 )
             }
@@ -69,7 +69,7 @@ const FeedbacksDetailPage = () => {
                     !isMobile && (
                         <Header
                             firstLetterUppercase
-                            label={translate(codes.feedbacks)}
+                            label={translate(codes.feedbacksLabel)}
                             className={classes.feedbacksDetailPage__headLabel}
                         />
                     )

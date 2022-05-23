@@ -2,3 +2,4 @@
 .idea
 /.env
 /web/.env
+/public/images/*

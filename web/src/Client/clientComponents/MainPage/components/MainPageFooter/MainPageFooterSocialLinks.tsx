@@ -9,7 +9,7 @@ const MainPageFooterSocialLinks = () => {
             variant="14"
         >
             <Link hasRoute={false} link="https://www.instagram.com/bad_chopper/">
-                Instagramm
+                Instagram
             </Link>
         </Typography>
     );

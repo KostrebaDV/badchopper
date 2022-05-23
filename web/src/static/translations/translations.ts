@@ -184,5 +184,35 @@ export default {
         "ru": "Понятно",
         "ua": "Зрозуміло",
         "en": "Ok"
-    }
-}
+    },
+    "32": {
+        "translationCode": 32,
+        "ru": "Первый барбершоп в Черновцах",
+        "ua": "Перший барбершоп у Чернівцях",
+        "en": "The first barbershop in Chernivtsi"
+    },
+    "33": {
+        "translationCode": 33,
+        "ru": "Здесь вы увидите фото настоящих мужчин",
+        "ua": "Тут ви побачите фото справжніх чоловіків",
+        "en": "Here you will see photos of real men"
+    },
+    "34": {
+        "translationCode": 34,
+        "ru": "Мы находимся рядом с вами",
+        "ua": "Ми знаходимось поруч з вами",
+        "en": "TWe are close to you"
+    },
+    "35": {
+        "translationCode": 35,
+        "ru": "Первое впечатление нельзя произвести дважды",
+        "ua": "Перше враження не можна справити двічі",
+        "en": "The first impression cannot be made twice"
+    },
+    "36": {
+        "translationCode": 36,
+        "ru": "Свобода в выборе. Купите подарочный сертификат на каждую из услуг Bad Chopper",
+        "ua": "Свобода у виборі. Придбайте подарунковий сертифікат на кожну з послуг Bad Chopper",
+        "en": "Freedom of choice. Purchase a gift certificate for each of Bad Chopper's services"
+    },
+};

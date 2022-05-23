@@ -8,12 +8,12 @@ import {isMobile} from "react-device-detect";
 import {useGetDepartmentData, useSetLanguage} from './hooks';
 import {AppContextProvider} from './store';
 import ClassNames from 'classnames';
-import {CookieNotification} from '../CookieNotification/CookieNotification';
-import Cookies from 'js-cookie';
+// import {CookieNotification} from '../CookieNotification/CookieNotification';
+// import Cookies from 'js-cookie';
 
 const App = () => {
     const {pathname} = useLocation();
-    const allowCookie = Cookies.get('allowCookie');
+    // const allowCookie = Cookies.get('allowCookie');
 
     useGetDepartmentData();
     useSetLanguage();
@@ -49,11 +49,11 @@ const App = () => {
                     <DetailPage/>
                 </Route>
             </div>
-            {
-                allowCookie === 'false' && (
-                    <CookieNotification/>
-                )
-            }
+            {/*{*/}
+            {/*    allowCookie === 'false' && (*/}
+            {/*        <CookieNotification/>*/}
+            {/*    )*/}
+            {/*}*/}
         </div>
     );
 };

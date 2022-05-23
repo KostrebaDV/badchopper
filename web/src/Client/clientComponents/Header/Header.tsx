@@ -9,7 +9,7 @@ import {codes} from '../../../static/translations/codes';
 import {yClientsUrl} from '../../../const';
 import {BasePageLayout} from '../BasePageLayout/BasePageLayout';
 import {BasePageLayoutRight} from '../BasePageLayout/BasePageLayoutRight';
-import {BasePageLayoutLeft} from '../BasePageLayout/BasePageLayoutLeft';
+import {BasePageLayoutLeft} from "../BasePageLayout/BasePageLayoutLeft";
 
 const Header = (
     {
@@ -44,34 +44,37 @@ const Header = (
                     {label}
                 </Typography>
             </BasePageLayoutLeft>
-           <BasePageLayoutRight>
-               <div>
-                   {
-                       content && (
-                           <Typography
-                               displayBlock
-                               variant="20"
-                               className={classes.header__description}
-                           >
-                               {content}
-                           </Typography>
-                       )
-                   }
-
-                   {
-                       showButton && (
-                           <Button
-                               className={classes.header__button}
-                               labelUppercase
-                               label={translate(codes.bookNow)}
-                               onClick={() => {
-                                   window.open(yClientsUrl, '_blank');
-                               }}
-                           />
-                       )
-                   }
-               </div>
-           </BasePageLayoutRight>
+            {
+                (content || showButton) && (
+                    <BasePageLayoutRight>
+                        <>
+                            {
+                                content && (
+                                    <Typography
+                                        displayBlock
+                                        variant="20"
+                                        className={classes.header__description}
+                                    >
+                                        {content}
+                                    </Typography>
+                                )
+                            }
+                            {
+                                showButton && (
+                                    <Button
+                                        className={classes.header__button}
+                                        labelUppercase
+                                        label={translate(codes.bookNow)}
+                                        onClick={() => {
+                                            window.open(yClientsUrl, '_blank');
+                                        }}
+                                    />
+                                )
+                            }
+                        </>
+                    </BasePageLayoutRight>
+                )
+            }
         </BasePageLayout>
     );
 };

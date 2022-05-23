@@ -10,7 +10,7 @@ const ContactDetailPageLeftSide = () => {
         <BasePageLayoutLeft>
             <div className={classes.contactDetailPageLeftSide}>
                 <div className={classes.contactDetailPageLeftSide__headLabel}>
-                    {translate(codes.contacts)}
+                    {translate(codes.contactsLabel)}
                 </div>
                 <div className={classes.contactDetailPageLeftSide__text}>
                     {translate(codes.forAnyQuestions)}

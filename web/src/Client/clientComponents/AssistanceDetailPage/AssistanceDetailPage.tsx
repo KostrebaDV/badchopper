@@ -13,7 +13,7 @@ const AssistanceDetailPage = () => {
             <Header
                 firstLetterUppercase
                 label={translate(codes.services)}
-                content={translate(codes.eachServiceCan)}
+                content={translate(codes.giftLabel)}
             />
             <AssistanceList
                 assistance={assistanceData}

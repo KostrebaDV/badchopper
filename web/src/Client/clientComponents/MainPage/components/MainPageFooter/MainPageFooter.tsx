@@ -39,9 +39,13 @@ const MainPageFooter = () => {
                 />
             </div>
             <div className={classes.mainPageFooter__rightSide}>
-                <div className={classes.mainPageFooter__rightSideSocialLinks}>
-                    <MainPageFooterSocialLinks/>
-                </div>
+                {
+                    isMobile && (
+                        <div className={classes.mainPageFooter__rightSideSocialLinks}>
+                            <MainPageFooterSocialLinks/>
+                        </div>
+                    )
+                }
                 {
                     !isMobile && (
                         <LanguageBar/>

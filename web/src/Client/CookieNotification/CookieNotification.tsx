@@ -8,12 +8,12 @@ import closeIcon from '../../static/images/closeIcon.svg';
 import Cookies from 'js-cookie';
 
 const CookieNotification = () => {
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(true);
 
     const handleConfirm = () => {
         Cookies.set('allowCookie', 'true');
         setShow(false);
-    }
+    };
 
     return (
         <>

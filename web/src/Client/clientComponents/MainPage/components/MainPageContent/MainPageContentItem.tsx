@@ -8,10 +8,12 @@ import {ROUTES} from '../../../../App/routes';
 import {translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
 import {AppContext} from '../../../../App/store';
+import logo from "../../../../../static/images/badchopperLogoFilled.svg";
 
 const MainPageContentItem = (
     {
-        item
+        item,
+        index
     }
 ) => {
     const {languageCode} = useContext(AppContext);
@@ -28,12 +30,16 @@ const MainPageContentItem = (
                     alt={item.name}
                     className={classes.mainPageContentItem_image}
                 />
-                <Typography
-                    bold='600'
-                    className={classes.mainPageContentItem__label}
-                >
-                    {item.name}
-                </Typography>
+                <div>
+                    <img src={logo} alt="badchopperLogo"/>
+                    <Typography
+                        bold='600'
+                        className={classes.mainPageContentItem__label}
+                    >
+                        {` / 0${index}`}
+                    </Typography>
+                </div>
+
                 <Typography
                     variant='18'
                     className={classes.mainPageContentItem__address}

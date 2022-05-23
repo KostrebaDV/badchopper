@@ -10,17 +10,17 @@ export const useGetDepartmentData = () => {
     const allowCookie = Cookies.get('allowCookie');
 
     if (isUndefined(allowCookie)) {
-        Cookies.set('allowCookie', 'false')
+        Cookies.set('allowCookie', 'false');
     }
 
     if (isUndefined(allowCookie)) {
-        Cookies.set('allowCookie', 'false')
+        Cookies.set('allowCookie', 'false');
     }
 
     useEffect(() => {
         getAllDepartments()
             .then(({data}) => {
-                setDepartments(data)
+                setDepartments(data);
             });
         // eslint-disable-next-line
     }, []);
@@ -37,7 +37,7 @@ export const useSetLanguage = () => {
             setLanguageCode(languageCode);
         } else {
             setLanguageCode('ua');
-            Cookies.set('language', 'ua')
+            Cookies.set('language', 'ua');
         }
         // eslint-disable-next-line
     }, [])

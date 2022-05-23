@@ -30,4 +30,9 @@ export const codes = {
     seeMore: 29,
     cookieConfirmationText: 30,
     confirm: 31,
+    mainPageLabel: 32,
+    galleryLabel: 33,
+    contactsLabel: 34,
+    feedbacksLabel: 35,
+    giftLabel: 36,
 };

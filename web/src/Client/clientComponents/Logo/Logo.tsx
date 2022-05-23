@@ -35,6 +35,6 @@ const Logo = (
 
 Logo.defaultProps = {
     footerLogo: false
-}
+};
 
 export {Logo};

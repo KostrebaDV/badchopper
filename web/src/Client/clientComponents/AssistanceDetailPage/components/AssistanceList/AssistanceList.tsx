@@ -10,20 +10,20 @@ const AssistanceList = (
         assistance
     }
 ) => {
-    const [selectedItem, setSelectedItem] = useState({})
-    const [openModal, setOpenModal] = useState(false)
+    const [selectedItem, setSelectedItem] = useState({});
+    const [openModal, setOpenModal] = useState(false);
 
     const onItemClick = id => {
         const currentItem = assistance.find(item => item._id === id);
 
         setSelectedItem(currentItem);
         setOpenModal(true);
-    }
+    };
 
     const closeItemModal = () => {
         setOpenModal(false);
         setSelectedItem({});
-    }
+    };
 
     return (
         <>

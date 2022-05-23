@@ -7,6 +7,7 @@ import {codes} from '../../../../../static/translations/codes';
 import {translate} from '../../../../../utils';
 import {Link} from '../../../../../Admin/baseComponents/Link/Link';
 import {yClientsUrl} from '../../../../../const';
+import {MainPageFooterSocialLinks} from "../../../MainPage/components/MainPageFooter/MainPageFooterSocialLinks";
 
 const NavigationMenuTopBar = () => {
     const {isOpen, openNavigation} = useContext(NavigationMenuContext);
@@ -35,6 +36,7 @@ const NavigationMenuTopBar = () => {
                     {translate(codes.bookNow)}
                 </Link>
             </Typography>
+            <MainPageFooterSocialLinks/>
             <Link
                 activeLinkClass={classes.navigationMenuTopBar__button_active}
                 className={classes.navigationMenuTopBar__button}
