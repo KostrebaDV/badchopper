@@ -32,7 +32,7 @@ const AddAssistanceModalContent = (
             descriptionRU,
             descriptionUA,
             ...rest
-        } = values
+        } = values;
 
         const requestData = {
             ...rest,
@@ -46,7 +46,7 @@ const AddAssistanceModalContent = (
                 ru: descriptionRU,
                 en: descriptionEN,
             }
-        }
+        };
 
         addAssistance(requestData)
             .then(({data}) => {
@@ -136,8 +136,7 @@ const AddAssistanceModalContent = (
                                         label="Стоимость"
                                         required
                                         validate={{
-                                            required: true,
-                                            number: true
+                                            required: true
                                         }}
                                         placeholder="00.00"
                                     />

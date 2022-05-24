@@ -3,7 +3,7 @@ type AssistanceDTOType = {
     name: string;
     description: string;
     imageId: string;
-    price: number;
+    price: string;
     image?: object;
 }
 

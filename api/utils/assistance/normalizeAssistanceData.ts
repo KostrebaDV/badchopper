@@ -1,5 +1,3 @@
-import { toNumber } from "../helpers/toNumber";
-
 export const normalizeAssistanceData = (assistanceDTO) => {
     const {
         id,
@@ -9,15 +7,13 @@ export const normalizeAssistanceData = (assistanceDTO) => {
         imageId
     } = assistanceDTO;
 
-    const normalizePrice = toNumber(price);
-
     if (id) {
         return {
             id,
             name,
             description,
             imageId,
-            price: normalizePrice
+            price
         }
     }
 
@@ -25,6 +21,6 @@ export const normalizeAssistanceData = (assistanceDTO) => {
         name,
         description,
         imageId,
-        price: normalizePrice
+        price
     }
 };

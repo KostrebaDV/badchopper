@@ -24,7 +24,6 @@ const addAssistanceService = (assistanceDTO, client) => {
     if (assistanceDTO.name.length !== 0) {
         const normalizeAssistanceDTO: AssistanceDTOType = normalizeAssistanceData(assistanceDTO);
 
-
         return addAssistanceModel(normalizeAssistanceDTO, client)
             .then(() => updateClientSyncHashService(client));
     }

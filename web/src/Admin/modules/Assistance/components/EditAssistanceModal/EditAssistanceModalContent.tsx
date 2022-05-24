@@ -34,7 +34,7 @@ const EditAssistanceModalContent = (
             descriptionRU,
             descriptionUA,
             ...rest
-        } = values
+        } = values;
 
         const requestData = {
             ...rest,
@@ -49,7 +49,7 @@ const EditAssistanceModalContent = (
                 ru: descriptionRU,
                 en: descriptionEN,
             }
-        }
+        };
 
         updateAssistanceAPI(requestData)
             .then(({data}) => {
@@ -91,7 +91,7 @@ const EditAssistanceModalContent = (
         descriptionUA: modalData?.description?.ua,
         descriptionRU: modalData?.description?.ru,
         descriptionEN: modalData?.description?.en,
-    }
+    };
 
     return modalData && (
         <>
@@ -153,8 +153,7 @@ const EditAssistanceModalContent = (
                                         label="Стоимость"
                                         required
                                         validate={{
-                                            required: true,
-                                            number: true
+                                            required: true
                                         }}
                                         placeholder="00.00"
                                     />
@@ -171,7 +170,7 @@ const EditAssistanceModalContent = (
                 />
             </ModalFooter>
         </>
-    )
+    );
 };
 
 export {EditAssistanceModalContent};
