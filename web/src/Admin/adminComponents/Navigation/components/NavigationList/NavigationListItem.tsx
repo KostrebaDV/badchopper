@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import classes from './styles/index.module.scss';
 import {Link} from '../../../../baseComponents/Link/Link';
 import {getNavigationItemIcon} from '../../utils';
-import ClassNames from 'classnames'
+import ClassNames from 'classnames';
 
 const NavigationListItem = (
     {
