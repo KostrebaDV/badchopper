@@ -32,7 +32,7 @@ const Link: FC<LinkType> = (
         className
     );
 
-	const componentClassName = activeLinkClass ? `${className} ${activeLinkClass}`: className
+	const componentClassName = activeLinkClass ? `${className} ${activeLinkClass}`: className;
 
 	const getRouteLink = () => {
 		return activeLinkClass

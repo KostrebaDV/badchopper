@@ -2,7 +2,7 @@ import React from 'react';
 import {getUniqueKey} from '../../../utils';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
-import './styles/utilStyles.scss'
+import './styles/utilStyles.scss';
 
 const MultiLanguageLanguageCodeLabel = (
     {
@@ -25,7 +25,7 @@ const MultiLanguageLanguageCodeLabel = (
        >
            {code}
        </div>
-   )
+   );
 };
 
 export {MultiLanguageLanguageCodeLabel};

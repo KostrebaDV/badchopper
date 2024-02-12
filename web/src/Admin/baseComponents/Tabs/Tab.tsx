@@ -10,11 +10,11 @@ const Tab = (
         activeTabName: activeTabNameFromProps
     }
 ) => {
-    const {activeTabName} = useContext(TabsContext)
+    const {activeTabName} = useContext(TabsContext);
 
-    const showTab = activeTabName.length !== 0 ? tabName === activeTabName : tabName === activeTabNameFromProps
+    const showTab = activeTabName.length !== 0 ? tabName === activeTabName : tabName === activeTabNameFromProps;
 
-    const componentStyles = showTab ? { display: 'block' } : { display: 'none' }
+    const componentStyles = showTab ? { display: 'block' } : { display: 'none' };
 
     return (
         <>
@@ -39,6 +39,6 @@ const Tab = (
 
 Tab.defaultProps = {
     useUnmount: true
-}
+};
 
 export {Tab};

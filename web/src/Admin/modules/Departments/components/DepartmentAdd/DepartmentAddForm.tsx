@@ -63,7 +63,7 @@ const DepartmentAddForm = (
                                 />
                             </Tab>
                         </div>
-                    )
+                    );
                 }}
             >
             </Tabs>

@@ -21,7 +21,7 @@ const MultiLanguageField = (
         //wait until DOM be ready
         const timeOut = setTimeout(() => {
             setActiveTranslationCode(`${languages[0]}-${name}`, name);
-        }, 10)
+        }, 10);
 
         return () => {
             clearTimeout(timeOut);
@@ -54,7 +54,7 @@ const MultiLanguageField = (
                                 name={name}
                                 setActiveTranslationCode={code => setActiveTranslationCode(code, name)}
                             />
-                        )
+                        );
                     })
                 }
                 </div>
@@ -76,7 +76,7 @@ const MultiLanguageField = (
                 })
             }
         </div>
-    )
+    );
 };
 
 MultiLanguageField.defaultProps = {

@@ -24,10 +24,10 @@ const StaffList = (
     useEffect(() => {
         if (isBarberLayout) {
             getAllBarberStaff()
-                .then(({data}) => setAllStaff(data))
+                .then(({data}) => setAllStaff(data));
         } else {
             getAllMangerStaff()
-                .then(({data}) => setAllStaff(data))
+                .then(({data}) => setAllStaff(data));
         }
         // eslint-disable-next-line
     }, []);
@@ -57,9 +57,9 @@ const StaffList = (
                     showNotification({
                         id: getUniqueId(),
                         message: `Сотрудник "${itemName}" удален`
-                    })
+                    });
                 }
-            })
+            });
     };
 
     const handleOpenItemDeleteModal = (e, id) => {
@@ -129,7 +129,7 @@ const StaffList = (
                                 handleOpenItemDeleteModal={handleOpenItemDeleteModal}
                                 handleOpenItemEditModal={handleOpenItemEditModal}
                             />
-                        )
+                        );
                     })
                 }
                 {

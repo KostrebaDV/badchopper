@@ -46,7 +46,7 @@ export const addDepartmentHook = (values, onAddDepartmentSuccess) => {
     return addDepartment(requestData)
         .then(() => {
             onAddDepartmentSuccess();
-        })
+        });
 };
 
 export const editDepartmentHook = (values, onEditDepartmentSuccess) => {
@@ -55,5 +55,5 @@ export const editDepartmentHook = (values, onEditDepartmentSuccess) => {
     return editDepartment(requestData)
         .then(() => {
             onEditDepartmentSuccess();
-        })
+        });
 };

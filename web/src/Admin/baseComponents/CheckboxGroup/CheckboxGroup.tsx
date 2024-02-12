@@ -29,28 +29,28 @@ const CheckboxGroup = (
 
 	const onMultipleSelectCheckboxChange = (itemValue) => {
         if (checkboxValue.includes(itemValue)) {
-            const mutateValues = removeArrayElementByValue(checkboxValue, itemValue)
-            setCheckboxValue(mutateValues)
+            const mutateValues = removeArrayElementByValue(checkboxValue, itemValue);
+            setCheckboxValue(mutateValues);
 
             return onFieldChange(mutateValues);
         }
 
         setCheckboxValue([...checkboxValue, itemValue]);
         onFieldChange([...checkboxValue, itemValue]);
-    }
+    };
 
     const onSingleSelectCheckboxChange = (itemValue) => {
         setCheckboxValue([itemValue]);
         onFieldChange([itemValue]);
-    }
+    };
 
 	const ToggleCheckbox = (itemValue: string | number) => {
 	    if (previewMode || disabled) return;
 
         if (multipleSelect) {
-            onMultipleSelectCheckboxChange(itemValue)
+            onMultipleSelectCheckboxChange(itemValue);
         } else {
-            onSingleSelectCheckboxChange(itemValue)
+            onSingleSelectCheckboxChange(itemValue);
         }
     };
 
@@ -60,7 +60,7 @@ const CheckboxGroup = (
             [classes.checkbox__preview]: previewMode,
         },
         classes.checkbox
-    )
+    );
 
 	return items.map(item => {
 	    const {id, content} = item;
@@ -90,14 +90,14 @@ const CheckboxGroup = (
                     {content}
                 </div>
             </div>
-        )
+        );
     });
 };
 
 CheckboxGroup.defaultProps = {
     multipleSelect: true,
     previewMode: false,
-}
+};
 
 CheckboxGroup.propTypes = {
     multipleSelect: PropTypes.bool,

@@ -10,26 +10,26 @@ const TabsItem = (
         activeTabName: activeTabNameFromProps
     }
 ) => {
-    const {activeTabName, setActiveTab} = useContext(TabsContext)
+    const {activeTabName, setActiveTab} = useContext(TabsContext);
 
     const allowChange = useMemo(() => {
-        return activeTabName.length !== 0 ? tabName !== activeTabName : tabName !== activeTabNameFromProps
-    }, [activeTabName, activeTabNameFromProps, tabName])
+        return activeTabName.length !== 0 ? tabName !== activeTabName : tabName !== activeTabNameFromProps;
+    }, [activeTabName, activeTabNameFromProps, tabName]);
 
     const handleTabClick = useCallback(() => {
         if (allowChange) {
-            setActiveTab(tabName)
+            setActiveTab(tabName);
         }
-    }, [setActiveTab, tabName, allowChange])
+    }, [setActiveTab, tabName, allowChange]);
 
-    const isActiveTab = activeTabName.length !== 0 ? tabName === activeTabName : tabName === activeTabNameFromProps
+    const isActiveTab = activeTabName.length !== 0 ? tabName === activeTabName : tabName === activeTabNameFromProps;
 
     const componentClassName = ClassNames(
         {
             [classes.tabsItem__active]: isActiveTab
         },
         classes.tabsItem
-    )
+    );
 
     return (
         <div

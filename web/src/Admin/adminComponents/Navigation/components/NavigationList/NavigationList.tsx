@@ -20,7 +20,7 @@ const NavigationList: FC<NavigationListProps> = (
 
                     return item.items.length === 0
                         ? <NavigationListItem key={key} item={item} />
-                        : <NavigationListItemCollapse key={key} item={item}/>
+                        : <NavigationListItemCollapse key={key} item={item}/>;
                 })
             }
         </div>

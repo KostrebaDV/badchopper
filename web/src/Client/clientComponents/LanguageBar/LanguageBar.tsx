@@ -45,7 +45,7 @@ const LanguageBar: FC<LanguageBarProps> = (
 
     const onLanguageCodeClick = useCallback((code) => {
         if (languageCode !== code) {
-            Cookies.set('language', code)
+            Cookies.set('language', code);
             setLanguageCode(code);
             if (typeof openNavigation !== 'undefined') {
                 openNavigation(false);

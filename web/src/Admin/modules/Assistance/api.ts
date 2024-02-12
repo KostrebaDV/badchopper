@@ -10,7 +10,7 @@ export const getAllAssistance = () => {
 };
 
 export const updateAssistance = (data) => {
-    return PUT(ENDPOINTS.UPDATE_ASSISTANCE, data)
+    return PUT(ENDPOINTS.UPDATE_ASSISTANCE, data);
 };
 
 export const deleteAssistance = (id) => {

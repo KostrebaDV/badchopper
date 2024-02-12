@@ -11,4 +11,4 @@ export const TABS = [
         tabName: 'ASSISTANCE',
         label: 'Услуги'
     }
-]
+];

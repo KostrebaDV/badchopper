@@ -46,7 +46,7 @@ const DepartmentsDetailContent = (
                             setNavigationList(data);
                         });
                 }
-            })
+            });
     };
 
     const onDeleteDepartmentSuccess = () => {
@@ -59,7 +59,7 @@ const DepartmentsDetailContent = (
 
     const deleteDepartment = () => {
         return deleteDepartmentAPI({id: departmentId})
-            .then(() => onDeleteDepartmentSuccess())
+            .then(() => onDeleteDepartmentSuccess());
     };
 
     const handleDeleteModalOpen = () => {

@@ -18,7 +18,7 @@ const NavigationListCollapseSection = (
                             className={classes.navigationListCollapseSection__item}
                             activeLinkClass={classes.navigationListCollapseSection__activeItem}
                         />
-                    )
+                    );
                 })
             }
         </div>

@@ -41,7 +41,7 @@ const DepartmentsListContent = (
                                                         departmentItem={item}
                                                     />
                                                 </Link>
-                                            )
+                                            );
                                         })
                                     }
                                 </div>

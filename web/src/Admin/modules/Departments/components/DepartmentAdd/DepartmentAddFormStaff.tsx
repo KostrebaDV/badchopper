@@ -14,7 +14,7 @@ const DepartmentAddFormStaff = (
 ) => {
     const stuffItems = useMemo(() => {
         if (staffData.length === 0) {
-            return []
+            return [];
         }
 
         return staffData.reduce((acc, item) => {
@@ -23,11 +23,11 @@ const DepartmentAddFormStaff = (
                 content: <DepartmentAddFormStaffItem
                     item={item}
                 />
-            })
+            });
 
             return acc;
-        }, [])
-    }, [staffData])
+        }, []);
+    }, [staffData]);
 
     const hasStaffData = staffData.length !== 0;
 
@@ -64,6 +64,6 @@ const DepartmentAddFormStaff = (
 
 DepartmentAddFormStaff.defaultProps = {
     editMode: true
-}
+};
 
 export {DepartmentAddFormStaff};

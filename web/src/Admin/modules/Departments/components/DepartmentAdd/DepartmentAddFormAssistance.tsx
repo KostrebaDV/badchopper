@@ -14,7 +14,7 @@ const DepartmentAddFormAssistance = (
 ) => {
     const stuffItems = useMemo(() => {
         if (assistanceData.length === 0 ) {
-            return []
+            return [];
         }
 
         return assistanceData.reduce((acc, item) => {
@@ -23,11 +23,11 @@ const DepartmentAddFormAssistance = (
                 content: <DepartmentAddFormAssistanceItem
                     item={item}
                 />
-            })
+            });
 
             return acc;
-        }, [])
-    }, [assistanceData])
+        }, []);
+    }, [assistanceData]);
 
     const hasAssistanceData = assistanceData.length !== 0;
 
@@ -60,6 +60,6 @@ const DepartmentAddFormAssistance = (
 
 DepartmentAddFormAssistance.defaultProps = {
     editMode: true
-}
+};
 
 export {DepartmentAddFormAssistance};

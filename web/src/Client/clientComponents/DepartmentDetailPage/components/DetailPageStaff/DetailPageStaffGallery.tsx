@@ -2,7 +2,7 @@ import React from 'react';
 import {Gallery} from '../../../Gallery/Gallery';
 import classes from './styles/index.module.scss';
 import {HOST} from '../../../../../const';
-import './styles/mobileStaffGallery.scss'
+import './styles/mobileStaffGallery.scss';
 import {translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
 

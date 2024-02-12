@@ -1,2 +1,2 @@
 export { NavigationContextProvider as default } from './NavigationContext';
-export { NavigationContext } from './const'
+export { NavigationContext } from './const';

@@ -17,7 +17,7 @@ const DepartmentsList = () => {
             .then(({ data }) => {
                 setAllDepartments(data);
                 setPending(false);
-            })
+            });
         // eslint-disable-next-line
     }, []);
 

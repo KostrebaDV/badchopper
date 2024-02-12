@@ -70,7 +70,7 @@ const NavigationListItemWithItems = (
             >
                 {linkContent}
             </div>
-        )
+        );
 };
 
 export {NavigationListItemWithItems};

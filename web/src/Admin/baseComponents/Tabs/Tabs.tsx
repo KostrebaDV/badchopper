@@ -65,7 +65,7 @@ const TabsWithContext:FC<TabsWithContextType> = (
                 activeTabName={activeTabName}
             />
         </TabsContextProvider>
-    )
-}
+    );
+};
 
 export {TabsWithContext};

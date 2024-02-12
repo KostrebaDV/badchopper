@@ -2,7 +2,7 @@ import React from 'react';
 import {Field} from '../Form';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
-import './styles/utilStyles.scss'
+import './styles/utilStyles.scss';
 
 const MultiLanguageFieldComponent = (
     {

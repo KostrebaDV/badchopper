@@ -36,7 +36,7 @@ const NavigationUserInfo = () => {
         logout()
             .then(({data}) => {
                 window.location = data.location;
-            })
+            });
     };
 
     return (

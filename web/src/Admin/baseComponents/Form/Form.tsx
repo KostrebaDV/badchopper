@@ -48,7 +48,7 @@ const Form = memo<FormType>((
         resetFormValues
     } = useContext(ContextForm);
 
-    const prevFormValues = usePrevious(formValues)
+    const prevFormValues = usePrevious(formValues);
 
     const valuesRef = useRef();
     const fieldsRef = useRef();
@@ -111,7 +111,7 @@ const Form = memo<FormType>((
             timeOut = setTimeout(() => {
                 setFormValues(initialValues);
                 isInit.current = true;
-            }, 200)
+            }, 200);
         }
 
         return () => {

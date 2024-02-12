@@ -10,7 +10,7 @@ export const getAllComments = () => {
 };
 
 export const updateComment = (data) => {
-    return PUT(ENDPOINTS.UPDATE_COMMENT, data)
+    return PUT(ENDPOINTS.UPDATE_COMMENT, data);
 };
 
 export const deleteComment = (id) => {

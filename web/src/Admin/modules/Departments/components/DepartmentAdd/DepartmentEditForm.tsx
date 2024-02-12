@@ -77,7 +77,7 @@ const DepartmentEditForm = (
                                 />
                             </Tab>
                         </div>
-                    )
+                    );
                 }}
             >
             </Tabs>

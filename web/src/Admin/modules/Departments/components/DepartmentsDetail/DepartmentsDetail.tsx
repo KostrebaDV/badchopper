@@ -24,11 +24,11 @@ const DepartmentsDetail = () => {
 
                 return data.name;
             })
-            .catch(error => console.log(error))
+            .catch(error => console.log(error));
     }, [id]);
 
     useEffect(() => {
-        getDepartmentDetail()
+        getDepartmentDetail();
     }, [getDepartmentDetail]);
 
     return (

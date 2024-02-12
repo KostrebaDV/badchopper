@@ -67,7 +67,7 @@ const Button: FC<ButtonType> = (
 
 	const action =(event) => {
 	    if (!!actionHandler) {
-            actionHandler(event, actionName)
+            actionHandler(event, actionName);
         }
     };
 

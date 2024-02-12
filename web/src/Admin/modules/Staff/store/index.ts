@@ -1,2 +1,2 @@
 export { StaffContextProvider as default } from './StaffContext';
-export { StaffContext } from './const'
+export { StaffContext } from './const';

@@ -270,7 +270,7 @@ const _initInfiniteScrollTranslateParams = () => {
         }
 
         _setInfiniteScrollActiveItem(GLOBAL.options.activeElement);
-    }, 300)
+    }, 300);
 };
 
 const _initInfiniteScroll = () => {

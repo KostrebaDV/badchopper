@@ -10,15 +10,15 @@ const geElements = () => {
         languageCodeLabel: document.getElementsByClassName(`languageCodeLabel_${GLOBAL.name}`),
         fields: document.getElementsByClassName(`multiLanguageFieldComponent_${GLOBAL.name}`)
     };
-}
+};
 
 const _getActiveCodeLabel = () => {
     return document.querySelectorAll(`[data-languagecode=${GLOBAL.code}]`)[0];
-}
+};
 
 const _getActiveField = () => {
     return document.querySelectorAll(`[data-languagecodefield=${GLOBAL.code}]`)[0];
-}
+};
 
 const _removeActiveClasses = () => {
     // @ts-ignore

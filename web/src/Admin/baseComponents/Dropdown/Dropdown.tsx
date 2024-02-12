@@ -77,7 +77,7 @@ const Dropdown = (
 		}
 
 		if (value) {
-            onItemSelect(value)
+            onItemSelect(value);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [value]);

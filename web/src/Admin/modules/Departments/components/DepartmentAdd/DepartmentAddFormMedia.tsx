@@ -72,6 +72,6 @@ DepartmentAddFormMedia.defaultProps = {
     mediaModalData: [],
     isDepartmentDetail: false,
     editMode: false,
-}
+};
 
 export {DepartmentAddFormMedia};

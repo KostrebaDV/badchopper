@@ -35,9 +35,9 @@ const FormButton: FC<FormButton> = (
 
     const handleClick = () => {
         if (!disable) {
-            onClick && onClick()
+            onClick && onClick();
         }
-    }
+    };
 
     return (
         <div

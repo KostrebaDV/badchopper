@@ -26,7 +26,7 @@ export default (dispatch) => {
         const payload = {
             comment:comment,
             commentId: comment[0]._id
-        }
+        };
 
         dispatch({
             type: UPDATE_COMMENT,

@@ -8,7 +8,7 @@ import {ROUTES} from './routes';
 import {Assistance} from '../../modules/Assistance/Assistance';
 import {Departments} from '../../modules/Departments/Departments';
 import {Media} from '../../modules/Media/Media';
-import classes from './styles/index.module.scss'
+import classes from './styles/index.module.scss';
 import {DepartmentAdd} from '../../modules/Departments/components/DepartmentAdd/DepartmentAdd';
 import {Staff} from '../../modules/Staff/Staff';
 import {Comments} from '../../modules/Comments/Comments';

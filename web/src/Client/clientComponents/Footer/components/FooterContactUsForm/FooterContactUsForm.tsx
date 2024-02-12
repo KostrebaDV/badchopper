@@ -23,7 +23,7 @@ const FooterContactUsForm = (
     const {languageCode} = useContext(AppContext);
     const {forms} = useContext(FormContext);
     const navigate = useNavigate();
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [isPending, setIsPending] = useState(false);
 
     const isFormFilled = useMemo(() => {
@@ -45,8 +45,8 @@ const FooterContactUsForm = (
     };
 
     const dropdownItems = useMemo(() => {
-        return positionDropdownItems[languageCode]
-    }, [languageCode])
+        return positionDropdownItems[languageCode];
+    }, [languageCode]);
 
     const handleClose = () => {
         setIsSubmitted(false);
@@ -56,7 +56,7 @@ const FooterContactUsForm = (
     const handleGoToHomePage = () => {
         onClose();
         navigate('/');
-    }
+    };
 
     return (
         <div className={classes.footerContactUsForm}>
