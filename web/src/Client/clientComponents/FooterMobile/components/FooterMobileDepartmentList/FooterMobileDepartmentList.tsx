@@ -4,7 +4,7 @@ import {getUniqueKey, scrollToTop} from '../../../../../utils';
 import {FooterMobileDepartmentListItem} from './FooterMobileDepartmentListItem';
 import classes from './styles/index.module.scss';
 import ClassNames from 'classnames';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {ROUTES} from '../../../../App/routes';
 
 const FooterMobileDepartmentList = (
@@ -13,7 +13,7 @@ const FooterMobileDepartmentList = (
         className
     }
 ) => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const {departments} = useContext(AppContext);
     const componentClassName = ClassNames(
@@ -21,8 +21,8 @@ const FooterMobileDepartmentList = (
         className
     );
 
-    const onDepartmentClick = url => {
-        history.push(`${ROUTES.DEPARTMENT_DETAIL}${url}`);
+    const onDepartmentClick = (url: string) => {
+        navigate(`${ROUTES.DEPARTMENT_DETAIL}${url}`);
 
         scrollToTop();
     };
