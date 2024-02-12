@@ -12,11 +12,17 @@ const Field = (props) => {
     } = useContext(FormGlobalContext);
 
     const {
+		// @ts-ignore
         formName,
+		// @ts-ignore
         fields,
+		// @ts-ignore
         formValues,
+		// @ts-ignore
         setFieldValue,
+		// @ts-ignore
         registerField,
+		// @ts-ignore
         setFieldValidationResult
     } = useContext(ContextForm);
 

@@ -1,4 +1,4 @@
-import React, {FC, useContext, useEffect} from 'react';
+import React, {FC, ReactNode, useContext, useEffect} from 'react';
 import {TabsContextProvider} from './store/TabsContextProvider';
 import {TabsItemList} from './TabsItemList';
 import {TabsItem} from './TabsItem';
@@ -6,6 +6,7 @@ import {TabsContext} from './store/const';
 import {getUniqueKey} from '../../../utils';
 
 type TabsWithContextType = {
+    children?: ReactNode;
     tabs: {
         tabName:string;
         label:string;

@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useRef, memo, useCallback} from 'react';
+import React, {useEffect, useContext, useRef, memo, useCallback, ReactNode} from 'react';
 
 import {ContextForm} from './store/FormContext';
 import {FormContext as FormGlobalContext} from '../../../store/FormContext';
@@ -10,7 +10,7 @@ import {usePrevious} from '../../../hooks/usePrevious';
 type FormType = {
     data: object;
     name: string;
-    children: object | [];
+    children: ReactNode;
     onSubmit: (object, resetFormValues) => void;
     initialValues: object;
     resetFormValues: boolean;
@@ -34,11 +34,17 @@ const Form = memo<FormType>((
     } = useContext(FormGlobalContext);
 
     const {
+        // @ts-ignore
         fields,
+        // @ts-ignore
         initForm,
+        // @ts-ignore
         formValues,
+        // @ts-ignore
         validateForm,
+        // @ts-ignore
         setFormValues,
+        // @ts-ignore
         resetFormValues
     } = useContext(ContextForm);
 
@@ -147,7 +153,7 @@ const Form = memo<FormType>((
             name={name}
             onSubmit={handleFormSubmit}
         >
-            {children}
+            { children }
         </form>
     );
 });

@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import {UploaderContext} from './store/consts';
 import { AdminAppContext }  from '../../../../App/store/AdminAppContext/const';
-
 import { isUndefined } from '../../../../../utils';
-
 import UploaderContextProvider from './store';
+import { useUploaderContext } from './store/UploaderContext';
 
 const Uploader = (
 	{
@@ -28,7 +26,7 @@ const Uploader = (
 		uploadFiles,
 		changeFileName,
 		removeAllFiles
-	} = useContext(UploaderContext);
+	} = useUploaderContext();
 
 	const [showNoFilesMessage, setShowNoFilesMessage] = useState(false);
 

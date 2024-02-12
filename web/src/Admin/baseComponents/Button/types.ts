@@ -1,6 +1,8 @@
+import {IconifyIcon} from "@iconify/react";
+
 export type ButtonType = {
     size?: string;
-    icon?: object;
+    icon?: string | IconifyIcon;
     type?: string;
     label?: string;
     className?: string;

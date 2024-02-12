@@ -8,20 +8,20 @@ import {MarginBox} from '../../baseComponents/MarginBox/MarginBox';
 import {login} from './api';
 import {AdminAppContext} from '../../App/store/AdminAppContext/const';
 import {getUniqueId, isNullOrUndefined} from '../../../utils';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {Typography} from '../../baseComponents/Typography/Typography';
 import {PaddingBox} from '../../baseComponents/PaddingBox/PaddingBox';
 import Cookies from 'js-cookie';
 
 const LoginContent = () => {
     const {forms} = useContext(FormContext);
-    const history = useHistory();
+    const navigate = useNavigate();
     const {showNotification} = useContext(AdminAppContext);
     const token = Cookies.get('access_token');
 
     useEffect(() => {
         if (!isNullOrUndefined(token)) {
-            history.push("/adminPanel/departments/list");
+            navigate("/adminPanel/departments/list");
         }
     }, [token, history])
 
@@ -53,7 +53,7 @@ const LoginContent = () => {
         login(data)
             .then(res => {
                 if (res.status === 201) {
-                    history.push("/adminPanel/departments/list");
+                    navigate("/adminPanel/departments/list");
                 }
             })
             .catch(error => {

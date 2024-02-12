@@ -1,5 +1,5 @@
-import React, { useRef, useState, FC } from 'react';
-import { Icon } from '@iconify/react';
+import React, {useRef, useState, FC, ReactNode} from 'react';
+import {Icon, IconifyIcon} from '@iconify/react';
 import alertCircleOutline from '@iconify/icons-mdi/alert-circle-outline';
 
 import { OverlayPoint } from '../OverlayPoint/OverlayPoint';
@@ -8,9 +8,9 @@ import ClassNames from 'classnames';
 import classes from './styles/index.module.scss';
 
 type TooltipType = {
-    icon: object;
+	icon: string | IconifyIcon;
     message: any;
-    tooltip?: string | object | number;
+    tooltip?: ReactNode;
     type?: string;
     position: string;
     tooltipClassName?: string;

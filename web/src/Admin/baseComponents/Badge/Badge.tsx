@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import classes from './styles/index.module.scss';
 
 type BadgeProps = {
-    message: string | [] | object | number;
+    message: string;
     type?: string;
 };
 

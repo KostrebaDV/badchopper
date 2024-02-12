@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import { Icon } from '@iconify/react';
 import uploadIcon from '@iconify/icons-mdi/upload';
 
@@ -18,7 +18,7 @@ type GeneralUploaderDragDropState = {
 
 type GeneralUploaderDragDropProps = {
     handleAddFile: (arg1: object, arg2: []) => void;
-    children: object | [];
+    children: ReactNode;
 }
 
 class GeneralUploaderDragDrop extends Component<GeneralUploaderDragDropProps, GeneralUploaderDragDropState> {

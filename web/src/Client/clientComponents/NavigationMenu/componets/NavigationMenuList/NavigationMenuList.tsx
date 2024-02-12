@@ -7,7 +7,7 @@ import {getUniqueKey} from '../../../../../utils';
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import {NavigationMenuContext} from '../../store/const';
 import closeIcon from '../../../../../static/images/closeIcon.svg';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {ROUTES} from '../../../../App/routes';
 import {translate} from '../../../../../utils';
 import {codes} from '../../../../../static/translations/codes';
@@ -15,10 +15,10 @@ import {LanguageBar} from '../../../LanguageBar/LanguageBar';
 
 const NavigationMenuList = () => {
     const {isOpen, openNavigation} = useContext(NavigationMenuContext);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleAddFeedbackClick = () => {
-        history.push(ROUTES.CONTACT_DETAIL);
+        navigate(ROUTES.CONTACT_DETAIL);
         openNavigation(!isOpen);
     };
 

@@ -37,6 +37,7 @@ class OverlayPoint extends Component<OverlayPointProps, OverlayPointState> {
     layoutRef: { current: any };
 
 	componentDidMount () {
+		// @ts-ignore
 		const { showOverlayCloak } = this.context;
 
 		if (!showOverlayCloak) noScroll(true);
@@ -45,6 +46,7 @@ class OverlayPoint extends Component<OverlayPointProps, OverlayPointState> {
 	}
 
 	componentWillUnmount () {
+		// @ts-ignore
 		const { showOverlayCloak } = this.context;
 
 		if (!showOverlayCloak) noScroll(false);

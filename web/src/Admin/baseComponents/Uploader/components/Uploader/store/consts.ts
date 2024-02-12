@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+import {uploaderContextProps} from "./types";
 
 export const SET_PENDING = 'SET_PENDING';
 export const ADD_FILE_TO_QUEUE = 'ADD_FILE_TO_QUEUE';
@@ -7,4 +8,4 @@ export const CHANGE_FILE_NAME = 'CHANGE_FILE_NAME';
 export const REMOVE_ALL_FILES = 'REMOVE_ALL_FILES';
 
 //@ts-ignore
-export const UploaderContext = createContext();
+export const UploaderContext = createContext<uploaderContextProps>();

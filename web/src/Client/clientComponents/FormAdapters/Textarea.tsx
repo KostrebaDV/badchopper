@@ -44,10 +44,10 @@ class Textarea extends Component<TextareaType, {}> {
                 dynamicHeight={dynamicHeight}
 			>
 				<TextareaComponent
+					{...this.props}
                     onChange={onChange}
                     onFieldFocus={onFieldFocus}
                     onFieldChange={onFieldChange}
-					{...this.props}
 				/>
 			</FieldBox>
 		);

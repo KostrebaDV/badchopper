@@ -32,13 +32,14 @@ const Link: FC<LinkType> = (
         className
     );
 
+	const componentClassName = activeLinkClass ? `${className} ${activeLinkClass}`: className
+
 	const getRouteLink = () => {
 		return activeLinkClass
 			? (
 				<NavLink
 					to={link}
-					className={className}
-					activeClassName={activeLinkClass}
+					className={componentClassName}
 				>
 					{children}
 				</NavLink>

@@ -2,7 +2,7 @@ import React from 'react';
 import {MainPage} from '../clientComponents/MainPage/MainPage';
 import classes from './styles/index.module.scss';
 import {DetailPage} from '../clientComponents/DetailPage/DetailPage';
-import {Route, useLocation} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import {ROUTES} from './routes';
 import {isMobile} from "react-device-detect";
 import {useGetDepartmentData, useSetLanguage} from './hooks';
@@ -36,18 +36,21 @@ const App = () => {
     return (
         <div className={componentClassName}>
             <div className={classes.app__content}>
-                <Route exact path={ROUTES.CLIENT_ROOT}>
+                <Routes>
+                <Route path={ROUTES.CLIENT_ROOT} />
                     <MainPage/>
-                </Route>
-                <Route path={[
-                    ROUTES.ASSISTANCE_DETAIL,
-                    ROUTES.DEPARTMENT_DETAIL,
-                    ROUTES.FEEDBACKS_DETAIL,
-                    ROUTES.GALLERY_DETAIL,
-                    ROUTES.CONTACT_DETAIL
-                ]}>
-                    <DetailPage/>
-                </Route>
+                    <>
+                        {[
+                            ROUTES.ASSISTANCE_DETAIL,
+                            ROUTES.DEPARTMENT_DETAIL,
+                            ROUTES.FEEDBACKS_DETAIL,
+                            ROUTES.GALLERY_DETAIL,
+                            ROUTES.CONTACT_DETAIL
+                        ].map(path => (
+                            <Route key={path} path={path} element={<DetailPage />} />
+                        ))}
+                    </>
+                </Routes>
             </div>
             {/*{*/}
             {/*    allowCookie === 'false' && (*/}

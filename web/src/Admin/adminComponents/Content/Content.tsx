@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Switch,
+    Routes,
     Route
 } from "react-router-dom";
 
@@ -17,7 +17,7 @@ import {Gallery} from '../../modules/Gallery/Gallery';
 const Content = () => {
     return (
         <div className={classes.content}>
-			<Switch>
+			<Routes>
 				<Route path={ROUTES.ASSISTANCE}>
 					<Assistance/>
 				</Route>
@@ -39,7 +39,7 @@ const Content = () => {
                 <Route path={ROUTES.COMMENTS}>
                     <Comments/>
                 </Route>
-			</Switch>
+			</Routes>
         </div>
     );
 };

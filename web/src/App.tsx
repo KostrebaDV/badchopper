@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     BrowserRouter as Router,
-    Switch,
+    Routes,
     Route
 } from "react-router-dom";
 
@@ -17,7 +17,7 @@ function App() {
     return (
         <FormContextProvider>
             <Router basename='/'>
-                <Switch>
+                <Routes>
                     <Route path={ROUTES.LOGIN}>
                         <Login/>
                     </Route>
@@ -27,7 +27,7 @@ function App() {
                     <Route path={ROUTES.CLIENT}>
                         <ClientApp/>
                     </Route>
-                </Switch>
+                </Routes>
             </Router>
         </FormContextProvider>
     );

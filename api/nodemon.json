@@ -1,5 +1,6 @@
 {
   "watch": ["api/*"],
-  "ext": "js,ts,json",
+  "ext": ".js,.ts,.json",
+  "ignore": [],
   "exec": "ts-node --transpile-only ./app.ts"
 }

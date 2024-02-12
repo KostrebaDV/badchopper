@@ -1,6 +1,6 @@
 import React, {useContext, useMemo, useState} from 'react';
 import {Logo} from '../../../Logo/Logo';
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {Typography} from '../../../../../Admin/baseComponents/Typography/Typography';
 import classes from './styles/index.module.scss';
 import closeIcon from '../../../../../static/images/closeIcon.svg';
@@ -22,7 +22,7 @@ const FooterContactUsForm = (
 ) => {
     const {languageCode} = useContext(AppContext);
     const {forms} = useContext(FormContext);
-    const {push} = useHistory();
+    const navigate = useNavigate();
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [isPending, setIsPending] = useState(false);
 
@@ -55,7 +55,7 @@ const FooterContactUsForm = (
 
     const handleGoToHomePage = () => {
         onClose();
-        push('/');
+        navigate('/');
     }
 
     return (

@@ -15,7 +15,7 @@ import {ButtonGroupIconButtons} from '../../../../baseComponents/ButtonGroup/But
 import {MODALS} from '../DepartmentsModalsProvider/const';
 import {DepartmentsModalsContext} from '../DepartmentsModalsProvider/const';
 import {deleteDepartment as deleteDepartmentAPI} from '../../api';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {ROUTES} from '../../../../adminComponents/Content/routes';
 
 const DepartmentsDetailContent = (
@@ -28,7 +28,7 @@ const DepartmentsDetailContent = (
     const {setNavigationList} = useContext(NavigationContext);
     const [editMode, setEditMode] = useState(false);
     const {openModal} = useContext(DepartmentsModalsContext);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const initialValues = useMemo(() => {
         if (isUndefined(departmentData)) return;
@@ -53,7 +53,7 @@ const DepartmentsDetailContent = (
         getNavigationList()
             .then(({ data }) => {
                 setNavigationList(data);
-                history.push(ROUTES.DEPARTMENTS_LIST);
+                navigate(ROUTES.DEPARTMENTS_LIST);
             });
     };
 

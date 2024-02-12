@@ -163,9 +163,9 @@ function FormContextProvider (props) {
 			}
 		}
 
-		const hasError = validationResult.some(result => result.isValid === false);
+		const hasError = validationResult.some(result => !result.isValid);
 
-		const errorFields = validationResult.filter(result => result.isValid === false);
+		const errorFields = validationResult.filter(result => !result.isValid);
 
 		return new Promise((resolve, reject) => {
 			return hasError ? reject(errorFields) : resolve(values);
