@@ -23,7 +23,7 @@ const LoginContent = () => {
         if (!isNullOrUndefined(token)) {
             navigate("/adminPanel/departments/list");
         }
-    }, [token, history]);
+    }, [token, navigate]);
 
     const handleLoginError = code => {
         if (code === 403) {

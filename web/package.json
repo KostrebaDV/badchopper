@@ -1,7 +1,9 @@
 {
+	"version": "1.1.0",
 	"name": "web",
 	"homepage": "./",
-	"version": "0.1.0",
+	"description": "badchopper client",
+	"author": "dkostreba",
 	"private": true,
 	"dependencies": {
 		"@iconify/icons-mdi": "^1.2.17",
@@ -35,6 +37,9 @@
 		"eslint-plugin-jsx-a11y": "^6.3.1",
 		"eslint-plugin-react": "^7.20.0",
 		"eslint-plugin-react-hooks": "^4.6.0"
+	},
+	"engines" : {
+		"node" : ">=16.0.0 <20.0.0"
 	},
 	"scripts": {
 		"build:css": "node-sass src/ -o src/ ",

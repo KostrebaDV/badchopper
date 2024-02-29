@@ -15,6 +15,7 @@ import mailController from '../controllers/mail/mail';
 import usersController from '../controllers/users/users';
 import translationsController from '../controllers/translations/translations';
 import clientSyncHash from '../controllers/clientSyncHash/clientSyncHash';
+
 require('dotenv').config()
 
 const EXPRESS_PUBLIC_FOLDER_PATH = process.env.EXPRESS_PUBLIC_FOLDER_PATH;

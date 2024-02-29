@@ -5,11 +5,13 @@ import {NavigationMenuWithProvider} from '../NavigationMenu/NavigationMenu';
 import {MainPageContent} from './components/MainPageContent/MainPageContent';
 const MainPage = () => {
     return (
-        <div className={classes.mainPage}>
-            <NavigationMenuWithProvider/>
-            <MainPageContent/>
-            <MainPageFooter/>
-        </div>
+        <>
+            <div className={classes.mainPage}>
+                <NavigationMenuWithProvider/>
+                <MainPageContent/>
+                <MainPageFooter/>
+            </div>
+        </>
     );
 };
 

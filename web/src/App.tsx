@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
     Routes,
-    Route
+    Route,
+    BrowserRouter
 } from "react-router-dom";
 
 import AdminApp from './Admin/App/App';
@@ -16,19 +16,13 @@ import {Login} from './Admin/modules/Login/Login';
 function App() {
     return (
         <FormContextProvider>
-            <Router basename='/'>
+            <BrowserRouter basename='/'>
                 <Routes>
-                    <Route path={ROUTES.LOGIN}>
-                        <Login/>
-                    </Route>
-                    <Route path={ROUTES.ADMIN_PANEL}>
-                        <AdminApp/>
-                    </Route>
-                    <Route path={ROUTES.CLIENT}>
-                        <ClientApp/>
-                    </Route>
+                    <Route element={<Login/>} path={ROUTES.LOGIN} />
+                    <Route element={<AdminApp/>} path={ROUTES.ADMIN_PANEL} />
+                    <Route element={<ClientApp/>} path={ROUTES.CLIENT} />
                 </Routes>
-            </Router>
+            </BrowserRouter>
         </FormContextProvider>
     );
 }

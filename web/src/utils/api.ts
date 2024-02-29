@@ -1,7 +1,6 @@
 import {HOST} from '../const';
 import {redirect as redirectMiddleware} from '../middlewares/redirect';
-
-const axios = require('axios');
+import axios from "axios";
 
 const axiosInstance = axios.create({
     baseURL: HOST,

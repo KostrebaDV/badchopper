@@ -73,6 +73,7 @@ export default (app: Application, client) => {
     });
 
     departmentsRouter.get(CONSTS.GET_ALL_DEPARTMENTS_CLIENT, (req: Request, res: Response) => {
+        console.log(123)
         getAllDepartmentsClientService(client)
             .then((status) => {
                 return res
